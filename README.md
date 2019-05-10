@@ -15,3 +15,7 @@ password: password
 - "git add ." : adds new files and changes to project
 - "git commit -m "enter commit message here"" : commits and attaches message
 - "git push" : pushes commit to repository
+
+### Branch navigation:
+- "git checkout" : see all available branches
+- "git checkout 'put branch name here without quotes'" : move into branch
