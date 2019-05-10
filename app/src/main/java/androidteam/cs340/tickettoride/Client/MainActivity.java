@@ -1,7 +1,9 @@
-package androidteam.cs340.tickettoride;
+package androidteam.cs340.tickettoride.Client;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import androidteam.cs340.tickettoride.R;
 
 public class MainActivity extends AppCompatActivity {
 
