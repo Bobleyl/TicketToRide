@@ -12,6 +12,6 @@ password: password
 
 # Commit instructions:
 
-"git add ." : adds new files and changes to project
-"git commit -m "enter commit message here"" : commits and attaches message
-"git push" : pushes commit to repository
+- "git add ." : adds new files and changes to project
+- "git commit -m "enter commit message here"" : commits and attaches message
+- "git push" : pushes commit to repository
