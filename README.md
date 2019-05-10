@@ -11,7 +11,7 @@ password: password
 
 
 # Commit instructions:
-
+- "git status" : see status of git (is it up to date or not)
 - "git add ." : adds new files and changes to project
 - "git commit -m "enter commit message here"" : commits and attaches message
 - "git push" : pushes commit to repository
