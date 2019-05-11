@@ -6,16 +6,22 @@ public class RegisterCommand implements CommandInterface {
     private String username;
     private String password;
 
-    public RegisterCommand(String username, String password) {
-        this.username = username;
-        this.password = password;
+    public RegisterCommand(HashMap<String, Object> values) {
+        this.username = (String)values.get("username");
+        this.password = (String)values.get("password");
     }
 
     @Override
-    public Object execute() {
-        HashMap<String, String> result = new HashMap<>();
-        result.put("message", "success");
-        result.put("username", username);
-        return result;
+    public Object execute() throws Exception {
+        boolean success = DataFacade.SINGLETON.registerUser(username, password);
+
+        if(success) {
+            System.out.println("User was created");
+        } else {
+            System.out.println("User failed to create");
+            throw new Exception("User failed to create");
+        }
+
+        return null;
     }
 }
