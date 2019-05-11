@@ -6,9 +6,13 @@ public class User {
     private String password;
 
     public User(String username, String password){
-        this.UID = "";
+        this.UID = null;
         this.username = username;
         this.password = password;
+    }
+
+    String getUID(){
+        return UID;
     }
 
 }

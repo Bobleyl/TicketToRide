@@ -7,9 +7,27 @@ public class Player {
     String name;
 
     public Player(){
-        this.gameUID = "";
+        this.gameUID = null;
         this.color = "";
         this.name = "";
-        this.UID = "";
+        this.UID = null;
     }
+
+    String getUID(){
+        return UID;
+    }
+
+    String getGameUID(){
+        return gameUID;
+    }
+
+    String getName(){
+        return name;
+    }
+
+    void setName(String name){
+        this.name = name;
+    }
+
+
 }
