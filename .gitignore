@@ -6,5 +6,5 @@
 /build
 /captures
 .externalNativeBuild
-/target
+/server/target
 /out
