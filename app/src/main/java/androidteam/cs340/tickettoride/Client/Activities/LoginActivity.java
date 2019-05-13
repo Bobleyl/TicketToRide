@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidteam.cs340.tickettoride.Client.Presenters.LoginPresenter;
 import androidteam.cs340.tickettoride.R;
+import androidteam.cs340.tickettoride.Shared.Result;
 import androidteam.cs340.tickettoride.Shared.User;
 
 public class LoginActivity extends AppCompatActivity {
@@ -42,7 +43,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(getBaseContext(),"Logging you in...",Toast.LENGTH_SHORT).show();
                 LoginPresenter presenter = new LoginPresenter();
-                presenter.login(new User(username.toString(), password.toString()));
+                User user = new User(username.toString(), password.toString());
+                Result result = presenter.login(user);
+
+                Toast.makeText(getBaseContext(), result.getData() , Toast.LENGTH_SHORT).show();
+
             }
         });
 

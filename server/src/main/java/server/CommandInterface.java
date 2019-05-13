@@ -1,5 +1,5 @@
 package server;
 
 public interface CommandInterface {
-    public Result execute() throws Exception;
+    public Object execute() throws Exception;
 }

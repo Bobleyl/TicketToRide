@@ -7,10 +7,11 @@ public class Result {
     private String errorInfo;
     private int statusCode;
 
-    public Result(boolean success_, String data_, String errorInfo_) {
+    public Result(boolean success_, String data_, String errorInfo_, int statusCode_) {
         success = success_;
         data = data_;
         errorInfo = errorInfo_;
+        statusCode = statusCode_;
     }
 
     public boolean getSuccess() {
@@ -23,6 +24,10 @@ public class Result {
 
     public String getErrorInfo() {
         return errorInfo;
+    }
+
+    public int getStatusCode() {
+        return statusCode;
     }
 
 }

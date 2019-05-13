@@ -46,12 +46,12 @@ public class ClientCommunicator {
             //Send connection
             result.connect();
 
-            return new Result(true, "", Integer.toString(result.getResponseCode()));
+            return new Result(true, "success", "", result.getResponseCode());
 
         }
         catch (Exception e) {
             e.printStackTrace();
-            return new Result(false, "error", "Error in ClientCommunicator");
+            return new Result(false, "error", "Error in ClientCommunicator", 400);
         }
     }
 

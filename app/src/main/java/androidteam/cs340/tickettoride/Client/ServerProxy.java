@@ -6,37 +6,38 @@ import androidteam.cs340.tickettoride.Shared.User;
 
 public class ServerProxy implements IServer {
 
+    private ServerProxy() {}
+
+    public static ServerProxy SINGLETON = new ServerProxy();
+
     @Override
-    public Object login(User user) {
+    public Result login(User user) {
 
         //Build JSON String
         String jsonInString = "{\n" +
                 "\t\"command\":\"login\",\n" +
                 "\t\"values\": {\n" +
-                "\t\t\"username\": "+ "" +",\n" +
-                "\t\t\"password\": "+ "" +"\n" +
+                "\t\t\"username\": "+ user.getUsername() +",\n" +
+                "\t\t\"password\": "+ user.getPassword() +"\n" +
                 "\t}\n" +
                 "}";
 
-        Result result = ClientCommunicator.SINGLETON.send(jsonInString);
-
-        return result;
+        return ClientCommunicator.SINGLETON.send(jsonInString);
     }
 
     @Override
-    public Object register(User user) {
+    public Result register(User user) {
+
         //Build JSON String
         String jsonInString = "{\n" +
                 "\t\"command\":\"login\",\n" +
                 "\t\"values\": {\n" +
-                "\t\t\"username\": "+ "" +",\n" +
-                "\t\t\"password\": "+ "" +"\n" +
+                "\t\t\"username\": "+ user.getUsername() +",\n" +
+                "\t\t\"password\": "+ user.getPassword() +"\n" +
                 "\t}\n" +
                 "}";
 
-        Result result = ClientCommunicator.SINGLETON.send(jsonInString);
-
-        return result;
+        return ClientCommunicator.SINGLETON.send(jsonInString);
 
     }
 

@@ -9,7 +9,7 @@ public class ModelFacade {
     public static ModelFacade SINGLETON = new ModelFacade();
 
     public Result login(User toLogin) {
-        return null;
+        return ServerProxy.SINGLETON.login(toLogin);
     }
 
 }
