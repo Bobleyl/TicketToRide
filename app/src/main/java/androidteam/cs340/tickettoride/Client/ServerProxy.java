@@ -1,5 +1,7 @@
 package androidteam.cs340.tickettoride.Client;
 
+import com.google.gson.JsonObject;
+
 import androidteam.cs340.tickettoride.Shared.IServer;
 import androidteam.cs340.tickettoride.Shared.Result;
 import androidteam.cs340.tickettoride.Shared.User;
@@ -13,33 +15,31 @@ public class ServerProxy implements IServer {
     @Override
     public Result login(User user) {
 
-        //Build JSON String
-        String jsonInString = "{\n" +
-                "\t\"command\":\"login\",\n" +
-                "\t\"values\": {\n" +
-                "\t\t\"username\": "+ "\"" + user.getUsername() + "\"" +",\n" +
-                "\t\t\"password\": "+ "\"" + user.getPassword() + "\"" +"\n" +
-                "\t}\n" +
-                "}";
+        JsonObject root = new JsonObject();
+        root.addProperty("command", "login");
 
-        System.out.println(jsonInString);
+        // Create Inner JSON Object
+        JsonObject values = new JsonObject();
+        values.addProperty("username", user.getUsername());
+        values.addProperty("password", user.getPassword());
+        root.add("values", values);
 
-        return ClientCommunicator.SINGLETON.send(jsonInString);
+        return ClientCommunicator.SINGLETON.send(root.toString());
     }
 
     @Override
     public Result register(User user) {
 
-        //Build JSON String
-        String jsonInString = "{\n" +
-                "\t\"command\":\"register\",\n" +
-                "\t\"values\": {\n" +
-                "\t\t\"username\": "+ "\"" + user.getUsername() + "\"" +",\n" +
-                "\t\t\"password\": "+ "\"" + user.getPassword() + "\"" +"\n" +
-                "\t}\n" +
-                "}";
+        JsonObject root = new JsonObject();
+        root.addProperty("command", "login");
 
-        return ClientCommunicator.SINGLETON.send(jsonInString);
+        // Create Inner JSON Object
+        JsonObject values = new JsonObject();
+        values.addProperty("username", user.getUsername());
+        values.addProperty("password", user.getPassword());
+        root.add("values", values);
+
+        return ClientCommunicator.SINGLETON.send(root.toString());
 
     }
 
