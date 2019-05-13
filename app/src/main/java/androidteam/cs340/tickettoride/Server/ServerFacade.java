@@ -1,5 +1,7 @@
 package androidteam.cs340.tickettoride.Server;
 
+import androidteam.cs340.tickettoride.Shared.Result;
+
 public class ServerFacade {
 
     public static ServerFacade SINGLETON = new ServerFacade();
@@ -8,32 +10,34 @@ public class ServerFacade {
         System.out.println("Initializing Server Facade");
     }
 
-    public static void login(String username, String password) {
-        SINGLETON._login(username, password);
+    public static String login(String username, String password) {
+        Result result = SINGLETON._login(username, password);
+        return result.getData();
     }
 
-    public static void register(String username, String password) {
-        SINGLETON._register(username, password);
+    public static String register(String username, String password) {
+        Result result = SINGLETON._register(username, password);
+        return result.getData();
     }
 
-    private void _login(String username, String password) {
+    private Result _login(String username, String password) {
         boolean success = DataAccess.SINGLETON.checkUser(username, password);
 
         if(success) {
-            System.out.println("User logged in!");
+            return new Result(true, "User logged in", "success");
         } else {
-            System.out.println("User does not exist");
+            return new Result(false, "User not logged in", "fail");
         }
     }
 
-    private void _register(String username, String password) {
+    private Result _register(String username, String password) {
 
         boolean success = DataAccess.SINGLETON.registerUser(username, password);
 
         if(success) {
-            System.out.println("User was created");
+            return new Result(true, "User registered", "success");
         } else {
-            System.out.println("User failed to create");
+            return new Result(false, "User not registered", "fail");
         }
     }
 
