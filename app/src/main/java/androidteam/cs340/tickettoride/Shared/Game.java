@@ -8,11 +8,11 @@ public class Game {
     private List<Player> playersList;
     int gameSize;
 
-    public Game(){
+    public Game(int Size){
         this.playersList = new ArrayList<>();
         this.UID = "";
-        this.gameSize = 5;
+        this.gameSize = Size;
     }
 
-
+    public void addPlayer(Player player){ playersList.add(player); }
 }

@@ -16,14 +16,13 @@ public class Lobby {
     public String getUID(){
         return UID;
     }
-    public void setUID(String uid){
-        this.UID = uid;
-    }
+
+    public void setUID(String uid){ this.UID = uid; }
+
     public List<Game> getGames(){
         return gamesList;
     }
-    public void addGame(Game game){
-        gamesList.add(game);
-    }
+
+    public void addGame(Game game){ gamesList.add(game); }
 
 }
