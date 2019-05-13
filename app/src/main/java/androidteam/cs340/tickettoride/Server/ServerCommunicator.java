@@ -29,7 +29,7 @@ public class ServerCommunicator {
         }
 
         server.setExecutor(null);
-        server.createContext("/execCommand", ExecCommandHandler);
+        server.createContext("/execute", ExecCommandHandler);
         server.start();
         System.out.println("Server Started");
     }
@@ -47,7 +47,6 @@ public class ServerCommunicator {
             exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, 0);
 
             OutputStream outputStream = exchange.getResponseBody();
-
             Gson gson = new Gson();
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream);
             outputStreamWriter.write(gson.toJson(result));

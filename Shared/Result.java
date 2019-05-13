@@ -5,6 +5,7 @@ public class Result {
     private boolean success;
     private String data;
     private String errorInfo;
+    private int statusCode;
 
     public Result(boolean success_, String data_, String errorInfo_) {
         success = success_;
