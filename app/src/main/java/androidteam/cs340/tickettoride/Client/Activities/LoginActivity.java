@@ -9,7 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidteam.cs340.tickettoride.Client.Presenters.LoginPresenter;
 import androidteam.cs340.tickettoride.R;
+import androidteam.cs340.tickettoride.Shared.User;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -38,15 +40,15 @@ public class LoginActivity extends AppCompatActivity {
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create Command here to send to LoginTask?
                 Toast.makeText(getBaseContext(),"Logging you in...",Toast.LENGTH_SHORT).show();
+                LoginPresenter presenter = new LoginPresenter();
+                presenter.login(new User(username.toString(), password.toString()));
             }
         });
 
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create Command here to send to RegisterTask?
                 Toast.makeText(getBaseContext(),"Registering...",Toast.LENGTH_SHORT).show();
             }
         });
