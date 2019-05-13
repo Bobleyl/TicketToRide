@@ -29,37 +29,45 @@ public class DataFacade {
         return connection;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public boolean registerUser(String username, String password) {
 
-        Connection connection = DataFacade.SINGLETON.connectJDBCToAWSEC2();
-        Statement statement = null;
+        Connection connection = DataAccess.SINGLETON.connectJDBCToAWSEC2();
+        Statement statement;
+        boolean result = false;
         if (connection != null) {
             try {
                 statement = connection.createStatement();
 
-                //String sql_drop_table = "DROP TABLE Users;";
-                //String sql_create_table = "CREATE TABLE Users(USERNAME varchar(255) key, PASSWORD varchar(255));";
-                //statement.execute(sql_drop_table);
-                //statement.execute(sql_create_table);
+                String upperUsername = username.toUpperCase();
 
-                String sql_insert = "INSERT INTO Users Values('" + username + "', '" + password + "');";
-                statement.execute(sql_insert);
+                String query = "INSERT INTO User Values(?, ?);";
+
+                try (PreparedStatement stmt = connection.prepareStatement(query)) {
+                    stmt.setString(1, upperUsername);
+                    stmt.setString(2, password);
+                    stmt.executeUpdate();
+                } catch(SQLException e) {
+                    e.printStackTrace();
+                }
 
                 statement.close();
                 connection.close();
-                return true;
+                result = true;
 
             } catch (SQLException e) {
                 System.out.println("Error: " + e.toString());
-                return false;
+                result = false;
             }
         }
-        return false;
+        return result;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public boolean checkUser(String username, String password) {
 
-        Connection connection = DataFacade.SINGLETON.connectJDBCToAWSEC2();
+        Connection connection = DataAccess.SINGLETON.connectJDBCToAWSEC2();
+        boolean result = false;
 
         if (connection != null) {
             Statement statement = null;
@@ -69,39 +77,35 @@ public class DataFacade {
                 statement = connection.createStatement();
 
                 ResultSet rs = null;
-                String sql = "SELECT * FROM Users WHERE USERNAME = ? AND PASSWORD = ?;";
-                String userName = null;
+                String UpperUsername = username.toUpperCase();
 
-                try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-                    stmt.setString(1, username);
+                String query = "SELECT * FROM User WHERE USERNAME = ? AND PASSWORD = ?;";
+                try (PreparedStatement stmt = connection.prepareStatement(query)) {
+                    stmt.setString(1, UpperUsername);
                     stmt.setString(2, password);
                     rs = stmt.executeQuery();
-                    if (rs.next()) {
-                        userName = rs.getString("USERNAME");
-                        System.out.println(userName);
-                    }
+                    result = rs.next();
 
-                } catch (SQLException e) {
-                    System.out.println(e.toString());
+                } catch(SQLException e) {
+                    e.printStackTrace();
+                    result = false;
                 }
-
-                //STEP 5: Extract data from result set
 
                 assert rs != null;
                 rs.close();
                 statement.close();
                 connection.close();
 
-                return userName != null;
+                return result;
 
             } catch (SQLException e) {
                 System.out.println("Error: " + e.toString());
             } finally {
                 try {
-                    if (statement != null)
+                    if (statement != null) {
                         statement.close();
-                } catch (SQLException ignored) {
-                }
+                    }
+                } catch (SQLException ignored) { }
                 try {
                     connection.close();
                 } catch (SQLException se) {
@@ -111,8 +115,8 @@ public class DataFacade {
 
         } else {
             System.out.println("FAILURE! Failed to make connection!");
-            return false;
+            result = false;
         }
-        return false;
+        return result;
     }
 }

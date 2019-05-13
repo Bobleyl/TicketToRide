@@ -24,7 +24,7 @@ public class CommandHandler implements Handler {
 
             CommandInterface command = (CommandInterface)constructor.newInstance(values);
 
-            Object result = command.execute();
+            Result result = command.execute();
 
             if (result == null) {
                 context.status(204);
