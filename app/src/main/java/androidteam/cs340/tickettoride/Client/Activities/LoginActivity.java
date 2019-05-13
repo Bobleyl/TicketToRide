@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidteam.cs340.tickettoride.Client.Presenters.LoginPresenter;
+import androidteam.cs340.tickettoride.Client.Presenters.RegisterPresenter;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.Result;
 import androidteam.cs340.tickettoride.Shared.User;
@@ -59,6 +60,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getBaseContext(),"Registering...",Toast.LENGTH_SHORT).show();
+                RegisterPresenter presenter = new RegisterPresenter();
+                User user = new User(username.toString(), password.toString());
+                Result result = presenter.register(user);
+
+                Toast.makeText(getBaseContext(), result.getData() , Toast.LENGTH_SHORT).show();
             }
         });
 

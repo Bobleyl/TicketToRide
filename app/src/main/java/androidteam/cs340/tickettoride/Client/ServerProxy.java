@@ -32,7 +32,7 @@ public class ServerProxy implements IServer {
 
         //Build JSON String
         String jsonInString = "{\n" +
-                "\t\"command\":\"login\",\n" +
+                "\t\"command\":\"register\",\n" +
                 "\t\"values\": {\n" +
                 "\t\t\"username\": "+ "\"" + user.getUsername() + "\"" +",\n" +
                 "\t\t\"password\": "+ "\"" + user.getPassword() + "\"" +"\n" +

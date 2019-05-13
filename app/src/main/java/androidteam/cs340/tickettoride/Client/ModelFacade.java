@@ -12,4 +12,8 @@ public class ModelFacade {
         return ServerProxy.SINGLETON.login(toLogin);
     }
 
+    public Result register(User toRegister) {
+        return ServerProxy.SINGLETON.register(toRegister);
+    }
+
 }
