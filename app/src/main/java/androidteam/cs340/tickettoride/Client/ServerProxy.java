@@ -17,10 +17,12 @@ public class ServerProxy implements IServer {
         String jsonInString = "{\n" +
                 "\t\"command\":\"login\",\n" +
                 "\t\"values\": {\n" +
-                "\t\t\"username\": "+ user.getUsername() +",\n" +
-                "\t\t\"password\": "+ user.getPassword() +"\n" +
+                "\t\t\"username\": "+ "\"" + user.getUsername() + "\"" +",\n" +
+                "\t\t\"password\": "+ "\"" + user.getPassword() + "\"" +"\n" +
                 "\t}\n" +
                 "}";
+
+        System.out.println(jsonInString);
 
         return ClientCommunicator.SINGLETON.send(jsonInString);
     }
@@ -32,8 +34,8 @@ public class ServerProxy implements IServer {
         String jsonInString = "{\n" +
                 "\t\"command\":\"login\",\n" +
                 "\t\"values\": {\n" +
-                "\t\t\"username\": "+ user.getUsername() +",\n" +
-                "\t\t\"password\": "+ user.getPassword() +"\n" +
+                "\t\t\"username\": "+ "\"" + user.getUsername() + "\"" +",\n" +
+                "\t\t\"password\": "+ "\"" + user.getPassword() + "\"" +"\n" +
                 "\t}\n" +
                 "}";
 
