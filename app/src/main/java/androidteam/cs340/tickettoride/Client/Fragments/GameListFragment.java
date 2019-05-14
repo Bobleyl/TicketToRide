@@ -8,11 +8,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import androidteam.cs340.tickettoride.Client.ModelFacade;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.Game;
 
@@ -61,8 +61,22 @@ public class GameListFragment extends Fragment {
 
 
     private class GameHolder extends RecyclerView.ViewHolder {
+        private TextView mGameTitleTextView;
+        private TextView mNumberOfPlayersTextView;
+
+        private Game mGame;
+
         public GameHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_game, parent, false));
+
+            mGameTitleTextView = (TextView) itemView.findViewById(R.id.game_name_view);
+            mNumberOfPlayersTextView = (TextView) itemView.findViewById(R.id.game_number_of_players_view);
+        }
+
+        public void bind(Game game) {
+            mGame = game;
+            mGameTitleTextView.setText(game.getUID());
+            mNumberOfPlayersTextView.setText(" " + game.getPlayersList().size() + "/5");
         }
     }
 
@@ -85,7 +99,8 @@ public class GameListFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull GameHolder gameHolder, int i) {
-
+            Game game = mGames.get(i);
+            gameHolder.bind(game);
         }
 
         @Override
