@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.net.HttpURLConnection;
+
 import androidteam.cs340.tickettoride.Client.Presenters.LoginPresenter;
 import androidteam.cs340.tickettoride.Client.Presenters.RegisterPresenter;
 import androidteam.cs340.tickettoride.R;
@@ -51,13 +53,15 @@ public class LoginActivity extends AppCompatActivity {
                 LoginPresenter presenter = new LoginPresenter();
                 User user = new User(username.toString(), password.toString());
                 Result result = presenter.login(user);
-                Toast.makeText(getBaseContext(), result.getData() , Toast.LENGTH_SHORT).show();
 
                 // Switch activity to LobbyActivity
-                if (result.getSuccess()) {
+                if(result.getStatusCode() == HttpURLConnection.HTTP_NO_CONTENT) {
                     Intent intent = new Intent(LoginActivity.this, LobbyActivity.class);
                     startActivity(intent);
+                } else {
+                    Toast.makeText(getBaseContext(), result.getErrorInfo() , Toast.LENGTH_SHORT).show();
                 }
+
 
             }
         });
@@ -70,7 +74,14 @@ public class LoginActivity extends AppCompatActivity {
                 User user = new User(username.toString(), password.toString());
                 Result result = presenter.register(user);
 
-                Toast.makeText(getBaseContext(), result.getData() , Toast.LENGTH_SHORT).show();
+                //Currently a 204 is being returned.. might switch this to a 200..
+                if(result.getStatusCode() == HttpURLConnection.HTTP_NO_CONTENT) {
+                    Toast.makeText(getBaseContext(), result.getData() , Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getBaseContext(), result.getErrorInfo() , Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
 

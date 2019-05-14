@@ -31,7 +31,7 @@ public class ServerProxy implements IServer {
     public Result register(User user) {
 
         JsonObject root = new JsonObject();
-        root.addProperty("command", "login");
+        root.addProperty("command", "register");
 
         // Create Inner JSON Object
         JsonObject values = new JsonObject();

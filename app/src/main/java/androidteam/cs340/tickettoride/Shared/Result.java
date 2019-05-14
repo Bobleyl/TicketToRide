@@ -2,20 +2,18 @@ package androidteam.cs340.tickettoride.Shared;
 
 public class Result {
 
-    private boolean success;
+    private int statusCode;
     private String data;
     private String errorInfo;
-    private int statusCode;
 
-    public Result(boolean success_, String data_, String errorInfo_, int statusCode_) {
-        success = success_;
-        data = data_;
+    public Result(int statuCode_, String data_, String errorInfo_) {
+        statusCode = statuCode_;
         errorInfo = errorInfo_;
-        statusCode = statusCode_;
+        data = data_;
     }
 
-    public boolean getSuccess() {
-        return success;
+    public int getStatusCode() {
+        return statusCode;
     }
 
     public String getData() {
@@ -25,9 +23,4 @@ public class Result {
     public String getErrorInfo() {
         return errorInfo;
     }
-
-    public int getStatusCode() {
-        return statusCode;
-    }
-
 }
