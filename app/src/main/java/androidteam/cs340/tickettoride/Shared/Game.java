@@ -15,4 +15,12 @@ public class Game {
     }
 
     public void addPlayer(Player player){ playersList.add(player); }
+
+    public int getGameSize(){
+        return gameSize;
+    }
+
+    public void setUID(String UID){
+        this.UID = UID;
+    }
 }
