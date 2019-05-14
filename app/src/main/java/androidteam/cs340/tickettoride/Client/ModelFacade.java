@@ -44,7 +44,7 @@ public class ModelFacade {
 
     public Game getGame() { return currentGame; }
 
-    public void addGame(Game game) { currentGame = game; }
+    public void setGame(Game game) { currentGame = game; }
 
     public List<Game> getLobbyGames(){
         return currentLobby.getGames();

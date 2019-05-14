@@ -40,7 +40,8 @@ public class ServerProxy implements IServer {
         root.add("values", values);
 
         return ClientCommunicator.SINGLETON.send(root.toString());
-
     }
+
+
 
 }
