@@ -27,11 +27,17 @@ public class ModelFacade {
 
     public Game getGame() { return currentGame; }
 
+    //public void addGame(Game game) { currentGame = game; }
+
     public List<Game> getLobbyGames(){
         return currentLobby.getGames();
     }
 
+    //public void addLobby(Lobby lobby) { currentLobby = lobby; }
+
     public Player getPlayer() { return currentPlayer; }
+
+    //public void addPlayer(Player player) { currentPlayer = player; }
 
     public void updateCurrentGames(List<Game> gamesList) {
         currentLobby.updateCurrentGames(gamesList);
