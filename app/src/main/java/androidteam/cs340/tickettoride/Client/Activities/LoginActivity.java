@@ -1,5 +1,6 @@
 package androidteam.cs340.tickettoride.Client.Activities;
 
+import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -50,8 +51,13 @@ public class LoginActivity extends AppCompatActivity {
                 LoginPresenter presenter = new LoginPresenter();
                 User user = new User(username.toString(), password.toString());
                 Result result = presenter.login(user);
-
                 Toast.makeText(getBaseContext(), result.getData() , Toast.LENGTH_SHORT).show();
+
+                // Switch activity to LobbyActivity
+                if (result.getSuccess()) {
+                    Intent intent = new Intent(LoginActivity.this, LobbyActivity.class);
+                    startActivity(intent);
+                }
 
             }
         });

@@ -25,4 +25,8 @@ public class Lobby {
 
     public void addGame(Game game){ gamesList.add(game); }
 
+    public void updateCurrentGames(List<Game> currentGames){
+        this.gamesList = currentGames;
+    }
+
 }
