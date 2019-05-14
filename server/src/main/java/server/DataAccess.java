@@ -2,11 +2,11 @@ package server;
 
 import java.sql.*;
 
-public class DataFacade {
+public class DataAccess {
 
-    private DataFacade(){}
+    private DataAccess(){}
 
-    public static DataFacade SINGLETON = new DataFacade();
+    public static DataAccess SINGLETON = new DataAccess();
 
     public Connection connectJDBCToAWSEC2() {
 
@@ -29,7 +29,6 @@ public class DataFacade {
         return connection;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public boolean registerUser(String username, String password) {
 
         Connection connection = DataAccess.SINGLETON.connectJDBCToAWSEC2();
@@ -63,7 +62,6 @@ public class DataFacade {
         return result;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public boolean checkUser(String username, String password) {
 
         Connection connection = DataAccess.SINGLETON.connectJDBCToAWSEC2();
@@ -77,6 +75,7 @@ public class DataFacade {
                 statement = connection.createStatement();
 
                 ResultSet rs = null;
+
                 String UpperUsername = username.toUpperCase();
 
                 String query = "SELECT * FROM User WHERE USERNAME = ? AND PASSWORD = ?;";

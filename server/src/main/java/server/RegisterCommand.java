@@ -13,7 +13,7 @@ public class RegisterCommand implements CommandInterface {
 
     @Override
     public Object execute() throws Exception {
-        boolean success = DataFacade.SINGLETON.registerUser(username, password);
+        boolean success = DataAccess.SINGLETON.registerUser(username, password);
 
         if(success) {
             System.out.println("User was created");
