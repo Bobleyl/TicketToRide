@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
+import androidteam.cs340.tickettoride.Client.Poller;
 import androidteam.cs340.tickettoride.Shared.Game;
 import androidteam.cs340.tickettoride.Shared.Lobby;
 import androidteam.cs340.tickettoride.Shared.Player;
@@ -22,6 +23,7 @@ public class ModelFacade {
     private Player currentPlayer;
     private List<IPresenter> presenters;
     private Game currentGame;
+    private Poller poller = null;
 
     private ModelFacade() {
         currentLobby = new Lobby();
@@ -29,6 +31,22 @@ public class ModelFacade {
     }
 
     public static ModelFacade SINGLETON = new ModelFacade();
+
+    public void startPoller(){
+        if(poller == null){
+            poller = new Poller();
+            poller.startPolling();
+        }
+    }
+
+    public void stopPoller(){
+        poller.stopPolling();
+        poller = null;
+    }
+
+    public void startPollingCommands(){
+        poller.setPollerSwitch();
+    }
 
     public void addPresenter(IPresenter toAdd){
         presenters.add(toAdd);
