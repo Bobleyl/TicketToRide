@@ -29,6 +29,7 @@ public class CommandHandler implements Handler {
             if (result == null) {
                 context.status(204);
             } else {
+                context.status(200);
                 context.json(result);
             }
         } catch (Exception e) {
