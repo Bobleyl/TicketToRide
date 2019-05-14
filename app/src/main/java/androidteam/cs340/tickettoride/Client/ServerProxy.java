@@ -43,5 +43,33 @@ public class ServerProxy implements IServer {
     }
 
 
+    /*
+
+    public Result pollLobby(String lastCommand) {
+
+        JsonObject root = new JsonObject();
+        root.addProperty("command", "pollLobby");
+
+        // Create Inner JSON Object
+        JsonObject values = new JsonObject();
+        values.addProperty("lastCommand", lastCommand);
+        root.add("values", values);
+
+        return ClientCommunicator.SINGLETON.send(root.toString());
+    }
+
+    public Result pollCommand(String lastCommand) {
+
+        JsonObject root = new JsonObject();
+        root.addProperty("command", "pollCommand");
+
+        // Create Inner JSON Object
+        JsonObject values = new JsonObject();
+        values.addProperty("lastCommand", lastCommand);
+        root.add("values", values);
+
+        return ClientCommunicator.SINGLETON.send(root.toString());
+    }
+    */
 
 }

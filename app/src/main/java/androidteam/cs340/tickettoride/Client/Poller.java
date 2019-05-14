@@ -30,8 +30,12 @@ public class Poller {
         public void run() {
             if(commandRunning != true) {
                 //run lobbyPolling here
+                //We need some kind of object to store the received commands here
+                //Result result = ServerProxy.SINGLETON.pollLobby(lastCommand);
             }else{
                 //run commandPolling here
+                //We need some kind of object to store the received commands here
+                //Result result = ServerProxy.SINGLETON.pollCommands(lastCommand);
             }
         }
     };
