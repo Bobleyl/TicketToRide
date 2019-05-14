@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class ModelFacade {
     private Lobby currentLobby;
-    private User user;
+    private User currentUser;
     private Player currentPlayer;
     private List<IPresenter> presenters;
     private Game currentGame;
@@ -37,7 +37,7 @@ public class ModelFacade {
     public Result login(User toLogin) {
         Result result = ServerProxy.SINGLETON.login(toLogin);
         if(result.getStatusCode() == HttpURLConnection.HTTP_OK){
-            user = new User(toLogin.getUsername(), toLogin.getPassword());
+            currentUser = new User(toLogin.getUsername(), toLogin.getPassword());
         }
         return ServerProxy.SINGLETON.login(toLogin);
     }
@@ -45,7 +45,7 @@ public class ModelFacade {
     public Result register(User toRegister) {
         Result result = ServerProxy.SINGLETON.login(toRegister);
         if(result.getStatusCode() == HttpURLConnection.HTTP_OK){
-            user = new User(toRegister.getUsername(), toRegister.getPassword());
+            currentUser = new User(toRegister.getUsername(), toRegister.getPassword());
         }
         return ServerProxy.SINGLETON.register(toRegister);
     }
@@ -85,5 +85,9 @@ public class ModelFacade {
 //            game.addPlayer(this.player);
 //        }
 //    }
+
+    public void updatePlayersInGame(List<Player> playerList){
+        currentGame.setPlayersList(playerList);
+    }
 
 }
