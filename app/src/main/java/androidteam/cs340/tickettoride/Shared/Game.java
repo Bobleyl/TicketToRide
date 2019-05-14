@@ -16,7 +16,6 @@ public class Game {
 
     public void addPlayer(Player player){ playersList.add(player); }
 
-
     public String getUID() {
         return UID;
     }
