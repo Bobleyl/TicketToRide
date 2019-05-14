@@ -50,7 +50,7 @@ public class ClientCommunicator {
             if (result.getResponseCode() == HttpURLConnection.HTTP_NO_CONTENT) {
                 return new Result(result.getResponseCode(), "success", "");
             } else {
-                return new Result(result.getResponseCode(), "error", "Non 200 response");
+                return new Result(result.getResponseCode(), "error", "Received a " + result.getResponseCode()+ " response");
             }
 
 

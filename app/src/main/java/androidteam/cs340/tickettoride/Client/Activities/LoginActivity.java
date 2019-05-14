@@ -13,8 +13,7 @@ import android.widget.Toast;
 
 import java.net.HttpURLConnection;
 
-import androidteam.cs340.tickettoride.Client.Presenters.LoginPresenter;
-import androidteam.cs340.tickettoride.Client.Presenters.RegisterPresenter;
+import androidteam.cs340.tickettoride.Client.Presenters.LoginRegisterPresenter;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.Result;
 import androidteam.cs340.tickettoride.Shared.User;
@@ -50,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getBaseContext(),"Logging you in...",Toast.LENGTH_SHORT).show();
-                LoginPresenter presenter = new LoginPresenter();
+                LoginRegisterPresenter presenter = new LoginRegisterPresenter();
                 User user = new User(username.toString(), password.toString());
                 Result result = presenter.login(user);
 
@@ -70,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getBaseContext(),"Registering...",Toast.LENGTH_SHORT).show();
-                RegisterPresenter presenter = new RegisterPresenter();
+                LoginRegisterPresenter presenter = new LoginRegisterPresenter();
                 User user = new User(username.toString(), password.toString());
                 Result result = presenter.register(user);
 

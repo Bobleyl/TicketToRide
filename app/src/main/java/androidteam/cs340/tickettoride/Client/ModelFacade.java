@@ -34,20 +34,12 @@ public class ModelFacade {
         presenters.add(toAdd);
     }
 
-    public Result login(User toLogin) {
-        Result result = ServerProxy.SINGLETON.login(toLogin);
-        if(result.getStatusCode() == HttpURLConnection.HTTP_OK){
-            user = new User(toLogin.getUsername(), toLogin.getPassword());
-        }
-        return ServerProxy.SINGLETON.login(toLogin);
+    public Result login(User user) {
+        return ServerProxy.SINGLETON.login(user);
     }
 
-    public Result register(User toRegister) {
-        Result result = ServerProxy.SINGLETON.login(toRegister);
-        if(result.getStatusCode() == HttpURLConnection.HTTP_OK){
-            user = new User(toRegister.getUsername(), toRegister.getPassword());
-        }
-        return ServerProxy.SINGLETON.register(toRegister);
+    public Result register(User user) {
+        return ServerProxy.SINGLETON.register(user);
     }
 
     public Game getGame() { return currentGame; }
