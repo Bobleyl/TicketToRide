@@ -13,6 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidteam.cs340.tickettoride.Client.ModelFacade;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.Game;
 
@@ -39,19 +40,8 @@ public class GameListFragment extends Fragment {
 
 
     private void updateUI() {
-        /*
-        * Normally, this list of games would be called using ModelFacade.SINGLETON.getLobbyGames()
-        * But for testing the games are just being created here.
-        * */
-        //List<Game> games = ModelFacade.SINGLETON.getLobbyGames();
+        List<Game> games = ModelFacade.SINGLETON.getLobbyGames();
 
-        // TODO: Delete this code once we have ModelFacade.SINGLETON.getLobbyGames() working.
-        List<Game> games = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            Game toAdd = new Game(5);
-            toAdd.setUID("Game " + i);
-            games.add(toAdd);
-        }
 
         mAdapter = new GameAdapter(games);
         mGameRecyclerView.setAdapter(mAdapter);
