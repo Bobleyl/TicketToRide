@@ -45,6 +45,7 @@ public class ClientCommunicator {
 
             //Send connection
             result.connect();
+            System.out.println(result.getResponseCode());
 
             if (result.getResponseCode() == HttpURLConnection.HTTP_NO_CONTENT) {
                 return new Result(result.getResponseCode(), "success", "");
