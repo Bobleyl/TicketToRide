@@ -18,7 +18,7 @@ public class CommandHandler implements Handler {
             commandType = commandType.substring(0, 1).toUpperCase() + commandType.substring(1).toLowerCase();
             HashMap<String, Object> values = (HashMap)dto.get("values");
 
-            Class<?> cl = Class.forName(commandType + "Command");
+            Class<?> cl = Class.forName("server." + commandType + "Command");
 
             Constructor<?> constructor = cl.getConstructor(HashMap.class);
 
