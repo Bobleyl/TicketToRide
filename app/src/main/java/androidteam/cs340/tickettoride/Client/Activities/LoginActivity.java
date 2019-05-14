@@ -61,7 +61,6 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getBaseContext(), result.getErrorInfo() , Toast.LENGTH_SHORT).show();
                 }
 
-
             }
         });
 
@@ -79,7 +78,6 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(getBaseContext(), result.getErrorInfo() , Toast.LENGTH_SHORT).show();
                 }
-
 
             }
         });
