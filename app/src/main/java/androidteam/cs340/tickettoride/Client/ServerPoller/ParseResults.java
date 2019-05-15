@@ -7,6 +7,10 @@ import androidteam.cs340.tickettoride.Shared.Result;
 
 public class ParseResults {
 
+    private ParseResults() {}
+
+    public static ParseResults SINGLETON = new ParseResults();
+
     public String parseSingleString(Result result) {
         result.getData();
         return "";
