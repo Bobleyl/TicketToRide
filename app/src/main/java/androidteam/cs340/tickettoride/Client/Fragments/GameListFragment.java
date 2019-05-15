@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,9 @@ public class GameListFragment extends Fragment implements IPresenter {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_game_list, container, false);
 
+        // Add this presenter to our ModelFacade so it can be updated.
+        ModelFacade.SINGLETON.addPresenter(this);
+
         mGameRecyclerView = (RecyclerView) view.findViewById(R.id.game_list_recycler_view);
         mGameRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mCreateGameButton = (Button) view.findViewById(R.id.create_game_button);
@@ -43,6 +47,8 @@ public class GameListFragment extends Fragment implements IPresenter {
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "Creating Your Game..." , Toast.LENGTH_SHORT).show();
                 //TODO: Create a game with 5 players and start WaitingRoomActivity.
+                ModelFacade.SINGLETON.createGame(ModelFacade.SINGLETON.getPlayer().getUID(), 2);
+
             }
         });
 

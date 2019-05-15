@@ -30,6 +30,7 @@ public class ModelFacade {
         presenters = new ArrayList<>();
     }
 
+
     public static ModelFacade SINGLETON = new ModelFacade();
 
     //turn on poller and start updating the lobby
