@@ -1,4 +1,4 @@
-package androidteam.cs340.tickettoride.Client.Poller;
+package androidteam.cs340.tickettoride.Client.ServerPoller;
 
 import androidteam.cs340.tickettoride.Shared.Result;
 
