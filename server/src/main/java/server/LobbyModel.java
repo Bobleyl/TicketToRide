@@ -30,6 +30,21 @@ public class LobbyModel {
         }
     }
 
+    boolean addPlayerToGame(String playerID, String gameID) {
+
+        LobbyGameModel lobbyGame = games.stream().filter(game -> game.getGameID().equals(gameID)).findFirst().orElse(null);
+
+        if (lobbyGame == null) {
+            return false;
+        }
+
+        if (!lobbyGame.getPlayerIDs().contains(playerID)) {
+            lobbyGame.getPlayerIDs().add(playerID);
+        }
+
+        return true;
+    }
+
     public ArrayList<LobbyGameModel> getGames() {
         return games;
     }

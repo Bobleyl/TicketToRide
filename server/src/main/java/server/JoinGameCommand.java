@@ -8,8 +8,8 @@ public class JoinGameCommand implements CommandInterface {
     private String gameID;
     private String playerID;
 
-    public JoinGameCommand() {
-        this.playerID = (Integer)values.get("player_id");
+    public JoinGameCommand(HashMap<String, Object> values) {
+        this.playerID = (String)values.get("player_id");
         this.gameID = (String)values.get("game_id");
     }
 
@@ -17,6 +17,7 @@ public class JoinGameCommand implements CommandInterface {
     public Object execute() throws Exception {
 
         //LobbyModel.SINGLETON.addGame(, playerID);
+        LobbyModel.SINGLETON.addPlayerToGame(playerID, gameID);
         return null;
     }
 
