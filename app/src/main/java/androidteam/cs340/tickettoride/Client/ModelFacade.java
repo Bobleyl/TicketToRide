@@ -63,7 +63,7 @@ public class ModelFacade {
         return ServerProxy.SINGLETON.register(user);
     }
 
-    public Result createGame(String playerID, int size) { return ServerProxy.SINGLETON.createGame(playerID, size); }
+    public String getGameID() { return currentGame.getUID(); }
 
     public Game getGame() { return currentGame; }
 
@@ -83,22 +83,19 @@ public class ModelFacade {
         currentLobby.updateCurrentGames(gamesList);
     }
 
-//    public Result createGame(Game toCreate){
-//        Result createGameResult = ServerProxy.SINGLETON.createGame(toCreate);
-//        if(createGameResult.getSuccess()){
-//            game = new Game(toCreate.getGameSize());
-//            game.addPlayer(this.player);
-//        }
-//        Result joinGameResult = joinGame(game);
-//        return createGameResult;
-//    }
-//
-//    public Result joinGame(Game toJoin){
-//        Result result = ServerProxy.SINGLETON.joinGame(toJoin);
-//        if(result.getSuccess()){
-//            game = new Game(toJoin.getGameSize());
-//            game.addPlayer(this.player);
-//        }
-//    }
+    public Result createGame(String playerID, int size){
+        Result createGameResult = ServerProxy.SINGLETON.createGame(playerID, size);
+            if(createGameResult.getStatusCode() == HttpURLConnection.HTTP_OK){
+            currentGame = new Game(size);
+            currentGame.addPlayer(this.currentPlayer);
+            //get game id from response
+        }
+        //Result joinGameResult = joinGame(playerID, 1);
+        return createGameResult;
+    }
+
+    //public Result joinGame(String playerID, String gameID){
+      //  return ServerProxy.SINGLETON.joinGame(playerID, gameID);
+    //}
 
 }
