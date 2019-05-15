@@ -55,6 +55,12 @@ public class ModelFacade {
         presenters.add(toAdd);
     }
 
+    public void updatePresenter() {
+        for(IPresenter presenter : presenters) {
+            presenter.Update();
+        }
+    }
+
     public Result login(User user) {
         return ServerProxy.SINGLETON.login(user);
     }
