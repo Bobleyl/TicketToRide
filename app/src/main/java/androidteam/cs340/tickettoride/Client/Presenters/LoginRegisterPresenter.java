@@ -14,4 +14,9 @@ public class LoginRegisterPresenter implements IPresenter {
         Result result = ModelFacade.SINGLETON.register(user);
         return result;
     }
+
+    @Override
+    public void Update() {
+
+    }
 }

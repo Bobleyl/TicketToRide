@@ -10,26 +10,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import androidteam.cs340.tickettoride.Client.ModelFacade;
+import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.Game;
 
-public class GameListFragment extends Fragment {
+public class GameListFragment extends Fragment implements IPresenter {
     private RecyclerView mGameRecyclerView;
     private GameAdapter mAdapter;
 
+    @Override
+    public void Update() {
 
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_game_list, container, false);
 
-        mGameRecyclerView = (RecyclerView) view
-                .findViewById(R.id.game_list_recycler_view);
+        mGameRecyclerView = (RecyclerView) view.findViewById(R.id.game_list_recycler_view);
         mGameRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         updateUI();
@@ -41,7 +43,6 @@ public class GameListFragment extends Fragment {
 
     private void updateUI() {
         List<Game> games = ModelFacade.SINGLETON.getLobbyGames();
-
 
         mAdapter = new GameAdapter(games);
         mGameRecyclerView.setAdapter(mAdapter);
