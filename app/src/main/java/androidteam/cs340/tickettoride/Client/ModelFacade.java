@@ -63,6 +63,8 @@ public class ModelFacade {
         return ServerProxy.SINGLETON.register(user);
     }
 
+    public Result createGame(String playerID, int size) { return ServerProxy.SINGLETON.createGame(playerID, size); }
+
     public Game getGame() { return currentGame; }
 
     public void setGame(Game game) { currentGame = game; }

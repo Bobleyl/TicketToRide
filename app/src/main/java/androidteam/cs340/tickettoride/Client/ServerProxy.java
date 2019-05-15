@@ -42,9 +42,21 @@ public class ServerProxy implements IServer {
         return ClientCommunicator.SINGLETON.send(root.toString());
     }
 
+    public Result createGame(String playerID, int size) {
+
+        JsonObject root = new JsonObject();
+        root.addProperty("command", "createGame");
+
+        // Create Inner JSON Object
+        JsonObject values = new JsonObject();
+        values.addProperty("playerID", playerID);
+        values.addProperty("size", size);
+        root.add("values", values);
+
+        return ClientCommunicator.SINGLETON.send(root.toString());
+    }
 
     /*
-
     public Result pollLobby(String lastCommand) {
 
         JsonObject root = new JsonObject();
