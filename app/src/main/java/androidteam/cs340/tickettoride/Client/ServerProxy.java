@@ -42,35 +42,39 @@ public class ServerProxy implements IServer {
         return ClientCommunicator.SINGLETON.send(root.toString());
     }
 
-
-    /*
-
-    public Result pollLobby(String lastCommand) {
-
+    @Override
+    public Result createGame(String playerID, int size) {
         JsonObject root = new JsonObject();
-        root.addProperty("command", "pollLobby");
+        root.addProperty("command", "createGame");
 
         // Create Inner JSON Object
         JsonObject values = new JsonObject();
-        values.addProperty("lastCommand", lastCommand);
+        values.addProperty("number_players", size);
+        values.addProperty("player_id", playerID);
         root.add("values", values);
 
         return ClientCommunicator.SINGLETON.send(root.toString());
     }
 
-    public Result pollCommand(String lastCommand, String gameID) {
-
+    @Override
+    public Result joinGame(String playerID, String gameID) {
         JsonObject root = new JsonObject();
-        root.addProperty("command", "pollCommand");
+        root.addProperty("command", "joinGame");
 
         // Create Inner JSON Object
         JsonObject values = new JsonObject();
-        values.addProperty("lastCommand", lastCommand);
-        values.addProperty("gameID", gameID);
+        values.addProperty("game_id", gameID);
+        values.addProperty("player_id", playerID);
         root.add("values", values);
 
         return ClientCommunicator.SINGLETON.send(root.toString());
     }
-    */
+
+    @Override
+    public Result lobby() {
+        JsonObject root = new JsonObject();
+        root.addProperty("command", "lobby");
+        return ClientCommunicator.SINGLETON.send(root.toString());
+    }
 
 }
