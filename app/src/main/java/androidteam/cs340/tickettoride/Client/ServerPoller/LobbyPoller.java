@@ -1,6 +1,7 @@
 package androidteam.cs340.tickettoride.Client.ServerPoller;
 
 import androidteam.cs340.tickettoride.Client.ClientCommunicator;
+import androidteam.cs340.tickettoride.Client.ServerProxy;
 import androidteam.cs340.tickettoride.Shared.Result;
 
 public class LobbyPoller extends ServerPoller {
@@ -12,7 +13,8 @@ public class LobbyPoller extends ServerPoller {
     @Override
     Result getServerData() {
 
-        return ClientCommunicator.SINGLETON.send("lobby");
+        //This should create the json to send or have a method in the ServerProxy
+        return ServerProxy.SINGLETON.lobby();
     }
 
 
