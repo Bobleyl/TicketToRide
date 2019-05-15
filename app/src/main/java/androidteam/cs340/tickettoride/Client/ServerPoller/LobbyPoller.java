@@ -12,7 +12,7 @@ public class LobbyPoller extends ServerPoller {
     @Override
     Result getServerData() {
 
-         return ClientCommunicator.SINGLETON.send("lobby");
+        return ClientCommunicator.SINGLETON.send("lobby");
     }
 
 
