@@ -7,6 +7,8 @@ import androidteam.cs340.tickettoride.Shared.User;
 public class LoginRegisterPresenter implements IPresenter {
     public Result login(User user) {
         Result result = ModelFacade.SINGLETON.login(user);
+        //String playerID = parseSingleString(result);
+        //create player using this playerID in the Model Facade
         return result;
     }
 
