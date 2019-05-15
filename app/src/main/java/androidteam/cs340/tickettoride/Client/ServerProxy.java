@@ -31,7 +31,7 @@ public class ServerProxy implements IServer {
     public Result register(User user) {
 
         JsonObject root = new JsonObject();
-        root.addProperty("command", "login");
+        root.addProperty("command", "register");
 
         // Create Inner JSON Object
         JsonObject values = new JsonObject();
@@ -40,7 +40,37 @@ public class ServerProxy implements IServer {
         root.add("values", values);
 
         return ClientCommunicator.SINGLETON.send(root.toString());
-
     }
+
+
+    /*
+
+    public Result pollLobby(String lastCommand) {
+
+        JsonObject root = new JsonObject();
+        root.addProperty("command", "pollLobby");
+
+        // Create Inner JSON Object
+        JsonObject values = new JsonObject();
+        values.addProperty("lastCommand", lastCommand);
+        root.add("values", values);
+
+        return ClientCommunicator.SINGLETON.send(root.toString());
+    }
+
+    public Result pollCommand(String lastCommand, String gameID) {
+
+        JsonObject root = new JsonObject();
+        root.addProperty("command", "pollCommand");
+
+        // Create Inner JSON Object
+        JsonObject values = new JsonObject();
+        values.addProperty("lastCommand", lastCommand);
+        values.addProperty("gameID", gameID);
+        root.add("values", values);
+
+        return ClientCommunicator.SINGLETON.send(root.toString());
+    }
+    */
 
 }

@@ -16,4 +16,27 @@ public class Game {
 
     public void addPlayer(Player player){ playersList.add(player); }
 
+    public String getUID() {
+        return UID;
+    }
+
+    public void setUID(String UID) {
+        this.UID = UID;
+    }
+
+    public List<Player> getPlayersList() {
+        return playersList;
+    }
+
+    public void setPlayersList(List<Player> playersList) {
+        this.playersList = playersList;
+    }
+
+    public int getGameSize() {
+        return gameSize;
+    }
+
+    public void setGameSize(int gameSize) {
+        this.gameSize = gameSize;
+    }
 }

@@ -45,13 +45,19 @@ public class ClientCommunicator {
 
             //Send connection
             result.connect();
+            System.out.println(result.getResponseCode());
 
-            return new Result(true, "success", "", result.getResponseCode());
+            if (result.getResponseCode() == HttpURLConnection.HTTP_NO_CONTENT) {
+                return new Result(result.getResponseCode(), "success", "");
+            } else {
+                return new Result(result.getResponseCode(), "error", "Received a " + result.getResponseCode()+ " response");
+            }
+
 
         }
         catch (Exception e) {
             e.printStackTrace();
-            return new Result(false, "error", "Error in ClientCommunicator", 400);
+            return new Result(400, "error", "Error in ClientCommunicator");
         }
     }
 
