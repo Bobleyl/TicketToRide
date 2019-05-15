@@ -8,7 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -20,10 +22,11 @@ import androidteam.cs340.tickettoride.Shared.Game;
 public class GameListFragment extends Fragment implements IPresenter {
     private RecyclerView mGameRecyclerView;
     private GameAdapter mAdapter;
+    private Button mCreateGameButton;
 
     @Override
     public void Update() {
-
+        updateUI();
     }
 
     @Override
@@ -33,6 +36,15 @@ public class GameListFragment extends Fragment implements IPresenter {
 
         mGameRecyclerView = (RecyclerView) view.findViewById(R.id.game_list_recycler_view);
         mGameRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mCreateGameButton = (Button) view.findViewById(R.id.create_game_button);
+
+        mCreateGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "Creating Your Game..." , Toast.LENGTH_SHORT).show();
+                //TODO: Create a game with 5 players and start WaitingRoomActivity.
+            }
+        });
 
         updateUI();
 
