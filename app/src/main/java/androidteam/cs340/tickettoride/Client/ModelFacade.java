@@ -85,7 +85,9 @@ public class ModelFacade {
 
     public void addPlayer(Player player) { currentPlayer = player; }
 
-    public void updateCurrentGames(List<Game> gamesList) {
+    public void updateCurrentGames(Result result) {
+        List<Game> gamesList = new ArrayList<Game>();
+        // call on ParseResults and get list of games
         currentLobby.updateCurrentGames(gamesList);
     }
 
