@@ -58,7 +58,7 @@ public class ServerProxy implements IServer {
         return ClientCommunicator.SINGLETON.send(root.toString());
     }
 
-    public Result pollCommand(String lastCommand) {
+    public Result pollCommand(String lastCommand, String gameID) {
 
         JsonObject root = new JsonObject();
         root.addProperty("command", "pollCommand");
@@ -66,6 +66,7 @@ public class ServerProxy implements IServer {
         // Create Inner JSON Object
         JsonObject values = new JsonObject();
         values.addProperty("lastCommand", lastCommand);
+        values.addProperty("gameID", gameID);
         root.add("values", values);
 
         return ClientCommunicator.SINGLETON.send(root.toString());

@@ -7,14 +7,17 @@ public class Poller {
     private String lastCommand;
     private boolean commandRunning;
     private Timer timer;
+    private String gameID;
 
     public Poller(){
         lastCommand = null;
         commandRunning = false;
         timer = new Timer();
+        gameID = null;
     }
 
-    public void setPollerSwitch(){
+    public void setPollerSwitch(String gameID){
+        this.gameID = gameID;
         commandRunning = true;
     }
 
@@ -35,7 +38,7 @@ public class Poller {
             }else{
                 //run commandPolling here
                 //We need some kind of object to store the received commands here
-                //Result result = ServerProxy.SINGLETON.pollCommands(lastCommand);
+                //Result result = ServerProxy.SINGLETON.pollCommands(lastCommand, gameID);
             }
         }
     };

@@ -32,6 +32,7 @@ public class ModelFacade {
 
     public static ModelFacade SINGLETON = new ModelFacade();
 
+    //turn on poller and start updating the lobby
     public void startPoller(){
         if(poller == null){
             poller = new Poller();
@@ -39,13 +40,15 @@ public class ModelFacade {
         }
     }
 
+    //turn off poller entirely
     public void stopPoller(){
         poller.stopPolling();
         poller = null;
     }
 
+    //tells the poller to switch over to updating commands for the game instead of lobby
     public void startPollingCommands(){
-        poller.setPollerSwitch();
+        poller.setPollerSwitch(currentGame.getUID());
     }
 
     public void addPresenter(IPresenter toAdd){
