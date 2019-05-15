@@ -96,14 +96,12 @@ public class ModelFacade {
             if(createGameResult.getStatusCode() == HttpURLConnection.HTTP_OK){
             currentGame = new Game(size);
             currentGame.addPlayer(this.currentPlayer);
-            //get game id from response
         }
-        //Result joinGameResult = joinGame(playerID, 1);
         return createGameResult;
     }
 
-    //public Result joinGame(String playerID, String gameID){
-      //  return ServerProxy.SINGLETON.joinGame(playerID, gameID);
-    //}
+    public Result joinGame(String playerID, String gameID){
+        return ServerProxy.SINGLETON.joinGame(playerID, gameID);
+    }
 
 }
