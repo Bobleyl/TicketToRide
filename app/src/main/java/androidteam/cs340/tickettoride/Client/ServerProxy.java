@@ -42,23 +42,6 @@ public class ServerProxy implements IServer {
         return ClientCommunicator.SINGLETON.send(root.toString());
     }
 
-    @Override
-    public Result lobby() {
-        JsonObject root = new JsonObject();
-        root.addProperty("command", "lobby");
-        return ClientCommunicator.SINGLETON.send(root.toString());
-    }
-
-    @Override
-    public Result createGame(String playerID, int size) {
-        return null;
-    }
-
-    @Override
-    public Result joinGame(String playerID, String gameID) {
-        return null;
-    }
-
 
     /*
 
