@@ -6,6 +6,7 @@ import java.util.List;
 
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.Client.Poller;
+import androidteam.cs340.tickettoride.Client.ServerPoller.ParseResults;
 import androidteam.cs340.tickettoride.Shared.Game;
 import androidteam.cs340.tickettoride.Shared.Lobby;
 import androidteam.cs340.tickettoride.Shared.Player;
@@ -56,6 +57,12 @@ public class ModelFacade {
         presenters.add(toAdd);
     }
 
+    public void updatePresenter() {
+        for(IPresenter presenter : presenters) {
+            presenter.Update();
+        }
+    }
+
     public Result login(User user) {
         return ServerProxy.SINGLETON.login(user);
     }
@@ -80,7 +87,10 @@ public class ModelFacade {
 
     public void addPlayer(Player player) { currentPlayer = player; }
 
-    public void updateCurrentGames(List<Game> gamesList) {
+    public void updateCurrentGames(Result result) {
+        List<Game> gamesList = new ArrayList<Game>();
+        gamesList = ParseResults.SINGLETON.parseLobbyResult(result);
+        // call on ParseResults and get list of games
         currentLobby.updateCurrentGames(gamesList);
     }
 
