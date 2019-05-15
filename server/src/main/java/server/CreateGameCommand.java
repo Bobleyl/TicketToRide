@@ -8,7 +8,7 @@ public class CreateGameCommand implements CommandInterface {
     private int numPlayersToStart;
     private String playerID;
 
-    public RegisterCommand(HashMap<String, Object> values) {
+    public CreateGameCommand() {
         this.numPlayersToStart = (Integer)values.get("number_players");
         this.playerID = (String)values.get("player_id");
     }

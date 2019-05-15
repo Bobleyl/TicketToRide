@@ -29,6 +29,27 @@ public class DataAccess {
         return connection;
     }
 
+    public boolean delete() {
+
+        Connection connection = DataAccess.SINGLETON.connectJDBCToAWSEC2();
+        Statement statement;
+        boolean result = false;
+        if (connection != null) {
+            try {
+                statement = connection.createStatement();
+                String query = "DELETE FROM User;";
+                statement.executeUpdate(query);
+            } catch(SQLException e) {
+                System.out.println("Error: " + e.toString());
+                e.printStackTrace();
+            }
+            statement.close();
+            connection.close();
+            result = true;
+        }
+        return result;
+    }
+
     public boolean registerUser(String username, String password) {
 
         Connection connection = DataAccess.SINGLETON.connectJDBCToAWSEC2();
