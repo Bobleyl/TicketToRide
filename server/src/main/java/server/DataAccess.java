@@ -39,13 +39,14 @@ public class DataAccess {
                 statement = connection.createStatement();
                 String query = "DELETE FROM User;";
                 statement.executeUpdate(query);
-            } catch(SQLException e) {
+
+                statement.close();
+                connection.close();
+                result = true;
+            } catch(SQLException e){
                 System.out.println("Error: " + e.toString());
                 e.printStackTrace();
             }
-            statement.close();
-            connection.close();
-            result = true;
         }
         return result;
     }
