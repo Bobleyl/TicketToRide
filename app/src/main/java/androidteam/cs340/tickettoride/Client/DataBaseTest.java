@@ -1,12 +1,14 @@
-package server;
-
+package androidteam.cs340.tickettoride.Client;
 import java.sql.*;
 
-public class DataAccess {
+import javax.sql.RowSet;
 
-    private DataAccess(){}
+public class DataBaseTest {
 
-    public static DataAccess SINGLETON = new DataAccess();
+    private DataBaseTest() {
+    }
+
+    public static DataBaseTest SINGLETON = new DataBaseTest();
 
     public Connection connectJDBCToAWSEC2() {
 
@@ -31,7 +33,7 @@ public class DataAccess {
 
     public boolean delete() {
 
-        Connection connection = DataAccess.SINGLETON.connectJDBCToAWSEC2();
+        Connection connection = DataBaseTest.SINGLETON.connectJDBCToAWSEC2();
         Statement statement;
         boolean result = false;
         if (connection != null) {
@@ -42,7 +44,7 @@ public class DataAccess {
 
                 statement.close();
                 connection.close();
-            } catch(SQLException e){
+            } catch (SQLException e) {
                 System.out.println("Error: " + e.toString());
                 e.printStackTrace();
                 result = false;
@@ -53,7 +55,7 @@ public class DataAccess {
 
     public boolean registerUser(String username, String password) {
 
-        Connection connection = DataAccess.SINGLETON.connectJDBCToAWSEC2();
+        Connection connection = DataBaseTest.SINGLETON.connectJDBCToAWSEC2();
         Statement statement;
         Statement statementFindUser;
         boolean result = false;
@@ -111,7 +113,7 @@ public class DataAccess {
 
     public boolean checkUser(String username, String password) {
 
-        Connection connection = DataAccess.SINGLETON.connectJDBCToAWSEC2();
+        Connection connection = DataBaseTest.SINGLETON.connectJDBCToAWSEC2();
         boolean result = false;
 
         if (connection != null) {
@@ -162,4 +164,9 @@ public class DataAccess {
         }
         return result;
     }
+
+    public static void main(String[] args) {
+        DataBaseTest.SINGLETON.registerUser("brenasdasdsadqwdqdt", "kleiasdawdqnman");
+    }
+
 }
