@@ -35,7 +35,13 @@ public class GameListFragment extends Fragment implements IPresenter {
     private String ID;
 
     public void Update() {
-        updateUI();
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                updateUI();
+            }
+        });
+
     }
 
     @Override
