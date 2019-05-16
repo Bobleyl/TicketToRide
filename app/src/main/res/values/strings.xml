@@ -3,4 +3,6 @@
     <string name="welcome">Welcome to Ticket To Ride!</string>
     <string name="join">Join</string>
     <string name="create_game">Create Game</string>
+    <string name="waiting_room">Waiting Room</string>
+    <string name="waiting">Waiting...</string>
 </resources>

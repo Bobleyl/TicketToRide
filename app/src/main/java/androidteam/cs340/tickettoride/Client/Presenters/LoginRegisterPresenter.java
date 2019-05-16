@@ -36,7 +36,7 @@ public class LoginRegisterPresenter implements IPresenter {
 
     @Override
     public void Update() {
-
+        return;
     }
 
     public String getID(){

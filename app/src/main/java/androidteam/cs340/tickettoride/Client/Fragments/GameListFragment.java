@@ -1,5 +1,6 @@
 package androidteam.cs340.tickettoride.Client.Fragments;
 
+import android.content.Intent;
 import android.graphics.ColorSpace;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,13 +18,18 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.net.HttpURLConnection;
 import java.util.List;
 import java.util.UUID;
 
+import androidteam.cs340.tickettoride.Client.Activities.LobbyActivity;
+import androidteam.cs340.tickettoride.Client.Activities.LoginRegisterActivity;
+import androidteam.cs340.tickettoride.Client.Activities.WaitingRoomActivity;
 import androidteam.cs340.tickettoride.Client.ModelFacade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.Game;
+import androidteam.cs340.tickettoride.Shared.Result;
 
 public class GameListFragment extends Fragment implements IPresenter {
     private RecyclerView mGameRecyclerView;
@@ -72,7 +78,7 @@ public class GameListFragment extends Fragment implements IPresenter {
 
 
         // Set adapter for Spinner to fill values.
-        Integer[] items = new Integer[]{1,2,3,4,5};
+        Integer[] items = new Integer[]{2,3,4,5};
         ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(getActivity(),android.R.layout.simple_spinner_item, items);
         mNumberOfPlayersSpinner.setAdapter(adapter);
 
@@ -94,10 +100,7 @@ public class GameListFragment extends Fragment implements IPresenter {
         mCreateGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Creating Your Game..." , Toast.LENGTH_SHORT).show();
-                //TODO: Create a game with 5 players and start WaitingRoomActivity.
-                ModelFacade.SINGLETON.createGame(ModelFacade.SINGLETON.getPlayer().getUID(), mSpinnerNumberSelected);
-
+                createGame();
             }
         });
 
@@ -137,14 +140,13 @@ public class GameListFragment extends Fragment implements IPresenter {
         public void bind(Game game) {
             mGame = game;
             mGameTitleTextView.setText(game.getUID());
-            mNumberOfPlayersTextView.setText(" " + game.getPlayersList().size() + "/5");
+            mNumberOfPlayersTextView.setText(" " + mGame.getPlayersList().size() + "/" + mGame.getGameSize());
 
             //Set onclickListener for joingame button
             mJoinButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getActivity(), "Joining Game", Toast.LENGTH_SHORT).show();
-                    ModelFacade.SINGLETON.joinGame(ModelFacade.SINGLETON.getPlayer().getUID(), ModelFacade.SINGLETON.getGameID());
+                    joinGame(mGame);
                 }
             });
         }
@@ -185,4 +187,29 @@ public class GameListFragment extends Fragment implements IPresenter {
         return ID;
     }
 
+
+    private void createGame(){
+        Toast.makeText(getActivity(), "Creating Your Game..." , Toast.LENGTH_SHORT).show();
+        Result result = ModelFacade.SINGLETON.createGame(ModelFacade.SINGLETON.getPlayer().getUID(), mSpinnerNumberSelected);
+        if(result.getStatusCode() == HttpURLConnection.HTTP_OK){
+            //TODO: Find some way to get the game object back from the results fo the createGame method
+            joinGame(ModelFacade.SINGLETON.getGame());
+        }
+        else{
+            Toast.makeText(getActivity(), result.getErrorInfo() , Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void joinGame(Game toJoin){
+        Toast.makeText(getActivity(), "Joining Game", Toast.LENGTH_SHORT).show();
+
+        ModelFacade.SINGLETON.setGame(toJoin);
+        Result result = ModelFacade.SINGLETON.joinGame();
+        if(result.getStatusCode() == HttpURLConnection.HTTP_NO_CONTENT){
+            ((LobbyActivity)getActivity()).startWaitingRoom();
+        }
+        else{
+            Toast.makeText(getActivity(), result.getErrorInfo(), Toast.LENGTH_SHORT).show();
+        }
+    }
 }
