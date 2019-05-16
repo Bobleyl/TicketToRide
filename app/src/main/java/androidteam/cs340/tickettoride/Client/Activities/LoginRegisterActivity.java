@@ -52,6 +52,8 @@ public class LoginRegisterActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
+        presenter = new LoginRegisterPresenter();
+
         mUsernameField = (EditText) findViewById(R.id.userNameField);
         mUsernameField.addTextChangedListener(loginTextWatcher);
 
@@ -65,7 +67,6 @@ public class LoginRegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getBaseContext(),"Logging you in...",Toast.LENGTH_SHORT).show();
-                presenter = new LoginRegisterPresenter();
                 User user = new User(username.toString(), password.toString());
                 Result result = presenter.login(user);
 
@@ -84,7 +85,6 @@ public class LoginRegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getBaseContext(),"Registering...",Toast.LENGTH_SHORT).show();
-                LoginRegisterPresenter presenter = new LoginRegisterPresenter();
                 User user = new User(username.toString(), password.toString());
                 Result result = presenter.register(user);
 

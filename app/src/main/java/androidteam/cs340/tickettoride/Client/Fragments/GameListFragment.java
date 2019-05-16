@@ -39,12 +39,21 @@ public class GameListFragment extends Fragment implements IPresenter {
     }
 
     @Override
+    public void onResume(){
+        super.onResume();
+        ModelFacade.SINGLETON.addPresenter(this);
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        ModelFacade.SINGLETON.removePresenter(this);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_game_list, container, false);
-
-        // Add this presenter to our ModelFacade so it can be updated.
-        ModelFacade.SINGLETON.addPresenter(this);
 
         //Generate a new UUID for the presenter
         ID = UUID.randomUUID().toString();
