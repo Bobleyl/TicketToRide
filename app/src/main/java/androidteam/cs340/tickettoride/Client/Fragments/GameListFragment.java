@@ -73,7 +73,7 @@ public class GameListFragment extends Fragment implements IPresenter {
 
 
         // Set adapter for Spinner to fill values.
-        Integer[] items = new Integer[]{1,2,3,4,5};
+        Integer[] items = new Integer[]{2,3,4,5};
         ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(getActivity(),android.R.layout.simple_spinner_item, items);
         mNumberOfPlayersSpinner.setAdapter(adapter);
 
@@ -138,7 +138,7 @@ public class GameListFragment extends Fragment implements IPresenter {
         public void bind(Game game) {
             mGame = game;
             mGameTitleTextView.setText(game.getUID());
-            mNumberOfPlayersTextView.setText(" " + game.getPlayersList().size() + "/5");
+            mNumberOfPlayersTextView.setText(" " + game.getPlayersList().size() + "/" + game.getGameSize());
 
             //Set onclickListener for joingame button
             mJoinButton.setOnClickListener(new View.OnClickListener() {
