@@ -60,11 +60,11 @@ public class ParseResults {
                 Player player = new Player(playerID);
                 players.add(player);
             }
-            //Game game = new Game(numPlayersToStart, gameID, players);
-            //games.add(game);
+            Game game = new Game(numPlayersToStart);
+            game.setPlayersList(players);
+            game.setUID(gameID);
+            games.add(game);
         }
-
-
         return games;
     }
 
