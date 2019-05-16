@@ -90,7 +90,7 @@ public class DataBaseTest {
                     try (PreparedStatement stmt = connection.prepareStatement(query)) {
                         stmt.setString(1, upperUsername);
                         stmt.setString(2, password);
-                        result = stmt.execute();
+                        result = true;
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
@@ -166,7 +166,7 @@ public class DataBaseTest {
     }
 
     public static void main(String[] args) {
-        DataBaseTest.SINGLETON.registerUser("brenasdasdsadqwdqdt", "kleiasdawdqnman");
+        System.out.println(DataBaseTest.SINGLETON.registerUser("brent12345", "kleinman"));
     }
 
 }

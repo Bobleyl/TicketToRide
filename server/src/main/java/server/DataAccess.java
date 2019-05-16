@@ -88,7 +88,7 @@ public class DataAccess {
                     try (PreparedStatement stmt = connection.prepareStatement(query)) {
                         stmt.setString(1, upperUsername);
                         stmt.setString(2, password);
-                        result = stmt.execute();
+                        result = true;
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
