@@ -12,10 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Client.Activities.LobbyActivity"
-            android:screenOrientation="landscape"></activity>
+        <activity android:name=".Client.Activities.WaitingRoomActivity"></activity>
         <activity
-            android:name=".Client.Activities.LoginActivity"
+            android:name=".Client.Activities.LobbyActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Client.Activities.LoginRegisterActivity"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

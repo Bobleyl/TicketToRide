@@ -20,7 +20,7 @@ public class ModelFacade {
     private Player currentPlayer;
     private List<IPresenter> presenters;
     private Game currentGame;
-    private LobbyPollerCommand command;
+    private LobbyPollerCommand command = new LobbyPollerCommand();
     private LobbyPoller lobbyPoller = new LobbyPoller(command, 1000);
 
     private ModelFacade() {
@@ -41,6 +41,15 @@ public class ModelFacade {
     public void updatePresenter() {
         for(IPresenter presenter : presenters) {
             presenter.Update();
+        }
+    }
+
+    public void removePresenter(IPresenter toDelete){
+        for(int i = 0; i < presenters.size() - 1; i++){
+            if (presenters.get(i).getID() == toDelete.getID()){
+                presenters.remove(i);
+                break;
+            }
         }
     }
 
