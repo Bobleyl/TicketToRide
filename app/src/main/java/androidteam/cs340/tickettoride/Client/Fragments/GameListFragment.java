@@ -1,5 +1,6 @@
 package androidteam.cs340.tickettoride.Client.Fragments;
 
+import android.content.Intent;
 import android.graphics.ColorSpace;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,13 +18,17 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.net.HttpURLConnection;
 import java.util.List;
 import java.util.UUID;
 
+import androidteam.cs340.tickettoride.Client.Activities.LobbyActivity;
+import androidteam.cs340.tickettoride.Client.Activities.LoginRegisterActivity;
 import androidteam.cs340.tickettoride.Client.ModelFacade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.Game;
+import androidteam.cs340.tickettoride.Shared.Result;
 
 public class GameListFragment extends Fragment implements IPresenter {
     private RecyclerView mGameRecyclerView;
@@ -41,7 +46,6 @@ public class GameListFragment extends Fragment implements IPresenter {
                 updateUI();
             }
         });
-
     }
 
     @Override
@@ -95,10 +99,7 @@ public class GameListFragment extends Fragment implements IPresenter {
         mCreateGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Creating Your Game..." , Toast.LENGTH_SHORT).show();
-                //TODO: Create a game with 5 players and start WaitingRoomActivity.
-                ModelFacade.SINGLETON.createGame(ModelFacade.SINGLETON.getPlayer().getUID(), mSpinnerNumberSelected);
-
+                createGame();
             }
         });
 
@@ -186,4 +187,19 @@ public class GameListFragment extends Fragment implements IPresenter {
         return ID;
     }
 
+
+    private void createGame(){
+        Toast.makeText(getActivity(), "Creating Your Game..." , Toast.LENGTH_SHORT).show();
+        Result result = ModelFacade.SINGLETON.createGame(ModelFacade.SINGLETON.getPlayer().getUID(), mSpinnerNumberSelected);
+        if(result.getStatusCode() == HttpURLConnection.HTTP_OK){
+            joinGame(result.getData());
+        }
+        else{
+            Toast.makeText(getActivity(), result.getErrorInfo() , Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void joinGame(String gameID){
+        ModelFacade.SINGLETON.setGame(gameID);
+    }
 }

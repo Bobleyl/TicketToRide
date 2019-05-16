@@ -45,8 +45,8 @@ public class ModelFacade {
     }
 
     public void removePresenter(IPresenter toDelete){
-        for(int i = 0; i < presenters.size() - 1; i++){
-            if (presenters.get(i).getID() == toDelete.getID()){
+        for(int i = 0; i < presenters.size(); i++){
+            if (presenters.get(i).getID().equals(toDelete.getID())){
                 presenters.remove(i);
                 break;
             }
@@ -65,7 +65,12 @@ public class ModelFacade {
 
     public Game getGame() { return currentGame; }
 
-    public void setGame(Game game) { currentGame = game; }
+    public boolean setGame(String gameID) {
+        List<Game> games = getLobbyGames();
+        for(int i = 0; i < games.size(); i++){
+            if()
+        }
+    }
 
     public List<Game> getLobbyGames(){
         return currentLobby.getGames();
@@ -78,13 +83,30 @@ public class ModelFacade {
     public void addPlayer(Player player) { currentPlayer = player; }
 
     public void updateCurrentGames(Result result) {
+        // call on ParseResults and get list of games
         List<Game> gamesList = new ArrayList<Game>();
         gamesList = ParseResults.SINGLETON.parseLobbyResult(result);
-        // call on ParseResults and get list of games
+
+        // Check to make sure the size of the gameslist in the lobby changed, and update accordingly
         int oldSize = currentLobby.getGames().size();
         currentLobby.updateCurrentGames(gamesList);
         if(gamesList.size() != oldSize){
             updatePresenter();
+        }
+
+        // If the user is in a game check to see if the number of players has changed, and update accordingly
+        if(getGame() != null){
+            int oldNumPlayers = currentGame.getPlayersList().size();
+            // Check if one of the incoming games is our game and update it
+            for(Game game : gamesList){
+                if(game.getUID().equals(currentGame.getUID())){
+                    currentGame = game;
+                }
+            }
+
+            if(currentGame.getPlayersList().size() != oldNumPlayers){
+                updatePresenter();
+            }
         }
     }
 
