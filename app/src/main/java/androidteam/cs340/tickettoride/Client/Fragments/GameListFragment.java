@@ -9,7 +9,10 @@ import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,8 +27,9 @@ public class GameListFragment extends Fragment implements IPresenter {
     private RecyclerView mGameRecyclerView;
     private GameAdapter mAdapter;
     private Button mCreateGameButton;
+    private Spinner mNumberOfPlayersSpinner;
+    private int mSpinnerNumberSelected;
 
-    @Override
     public void Update() {
         updateUI();
     }
@@ -38,19 +42,39 @@ public class GameListFragment extends Fragment implements IPresenter {
         // Add this presenter to our ModelFacade so it can be updated.
         ModelFacade.SINGLETON.addPresenter(this);
 
+        // Set views for buttons, recyclerView and Spinner.
         mGameRecyclerView = (RecyclerView) view.findViewById(R.id.game_list_recycler_view);
         mGameRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mCreateGameButton = (Button) view.findViewById(R.id.create_game_button);
+        mNumberOfPlayersSpinner = (Spinner) view.findViewById(R.id.number_of_players_spinner);
 
+        // Set adapter for Spinner to fill values.
+        Integer[] items = new Integer[]{1,2,3,4,5};
+        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(getActivity(),android.R.layout.simple_spinner_item, items);
+        mNumberOfPlayersSpinner.setAdapter(adapter);
+        mNumberOfPlayersSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                mSpinnerNumberSelected = (int) parent.getSelectedItem();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        // Listener for Create Game Button
         mCreateGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "Creating Your Game..." , Toast.LENGTH_SHORT).show();
                 //TODO: Create a game with 5 players and start WaitingRoomActivity.
-                ModelFacade.SINGLETON.createGame(ModelFacade.SINGLETON.getPlayer().getUID(), 2);
+                ModelFacade.SINGLETON.createGame(ModelFacade.SINGLETON.getPlayer().getUID(), mSpinnerNumberSelected);
 
             }
         });
+
 
         updateUI();
 
