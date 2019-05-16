@@ -122,7 +122,7 @@ public class ModelFacade {
 
     public Result createGame(String playerID, int size){
         Result createGameResult = ServerProxy.SINGLETON.createGame(playerID, size);
-            if(createGameResult.getStatusCode() == HttpURLConnection.HTTP_OK){
+        if(createGameResult.getStatusCode() == HttpURLConnection.HTTP_OK) {
             currentGame = new Game(size);
             currentGame.addPlayer(this.currentPlayer);
         }

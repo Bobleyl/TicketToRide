@@ -1,79 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Client.Activities.WaitingRoomActivity">
+    tools:context=".Client.Activities.WaitingRoomActivity"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/waiting_room"
+        android:textAlignment="center"
+        android:textSize="40sp" />
 
     <TextView
-        android:id="@+id/waiting_room_title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textSize="36sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/waiting_room" />
-
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:id="@+id/player_count"
+        android:text="@string/waiting_room"/>
     <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="715dp"
-        android:layout_height="290dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_gravity="center">
 
         <TextView
             android:id="@+id/player1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/waiting" />
-
+            android:text="@string/waiting"/>
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/player2"
+            android:text="@string/waiting"/>
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/waiting" />
-
-        <TextView
             android:id="@+id/player3"
+            android:text="@string/waiting"/>
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/waiting" />
-
-        <TextView
             android:id="@+id/player4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/waiting" />
-
+            android:text="@string/waiting"/>
         <TextView
-            android:id="@+id/player5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/waiting" />
+            android:id="@+id/player5"
+            android:text="@string/waiting"/>
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/player_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="sample"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/waiting_room_title" />
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
