@@ -41,7 +41,6 @@ public class GameListFragment extends Fragment implements IPresenter {
                 updateUI();
             }
         });
-
     }
 
     @Override
