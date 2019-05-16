@@ -24,7 +24,7 @@ public class LoginRegisterPresenter implements IPresenter {
         Player toAdd = new Player(playerID);
         if(result.getStatusCode() == 200) {
             ModelFacade.SINGLETON.addPlayer(toAdd);
-            //ModelFacade.SINGLETON.startPoller();
+            ModelFacade.SINGLETON.startPoller();
         }
         return result;
     }
