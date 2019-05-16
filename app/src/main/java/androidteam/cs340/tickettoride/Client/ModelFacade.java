@@ -83,28 +83,18 @@ public class ModelFacade {
         // call on ParseResults and get list of games
         List<Game> gamesList = new ArrayList<Game>();
         gamesList = ParseResults.SINGLETON.parseLobbyResult(result);
-
-        // Check to make sure the size of the gameslist in the lobby changed, and update accordingly
-        int oldSize = currentLobby.getGames().size();
         currentLobby.updateCurrentGames(gamesList);
-        if(gamesList.size() != oldSize){
-            updatePresenter();
-        }
 
-        // If the user is in a game check to see if the number of players has changed, and update accordingly
+        // Update currentGame if it exists
         if(currentGame != null){
-            int oldNumPlayers = currentGame.getPlayersList().size();
-            // Check if one of the incoming games is our game and update it
             for(Game game : gamesList){
                 if(game.getUID().equals(currentGame.getUID())){
                     currentGame = game;
                 }
             }
-
-            if(currentGame.getPlayersList().size() != oldNumPlayers){
-                updatePresenter();
-            }
         }
+
+        updatePresenter();
     }
 
     public Result createGame(String playerID, int size){
@@ -112,6 +102,7 @@ public class ModelFacade {
         if(createGameResult.getStatusCode() == HttpURLConnection.HTTP_OK) {
             currentGame = new Game(size);
             currentGame.addPlayer(this.currentPlayer);
+            currentGame.setUID(createGameResult.getData());
         }
         return createGameResult;
     }
