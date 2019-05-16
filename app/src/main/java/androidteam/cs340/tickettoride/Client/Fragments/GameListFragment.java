@@ -24,6 +24,7 @@ import java.util.UUID;
 
 import androidteam.cs340.tickettoride.Client.Activities.LobbyActivity;
 import androidteam.cs340.tickettoride.Client.Activities.LoginRegisterActivity;
+import androidteam.cs340.tickettoride.Client.Activities.WaitingRoomActivity;
 import androidteam.cs340.tickettoride.Client.ModelFacade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.R;
@@ -139,14 +140,14 @@ public class GameListFragment extends Fragment implements IPresenter {
         public void bind(Game game) {
             mGame = game;
             mGameTitleTextView.setText(game.getUID());
-            mNumberOfPlayersTextView.setText(" " + game.getPlayersList().size() + "/" + game.getGameSize());
+            mNumberOfPlayersTextView.setText(" " + mGame.getPlayersList().size() + "/" + mGame.getGameSize());
 
             //Set onclickListener for joingame button
             mJoinButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(getActivity(), "Joining Game", Toast.LENGTH_SHORT).show();
-                    ModelFacade.SINGLETON.joinGame(ModelFacade.SINGLETON.getPlayer().getUID(), ModelFacade.SINGLETON.getGameID());
+                    joinGame(mGame);
                 }
             });
         }
@@ -192,14 +193,22 @@ public class GameListFragment extends Fragment implements IPresenter {
         Toast.makeText(getActivity(), "Creating Your Game..." , Toast.LENGTH_SHORT).show();
         Result result = ModelFacade.SINGLETON.createGame(ModelFacade.SINGLETON.getPlayer().getUID(), mSpinnerNumberSelected);
         if(result.getStatusCode() == HttpURLConnection.HTTP_OK){
-            joinGame(result.getData());
+            ModelFacade.SINGLETON.setGame(result.getData());
+            joinGame(ModelFacade.SINGLETON.getGame());
         }
         else{
             Toast.makeText(getActivity(), result.getErrorInfo() , Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void joinGame(String gameID){
-        ModelFacade.SINGLETON.setGame(gameID);
+    private void joinGame(Game toJoin){
+        ModelFacade.SINGLETON.setGame(toJoin);
+        Result result = ModelFacade.SINGLETON.joinGame();
+        if(result.getStatusCode() == HttpURLConnection.HTTP_NO_CONTENT){
+            ((LobbyActivity)getActivity()).startWaitingRoom();
+        }
+        else{
+            Toast.makeText(getActivity(), result.getErrorInfo(), Toast.LENGTH_SHORT).show();
+        }
     }
 }

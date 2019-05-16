@@ -65,11 +65,21 @@ public class ModelFacade {
 
     public Game getGame() { return currentGame; }
 
+    //Makes a game from the list of games in the lobby the current game and returns whether the game
+    //was successfully set
     public boolean setGame(String gameID) {
         List<Game> games = getLobbyGames();
         for(int i = 0; i < games.size(); i++){
-            if()
+            if(games.get(i).getUID().equals(gameID)){
+                currentGame = games.get(i);
+                return true;
+            }
         }
+        return false;
+    }
+
+    public void setGame(Game game){
+        currentGame = game;
     }
 
     public List<Game> getLobbyGames(){
@@ -95,7 +105,7 @@ public class ModelFacade {
         }
 
         // If the user is in a game check to see if the number of players has changed, and update accordingly
-        if(getGame() != null){
+        if(currentGame != null){
             int oldNumPlayers = currentGame.getPlayersList().size();
             // Check if one of the incoming games is our game and update it
             for(Game game : gamesList){
@@ -119,7 +129,9 @@ public class ModelFacade {
         return createGameResult;
     }
 
-    public Result joinGame(String playerID, String gameID){
+    public Result joinGame(){
+        String playerID = currentPlayer.getUID();
+        String gameID = currentGame.getUID();
         return ServerProxy.SINGLETON.joinGame(playerID, gameID);
     }
 

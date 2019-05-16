@@ -79,8 +79,10 @@ public class WaitingRoomActivity extends AppCompatActivity {
 
         mPlayerCount.setText(players.size() + " / " + game.getGameSize());
 
-        for(int i = 0;i < players.size() - 1; i++){
-            playerList.get(i).setText(players.get(i).getUID());
+        for(int i = 0;i < players.size(); i++){
+            if(i < playerList.size()) {
+                playerList.get(i).setText(players.get(i).getUID());
+            }
         }
     }
 }

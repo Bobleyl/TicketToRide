@@ -1,5 +1,6 @@
 package androidteam.cs340.tickettoride.Client.Activities;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -25,5 +26,10 @@ public class LobbyActivity extends AppCompatActivity {
                     .commit();
         }
 
+    }
+
+    public void startWaitingRoom(){
+        Intent intent = new Intent(LobbyActivity.this, WaitingRoomActivity.class);
+        startActivity(intent);
     }
 }
