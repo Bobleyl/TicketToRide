@@ -81,8 +81,11 @@ public class ModelFacade {
         List<Game> gamesList = new ArrayList<Game>();
         gamesList = ParseResults.SINGLETON.parseLobbyResult(result);
         // call on ParseResults and get list of games
-
+        int oldSize = currentLobby.getGames().size();
         currentLobby.updateCurrentGames(gamesList);
+        if(gamesList.size() != oldSize){
+            updatePresenter();
+        }
     }
 
     public Result createGame(String playerID, int size){
