@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Client.Activities.LoginActivity">
+    tools:context=".Client.Activities.LoginRegisterActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/game_list_recycler_view"

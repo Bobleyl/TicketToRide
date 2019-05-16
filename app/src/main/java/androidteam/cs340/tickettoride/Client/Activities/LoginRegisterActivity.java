@@ -13,20 +13,36 @@ import android.widget.Toast;
 
 import java.net.HttpURLConnection;
 
+import androidteam.cs340.tickettoride.Client.ModelFacade;
+import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.Client.Presenters.LoginRegisterPresenter;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.Result;
 import androidteam.cs340.tickettoride.Shared.User;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginRegisterActivity extends AppCompatActivity {
 
     private EditText mUsernameField;
     private EditText mPasswordField;
     private Button mLoginButton;
     private Button mRegisterButton;
 
+    private LoginRegisterPresenter presenter;
+
     private StringBuilder username;
     private StringBuilder password;
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        ModelFacade.SINGLETON.addPresenter(presenter);
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        ModelFacade.SINGLETON.removePresenter(presenter);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +65,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getBaseContext(),"Logging you in...",Toast.LENGTH_SHORT).show();
-                LoginRegisterPresenter presenter = new LoginRegisterPresenter();
+                presenter = new LoginRegisterPresenter();
                 User user = new User(username.toString(), password.toString());
                 Result result = presenter.login(user);
 
                 // Switch activity to LobbyActivity
                 if(result.getStatusCode() == HttpURLConnection.HTTP_OK) {
-                    Intent intent = new Intent(LoginActivity.this, LobbyActivity.class);
+                    Intent intent = new Intent(LoginRegisterActivity.this, LobbyActivity.class);
                     startActivity(intent);
                 } else {
                     Toast.makeText(getBaseContext(), result.getErrorInfo() , Toast.LENGTH_SHORT).show();
@@ -73,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                 Result result = presenter.register(user);
 
                 //Currently a 204 is being returned.. might switch this to a 200..
-                if(result.getStatusCode() == HttpURLConnection.HTTP_NO_CONTENT) {
+                if(result.getStatusCode() == HttpURLConnection.HTTP_OK) {
                     Toast.makeText(getBaseContext(), result.getData() , Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getBaseContext(), result.getErrorInfo() , Toast.LENGTH_SHORT).show();

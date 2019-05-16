@@ -63,6 +63,15 @@ public class ModelFacade {
         }
     }
 
+    public void removePresenter(IPresenter toDelete){
+        for(int i = 0; i < presenters.size() - 1; i++){
+            if (presenters.get(i).getID() == toDelete.getID()){
+                presenters.remove(i);
+                break;
+            }
+        }
+    }
+
     public Result login(User user) {
         return ServerProxy.SINGLETON.login(user);
     }
