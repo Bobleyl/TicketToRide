@@ -10,6 +10,7 @@ public class DeleteCommand implements CommandInterface {
         boolean success = DataAccess.SINGLETON.delete();
 
         if(success) {
+            LobbyModel.SINGLETON.emptyGames();
             System.out.println("Deleted data");
         } else {
             System.out.println("Did not delete data");

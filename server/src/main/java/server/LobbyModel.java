@@ -48,4 +48,8 @@ public class LobbyModel {
     public ArrayList<LobbyGameModel> getGames() {
         return games;
     }
+
+    public void emptyGames() {
+        games.clear();
+    }
 }
