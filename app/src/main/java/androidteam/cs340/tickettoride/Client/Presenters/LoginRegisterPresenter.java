@@ -14,7 +14,7 @@ public class LoginRegisterPresenter implements IPresenter {
         String playerID = ParseResults.SINGLETON.parseSingleString(result);
         Player toAdd = new Player(playerID);
         ModelFacade.SINGLETON.addPlayer(toAdd);
-        //ModelFacade.SINGLETON.startPoller();
+        ModelFacade.SINGLETON.startPoller();
         return result;
     }
 
