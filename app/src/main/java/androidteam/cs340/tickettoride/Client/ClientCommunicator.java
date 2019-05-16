@@ -1,5 +1,10 @@
 package androidteam.cs340.tickettoride.Client;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
@@ -51,6 +56,7 @@ public class ClientCommunicator {
             result.connect();
             System.out.println(result.getResponseCode());
 
+            //Get the response body
             InputStream in = result.getInputStream();
             String encoding = result.getContentEncoding();
             encoding = encoding == null ? "UTF-8" : encoding;
@@ -68,6 +74,24 @@ public class ClientCommunicator {
         catch (Exception e) {
             e.printStackTrace();
             return new Result(400, "error", "Error in ClientCommunicator");
+        }
+    }
+
+    public static void main(String[] args) {
+        JsonObject root = new JsonObject();
+        root.addProperty("command", "lobby");
+        Result result = ClientCommunicator.SINGLETON.send(root.toString());
+        JsonElement jsonElement = new JsonParser().parse(result.getData());
+        JsonArray jsonArray = jsonElement.getAsJsonArray();
+        for(JsonElement jsonElement1 : jsonArray) {
+            JsonObject userObj = jsonElement1.getAsJsonObject();
+            System.out.println(userObj.get("numPlayersToStart"));
+            System.out.println(userObj.get("gameID"));
+            JsonArray jsonArray1 = userObj.getAsJsonArray("playerIDs");
+            for (JsonElement jsonElement2 : jsonArray1) {
+                System.out.println(jsonElement2.getAsString());
+            }
+            //userObj.getAsString();
         }
     }
 
