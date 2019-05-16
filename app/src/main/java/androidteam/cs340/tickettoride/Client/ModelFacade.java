@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
+import androidteam.cs340.tickettoride.Client.ServerPoller.LobbyPollerCommand;
 import androidteam.cs340.tickettoride.Client.ServerPoller.ParseResults;
 import androidteam.cs340.tickettoride.Shared.Game;
 import androidteam.cs340.tickettoride.Shared.Lobby;
 import androidteam.cs340.tickettoride.Shared.Player;
 import androidteam.cs340.tickettoride.Shared.Result;
 import androidteam.cs340.tickettoride.Shared.User;
+import androidteam.cs340.tickettoride.Client.ServerPoller.LobbyPoller;
 
 public class ModelFacade {
     private Lobby currentLobby;
@@ -18,13 +20,17 @@ public class ModelFacade {
     private Player currentPlayer;
     private List<IPresenter> presenters;
     private Game currentGame;
-    private Poller poller = null;
+    private LobbyPollerCommand command;
+    private LobbyPoller lobbyPoller = new LobbyPoller(command, 1000);
 
     private ModelFacade() {
         currentLobby = new Lobby();
         presenters = new ArrayList<>();
     }
 
+    public void startPoller(){
+        lobbyPoller.start();
+    }
 
     public static ModelFacade SINGLETON = new ModelFacade();
 
