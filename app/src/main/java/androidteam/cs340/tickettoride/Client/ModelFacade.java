@@ -20,7 +20,7 @@ public class ModelFacade {
     private Player currentPlayer;
     private List<IPresenter> presenters;
     private Game currentGame;
-    private LobbyPollerCommand command;
+    private LobbyPollerCommand command = new LobbyPollerCommand();
     private LobbyPoller lobbyPoller = new LobbyPoller(command, 1000);
 
     private ModelFacade() {

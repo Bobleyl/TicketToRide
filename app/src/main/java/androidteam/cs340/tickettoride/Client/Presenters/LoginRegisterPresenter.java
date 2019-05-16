@@ -13,8 +13,10 @@ public class LoginRegisterPresenter implements IPresenter {
         Result result = ModelFacade.SINGLETON.login(user);
         String playerID = ParseResults.SINGLETON.parseSingleString(result);
         Player toAdd = new Player(playerID);
-        ModelFacade.SINGLETON.addPlayer(toAdd);
-        //ModelFacade.SINGLETON.startPoller();
+        if(result.getStatusCode() == 200) {
+            ModelFacade.SINGLETON.addPlayer(toAdd);
+            //ModelFacade.SINGLETON.startPoller();
+        }
         return result;
     }
 
