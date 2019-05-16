@@ -6,7 +6,7 @@ public class Player {
     String name;
     String UID;
 
-    public Player(String name, String Color, String UID){
+    public Player(String UID){
         this.color = color;
         this.name = name;
         this.UID = UID;

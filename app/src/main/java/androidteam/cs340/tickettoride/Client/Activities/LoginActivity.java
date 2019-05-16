@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                 Result result = presenter.login(user);
 
                 // Switch activity to LobbyActivity
-                if(result.getStatusCode() == HttpURLConnection.HTTP_NO_CONTENT) {
+                if(result.getStatusCode() == HttpURLConnection.HTTP_OK) {
                     Intent intent = new Intent(LoginActivity.this, LobbyActivity.class);
                     startActivity(intent);
                 } else {
@@ -81,7 +81,6 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-
 
     }
 
