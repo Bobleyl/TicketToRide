@@ -38,14 +38,14 @@ public class DataAccess {
             try {
                 statement = connection.createStatement();
                 String query = "DELETE FROM User;";
-                result = statement.execute(query);
+                statement.execute(query);
 
                 statement.close();
                 connection.close();
+                result = true;
             } catch(SQLException e){
                 System.out.println("Error: " + e.toString());
                 e.printStackTrace();
-                result = false;
             }
         }
         return result;
@@ -107,6 +107,7 @@ public class DataAccess {
                 result = false;
             }
         }
+
         return result;
     }
 

@@ -1,5 +1,7 @@
 package server;
 
+import java.util.HashMap;
+
 public class DeleteCommand implements CommandInterface {
 
     public DeleteCommand(HashMap<String, Object> values) {}

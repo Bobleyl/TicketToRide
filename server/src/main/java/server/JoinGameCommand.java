@@ -17,7 +17,15 @@ public class JoinGameCommand implements CommandInterface {
     public Object execute() throws Exception {
 
         //LobbyModel.SINGLETON.addGame(, playerID);
-        LobbyModel.SINGLETON.addPlayerToGame(playerID, gameID);
+        boolean success = LobbyModel.SINGLETON.addPlayerToGame(playerID, gameID);
+
+        if(success) {
+            System.out.println("User joined game!");
+        } else {
+            System.out.println("User did not join game");
+            throw new Exception("User was unable to join game");
+        }
+
         return null;
     }
 
