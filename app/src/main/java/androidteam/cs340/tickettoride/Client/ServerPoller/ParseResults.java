@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import androidteam.cs340.tickettoride.Shared.Game;
+import androidteam.cs340.tickettoride.Shared.Lobby;
 import androidteam.cs340.tickettoride.Shared.Player;
 import androidteam.cs340.tickettoride.Shared.Result;
 
@@ -64,6 +65,7 @@ public class ParseResults {
             game.setPlayersList(players);
             game.setUID(gameID);
             games.add(game);
+            Lobby.SINGLETON.addGame(game);
         }
         return games;
     }

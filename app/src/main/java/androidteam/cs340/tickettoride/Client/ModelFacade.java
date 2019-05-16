@@ -5,18 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
-import androidteam.cs340.tickettoride.Client.Poller;
+import androidteam.cs340.tickettoride.Client.ServerPoller.LobbyPollerCommand;
 import androidteam.cs340.tickettoride.Client.ServerPoller.ParseResults;
 import androidteam.cs340.tickettoride.Shared.Game;
 import androidteam.cs340.tickettoride.Shared.Lobby;
 import androidteam.cs340.tickettoride.Shared.Player;
 import androidteam.cs340.tickettoride.Shared.Result;
 import androidteam.cs340.tickettoride.Shared.User;
-import androidteam.cs340.tickettoride.Shared.Game;
-import androidteam.cs340.tickettoride.Shared.Lobby;
-import androidteam.cs340.tickettoride.Shared.Player;
-import java.util.List;
-import java.util.ArrayList;
+import androidteam.cs340.tickettoride.Client.ServerPoller.LobbyPoller;
 
 public class ModelFacade {
     private Lobby currentLobby;
@@ -24,34 +20,19 @@ public class ModelFacade {
     private Player currentPlayer;
     private List<IPresenter> presenters;
     private Game currentGame;
-    private Poller poller = null;
+    private LobbyPollerCommand command;
+    private LobbyPoller lobbyPoller = new LobbyPoller(command, 1000);
 
     private ModelFacade() {
         currentLobby = new Lobby();
         presenters = new ArrayList<>();
     }
 
+    public void startPoller(){
+        lobbyPoller.start();
+    }
 
     public static ModelFacade SINGLETON = new ModelFacade();
-
-    //turn on poller and start updating the lobby
-    public void startPoller(){
-        if(poller == null){
-            poller = new Poller();
-            poller.startPolling();
-        }
-    }
-
-    //turn off poller entirely
-    public void stopPoller(){
-        poller.stopPolling();
-        poller = null;
-    }
-
-    //tells the poller to switch over to updating commands for the game instead of lobby
-    public void startPollingCommands(){
-        poller.setPollerSwitch(currentGame.getUID());
-    }
 
     public void addPresenter(IPresenter toAdd){
         presenters.add(toAdd);
@@ -60,6 +41,15 @@ public class ModelFacade {
     public void updatePresenter() {
         for(IPresenter presenter : presenters) {
             presenter.Update();
+        }
+    }
+
+    public void removePresenter(IPresenter toDelete){
+        for(int i = 0; i < presenters.size() - 1; i++){
+            if (presenters.get(i).getID() == toDelete.getID()){
+                presenters.remove(i);
+                break;
+            }
         }
     }
 
@@ -91,6 +81,7 @@ public class ModelFacade {
         List<Game> gamesList = new ArrayList<Game>();
         gamesList = ParseResults.SINGLETON.parseLobbyResult(result);
         // call on ParseResults and get list of games
+
         currentLobby.updateCurrentGames(gamesList);
     }
 

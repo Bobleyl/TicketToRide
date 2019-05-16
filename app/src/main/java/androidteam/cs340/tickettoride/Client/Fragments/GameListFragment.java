@@ -1,5 +1,6 @@
 package androidteam.cs340.tickettoride.Client.Fragments;
 
+import android.graphics.ColorSpace;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
+import java.util.UUID;
 
 import androidteam.cs340.tickettoride.Client.ModelFacade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
@@ -30,6 +32,8 @@ public class GameListFragment extends Fragment implements IPresenter {
     private Spinner mNumberOfPlayersSpinner;
     private int mSpinnerNumberSelected;
 
+    private String ID;
+
     public void Update() {
         updateUI();
     }
@@ -41,6 +45,9 @@ public class GameListFragment extends Fragment implements IPresenter {
 
         // Add this presenter to our ModelFacade so it can be updated.
         ModelFacade.SINGLETON.addPresenter(this);
+
+        //Generate a new UUID for the presenter
+        ID = UUID.randomUUID().toString();
 
 
         // Set views for buttons, recyclerView and Spinner.
@@ -101,6 +108,7 @@ public class GameListFragment extends Fragment implements IPresenter {
     private class GameHolder extends RecyclerView.ViewHolder {
         private TextView mGameTitleTextView;
         private TextView mNumberOfPlayersTextView;
+        private Button mJoinButton;
 
         private Game mGame;
 
@@ -109,12 +117,22 @@ public class GameListFragment extends Fragment implements IPresenter {
 
             mGameTitleTextView = (TextView) itemView.findViewById(R.id.game_name_view);
             mNumberOfPlayersTextView = (TextView) itemView.findViewById(R.id.game_number_of_players_view);
+            mJoinButton = (Button) itemView.findViewById(R.id.join_game_button);
         }
 
         public void bind(Game game) {
             mGame = game;
             mGameTitleTextView.setText(game.getUID());
             mNumberOfPlayersTextView.setText(" " + game.getPlayersList().size() + "/5");
+
+            //Set onclickListener for joingame button
+            mJoinButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getActivity(), "Joining Game", Toast.LENGTH_SHORT).show();
+                    ModelFacade.SINGLETON.joinGame(ModelFacade.SINGLETON.getPlayer().getUID(), ModelFacade.SINGLETON.getGameID());
+                }
+            });
         }
     }
 
@@ -145,6 +163,12 @@ public class GameListFragment extends Fragment implements IPresenter {
         public int getItemCount() {
             return mGames.size();
         }
+    }
+
+
+    //getID method needed for IPresenters
+    public String getID(){
+        return ID;
     }
 
 }
