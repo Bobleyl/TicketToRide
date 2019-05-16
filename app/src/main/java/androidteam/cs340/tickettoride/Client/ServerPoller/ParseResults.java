@@ -54,6 +54,7 @@ public class ParseResults {
             JsonObject userObj = jsonElement1.getAsJsonObject();
             numPlayersToStart = userObj.get("numPlayersToStart").getAsInt();
             gameID = userObj.get("gameID").getAsString();
+            players.clear();
             JsonArray jsonArray1 = userObj.getAsJsonArray("playerIDs");
             for (JsonElement jsonElement2 : jsonArray1) {
                 String playerID = "";
