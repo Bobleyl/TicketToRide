@@ -1,11 +1,15 @@
 package androidteam.cs340.tickettoride.Client;
 
+import org.apache.commons.io.IOUtils;
+
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import androidteam.cs340.tickettoride.Client.ServerPoller.ParseResults;
 import androidteam.cs340.tickettoride.Shared.Result;
 
 public class ClientCommunicator {
@@ -47,10 +51,16 @@ public class ClientCommunicator {
             result.connect();
             System.out.println(result.getResponseCode());
 
-            if (result.getResponseCode() == HttpURLConnection.HTTP_NO_CONTENT) {
-                return new Result(result.getResponseCode(), "success", "");
+            InputStream in = result.getInputStream();
+            String encoding = result.getContentEncoding();
+            encoding = encoding == null ? "UTF-8" : encoding;
+            String body = IOUtils.toString(in, encoding);
+            System.out.println(body);
+
+            if (result.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                return new Result(result.getResponseCode(), body, "");
             } else {
-                return new Result(result.getResponseCode(), "error", "Received a " + result.getResponseCode()+ " response");
+                return new Result(result.getResponseCode(), "", "Received a " + result.getResponseCode()+ " response");
             }
 
 

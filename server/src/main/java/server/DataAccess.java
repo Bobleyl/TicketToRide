@@ -38,14 +38,14 @@ public class DataAccess {
             try {
                 statement = connection.createStatement();
                 String query = "DELETE FROM User;";
-                statement.executeUpdate(query);
+                result = statement.execute(query);
 
                 statement.close();
                 connection.close();
-                result = true;
             } catch(SQLException e){
                 System.out.println("Error: " + e.toString());
                 e.printStackTrace();
+                result = false;
             }
         }
         return result;
@@ -55,30 +55,52 @@ public class DataAccess {
 
         Connection connection = DataAccess.SINGLETON.connectJDBCToAWSEC2();
         Statement statement;
+        Statement statementFindUser;
         boolean result = false;
+        boolean userExists = false;
         if (connection != null) {
             try {
-                statement = connection.createStatement();
 
                 String upperUsername = username.toUpperCase();
 
-                String query = "INSERT INTO User Values(?, ?);";
+                statementFindUser = connection.createStatement();
+                String querySearchUser = "SELECT * FROM User WHERE USERNAME = ? AND PASSWORD = ?;";
 
-                try (PreparedStatement stmt = connection.prepareStatement(query)) {
-                    stmt.setString(1, upperUsername);
-                    stmt.setString(2, password);
-                    stmt.executeUpdate();
-                } catch(SQLException e) {
+                try (PreparedStatement stmt1 = connection.prepareStatement(querySearchUser)) {
+                    stmt1.setString(1, upperUsername);
+                    stmt1.setString(2, password);
+                    userExists = stmt1.execute();
+                } catch (SQLException e) {
                     e.printStackTrace();
+                    userExists = true;
                 }
 
-                statement.close();
-                connection.close();
-                result = true;
+                //If userExists = True then return false
+                if (!userExists) {
 
-            } catch (SQLException e) {
-                System.out.println("Error: " + e.toString());
-                result = false;
+                    statement = connection.createStatement();
+                    String query = "INSERT INTO User Values(?, ?);";
+
+                    try (PreparedStatement stmt = connection.prepareStatement(query)) {
+                        stmt.setString(1, upperUsername);
+                        stmt.setString(2, password);
+                        result = stmt.execute();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+
+                    statement.close();
+                    connection.close();
+                } else {
+                    result = false;
+                }
+
+                statementFindUser.close();
+
+                } catch(SQLException e){
+                    System.out.println("Error: " + e.toString());
+                    result = false;
+                }
             }
         }
         return result;
@@ -96,24 +118,19 @@ public class DataAccess {
                 System.out.println("Creating statement...");
                 statement = connection.createStatement();
 
-                ResultSet rs = null;
-
                 String UpperUsername = username.toUpperCase();
 
                 String query = "SELECT * FROM User WHERE USERNAME = ? AND PASSWORD = ?;";
                 try (PreparedStatement stmt = connection.prepareStatement(query)) {
                     stmt.setString(1, UpperUsername);
                     stmt.setString(2, password);
-                    rs = stmt.executeQuery();
-                    result = rs.next();
+                    result = stmt.execute();
 
                 } catch(SQLException e) {
                     e.printStackTrace();
                     result = false;
                 }
 
-                assert rs != null;
-                rs.close();
                 statement.close();
                 connection.close();
 
