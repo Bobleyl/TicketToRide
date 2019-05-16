@@ -13,8 +13,12 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import androidteam.cs340.tickettoride.Client.ServerPoller.ParseResults;
+import androidteam.cs340.tickettoride.Shared.Game;
+import androidteam.cs340.tickettoride.Shared.Lobby;
+import androidteam.cs340.tickettoride.Shared.Player;
 import androidteam.cs340.tickettoride.Shared.Result;
 
 public class ClientCommunicator {
@@ -77,22 +81,35 @@ public class ClientCommunicator {
         }
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         JsonObject root = new JsonObject();
         root.addProperty("command", "lobby");
         Result result = ClientCommunicator.SINGLETON.send(root.toString());
+        assert result != null;
+        ArrayList<Game> games = new ArrayList<Game>();
+        ArrayList<Player> players = new ArrayList<Player>();
+
         JsonElement jsonElement = new JsonParser().parse(result.getData());
         JsonArray jsonArray = jsonElement.getAsJsonArray();
         for(JsonElement jsonElement1 : jsonArray) {
+            int numPlayersToStart = 0;
+            String gameID = "";
             JsonObject userObj = jsonElement1.getAsJsonObject();
-            System.out.println(userObj.get("numPlayersToStart"));
-            System.out.println(userObj.get("gameID"));
+            numPlayersToStart = userObj.get("numPlayersToStart").getAsInt();
+            gameID = userObj.get("gameID").getAsString();
             JsonArray jsonArray1 = userObj.getAsJsonArray("playerIDs");
             for (JsonElement jsonElement2 : jsonArray1) {
-                System.out.println(jsonElement2.getAsString());
+                String playerID = "";
+                playerID = jsonElement2.getAsString();
+                Player player = new Player(playerID);
+                players.add(player);
             }
-            //userObj.getAsString();
+            Game game = new Game(numPlayersToStart);
+            game.setPlayersList(players);
+            game.setUID(gameID);
+            games.add(game);
+            Lobby.SINGLETON.addGame(game);
         }
-    }
+    }*/
 
 }
