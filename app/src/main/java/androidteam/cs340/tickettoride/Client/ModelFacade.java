@@ -65,19 +65,6 @@ public class ModelFacade {
 
     public Game getGame() { return currentGame; }
 
-    //Makes a game from the list of games in the lobby the current game and returns whether the game
-    //was successfully set
-    public boolean setGame(String gameID) {
-        List<Game> games = getLobbyGames();
-        for(int i = 0; i < games.size(); i++){
-            if(games.get(i).getUID().equals(gameID)){
-                currentGame = games.get(i);
-                return true;
-            }
-        }
-        return false;
-    }
-
     public void setGame(Game game){
         currentGame = game;
     }

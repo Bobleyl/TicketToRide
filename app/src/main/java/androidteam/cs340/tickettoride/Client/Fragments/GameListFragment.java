@@ -146,7 +146,6 @@ public class GameListFragment extends Fragment implements IPresenter {
             mJoinButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getActivity(), "Joining Game", Toast.LENGTH_SHORT).show();
                     joinGame(mGame);
                 }
             });
@@ -193,7 +192,7 @@ public class GameListFragment extends Fragment implements IPresenter {
         Toast.makeText(getActivity(), "Creating Your Game..." , Toast.LENGTH_SHORT).show();
         Result result = ModelFacade.SINGLETON.createGame(ModelFacade.SINGLETON.getPlayer().getUID(), mSpinnerNumberSelected);
         if(result.getStatusCode() == HttpURLConnection.HTTP_OK){
-            ModelFacade.SINGLETON.setGame(result.getData());
+            //TODO: Find some way to get the game object back from the results fo the createGame method
             joinGame(ModelFacade.SINGLETON.getGame());
         }
         else{
@@ -202,6 +201,8 @@ public class GameListFragment extends Fragment implements IPresenter {
     }
 
     private void joinGame(Game toJoin){
+        Toast.makeText(getActivity(), "Joining Game", Toast.LENGTH_SHORT).show();
+
         ModelFacade.SINGLETON.setGame(toJoin);
         Result result = ModelFacade.SINGLETON.joinGame();
         if(result.getStatusCode() == HttpURLConnection.HTTP_NO_CONTENT){
