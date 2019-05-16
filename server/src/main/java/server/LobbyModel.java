@@ -39,7 +39,7 @@ public class LobbyModel {
         }
 
         if (!lobbyGame.getPlayerIDs().contains(playerID)) {
-            lobbyGame.getPlayerIDs().add(playerID);
+            lobbyGame.addPlayer(playerID);
         }
 
         return true;
