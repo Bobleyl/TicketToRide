@@ -54,7 +54,7 @@ public class ParseResults {
             JsonObject userObj = jsonElement1.getAsJsonObject();
             numPlayersToStart = userObj.get("numPlayersToStart").getAsInt();
             gameID = userObj.get("gameID").getAsString();
-            players.clear();
+            players = new ArrayList<Player>();
             JsonArray jsonArray1 = userObj.getAsJsonArray("playerIDs");
             for (JsonElement jsonElement2 : jsonArray1) {
                 String playerID = "";
@@ -64,9 +64,13 @@ public class ParseResults {
             }
             Game game = new Game(numPlayersToStart);
             game.setPlayersList(players);
+            System.out.println("Players size: " + players.size() + "Game size: " + game.getPlayersList().size());
             game.setUID(gameID);
             games.add(game);
-            Lobby.SINGLETON.addGame(game);
+            //Lobby.SINGLETON.addGame(game);
+        }
+        for(Game game : games){
+            System.out.println(game.getPlayersList().size());
         }
         return games;
     }

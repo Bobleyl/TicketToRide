@@ -8,8 +8,6 @@ public class Lobby {
     String UID;
     private List<Game> gamesList;
 
-    public static Lobby SINGLETON = new Lobby();
-
     public Lobby(){
         this.gamesList = new ArrayList<>();
         this.UID = null;

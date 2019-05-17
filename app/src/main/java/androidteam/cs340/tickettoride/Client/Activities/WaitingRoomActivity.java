@@ -4,6 +4,7 @@ import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,7 +77,6 @@ public class WaitingRoomActivity extends AppCompatActivity {
     private void populatePlayerList(){
         Game game = ModelFacade.SINGLETON.getGame();
         List<Player> players = game.getPlayersList();
-
         mPlayerCount.setText(players.size() + " / " + game.getGameSize());
 
         for(int i = 0;i < players.size(); i++){

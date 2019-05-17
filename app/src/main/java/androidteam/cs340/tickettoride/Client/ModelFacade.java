@@ -2,6 +2,7 @@ package androidteam.cs340.tickettoride.Client;
 
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
@@ -84,6 +85,9 @@ public class ModelFacade {
         List<Game> gamesList = new ArrayList<Game>();
         gamesList = ParseResults.SINGLETON.parseLobbyResult(result);
         currentLobby.updateCurrentGames(gamesList);
+        for(Game game : gamesList){
+            //System.out.println(game.getPlayersList().size());
+        }
 
         // Update currentGame if it exists
         if(currentGame != null){
