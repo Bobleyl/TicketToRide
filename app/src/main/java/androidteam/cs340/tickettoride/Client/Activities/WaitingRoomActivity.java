@@ -77,8 +77,17 @@ public class WaitingRoomActivity extends AppCompatActivity {
 
     private void populatePlayerList(){
         Game game = ModelFacade.SINGLETON.getGame();
+        List<Game> games = ModelFacade.SINGLETON.getLobbyGames();
+        System.out.println(game.getUID());
+        boolean found = false;
+        for(Game game1 : games) {
+            if(game.getUID().equals(game1.getUID())) {
+                found = true;
+            }
+        }
+
         List<Player> players = game.getPlayersList();
-        if(players.size() == game.getGameSize()){
+        if(!found){
             System.out.println("GAME IS FULL, LET'S PLAY");
             Intent intent = new Intent(WaitingRoomActivity.this, StartGame.class);
             startActivity(intent);
