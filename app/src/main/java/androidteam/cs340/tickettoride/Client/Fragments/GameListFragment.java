@@ -217,7 +217,6 @@ public class GameListFragment extends Fragment implements IPresenter {
             }
         }
 
-        gameCreated = false;
         ModelFacade.SINGLETON.setGame(toJoin);
         Result result = ModelFacade.SINGLETON.joinGame();
         if(result.getStatusCode() == HttpURLConnection.HTTP_NO_CONTENT){
