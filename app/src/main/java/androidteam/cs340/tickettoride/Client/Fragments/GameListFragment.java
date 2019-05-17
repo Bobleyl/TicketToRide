@@ -192,6 +192,9 @@ public class GameListFragment extends Fragment implements IPresenter {
         Toast.makeText(getActivity(), "Creating Your Game..." , Toast.LENGTH_SHORT).show();
         Result result = ModelFacade.SINGLETON.createGame(ModelFacade.SINGLETON.getPlayer().getUID(), mSpinnerNumberSelected);
         if(result.getStatusCode() == HttpURLConnection.HTTP_OK){
+            String gameID = result.getData();
+            gameID = gameID.replace("\"", "");
+            ModelFacade.SINGLETON.setGameID(gameID);
             joinGame(ModelFacade.SINGLETON.getGame());
         }
         else{

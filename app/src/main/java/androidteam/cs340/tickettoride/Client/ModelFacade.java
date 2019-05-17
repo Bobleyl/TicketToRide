@@ -20,6 +20,7 @@ public class ModelFacade {
     private Player currentPlayer;
     private List<IPresenter> presenters;
     private Game currentGame;
+    private String gameID;
     private LobbyPollerCommand command = new LobbyPollerCommand();
     private LobbyPoller lobbyPoller = new LobbyPoller(command, 1000);
 
@@ -62,6 +63,8 @@ public class ModelFacade {
     }
 
     public String getGameID() { return currentGame.getUID(); }
+
+    public void setGameID(String gameID_) { gameID = gameID_; }
 
     public Game getGame() { return currentGame; }
 
@@ -109,7 +112,6 @@ public class ModelFacade {
 
     public Result joinGame(){
         String playerID = currentPlayer.getUID();
-        String gameID = currentGame.getUID();
         return ServerProxy.SINGLETON.joinGame(playerID, gameID);
     }
 
