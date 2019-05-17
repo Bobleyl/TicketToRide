@@ -75,7 +75,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
                     Intent intent = new Intent(LoginRegisterActivity.this, LobbyActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(getBaseContext(), result.getErrorInfo() , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), "Invalid username or password" , Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -92,7 +92,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
                 if(result.getStatusCode() == HttpURLConnection.HTTP_OK) {
                     Toast.makeText(getBaseContext(), result.getData() , Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getBaseContext(), result.getErrorInfo() , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), "User already exists" , Toast.LENGTH_SHORT).show();
                 }
 
             }
