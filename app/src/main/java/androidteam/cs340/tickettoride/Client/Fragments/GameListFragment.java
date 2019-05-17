@@ -141,7 +141,7 @@ public class GameListFragment extends Fragment implements IPresenter {
 
         public void bind(Game game) {
             mGame = game;
-            mGameTitleTextView.setText(game.getUID());
+            mGameTitleTextView.setText("Game " + game.getUID().substring(0, 4) + "   ");
             mNumberOfPlayersTextView.setText(" " + mGame.getPlayersList().size() + "/" + mGame.getGameSize());
 
             //Set onclickListener for joingame button

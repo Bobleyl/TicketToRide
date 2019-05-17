@@ -87,7 +87,7 @@ public class WaitingRoomActivity extends AppCompatActivity {
 
         for(int i = 0;i < players.size(); i++){
             if(i < playerList.size()) {
-                playerList.get(i).setText(players.get(i).getUID());
+                playerList.get(i).setText("Player " + players.get(i).getUID().substring(0, 4));
             }
         }
     }
