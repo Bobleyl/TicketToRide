@@ -85,4 +85,10 @@ public class WaitingRoomActivity extends AppCompatActivity {
             }
         }
     }
+
+    @Override
+    public void onBackPressed(){
+        Toast.makeText(WaitingRoomActivity.this, "Sorry, you can't leave the game.",Toast.LENGTH_LONG).show();
+    }
+
 }
