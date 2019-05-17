@@ -60,14 +60,15 @@ public class ClientCommunicator {
             result.connect();
             System.out.println(result.getResponseCode());
 
-            //Get the response body
-            InputStream in = result.getInputStream();
-            String encoding = result.getContentEncoding();
-            encoding = encoding == null ? "UTF-8" : encoding;
-            String body = IOUtils.toString(in, encoding);
-            System.out.println(body);
-
             if (result.getResponseCode() == HttpURLConnection.HTTP_OK) {
+
+                //Get the response body
+                InputStream in = result.getInputStream();
+                String encoding = result.getContentEncoding();
+                encoding = encoding == null ? "UTF-8" : encoding;
+                String body = IOUtils.toString(in, encoding);
+                System.out.println(body);
+
                 return new Result(result.getResponseCode(), body, "");
             } else {
                 return new Result(result.getResponseCode(), "", "Received a " + result.getResponseCode()+ " response");
@@ -111,11 +112,14 @@ public class ClientCommunicator {
             numPlayersToStart = userObj.get("numPlayersToStart").getAsInt();
             gameID = userObj.get("gameID").getAsString();
             JsonArray jsonArray1 = userObj.getAsJsonArray("playerIDs");
+            System.out.println(gameID);
+            System.out.println(numPlayersToStart);
             for (JsonElement jsonElement2 : jsonArray1) {
                 String playerID = "";
                 playerID = jsonElement2.getAsString();
                 Player player = new Player(playerID);
                 players.add(player);
+                System.out.println(playerID);
             }
             Game game = new Game(numPlayersToStart);
             game.setPlayersList(players);
