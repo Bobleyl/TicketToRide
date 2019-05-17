@@ -194,7 +194,7 @@ public class GameListFragment extends Fragment implements IPresenter {
         if(result.getStatusCode() == HttpURLConnection.HTTP_OK){
             String gameID = result.getData();
             gameID = gameID.replace("\"", "");
-            ModelFacade.SINGLETON.setGameID(gameID);
+            ModelFacade.SINGLETON.getGame().setUID(gameID);
             joinGame(ModelFacade.SINGLETON.getGame());
         }
         else{
