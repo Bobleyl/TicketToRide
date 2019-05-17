@@ -24,6 +24,7 @@ import java.util.UUID;
 
 import androidteam.cs340.tickettoride.Client.Activities.LobbyActivity;
 import androidteam.cs340.tickettoride.Client.Activities.LoginRegisterActivity;
+import androidteam.cs340.tickettoride.Client.Activities.StartGame;
 import androidteam.cs340.tickettoride.Client.Activities.WaitingRoomActivity;
 import androidteam.cs340.tickettoride.Client.ModelFacade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
@@ -37,6 +38,7 @@ public class GameListFragment extends Fragment implements IPresenter {
     private Button mCreateGameButton;
     private Spinner mNumberOfPlayersSpinner;
     private int mSpinnerNumberSelected;
+    private boolean gameCreated = false;
 
     private String ID;
 
@@ -195,6 +197,7 @@ public class GameListFragment extends Fragment implements IPresenter {
             String gameID = result.getData();
             gameID = gameID.replace("\"", "");
             ModelFacade.SINGLETON.getGame().setUID(gameID);
+            gameCreated = true;
             joinGame(ModelFacade.SINGLETON.getGame());
         }
         else{
@@ -203,12 +206,28 @@ public class GameListFragment extends Fragment implements IPresenter {
     }
 
     private void joinGame(Game toJoin){
+        boolean lastPlayer = false;
         Toast.makeText(getActivity(), "Joining Game", Toast.LENGTH_SHORT).show();
+        //Check if I'm the last player attempting to join
+        if(toJoin.getGameSize() == toJoin.getPlayersList().size() + 1){
+            if(gameCreated){ //That user you are seeing already is yourself
+                lastPlayer = false;
+            }else{ //That user you are seeing is someone else
+                lastPlayer = true;
+            }
+        }
 
+        gameCreated = false;
         ModelFacade.SINGLETON.setGame(toJoin);
         Result result = ModelFacade.SINGLETON.joinGame();
         if(result.getStatusCode() == HttpURLConnection.HTTP_NO_CONTENT){
             ((LobbyActivity)getActivity()).startWaitingRoom();
+            if(lastPlayer == true){
+                System.out.println("I'm the last player in, let's play!");
+                Intent intent = new Intent(getActivity(), StartGame.class);
+                startActivity(intent);
+                //toast here to StartGame Activity
+            }
         }
         else{
             Toast.makeText(getActivity(), result.getErrorInfo(), Toast.LENGTH_SHORT).show();
