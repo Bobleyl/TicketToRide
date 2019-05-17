@@ -83,6 +83,19 @@ public class ClientCommunicator {
 
     /*public static void main(String[] args) {
         JsonObject root = new JsonObject();
+        root.addProperty("command", "createGame");
+
+        // Create Inner JSON Object
+        JsonObject values = new JsonObject();
+        values.addProperty("number_players", 2);
+        values.addProperty("player_id", "gimbo");
+        root.add("values", values);
+        Result result = ClientCommunicator.SINGLETON.send(root.toString());
+        System.out.println(result.getData());
+    }*/
+
+    /*public static void main(String[] args) {
+        JsonObject root = new JsonObject();
         root.addProperty("command", "lobby");
         Result result = ClientCommunicator.SINGLETON.send(root.toString());
         assert result != null;

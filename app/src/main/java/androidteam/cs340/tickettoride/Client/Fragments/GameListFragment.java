@@ -193,6 +193,9 @@ public class GameListFragment extends Fragment implements IPresenter {
         Result result = ModelFacade.SINGLETON.createGame(ModelFacade.SINGLETON.getPlayer().getUID(), mSpinnerNumberSelected);
         if(result.getStatusCode() == HttpURLConnection.HTTP_OK){
             //TODO: Find some way to get the game object back from the results fo the createGame method
+            String gameID = result.getData();
+            gameID = gameID.replace("\"", "");
+            ModelFacade.SINGLETON.setGameID(gameID);
             joinGame(ModelFacade.SINGLETON.getGame());
         }
         else{
