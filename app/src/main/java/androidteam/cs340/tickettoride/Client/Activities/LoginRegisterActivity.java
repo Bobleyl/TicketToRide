@@ -61,7 +61,9 @@ public class LoginRegisterActivity extends AppCompatActivity {
         mPasswordField.addTextChangedListener(loginTextWatcher);
 
         mLoginButton = (Button) findViewById(R.id.loginButton);
+        mLoginButton.setEnabled(false);
         mRegisterButton = (Button) findViewById(R.id.registerButton);
+        mRegisterButton.setEnabled(false);
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
