@@ -90,7 +90,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
 
                 //Currently a 204 is being returned.. might switch this to a 200..
                 if(result.getStatusCode() == HttpURLConnection.HTTP_NO_CONTENT) {
-                    Toast.makeText(getBaseContext(), result.getData() , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), "Successful registration" , Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getBaseContext(), "User already exists" , Toast.LENGTH_SHORT).show();
                 }
