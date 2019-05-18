@@ -91,19 +91,19 @@ public class Player {
     }
 
     public void drawFaceUp(){
-
+        //Reference Active Face up deck's drawFromUp() method
     }
 
     public void drawFaceDown(){
-
+        //Reference Active Face down deck's drawFromDown() method
     }
 
     public void drawDestinationCard(){
-
+        //Reference active DestinationCard Deck's method for drawCard()
     }
 
     public void claimRoute(){
-
+        //Reference Route's method for route claiming
     }
 
 }
