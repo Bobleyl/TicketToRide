@@ -29,4 +29,16 @@ public class Routes {
         this.owner = owner;
     }
 
+    public int getPoints(){
+        return points;
+    }
+
+    public int getLength(){
+        return length;
+    }
+
+    public boolean isSecondaryRoute(){
+        return isSecondaryRoute;
+    }
+
 }
