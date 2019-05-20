@@ -7,6 +7,10 @@ import androidteam.cs340.tickettoride.Shared.DestinationCard;
 public class DestinationCardDeck {
     private List<DestinationCard> destinationDeck;
 
+    DestinationCardDeck() {
+        this.destinationDeck = new ArrayList<>();
+    }
+
     // Returns the top card on the deck
     public DestinationCard drawCard(){
         DestinationCard card = destinationDeck.get(0);

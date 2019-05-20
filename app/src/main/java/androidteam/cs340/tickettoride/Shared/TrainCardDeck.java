@@ -10,6 +10,11 @@ public class TrainCardDeck {
     private List<TrainCard> upDeck;
     private List<TrainCard> downDeck;
 
+    TrainCardDeck(){
+        this.upDeck = new ArrayList<>();
+        this.downDeck = new ArrayList<>();
+    }
+
     //Removes and returns the top card of the downDeck
     public TrainCard drawFromDown(){
         TrainCard card = downDeck.get(0);
