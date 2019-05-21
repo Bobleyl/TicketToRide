@@ -31,13 +31,4 @@ public class TrainCardDeck {
         upDeck.add(position, newCard);
         return card;
     }
-
-    //parses through list of cards returned and inserts back into downDeck in random locations
-    public void returnCards(List<TrainCard> cards){
-        int listSize = downDeck.size();
-        for(TrainCard i : cards) {
-            int random = new Random().nextInt(listSize);
-            downDeck.add(random, i);
-        }
-    }
 }
