@@ -1,9 +1,12 @@
 package androidteam.cs340.tickettoride.Client;
 
-import com.google.gson.JsonArray;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.ArrayType;
+import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 
 import org.apache.commons.io.IOUtils;
 
@@ -14,10 +17,11 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
-import androidteam.cs340.tickettoride.Client.ServerPoller.ParseResults;
 import androidteam.cs340.tickettoride.Shared.Game;
-import androidteam.cs340.tickettoride.Shared.Lobby;
+import androidteam.cs340.tickettoride.Shared.LobbyGameModel;
+import androidteam.cs340.tickettoride.Shared.LobbyModel;
 import androidteam.cs340.tickettoride.Shared.Player;
 import androidteam.cs340.tickettoride.Shared.Result;
 
@@ -82,51 +86,75 @@ public class ClientCommunicator {
         }
     }
 
+    //Example of gson to class
     /*public static void main(String[] args) {
-        JsonObject root = new JsonObject();
-        root.addProperty("command", "createGame");
 
-        // Create Inner JSON Object
-        JsonObject values = new JsonObject();
-        values.addProperty("number_players", 2);
-        values.addProperty("player_id", "gimbo");
-        root.add("values", values);
-        Result result = ClientCommunicator.SINGLETON.send(root.toString());
-        System.out.println(result.getData());
+        Game game = new Game(3);
+        Player player1 = new Player("test1");
+        Player player2 = new Player("test2");
+        Player player3 = new Player("test3");
+        game.addPlayer(player1);
+        game.addPlayer(player2);
+        game.addPlayer(player3);
+
+        Game game1 = new Game(2);
+        try {
+            Gson gson = new Gson();
+            String gameString = gson.toJson(game);
+
+            Game game2 = gson.fromJson(gameString, Game.class);
+
+            for (Player player : game2.getPlayersList()) {
+                System.out.println(player.getUID());
+            }
+            System.out.println(gameString);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
     }*/
 
-    /*public static void main(String[] args) {
+    //Grabbing games from the LobbyGameModel
+    public static void main(String[] args) {
+        //Send command
         JsonObject root = new JsonObject();
         root.addProperty("command", "lobby");
         Result result = ClientCommunicator.SINGLETON.send(root.toString());
-        assert result != null;
+
+        //Check result
+        System.out.println(result.getData());
+
+        Gson gson = new Gson();
+
+        //Allow arrayList
+        TypeToken<List<LobbyGameModel>> token = new TypeToken<List<LobbyGameModel>>() {};
+
+        //Load values into arrayList
+        ArrayList<LobbyGameModel> gameModels = gson.fromJson(result.getData(), token.getType());
+        LobbyModel.SINGLETON.setGames(gameModels);
+
+
+        //Insert info into game
         ArrayList<Game> games = new ArrayList<Game>();
         ArrayList<Player> players = new ArrayList<Player>();
 
-        JsonElement jsonElement = new JsonParser().parse(result.getData());
-        JsonArray jsonArray = jsonElement.getAsJsonArray();
-        for(JsonElement jsonElement1 : jsonArray) {
-            int numPlayersToStart = 0;
-            String gameID = "";
-            JsonObject userObj = jsonElement1.getAsJsonObject();
-            numPlayersToStart = userObj.get("numPlayersToStart").getAsInt();
-            gameID = userObj.get("gameID").getAsString();
-            JsonArray jsonArray1 = userObj.getAsJsonArray("playerIDs");
-            System.out.println(gameID);
-            System.out.println(numPlayersToStart);
-            for (JsonElement jsonElement2 : jsonArray1) {
-                String playerID = "";
-                playerID = jsonElement2.getAsString();
+        for(LobbyGameModel gameModel : gameModels) {
+
+            players = new ArrayList<Player>();
+
+            for(String playerID : gameModel.getPlayerIDs()) {
+
                 Player player = new Player(playerID);
                 players.add(player);
-                System.out.println(playerID);
+
             }
-            Game game = new Game(numPlayersToStart);
+
+            Game game = new Game(gameModel.getNumPlayersToStart());
             game.setPlayersList(players);
-            game.setUID(gameID);
+            game.setUID(gameModel.getGameID());
             games.add(game);
-            Lobby.SINGLETON.addGame(game);
+
         }
-    }*/
+    }
 
 }
