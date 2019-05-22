@@ -31,4 +31,21 @@ public class TrainCardDeck {
         upDeck.add(position, newCard);
         return card;
     }
+
+    public void setUpDeck(List<TrainCard> cardDeck){
+        upDeck = cardDeck;
+    }
+
+    public void setDownDeck(List<TrainCard> downCardDeck){
+        downDeck = downCardDeck;
+    }
+
+    public List<TrainCard> getDownDeck(){
+        return downDeck;
+    }
+
+    public List<TrainCard> getUpDeck(){
+        return upDeck;
+    }
+
 }
