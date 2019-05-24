@@ -5,4 +5,5 @@
     <string name="create_game">Create Game</string>
     <string name="waiting_room">Waiting Room</string>
     <string name="waiting">Waiting...</string>
+    <string name="zero">0</string>
 </resources>
