@@ -33,8 +33,8 @@ public class ClientCommunicator {
 
     public Result send(String command) {
 
-        //String url_ = "http://ec2-18-224-234-208.us-east-2.compute.amazonaws.com:7000/execute";
-        String url_ = "http://localhost:7001/execute";
+        String url_ = "http://ec2-18-224-234-208.us-east-2.compute.amazonaws.com:7000/execute";
+        //String url_ = "http://localhost:7001/execute";
 
         System.out.println(command);
         System.out.println(url_);
