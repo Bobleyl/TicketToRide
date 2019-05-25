@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class DestinationCardDeck {
-    List<DestinationCard> deck = Arrays.asList(DestinationCard.values());
+    List<DestinationCard> deck = new ArrayList<>(Arrays.asList(DestinationCard.values()));
     List<DestinationCard> discard = new ArrayList<>();
 
     DestinationCardDeck() {
