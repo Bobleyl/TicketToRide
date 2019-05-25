@@ -16,7 +16,6 @@ public class Player {
     private int trainCars;
     private boolean myTurn;
 
-
     public Player(String UID){
         this.color = color;
         this.name = name;

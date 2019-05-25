@@ -14,8 +14,6 @@ public class Player {
     private List<TrainCard> trainCardsHand;
     private int score;
     private int trainCars;
-    private boolean myTurn;
-
 
     public Player(String UID){
         this.color = color;
@@ -24,7 +22,6 @@ public class Player {
         this.destinationHand = new ArrayList<>();
         this.trainCardsHand = new ArrayList<>();
         this.score = 0;
-        this.myTurn = false;
         this.trainCars = 45;
     }
 
@@ -80,14 +77,6 @@ public class Player {
 
     public void setTrainCars(int trainCars) {
         this.trainCars = trainCars;
-    }
-
-    public boolean isMyTurn() {
-        return myTurn;
-    }
-
-    public void setMyTurn(boolean myTurn) {
-        this.myTurn = myTurn;
     }
 
     public void drawFaceUp(){
