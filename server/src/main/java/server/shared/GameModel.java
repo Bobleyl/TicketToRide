@@ -9,27 +9,17 @@ public class GameModel {
     String gameID;
     int gameSize;
 
-    private List<GameModel> games = new ArrayList<>();
     private List<Player> playersList = new ArrayList<>();
     private List<Message> messages = new ArrayList<>();
-    private List<TrainCard> trainCardDeck = new ArrayList<>();
+    private List<TrainCard> trainCardDeckDown = new ArrayList<>();
+    private TrainCard[] trainCardDeckUp = new TrainCard[5];
     private List<DestinationCard> destinationCards = new ArrayList<>();
 
-    GameModel game = null;
-
     public GameModel(){ }
-
-    public List<GameModel> getGames() { return games; }
-
-    public void addGame(GameModel game) { games.add(game);}
 
     public String getGameID() {
         return gameID;
     }
-
-    public void setGame(GameModel game_) {game = game_;}
-
-    public GameModel getGame() { return game;}
 
     public void setPlayerTurn(String playerTurn_) {this.playerTurn = playerTurn_;}
 
@@ -43,9 +33,13 @@ public class GameModel {
 
     public List<DestinationCard> getDestinationCardDeck() { return this.destinationCards; }
 
-    public void setTrainCardDeck(List<TrainCard> trainCardDeck) { this.trainCardDeck = trainCardDeck; }
+    public void setTrainCardDeckDown(List<TrainCard> trainCardDeckDown) { this.trainCardDeckDown = trainCardDeckDown; }
 
-    public List<TrainCard> getTrainCardDeck() { return this.trainCardDeck; }
+    public List<TrainCard> getTrainCardDeckDown() { return this.trainCardDeckDown; }
+
+    public void setTrainCardDeckUp(TrainCard[] trainCardDeckUp) { this.trainCardDeckUp = trainCardDeckUp; }
+
+    public TrainCard[] getTrainCardDeckUp() { return this.trainCardDeckUp; }
 
     public void setPlayerList(List<Player> players){ this.playersList = players; }
 

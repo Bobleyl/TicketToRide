@@ -50,13 +50,14 @@ public class LobbyGameModel {
     private void startGame() {
 
         System.out.println("Started game");
-        Game game = new Game();
+        GameModel game = new GameModel();
 
         int i = 0;
         String[] colors = {"red", "blue", "green", "yellow", "black"};
         List<Player> players = new ArrayList<>();
 
         DestinationCardDeck destinationCardDeck = new DestinationCardDeck();
+        TrainCardDeck trainCardDeck = new TrainCardDeck();
 
 
         for (String player : playerIDs) {
@@ -84,6 +85,9 @@ public class LobbyGameModel {
         game.setPlayerTurn(playerIDs.get(0));
         game.setPlayerList(players);
         game.setGameSize(numPlayersToStart);
+        game.setDestinationCardDeck(destinationCardDeck.getDeck());
+        game.setTrainCardDeckDown(trainCardDeck.getDownDeck());
+        game.setTrainCardDeckUp(trainCardDeck.getUpDeck());
         System.out.println(gameID);
         GameList.SINGLETON.addGame(game);
 

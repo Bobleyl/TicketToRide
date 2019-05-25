@@ -1,7 +1,7 @@
 package server;
 
-import server.shared.Game;
 import server.shared.GameList;
+import server.shared.GameModel;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +17,7 @@ public class GameCommand implements CommandInterface {
     @Override
     public Object execute() throws Exception {
 
-        for(Game game : GameList.SINGLETON.getGames()) {
+        for(GameModel game : GameList.SINGLETON.getGames()) {
             if (game.getGameID().equals(gameID)) {
                 return game;
             }
