@@ -487,6 +487,7 @@
 
     <ImageButton
         android:id="@+id/destinationCards"
+        android:onClick="showPopUp"
         android:layout_width="81dp"
         android:layout_height="108dp"
         android:layout_marginStart="8dp"
