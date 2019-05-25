@@ -67,6 +67,10 @@ public class Phase2Facade {
 //        return ServerProxy.SINGLETON.drawDown(player);
 //    }
 
+//    public Result drawDestination(DestinationCard card, Player player){
+//        return ServerProxy.SINGLETON.drawDown(player);
+//    }
+
 //    public Result sendMessage(Message message){
 //        return ServerProxy.SINGLETON.sendMessage(message);
 //    }

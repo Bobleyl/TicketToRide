@@ -6,24 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Client.Fragments.PlayerInfoFragment">
 
-
-    <ImageView
-        android:id="@+id/purpleCard3"
-        android:layout_width="80dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:contentDescription="@string/zero"
-        android:src="@drawable/purple_train_card"
-        app:layout_constraintBottom_toTopOf="@+id/greenCard"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/whiteCard"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.907" />
-
     <EditText
         android:id="@+id/orangeCount"
         android:layout_width="27dp"
