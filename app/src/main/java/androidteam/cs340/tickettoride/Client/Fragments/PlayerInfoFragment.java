@@ -23,7 +23,7 @@ import androidteam.cs340.tickettoride.R;
  * create an instance of this fragment.
  */
 public class PlayerInfoFragment extends Fragment {
-    Dialog myDialog;
+    Dialog myDialog; //used for pop up
 
     private ImageButton mDestinationDeck;
     private ImageButton mDownDeck;
@@ -69,12 +69,11 @@ public class PlayerInfoFragment extends Fragment {
     }
 
     public void showPopUp(View view){ //should allow opening and closing of destination card pop up.
-        TextView txtClose;
+        TextView txtClose = (TextView) myDialog.findViewById(R.id.closePopUp);;
         myDialog.setContentView(R.layout.destination_pop_up);
-        txtClose = (TextView) myDialog.findViewById(R.id.closePopUp);
         txtClose.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) { //if X is clicked dismiss dialog
                 myDialog.dismiss();
             }
         });
