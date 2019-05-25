@@ -31,7 +31,7 @@ public class TrainCardDeck {
         }
     }
 
-    //Removes and returns the top card of the downDeck
+    //Removes and returns the top card of the down_deck
     public TrainCard drawFromDown(){
         if (downDeck.size() == 0 && discard.size() > 0) {
             refreshDownDeck();

@@ -2,8 +2,6 @@ package androidteam.cs340.tickettoride.Shared;
 
 import java.util.List;
 import java.util.ArrayList;
-import androidteam.cs340.tickettoride.Shared.TrainCardDeck;
-import androidteam.cs340.tickettoride.Shared.DestinationCardDeck;
 
 public class Player {
     private String color;
@@ -14,7 +12,7 @@ public class Player {
     private List<TrainCard> trainCardsHand;
     private int score;
     private int trainCars;
-    private boolean myTurn;
+
 
     public Player(String UID){
         this.color = color;
@@ -23,7 +21,6 @@ public class Player {
         this.destinationHand = new ArrayList<>();
         this.trainCardsHand = new ArrayList<>();
         this.score = 0;
-        this.myTurn = false;
         this.trainCars = 45;
     }
 
@@ -53,6 +50,8 @@ public class Player {
         return destinationHand;
     }
 
+    public void addToDestinationHand(DestinationCard destinationCard) { destinationHand.add(destinationCard);}
+
     public void setDestinationHand(List<DestinationCard> destinationHand) {
         this.destinationHand = destinationHand;
     }
@@ -79,14 +78,6 @@ public class Player {
 
     public void setTrainCars(int trainCars) {
         this.trainCars = trainCars;
-    }
-
-    public boolean isMyTurn() {
-        return myTurn;
-    }
-
-    public void setMyTurn(boolean myTurn) {
-        this.myTurn = myTurn;
     }
 
     public void drawFaceUp(){

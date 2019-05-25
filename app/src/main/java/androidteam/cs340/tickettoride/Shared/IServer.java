@@ -9,6 +9,7 @@ public interface IServer {
     Result createGame(String playerID, int size);
     Result joinGame(String playerID, String gameID);
     Result lobby();
+    Result game(String gameID);
     /*Result startGame();
     Result returnDestinationCard(ArrayList<DestinationCard> destinationCards);
     Result drawTrainCardFaceDown();

@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidteam.cs340.tickettoride.Shared.Game;
+import androidteam.cs340.tickettoride.Shared.GameModel;
 import androidteam.cs340.tickettoride.Shared.LobbyGameModel;
 import androidteam.cs340.tickettoride.Shared.LobbyModel;
 import androidteam.cs340.tickettoride.Shared.Player;
@@ -32,7 +33,8 @@ public class ClientCommunicator {
 
     public Result send(String command) {
 
-        String url_ = "http://ec2-18-224-234-208.us-east-2.compute.amazonaws.com:7000/execute";
+        //String url_ = "http://ec2-18-224-234-208.us-east-2.compute.amazonaws.com:7000/execute";
+        String url_ = "http://localhost:7001/execute";
 
         System.out.println(command);
         System.out.println(url_);
@@ -115,7 +117,7 @@ public class ClientCommunicator {
     }*/
 
     //Grabbing games from the LobbyGameModel
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         //Send command
         JsonObject root = new JsonObject();
         root.addProperty("command", "lobby");
@@ -155,6 +157,49 @@ public class ClientCommunicator {
             games.add(game);
 
         }
+    }*/
+
+    //Add players to a game until it is full, so the game will start
+    //Grab the game model and store it on the client to test functionality
+    public static void main(String[] args) {
+
+        JsonObject root = new JsonObject();
+        root.addProperty("command", "delete");
+        Result deleteResult = ClientCommunicator.SINGLETON.send(root.toString());
+        System.out.println("Status code of delete: " + deleteResult.getStatusCode());
+
+        String gameID = "";
+        String player1 = "test1";
+        String player2 = "test2";
+        String player3 = "test3";
+        String player4 = "test4";
+        Result resultCreateGame = ServerProxy.SINGLETON.createGame(player1, 4);
+        System.out.println("Result body of createGame: " + resultCreateGame.getData());
+
+        gameID = resultCreateGame.getData();
+        gameID = gameID.replace("\"", "");
+
+        Result joinGamePlayer2 = ServerProxy.SINGLETON.joinGame(player2, gameID);
+        System.out.println("Result body of joinGamePlayer2: " + joinGamePlayer2.getStatusCode());
+
+        Result joinGamePlayer3 = ServerProxy.SINGLETON.joinGame(player3, gameID);
+        System.out.println("Result body of joinGamePlayer3: " + joinGamePlayer3.getStatusCode());
+
+        Result joinGamePlayer4 = ServerProxy.SINGLETON.joinGame(player4, gameID);
+        System.out.println("Result body of joinGamePlayer4: " + joinGamePlayer4.getStatusCode());
+
+        Result lobby = ServerProxy.SINGLETON.lobby();
+        System.out.println("Lobby: " + lobby.getData());
+
+        Result game = ServerProxy.SINGLETON.game(gameID);
+        System.out.println("Game: " + game.getData());
+
+        Gson gson = new Gson();
+        GameModel gameModel = gson.fromJson(game.getData(), GameModel.class);
+
+        System.out.println(gameModel.getGameSize());
+
+
     }
 
 }

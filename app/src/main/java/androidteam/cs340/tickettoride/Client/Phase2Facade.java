@@ -71,7 +71,7 @@ public class Phase2Facade {
 //        return ServerProxy.SINGLETON.sendMessage(message);
 //    }
 
-    public List<TrainCard> getUpdeck(){
+    public TrainCard[] getUpdeck(){
         return currentDecks.getUpDeck();
     }
 
