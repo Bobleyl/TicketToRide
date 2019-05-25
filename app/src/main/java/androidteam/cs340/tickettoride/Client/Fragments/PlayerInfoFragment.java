@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.app.Dialog;
+import android.widget.TextView;
 import android.widget.ImageButton;
 
 import androidteam.cs340.tickettoride.R;
@@ -21,6 +23,7 @@ import androidteam.cs340.tickettoride.R;
  * create an instance of this fragment.
  */
 public class PlayerInfoFragment extends Fragment {
+    Dialog myDialog;
 
     private ImageButton mDestinationDeck;
     private ImageButton mDownDeck;
@@ -46,8 +49,8 @@ public class PlayerInfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_player_info, container, false);
 
+        View view = inflater.inflate(R.layout.fragment_player_info, container, false);
 
         mDestinationDeck = (ImageButton) view.findViewById(R.id.destinationDeck);
         mDownDeck = (ImageButton) view.findViewById(R.id.downDeck);
@@ -63,6 +66,19 @@ public class PlayerInfoFragment extends Fragment {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
+    }
+
+    public void showPopUp(View view){ //should allow opening and closing of destination card pop up.
+        TextView txtClose;
+        myDialog.setContentView(R.layout.destination_pop_up);
+        txtClose = (TextView) myDialog.findViewById(R.id.closePopUp);
+        txtClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myDialog.dismiss();
+            }
+        });
+        myDialog.show();
     }
 
     @Override
