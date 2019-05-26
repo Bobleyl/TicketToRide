@@ -55,7 +55,7 @@ public class Phase2Facade {
 //        return ServerProxy.SINGLETON.returnDestination(cards);
 //    }
 
-//    public Result claimRoute(Routes route, List<DestinationCard> cards, Player player){
+//    public Result claimRoute(Route route, List<DestinationCard> cards, Player player){
 //        return ServerProxy.SINGLETON.claimRoute(route, cards, player);
 //    }
 
