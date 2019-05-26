@@ -78,7 +78,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
     private void updateUI() {
         //UPDATE COUNT OF CARDS
         updateCount(Phase2Facade.SINGLETON.getMyDeck());
-        //TODO: UPDATE UP CARD DECK, DOWN DECK CAN SIMPLY BE REFERENCED WHEN CLICKED.
+        //TODO: UPDATE UP CARD DECK
         //TODO: UPDATE DESTINATION CARDS IN HAND
     }
 
@@ -242,7 +242,6 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         } else {
             Toast.makeText(getActivity(), "Unsuccessful Draw" , Toast.LENGTH_SHORT).show();
         }
-        //TODO: ADD NEW CARD COUNT TO APPROPRIATE CARD COUNT
     }
 
     private void chooseUpCard(int position){
@@ -253,7 +252,6 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         } else {
             Toast.makeText(getActivity(), "Unsuccessful Draw" , Toast.LENGTH_SHORT).show();
         }
-        //TODO: ADD NEW CARD COUNT TO APPROPRIATE CARD COUNT
     }
 
     private void chooseDestinationCard(){
@@ -285,5 +283,4 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
     }
 
     //TODO: LOGIC AND METHODS FOR RECYCLER VIEW INSIDE OF THE POP UP.
-    //TODO: CALL ON FRAGMENT FOR CHOOSING DESTINATION CARDS WHEN THE DECK IS CLICKED
 }
