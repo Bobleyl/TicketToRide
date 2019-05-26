@@ -10,11 +10,12 @@ public interface IServer {
     Result joinGame(String playerID, String gameID);
     Result lobby();
     Result game(String gameID);
-    /*Result startGame();
-    Result returnDestinationCard(ArrayList<DestinationCard> destinationCards);
-    Result drawTrainCardFaceDown();
-    Result drawTrainCardFaceUp();
-    Result sendMessage();
-    Result claimRoute(Routes routes);*/
+    Result returnDestinationCard(String gameID, String playerID, ArrayList<DestinationCard> destinationCards);
+    Result drawTrainCardFaceDown(String gameID, String playerID);
+    Result drawTrainCardFaceUp(String gameID, String playerID);
+    Result drawDestinationCard(String gameID, String playerID);
+    Result sendMessage(String gameID, String playerID);
+    Result claimRoute(String gameID, String playerID);
+    Result endTurn(String gameID, String playerID);
 
 }

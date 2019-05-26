@@ -1,10 +1,13 @@
 package androidteam.cs340.tickettoride.Client;
 
+import androidteam.cs340.tickettoride.Shared.DestinationCard;
 import com.google.gson.JsonObject;
 
 import androidteam.cs340.tickettoride.Shared.IServer;
 import androidteam.cs340.tickettoride.Shared.Result;
 import androidteam.cs340.tickettoride.Shared.User;
+
+import java.util.ArrayList;
 
 public class ServerProxy implements IServer {
 
@@ -12,7 +15,6 @@ public class ServerProxy implements IServer {
 
     public static ServerProxy SINGLETON = new ServerProxy();
 
-    @Override
     public Result login(User user) {
 
         JsonObject root = new JsonObject();
@@ -27,7 +29,6 @@ public class ServerProxy implements IServer {
         return ClientCommunicator.SINGLETON.send(root.toString());
     }
 
-    @Override
     public Result register(User user) {
 
         JsonObject root = new JsonObject();
@@ -42,7 +43,6 @@ public class ServerProxy implements IServer {
         return ClientCommunicator.SINGLETON.send(root.toString());
     }
 
-    @Override
     public Result createGame(String playerID, int size) {
         JsonObject root = new JsonObject();
         root.addProperty("command", "createGame");
@@ -56,7 +56,6 @@ public class ServerProxy implements IServer {
         return ClientCommunicator.SINGLETON.send(root.toString());
     }
 
-    @Override
     public Result joinGame(String playerID, String gameID) {
         JsonObject root = new JsonObject();
         root.addProperty("command", "joinGame");
@@ -70,22 +69,111 @@ public class ServerProxy implements IServer {
         return ClientCommunicator.SINGLETON.send(root.toString());
     }
 
-    @Override
     public Result lobby() {
         JsonObject root = new JsonObject();
         root.addProperty("command", "lobby");
         return ClientCommunicator.SINGLETON.send(root.toString());
     }
 
-    @Override
     public Result game(String gameID) {
         JsonObject root = new JsonObject();
-        root.addProperty("command", "game");
+        root.addProperty("command", "lobby");
 
         // Create Inner JSON Object
         JsonObject values = new JsonObject();
         values.addProperty("game_id", gameID);
+        root.add("values", values);
 
+        return ClientCommunicator.SINGLETON.send(root.toString());
+    }
+
+    public Result returnDestinationCard(String gameID, String playerID, ArrayList<DestinationCard> destinationCards) {
+        JsonObject root = new JsonObject();
+        root.addProperty("command", "returnDestinationCard");
+
+        // Create Inner JSON Object
+        JsonObject values = new JsonObject();
+        values.addProperty("game_id", gameID);
+        values.addProperty("player_id", playerID);
+        root.add("values", values);
+
+        return ClientCommunicator.SINGLETON.send(root.toString());
+    }
+
+
+    public Result drawTrainCardFaceDown(String gameID, String playerID) {
+        JsonObject root = new JsonObject();
+        root.addProperty("command", "drawFaceDown");
+
+        // Create Inner JSON Object
+        JsonObject values = new JsonObject();
+        values.addProperty("game_id", gameID);
+        values.addProperty("player_id", playerID);
+        root.add("values", values);
+
+        return ClientCommunicator.SINGLETON.send(root.toString());
+    }
+
+    public Result drawTrainCardFaceUp(String gameID, String playerID) {
+        JsonObject root = new JsonObject();
+        root.addProperty("command", "drawFaceUp");
+
+        // Create Inner JSON Object
+        JsonObject values = new JsonObject();
+        values.addProperty("game_id", gameID);
+        values.addProperty("player_id", playerID);
+        root.add("values", values);
+
+        return ClientCommunicator.SINGLETON.send(root.toString());
+    }
+
+    public Result drawDestinationCard(String gameID, String playerID) {
+        JsonObject root = new JsonObject();
+        root.addProperty("command", "drawDestinationCard");
+
+        // Create Inner JSON Object
+        JsonObject values = new JsonObject();
+        values.addProperty("game_id", gameID);
+        values.addProperty("player_id", playerID);
+        root.add("values", values);
+
+        return ClientCommunicator.SINGLETON.send(root.toString());
+    }
+
+    public Result sendMessage(String gameID, String playerID) {
+        JsonObject root = new JsonObject();
+        root.addProperty("command", "sendMessage");
+
+        // Create Inner JSON Object
+        JsonObject values = new JsonObject();
+        values.addProperty("game_id", gameID);
+        values.addProperty("player_id", playerID);
+        root.add("values", values);
+
+        return ClientCommunicator.SINGLETON.send(root.toString());
+    }
+
+    public Result claimRoute(String gameID, String playerID) {
+        JsonObject root = new JsonObject();
+        root.addProperty("command", "claimRoute");
+
+        // Create Inner JSON Object
+        JsonObject values = new JsonObject();
+        values.addProperty("game_id", gameID);
+        values.addProperty("player_id", playerID);
+        root.add("values", values);
+
+        return ClientCommunicator.SINGLETON.send(root.toString());
+    }
+
+    public Result endTurn(String gameID, String playerID) {
+        JsonObject root = new JsonObject();
+        root.addProperty("command", "endTurn");
+
+        // Create Inner JSON Object
+        JsonObject values = new JsonObject();
+        values.addProperty("game_id", gameID);
+        values.addProperty("player_id", playerID);
         root.add("values", values);
 
         return ClientCommunicator.SINGLETON.send(root.toString());
