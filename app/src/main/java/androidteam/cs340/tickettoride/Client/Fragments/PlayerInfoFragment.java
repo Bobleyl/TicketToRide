@@ -128,35 +128,35 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         mUpDeck1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chooseUpCard(1);
+                chooseUpCard(0);
             }
         });
 
         mUpDeck2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chooseUpCard(2);
+                chooseUpCard(1);
             }
         });
 
         mUpDeck3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chooseUpCard(3);
+                chooseUpCard(2);
             }
         });
 
         mUpDeck4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chooseUpCard(4);
+                chooseUpCard(3);
             }
         });
 
         mUpDeck5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chooseUpCard(5);
+                chooseUpCard(4);
             }
         });
 
