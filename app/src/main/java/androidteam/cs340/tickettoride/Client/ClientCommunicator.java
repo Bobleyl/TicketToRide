@@ -19,12 +19,15 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidteam.cs340.tickettoride.Shared.DestinationCard;
 import androidteam.cs340.tickettoride.Shared.Game;
 import androidteam.cs340.tickettoride.Shared.GameModel;
 import androidteam.cs340.tickettoride.Shared.LobbyGameModel;
 import androidteam.cs340.tickettoride.Shared.LobbyModel;
+import androidteam.cs340.tickettoride.Shared.Message;
 import androidteam.cs340.tickettoride.Shared.Player;
 import androidteam.cs340.tickettoride.Shared.Result;
+import androidteam.cs340.tickettoride.Shared.Route;
 
 public class ClientCommunicator {
 
@@ -88,80 +91,16 @@ public class ClientCommunicator {
         }
     }
 
-    //Example of gson to class
+    //Test Cases:
+    //Delete data for fresh start
+    //add players to game until game is full and kick off start game inside server
+    //check to make sure game is deleted from lobby
+    //Add game into a gson serializer
+    //Draw face down cards for a player
+    //Send a message
+    //Draw destination cards
+    //Take some destination cards and return them to the deck
     /*public static void main(String[] args) {
-
-        Game game = new Game(3);
-        Player player1 = new Player("test1");
-        Player player2 = new Player("test2");
-        Player player3 = new Player("test3");
-        game.addPlayer(player1);
-        game.addPlayer(player2);
-        game.addPlayer(player3);
-
-        Game game1 = new Game(2);
-        try {
-            Gson gson = new Gson();
-            String gameString = gson.toJson(game);
-
-            Game game2 = gson.fromJson(gameString, Game.class);
-
-            for (Player player : game2.getPlayersList()) {
-                System.out.println(player.getUID());
-            }
-            System.out.println(gameString);
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
-
-    }*/
-
-    //Grabbing games from the LobbyGameModel
-    /*public static void main(String[] args) {
-        //Send command
-        JsonObject root = new JsonObject();
-        root.addProperty("command", "lobby");
-        Result result = ClientCommunicator.SINGLETON.send(root.toString());
-
-        //Check result
-        System.out.println(result.getData());
-
-        Gson gson = new Gson();
-
-        //Allow arrayList
-        TypeToken<List<LobbyGameModel>> token = new TypeToken<List<LobbyGameModel>>() {};
-
-        //Load values into arrayList
-        ArrayList<LobbyGameModel> gameModels = gson.fromJson(result.getData(), token.getType());
-        LobbyModel.SINGLETON.setGames(gameModels);
-
-
-        //Insert info into game
-        ArrayList<Game> games = new ArrayList<Game>();
-        ArrayList<Player> players = new ArrayList<Player>();
-
-        for(LobbyGameModel gameModel : gameModels) {
-
-            players = new ArrayList<Player>();
-
-            for(String playerID : gameModel.getPlayerIDs()) {
-
-                Player player = new Player(playerID);
-                players.add(player);
-
-            }
-
-            Game game = new Game(gameModel.getNumPlayersToStart());
-            game.setPlayersList(players);
-            game.setUID(gameModel.getGameID());
-            games.add(game);
-
-        }
-    }*/
-
-    //Add players to a game until it is full, so the game will start
-    //Grab the game model and store it on the client to test functionality
-    public static void main(String[] args) {
 
         JsonObject root = new JsonObject();
         root.addProperty("command", "delete");
@@ -175,31 +114,132 @@ public class ClientCommunicator {
         String player4 = "test4";
         Result resultCreateGame = ServerProxy.SINGLETON.createGame(player1, 4);
         System.out.println("Result body of createGame: " + resultCreateGame.getData());
+        System.out.println("Status code of createGame: " + resultCreateGame.getStatusCode());
 
         gameID = resultCreateGame.getData();
         gameID = gameID.replace("\"", "");
 
         Result joinGamePlayer2 = ServerProxy.SINGLETON.joinGame(player2, gameID);
-        System.out.println("Result body of joinGamePlayer2: " + joinGamePlayer2.getStatusCode());
+        System.out.println("Result body of joinGamePlayer2: " + joinGamePlayer2.getData());
+        System.out.println("Status code of joinGamePlayer2: " + joinGamePlayer2.getStatusCode());
 
         Result joinGamePlayer3 = ServerProxy.SINGLETON.joinGame(player3, gameID);
-        System.out.println("Result body of joinGamePlayer3: " + joinGamePlayer3.getStatusCode());
+        System.out.println("Result body of joinGamePlayer3: " + joinGamePlayer3.getData());
+        System.out.println("Status code of joinGamePlayer3: " + joinGamePlayer3.getStatusCode());
 
         Result joinGamePlayer4 = ServerProxy.SINGLETON.joinGame(player4, gameID);
-        System.out.println("Result body of joinGamePlayer4: " + joinGamePlayer4.getStatusCode());
+        System.out.println("Result body of joinGamePlayer4: " + joinGamePlayer4.getData());
+        System.out.println("Status code of joinGamePlayer4: " + joinGamePlayer4.getStatusCode());
 
         Result lobby = ServerProxy.SINGLETON.lobby();
-        System.out.println("Lobby: " + lobby.getData());
+        System.out.println("Result body of Lobby: " + lobby.getData());
+        System.out.println("Status code of Lobby: " + lobby.getStatusCode());
 
-        Result game = ServerProxy.SINGLETON.game(gameID);
-        System.out.println("Game: " + game.getData());
+        Result game = null;
+        game = ServerProxy.SINGLETON.game(gameID);
+        System.out.println("Result body of Game: " + game.getData());
+        System.out.println("Status code of Game: " + game.getStatusCode());
 
         Gson gson = new Gson();
-        GameModel gameModel = gson.fromJson(game.getData(), GameModel.class);
+        GameModel gameModel = null;
+        gameModel = gson.fromJson(game.getData(), GameModel.class);
 
-        System.out.println(gameModel.getGameSize());
+        List<Route> routes = gameModel.getAvailableRoutes();
 
+        System.out.println("Size of down deck before draw: " + gameModel.getTrainCardDeck().getDownDeck().size());
 
-    }
+        Result drawCard = null;
+        drawCard = ServerProxy.SINGLETON.drawTrainCardFaceDown(gameID, player1);
+        System.out.println("Result body of Draw1: " + drawCard.getData());
+        System.out.println("Status code of Draw1: " + drawCard.getStatusCode());
+
+        drawCard = ServerProxy.SINGLETON.drawTrainCardFaceDown(gameID, player1);
+        System.out.println("Result body of Draw2: " + drawCard.getData());
+        System.out.println("Status code of Draw2: " + drawCard.getStatusCode());
+
+        drawCard = ServerProxy.SINGLETON.drawTrainCardFaceDown(gameID, player1);
+        System.out.println("Result body of Draw3: " + drawCard.getData());
+        System.out.println("Status code of Draw3: " + drawCard.getStatusCode());
+
+        drawCard = ServerProxy.SINGLETON.drawTrainCardFaceDown(gameID, player1);
+        System.out.println("Result body of Draw4: " + drawCard.getData());
+        System.out.println("Status code of Draw4: " + drawCard.getStatusCode());
+
+        drawCard = ServerProxy.SINGLETON.drawTrainCardFaceDown(gameID, player1);
+        System.out.println("Result body of Draw5: " + drawCard.getData());
+        System.out.println("Status code of Draw5: " + drawCard.getStatusCode());
+
+        drawCard = ServerProxy.SINGLETON.drawTrainCardFaceDown(gameID, player1);
+        drawCard = ServerProxy.SINGLETON.drawTrainCardFaceDown(gameID, player1);
+        drawCard = ServerProxy.SINGLETON.drawTrainCardFaceDown(gameID, player1);
+        drawCard = ServerProxy.SINGLETON.drawTrainCardFaceDown(gameID, player1);
+        drawCard = ServerProxy.SINGLETON.drawTrainCardFaceDown(gameID, player1);
+        drawCard = ServerProxy.SINGLETON.drawTrainCardFaceDown(gameID, player1);
+
+        Message message = new Message(player1, "Test Message");
+
+        Result sendMessage = ServerProxy.SINGLETON.sendMessage(gameID, player1, message);
+        System.out.println("Result body of Send Message: " + sendMessage.getData());
+        System.out.println("Status code of Send Message: " + sendMessage.getStatusCode());
+
+        Result claimRoute = ServerProxy.SINGLETON.claimRoute(gameID, player1, routes.get(0));
+        System.out.println("Result body of Claim Route:" + claimRoute.getData());
+        System.out.println("Status Code of Claim Route:" + claimRoute.getStatusCode());
+
+        Result drawDestinationCard = null;
+        drawDestinationCard = ServerProxy.SINGLETON.drawDestinationCard(gameID, player1);
+        System.out.println("Result body of draw destination card1:" + drawDestinationCard.getData());
+        System.out.println("Status Code of draw destination card1:" + drawDestinationCard.getStatusCode());
+
+        drawDestinationCard = ServerProxy.SINGLETON.drawDestinationCard(gameID, player1);
+        System.out.println("Result body of draw destination card2:" + drawDestinationCard.getData());
+        System.out.println("Status Code of draw destination card2:" + drawDestinationCard.getStatusCode());
+
+        drawDestinationCard = ServerProxy.SINGLETON.drawDestinationCard(gameID, player1);
+        System.out.println("Result body of draw destination card3:" + drawDestinationCard.getData());
+        System.out.println("Status Code of draw destination card3:" + drawDestinationCard.getStatusCode());
+
+        drawDestinationCard = ServerProxy.SINGLETON.drawDestinationCard(gameID, player1);
+        System.out.println("Result body of draw destination card4:" + drawDestinationCard.getData());
+        System.out.println("Status Code of draw destination card4:" + drawDestinationCard.getStatusCode());
+
+        drawDestinationCard = ServerProxy.SINGLETON.drawDestinationCard(gameID, player1);
+        System.out.println("Result body of draw destination card5:" + drawDestinationCard.getData());
+        System.out.println("Status Code of draw destination card5:" + drawDestinationCard.getStatusCode());
+
+        drawDestinationCard = ServerProxy.SINGLETON.drawDestinationCard(gameID, player1);
+        System.out.println("Result body of draw destination card6:" + drawDestinationCard.getData());
+        System.out.println("Status Code of draw destination card6:" + drawDestinationCard.getStatusCode());
+
+        game = ServerProxy.SINGLETON.game(gameID);
+        System.out.println("Result body of Game: " + game.getData());
+        System.out.println("Status code of Game: " + game.getStatusCode());
+
+        gameModel = gson.fromJson(game.getData(), GameModel.class);
+
+        List<DestinationCard> playerDestinationHand = new ArrayList<>();
+
+        for (Player player : gameModel.getPlayersList()) {
+            if (player.getUID().equals(player1)) {
+                playerDestinationHand.addAll(player.getDestinationHand());
+            }
+        }
+
+        ArrayList<DestinationCard> testReturn = new ArrayList<>();
+        int allowTwo = 0;
+        for (DestinationCard destinationCard : playerDestinationHand) {
+            System.out.println("Returning: " + destinationCard);
+            testReturn.add(destinationCard);
+            allowTwo++;
+            if(allowTwo > 1) {
+                break;
+            }
+        }
+
+        Result returnDestinationCard = ServerProxy.SINGLETON.returnDestinationCard(gameID, player1, testReturn);
+        System.out.println("Result body of return destination card: " + returnDestinationCard.getData());
+        System.out.println("Status code of return destination card: " + returnDestinationCard.getStatusCode());
+
+    }*/
 
 }
