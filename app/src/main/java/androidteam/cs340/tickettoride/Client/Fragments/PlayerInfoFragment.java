@@ -259,7 +259,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
     private void chooseDestinationCard(){
         //TODO: OPEN FRAGMENT FOR CHOOSING DESTINATION CARDS, BUT ALLOW RETURNING 0-2 INSTEAD OF 0-1
         //Result result = Phase2Facade.SINGLETON.drawDestination(card);
-        //TODO: ADD NEW CARDS TO DESTINATION HAND
+        //TODO: PASS RESULT TO NEW FRAGMENT
     }
 
     @Override
