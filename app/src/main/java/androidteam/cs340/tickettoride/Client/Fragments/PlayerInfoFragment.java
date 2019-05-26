@@ -74,7 +74,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
     private void updateUI() {
         //UPDATE COUNT OF CARDS
         updateCount(Phase2Facade.SINGLETON.getMyDeck());
-        //TODO: UPDATE CARD DECKS
+        //TODO: UPDATE UP CARD DECK, DOWN DECK CAN SIMPLY BE REFERENCED WHEN CLICKED.
         //TODO: UPDATE DESTINATION CARDS IN HAND
     }
 
@@ -89,23 +89,23 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
 
         View view = inflater.inflate(R.layout.fragment_player_info, container, false);
 
-        mDestinationDeck = (ImageButton) view.findViewById(R.id.destinationDeck);
-        mDestinationCards = (ImageButton) view.findViewById(R.id.destinationCards);
-        mDownDeck = (ImageButton) view.findViewById(R.id.downDeck);
-        mUpDeck1 = (ImageButton) view.findViewById(R.id.upDeck1);
-        mUpDeck2 = (ImageButton) view.findViewById(R.id.upDeck2);
-        mUpDeck3 = (ImageButton) view.findViewById(R.id.upDeck3);
-        mUpDeck4 = (ImageButton) view.findViewById(R.id.upDeck4);
-        mUpDeck5 = (ImageButton) view.findViewById(R.id.upDeck5);
-        mOrangeCount = (TextView) view.findViewById(R.id.orangeCount);
-        mRedCount = (TextView) view.findViewById(R.id.redCount);
-        mWildCount = (TextView) view.findViewById(R.id.wildCount);
-        mWhiteCount = (TextView) view.findViewById(R.id.whiteCount);
-        mBlackCount = (TextView) view.findViewById(R.id.blackCount);
-        mBlueCount = (TextView) view.findViewById(R.id.blueCount);
-        mGreenCount = (TextView) view.findViewById(R.id.greenCount);
-        mPurpleCount = (TextView) view.findViewById(R.id.purpleCount);
-        mYellowCount = (TextView) view.findViewById(R.id.yellowCount);
+        mDestinationDeck = view.findViewById(R.id.destinationDeck);
+        mDestinationCards = view.findViewById(R.id.destinationCards);
+        mDownDeck = view.findViewById(R.id.downDeck);
+        mUpDeck1 = view.findViewById(R.id.upDeck1);
+        mUpDeck2 = view.findViewById(R.id.upDeck2);
+        mUpDeck3 = view.findViewById(R.id.upDeck3);
+        mUpDeck4 = view.findViewById(R.id.upDeck4);
+        mUpDeck5 = view.findViewById(R.id.upDeck5);
+        mOrangeCount = view.findViewById(R.id.orangeCount);
+        mRedCount = view.findViewById(R.id.redCount);
+        mWildCount = view.findViewById(R.id.wildCount);
+        mWhiteCount = view.findViewById(R.id.whiteCount);
+        mBlackCount = view.findViewById(R.id.blackCount);
+        mBlueCount = view.findViewById(R.id.blueCount);
+        mGreenCount = view.findViewById(R.id.greenCount);
+        mPurpleCount = view.findViewById(R.id.purpleCount);
+        mYellowCount = view.findViewById(R.id.yellowCount);
 
         mDownDeck.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -168,7 +168,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
 
 
     public void showPopUp(View view){ //should allow opening and closing of destination card pop up.
-        TextView txtClose = (TextView) myDialog.findViewById(R.id.closePopUp);;
+        TextView txtClose = myDialog.findViewById(R.id.closePopUp);;
         myDialog.setContentView(R.layout.destination_pop_up);
         txtClose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -240,6 +240,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         Toast.makeText(getActivity(), "Drawing Card..." , Toast.LENGTH_SHORT).show();
         //Result result = Phase2Facade.SINGLETON.drawUp(card);
         //TODO: ADD NEW CARD COUNT TO APPROPRIATE CARD COUNT
+        //TODO: UPDATE CARD FROM SPOT THAT WAS TAKEN WITH THE NEXT CARD FROM THE DECK
     }
 
     private void chooseDestinationCard(){
