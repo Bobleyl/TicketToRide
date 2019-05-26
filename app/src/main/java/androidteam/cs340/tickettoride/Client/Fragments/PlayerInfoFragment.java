@@ -14,21 +14,18 @@ import android.widget.TextView;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.util.List;
+
 import androidteam.cs340.tickettoride.Client.ModelFacade;
+import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.R;
+import androidteam.cs340.tickettoride.Shared.Game;
 import androidteam.cs340.tickettoride.Shared.Result;
 import androidteam.cs340.tickettoride.Shared.TrainCard;
 import androidteam.cs340.tickettoride.Shared.DestinationCard;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link PlayerInfoFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link PlayerInfoFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class PlayerInfoFragment extends Fragment {
+
+public class PlayerInfoFragment extends Fragment implements IPresenter {
     Dialog myDialog; //used for pop up
 
     private ImageButton mDestinationDeck;
@@ -38,6 +35,7 @@ public class PlayerInfoFragment extends Fragment {
     private ImageButton mUpDeck3;
     private ImageButton mUpDeck4;
     private ImageButton mUpDeck5;
+    private ImageButton mDestinationCards;
     private TextView mOrangeCount;
     private TextView mWhiteCount;
     private TextView mRedCount;
@@ -47,17 +45,39 @@ public class PlayerInfoFragment extends Fragment {
     private TextView mPurpleCount;
     private TextView mBlackCount;
     private TextView mYellowCount;
+
+    private String ID;
     private OnFragmentInteractionListener mListener;
 
-    public PlayerInfoFragment() {
-        // Required empty public constructor
+    public void Update() {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                updateUI();
+            }
+        });
     }
 
-    public static PlayerInfoFragment newInstance(String param1, String param2) {
-        PlayerInfoFragment fragment = new PlayerInfoFragment();
-        Bundle args = new Bundle();
+    @Override
+    public void onResume(){
+        super.onResume();
+        ModelFacade.SINGLETON.addPresenter(this);
+    }
 
-        return fragment;
+    @Override
+    public void onPause(){
+        super.onPause();
+        ModelFacade.SINGLETON.removePresenter(this);
+    }
+
+    private void updateUI() {
+        //TODO: UPDATE COUNT OF CARDS
+        //TODO: UPDATE CARD DECKS
+        //TODO: UPDATE DESTINATION CARDS IN HAND
+    }
+
+    public String getID(){
+        return ID;
     }
 
     @Override
@@ -68,6 +88,7 @@ public class PlayerInfoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_player_info, container, false);
 
         mDestinationDeck = (ImageButton) view.findViewById(R.id.destinationDeck);
+        mDestinationCards = (ImageButton) view.findViewById(R.id.destinationCards);
         mDownDeck = (ImageButton) view.findViewById(R.id.downDeck);
         mUpDeck1 = (ImageButton) view.findViewById(R.id.upDeck1);
         mUpDeck2 = (ImageButton) view.findViewById(R.id.upDeck2);
@@ -83,8 +104,66 @@ public class PlayerInfoFragment extends Fragment {
         mGreenCount = (TextView) view.findViewById(R.id.greenCount);
         mPurpleCount = (TextView) view.findViewById(R.id.purpleCount);
         mYellowCount = (TextView) view.findViewById(R.id.yellowCount);
+
+        mDownDeck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseDownCard();
+            }
+        });
+
+        mDestinationDeck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseDestinationCard();
+            }
+        });
+
+        mUpDeck1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseUpCard(1);
+            }
+        });
+
+        mUpDeck2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseUpCard(2);
+            }
+        });
+
+        mUpDeck3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseUpCard(3);
+            }
+        });
+
+        mUpDeck4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseUpCard(4);
+            }
+        });
+
+        mUpDeck5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseUpCard(5);
+            }
+        });
+
+        mDestinationCards.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopUp(v);
+            }
+        });
+
         return view;
     }
+
 
     public void showPopUp(View view){ //should allow opening and closing of destination card pop up.
         TextView txtClose = (TextView) myDialog.findViewById(R.id.closePopUp);;
@@ -104,14 +183,14 @@ public class PlayerInfoFragment extends Fragment {
         //TODO: ADD NEW CARD COUNT TO APPROPRIATE CARD COUNT
     }
 
-    private void chooseUpCard(TrainCard card){
+    private void chooseUpCard(int position){
         Toast.makeText(getActivity(), "Drawing Card..." , Toast.LENGTH_SHORT).show();
         //Result result = ModelFacade.SINGLETON.drawUp(card);
         //TODO: ADD NEW CARD COUNT TO APPROPRIATE CARD COUNT
     }
 
-    private void chooseDestinationCard(DestinationCard card){
-        Toast.makeText(getActivity(), "Drawing Card..." , Toast.LENGTH_SHORT).show();
+    private void chooseDestinationCard(){
+        //TODO: OPEN FRAGMENT FOR CHOOSING DESTINATION CARDS, BUT ALLOW RETURNING 0-2 INSTEAD OF 0-1
         //Result result = ModelFacade.SINGLETON.drawDestination(card);
         //TODO: ADD NEW CARDS TO DESTINATION HAND
     }
@@ -137,4 +216,7 @@ public class PlayerInfoFragment extends Fragment {
 
         void onFragmentInteraction(Uri uri);
     }
+
+    //TODO: LOGIC AND METHODS FOR RECYCLER VIEW INSIDE OF THE POP UP.
+    //TODO: CALL ON FRAGMENT FOR CHOOSING DESTINATION CARDS WHEN THE DECK IS CLICKED
 }
