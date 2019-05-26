@@ -1,13 +1,12 @@
 package androidteam.cs340.tickettoride.Client;
 
-import androidteam.cs340.tickettoride.Shared.DestinationCard;
+import androidteam.cs340.tickettoride.Shared.*;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
-import androidteam.cs340.tickettoride.Shared.IServer;
-import androidteam.cs340.tickettoride.Shared.Result;
-import androidteam.cs340.tickettoride.Shared.User;
-
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ServerProxy implements IServer {
 
@@ -77,7 +76,7 @@ public class ServerProxy implements IServer {
 
     public Result game(String gameID) {
         JsonObject root = new JsonObject();
-        root.addProperty("command", "lobby");
+        root.addProperty("command", "game");
 
         // Create Inner JSON Object
         JsonObject values = new JsonObject();
@@ -153,14 +152,17 @@ public class ServerProxy implements IServer {
         return ClientCommunicator.SINGLETON.send(root.toString());
     }
 
-    public Result claimRoute(String gameID, String playerID) {
+    public Result claimRoute(String gameID, String playerID, Route route) {
         JsonObject root = new JsonObject();
         root.addProperty("command", "claimRoute");
+
+        Gson gson = new Gson();
 
         // Create Inner JSON Object
         JsonObject values = new JsonObject();
         values.addProperty("game_id", gameID);
         values.addProperty("player_id", playerID);
+        values.addProperty("route", gson.toJson(route));
         root.add("values", values);
 
         return ClientCommunicator.SINGLETON.send(root.toString());

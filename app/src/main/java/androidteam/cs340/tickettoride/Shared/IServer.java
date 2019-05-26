@@ -15,7 +15,7 @@ public interface IServer {
     Result drawTrainCardFaceUp(String gameID, String playerID);
     Result drawDestinationCard(String gameID, String playerID);
     Result sendMessage(String gameID, String playerID);
-    Result claimRoute(String gameID, String playerID);
+    Result claimRoute(String gameID, String playerID, Route route);
     Result endTurn(String gameID, String playerID);
 
 }
