@@ -1,6 +1,7 @@
 package androidteam.cs340.tickettoride.Client.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.ColorSpace;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,9 +15,12 @@ import android.widget.TextView;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidteam.cs340.tickettoride.Client.Activities.LobbyActivity;
+import androidteam.cs340.tickettoride.Client.Activities.LoginRegisterActivity;
 import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.R;
@@ -231,16 +235,25 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
     }
 
     private void chooseDownCard(){
-        Toast.makeText(getActivity(), "Drawing Card..." , Toast.LENGTH_SHORT).show();
-        //Result result = Phase2Facade.SINGLETON.drawDown(card);
+        Result result = Phase2Facade.SINGLETON.drawDown();
+        if(result.getStatusCode() == HttpURLConnection.HTTP_OK) {
+            Toast.makeText(getActivity(), "Card Drawn..." , Toast.LENGTH_SHORT).show();
+            //TODO: DISPLAY TYPE OF CARD DRAWN.
+        } else {
+            Toast.makeText(getActivity(), "Unsuccessful Draw" , Toast.LENGTH_SHORT).show();
+        }
         //TODO: ADD NEW CARD COUNT TO APPROPRIATE CARD COUNT
     }
 
     private void chooseUpCard(int position){
         Toast.makeText(getActivity(), "Drawing Card..." , Toast.LENGTH_SHORT).show();
-        //Result result = Phase2Facade.SINGLETON.drawUp(card);
+        Result result = Phase2Facade.SINGLETON.drawUp(position);
+        if(result.getStatusCode() == HttpURLConnection.HTTP_OK) {
+            Toast.makeText(getActivity(), "Card Drawn..." , Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getActivity(), "Unsuccessful Draw" , Toast.LENGTH_SHORT).show();
+        }
         //TODO: ADD NEW CARD COUNT TO APPROPRIATE CARD COUNT
-        //TODO: UPDATE CARD FROM SPOT THAT WAS TAKEN WITH THE NEXT CARD FROM THE DECK
     }
 
     private void chooseDestinationCard(){
