@@ -7,6 +7,26 @@
     tools:context=".Client.Fragments.PlayerInfoFragment">
 
     <EditText
+        android:id="@+id/pinkCount"
+        android:layout_width="27dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/zero"
+        android:inputType="number"
+        android:text="@string/zero"
+        app:layout_constraintBottom_toTopOf="@+id/pinkCard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintStart_toEndOf="@+id/whiteCount"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
         android:id="@+id/orangeCount"
         android:layout_width="27dp"
         android:layout_height="56dp"
@@ -149,7 +169,7 @@
         app:layout_constraintVertical_bias="0.975" />
 
     <ImageView
-        android:id="@+id/purpleCard"
+        android:id="@+id/pinkCard"
         android:layout_width="80dp"
         android:layout_height="65dp"
         android:layout_marginStart="8dp"
@@ -177,7 +197,7 @@
         android:contentDescription="@string/zero"
         android:scaleType="fitXY"
         android:src="@drawable/purple_train_card"
-        app:layout_constraintBottom_toTopOf="@+id/purpleCount"
+        app:layout_constraintBottom_toTopOf="@+id/trainCount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/downDeck"
@@ -196,7 +216,7 @@
         android:contentDescription="@string/zero"
         android:scaleType="fitXY"
         android:src="@drawable/purple_train_card"
-        app:layout_constraintBottom_toTopOf="@+id/purpleCount"
+        app:layout_constraintBottom_toTopOf="@+id/trainCount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/upDeck1"
@@ -215,7 +235,7 @@
         android:contentDescription="@string/zero"
         android:scaleType="fitXY"
         android:src="@drawable/purple_train_card"
-        app:layout_constraintBottom_toTopOf="@+id/purpleCount"
+        app:layout_constraintBottom_toTopOf="@+id/trainCount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/upDeck2"
@@ -312,24 +332,24 @@
         app:layout_constraintVertical_bias="0.907" />
 
     <EditText
-        android:id="@+id/purpleCount"
+        android:id="@+id/trainCount"
         android:layout_width="27dp"
         android:layout_height="56dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/zero"
         android:inputType="number"
         android:text="@string/zero"
-        app:layout_constraintBottom_toTopOf="@+id/purpleCard"
+        app:layout_constraintBottom_toTopOf="@+id/pinkCard"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.128"
-        app:layout_constraintStart_toEndOf="@+id/whiteCount"
+        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintStart_toEndOf="@+id/pinkCount"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/whiteCount"
@@ -426,7 +446,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.13"
         app:layout_constraintStart_toEndOf="@+id/blueCount"
-        app:layout_constraintTop_toBottomOf="@+id/purpleCard"
+        app:layout_constraintTop_toBottomOf="@+id/pinkCard"
         app:layout_constraintVertical_bias="0.515" />
 
     <ImageButton
@@ -441,7 +461,7 @@
         android:contentDescription="@string/zero"
         android:scaleType="fitXY"
         android:src="@drawable/down_deck"
-        app:layout_constraintBottom_toTopOf="@+id/purpleCount"
+        app:layout_constraintBottom_toTopOf="@+id/trainCount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.018"
         app:layout_constraintStart_toEndOf="@+id/destinationDeck"
@@ -482,5 +502,18 @@
         app:layout_constraintStart_toEndOf="@+id/orangeCard"
         app:layout_constraintTop_toBottomOf="@+id/upDeck5"
         app:layout_constraintVertical_bias="0.871" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="148dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/train_car"
+        app:layout_constraintEnd_toStartOf="@+id/destinationCards"
+        app:layout_constraintHorizontal_bias="0.195"
+        app:layout_constraintStart_toEndOf="@+id/pinkCard"
+        app:layout_constraintTop_toBottomOf="@+id/upDeck3" />
 
 </android.support.constraint.ConstraintLayout>

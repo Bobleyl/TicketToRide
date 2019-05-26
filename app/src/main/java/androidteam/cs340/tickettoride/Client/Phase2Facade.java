@@ -129,4 +129,8 @@ public class Phase2Facade {
         return this.currentMyDeck;
     }
 
+    public int getTrainCars(){
+        return currentPlayer.getTrainCars();
+    }
+
 }

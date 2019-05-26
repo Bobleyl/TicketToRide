@@ -1,33 +1,25 @@
 package androidteam.cs340.tickettoride.Client.Fragments;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.ColorSpace;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.app.Dialog;
 import android.widget.TextView;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.net.HttpURLConnection;
-import java.util.ArrayList;
 import java.util.List;
 
-import androidteam.cs340.tickettoride.Client.Activities.LobbyActivity;
-import androidteam.cs340.tickettoride.Client.Activities.LoginRegisterActivity;
 import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.R;
-import androidteam.cs340.tickettoride.Shared.Game;
 import androidteam.cs340.tickettoride.Shared.Result;
 import androidteam.cs340.tickettoride.Shared.TrainCard;
-import androidteam.cs340.tickettoride.Shared.DestinationCard;
 
 
 public class PlayerInfoFragment extends Fragment implements IPresenter {
@@ -47,9 +39,10 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
     private TextView mWildCount;
     private TextView mBlueCount;
     private TextView mGreenCount;
-    private TextView mPurpleCount;
+    private TextView mPinkCount;
     private TextView mBlackCount;
     private TextView mYellowCount;
+    private TextView mTrainCount;
 
     private String ID;
     private OnFragmentInteractionListener mListener;
@@ -75,10 +68,10 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         Phase2Facade.SINGLETON.removePresenter(this);
     }
 
-    private void updateUI() {
-        //UPDATE COUNT OF CARDS
-        updateCount(Phase2Facade.SINGLETON.getMyDeck());
-        //TODO: UPDATE UP CARD DECK
+    private void updateUI() { // TODO: ONLY UPDATE SPECIFIC THINGS WHEN THERE IS A CHANGE TO THEM
+        updateCount(Phase2Facade.SINGLETON.getMyDeck()); // UPDATES THE COUNT OF THE CARDS IN PLAYERS HAND
+        mTrainCount.setText(String.valueOf(Phase2Facade.SINGLETON.getTrainCars())); // UPDATES THE COUNT OF TRAIN CARS IN PLAYERS POSSESSION.
+        updateUpDeck(Phase2Facade.SINGLETON.getUpdeck()); // UPDATES THE FACE UP CARDS
         //TODO: UPDATE DESTINATION CARDS IN HAND
     }
 
@@ -108,8 +101,10 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         mBlackCount = view.findViewById(R.id.blackCount);
         mBlueCount = view.findViewById(R.id.blueCount);
         mGreenCount = view.findViewById(R.id.greenCount);
-        mPurpleCount = view.findViewById(R.id.purpleCount);
+        mPinkCount = view.findViewById(R.id.pinkCount);
         mYellowCount = view.findViewById(R.id.yellowCount);
+        mTrainCount = view.findViewById(R.id.trainCount);
+
 
         mDownDeck.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -183,6 +178,166 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         myDialog.show();
     }
 
+    private void updateUpDeck(TrainCard[] cards){
+        int count = 0;
+        for(TrainCard card : cards){
+            if(card.color == "black"){
+                if(count == 0){
+                    mUpDeck1.setBackgroundResource(R.drawable.black_train_card);
+                }
+                if(count == 1){
+                    mUpDeck2.setBackgroundResource(R.drawable.black_train_card);
+                }
+                if(count == 2){
+                    mUpDeck3.setBackgroundResource(R.drawable.black_train_card);
+                }
+                if(count == 3){
+                    mUpDeck4.setBackgroundResource(R.drawable.black_train_card);
+                }
+                if(count == 4){
+                    mUpDeck5.setBackgroundResource(R.drawable.black_train_card);
+                }
+            }
+            if(card.color == "blue"){
+                if(count == 0){
+                    mUpDeck1.setBackgroundResource(R.drawable.blue_train_card);
+                }
+                if(count == 1){
+                    mUpDeck2.setBackgroundResource(R.drawable.blue_train_card);
+                }
+                if(count == 2){
+                    mUpDeck3.setBackgroundResource(R.drawable.blue_train_card);
+                }
+                if(count == 3){
+                    mUpDeck4.setBackgroundResource(R.drawable.blue_train_card);
+                }
+                if(count == 4){
+                    mUpDeck5.setBackgroundResource(R.drawable.blue_train_card);
+                }
+            }
+            if(card.color == "white"){
+                if(count == 0){
+                    mUpDeck1.setBackgroundResource(R.drawable.white_train_card);
+                }
+                if(count == 1){
+                    mUpDeck2.setBackgroundResource(R.drawable.white_train_card);
+                }
+                if(count == 2){
+                    mUpDeck3.setBackgroundResource(R.drawable.white_train_card);
+                }
+                if(count == 3){
+                    mUpDeck4.setBackgroundResource(R.drawable.white_train_card);
+                }
+                if(count == 4){
+                    mUpDeck5.setBackgroundResource(R.drawable.white_train_card);
+                }
+            }
+            if(card.color == "orange"){
+                if(count == 0){
+                    mUpDeck1.setBackgroundResource(R.drawable.orange_train_card);
+                }
+                if(count == 1){
+                    mUpDeck2.setBackgroundResource(R.drawable.orange_train_card);
+                }
+                if(count == 2){
+                    mUpDeck3.setBackgroundResource(R.drawable.orange_train_card);
+                }
+                if(count == 3){
+                    mUpDeck4.setBackgroundResource(R.drawable.orange_train_card);
+                }
+                if(count == 4){
+                    mUpDeck5.setBackgroundResource(R.drawable.orange_train_card);
+                }
+            }
+            if(card.color == "yellow"){
+                if(count == 0){
+                    mUpDeck1.setBackgroundResource(R.drawable.yellow_train_card);
+                }
+                if(count == 1){
+                    mUpDeck2.setBackgroundResource(R.drawable.yellow_train_card);
+                }
+                if(count == 2){
+                    mUpDeck3.setBackgroundResource(R.drawable.yellow_train_card);
+                }
+                if(count == 3){
+                    mUpDeck4.setBackgroundResource(R.drawable.yellow_train_card);
+                }
+                if(count == 4){
+                    mUpDeck5.setBackgroundResource(R.drawable.yellow_train_card);
+                }
+            }
+            if(card.color == "green"){
+                if(count == 0){
+                    mUpDeck1.setBackgroundResource(R.drawable.green_train_card);
+                }
+                if(count == 1){
+                    mUpDeck2.setBackgroundResource(R.drawable.green_train_card);
+                }
+                if(count == 2){
+                    mUpDeck3.setBackgroundResource(R.drawable.green_train_card);
+                }
+                if(count == 3){
+                    mUpDeck4.setBackgroundResource(R.drawable.green_train_card);
+                }
+                if(count == 4){
+                    mUpDeck5.setBackgroundResource(R.drawable.green_train_card);
+                }
+            }
+            if(card.color == "wild"){ // TODO: ADD wild_train_card TO DRAWABLE
+                if(count == 0){
+                    //mUpDeck1.setBackgroundResource(R.drawable.wild_train_card);
+                }
+                if(count == 1){
+                    //mUpDeck2.setBackgroundResource(R.drawable.wild_train_card);
+                }
+                if(count == 2){
+                    //mUpDeck3.setBackgroundResource(R.drawable.wild_train_card);
+                }
+                if(count == 3){
+                    //mUpDeck4.setBackgroundResource(R.drawable.wild_train_card);
+                }
+                if(count == 4){
+                    //mUpDeck5.setBackgroundResource(R.drawable.wild_train_card);
+                }
+            }
+            if(card.color == "red"){
+                if(count == 0){
+                    mUpDeck1.setBackgroundResource(R.drawable.red_train_card);
+                }
+                if(count == 1){
+                    mUpDeck2.setBackgroundResource(R.drawable.red_train_card);
+                }
+                if(count == 2){
+                    mUpDeck3.setBackgroundResource(R.drawable.red_train_card);
+                }
+                if(count == 3){
+                    mUpDeck4.setBackgroundResource(R.drawable.red_train_card);
+                }
+                if(count == 4){
+                    mUpDeck5.setBackgroundResource(R.drawable.red_train_card);
+                }
+            }
+            if(card.color == "pink"){
+                if(count == 0){
+                    mUpDeck1.setBackgroundResource(R.drawable.purple_train_card);
+                }
+                if(count == 1){
+                    mUpDeck2.setBackgroundResource(R.drawable.purple_train_card);
+                }
+                if(count == 2){
+                    mUpDeck3.setBackgroundResource(R.drawable.purple_train_card);
+                }
+                if(count == 3){
+                    mUpDeck4.setBackgroundResource(R.drawable.purple_train_card);
+                }
+                if(count == 4){
+                    mUpDeck5.setBackgroundResource(R.drawable.purple_train_card);
+                }
+            }
+            count++;
+        }
+    }
+
     //count through personal card deck and update counts for each color
     private void updateCount(List<TrainCard> cards){
         int orange = 0;
@@ -229,7 +384,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
             }
             if(card.color == "purple"){
                 purple = purple + 1;
-                mPurpleCount.setText(purple);
+                mPinkCount.setText(purple);
             }
         }
     }
@@ -283,4 +438,5 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
     }
 
     //TODO: LOGIC AND METHODS FOR RECYCLER VIEW INSIDE OF THE POP UP.
+    //TODO: ADD TRAIN CARD LIST TO RECYCLER VIEW IN POP UP.
 }
