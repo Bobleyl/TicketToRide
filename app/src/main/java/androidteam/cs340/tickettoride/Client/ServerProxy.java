@@ -113,7 +113,7 @@ public class ServerProxy implements IServer {
         return ClientCommunicator.SINGLETON.send(root.toString());
     }
 
-    public Result drawTrainCardFaceUp(String gameID, String playerID) {
+    public Result drawTrainCardFaceUp(String gameID, String playerID, Integer position) {
         JsonObject root = new JsonObject();
         root.addProperty("command", "drawFaceUp");
 
@@ -139,7 +139,7 @@ public class ServerProxy implements IServer {
         return ClientCommunicator.SINGLETON.send(root.toString());
     }
 
-    public Result sendMessage(String gameID, String playerID) {
+    public Result sendMessage(String gameID, String playerID, String textMessage) {
         JsonObject root = new JsonObject();
         root.addProperty("command", "sendMessage");
 
@@ -147,6 +147,7 @@ public class ServerProxy implements IServer {
         JsonObject values = new JsonObject();
         values.addProperty("game_id", gameID);
         values.addProperty("player_id", playerID);
+        values.addProperty("message", textMessage);
         root.add("values", values);
 
         return ClientCommunicator.SINGLETON.send(root.toString());

@@ -12,9 +12,9 @@ public interface IServer {
     Result game(String gameID);
     Result returnDestinationCard(String gameID, String playerID, ArrayList<DestinationCard> destinationCards);
     Result drawTrainCardFaceDown(String gameID, String playerID);
-    Result drawTrainCardFaceUp(String gameID, String playerID);
+    Result drawTrainCardFaceUp(String gameID, String playerID, Integer position);
     Result drawDestinationCard(String gameID, String playerID);
-    Result sendMessage(String gameID, String playerID);
+    Result sendMessage(String gameID, String playerID, String textMessage);
     Result claimRoute(String gameID, String playerID, Route route);
     Result endTurn(String gameID, String playerID);
 
