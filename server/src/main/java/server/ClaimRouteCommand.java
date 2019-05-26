@@ -25,6 +25,9 @@ public class ClaimRouteCommand implements CommandInterface {
     @Override
     public Object execute() throws Exception {
 
+        boolean successfulExecute = false;
+        ReturnMessage returnMessage = new ReturnMessage();
+
         for(GameModel game : GameList.SINGLETON.getGames()) {
             if (game.getGameID().equals(gameID)) {
                 for (Player player : game.getPlayersList()) {
@@ -76,6 +79,8 @@ public class ClaimRouteCommand implements CommandInterface {
                             }
                             //Take original score and add it to new score
                             player.setScore(player.getScore()+score);
+                            successfulExecute = true;
+                            returnMessage.setReponseMessage("success");
 
                         } else {
                             System.out.println("Player doesn't have enough cards to claim route (" +
@@ -87,6 +92,10 @@ public class ClaimRouteCommand implements CommandInterface {
             }
         }
 
-        return null;
+        if (successfulExecute) {
+            return returnMessage;
+        } else {
+            throw new Exception("Failed to claim route");
+        }
     }
 }
