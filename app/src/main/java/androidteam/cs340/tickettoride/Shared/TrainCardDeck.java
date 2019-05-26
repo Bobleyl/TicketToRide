@@ -15,7 +15,7 @@ public class TrainCardDeck {
         List uniqueCards = Arrays.asList(TrainCard.values());
 
         for (int i = 0; i < 12; i++) {
-            //Warning: Uses unchecked or unsafe operations (uniqueCards)
+
             downDeck.addAll(uniqueCards);
         }
 
@@ -77,4 +77,5 @@ public class TrainCardDeck {
     public List<TrainCard> getDiscard() { return discard;}
 
 }
+
 
