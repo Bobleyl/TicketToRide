@@ -14,6 +14,7 @@ import androidteam.cs340.tickettoride.Shared.Result;
 import androidteam.cs340.tickettoride.Shared.Message;
 import androidteam.cs340.tickettoride.Shared.Colors;
 import androidteam.cs340.tickettoride.Shared.Routes;
+import androidteam.cs340.tickettoride.Shared.Route;
 
 public class Phase2Facade {
 
@@ -53,13 +54,14 @@ public class Phase2Facade {
 
     // COMMANDS --------------------- // ------------------------
 
-//    public Result returnDestination(List<DestinationCard> cards) {
-//        return ServerProxy.SINGLETON.returnDestination(cards);
-//    }
+    public Result returnDestination(ArrayList<DestinationCard> cards) {
+        return ServerProxy.SINGLETON.returnDestinationCard(currentGame.getUID(), currentPlayer.getUID(),cards);
+    }
 
-//    public Result claimRoute(Route route, List<DestinationCard> cards, Player player){
-//        return ServerProxy.SINGLETON.claimRoute(route, cards, player);
-//    }
+    public Result claimRoute(Route route, List<DestinationCard> cards, Player player){
+        //TODO: CHECK IF THERE ARE SUFFICIENT CARDS FOR THAT ROUTE, RETURN THOSE CARDS TO DECK AND PROCEED
+        return ServerProxy.SINGLETON.claimRoute(currentGame.getUID(),currentPlayer.getUID(), route);
+    }
 
 //    public Result drawUp(String cardID, Player player){
 //        return ServerProxy.SINGLETON.drawUp(cardID, player);
@@ -76,6 +78,10 @@ public class Phase2Facade {
 //    public Result sendMessage(Message message){
 //        return ServerProxy.SINGLETON.sendMessage(message);
 //    }
+
+    public Result endTurn(){
+        return ServerProxy.SINGLETON.endTurn(currentGame.getUID(), currentPlayer.getUID());
+    }
 
     public TrainCard[] getUpdeck(){
         return currentDecks.getUpDeck();
