@@ -3,45 +3,29 @@ package androidteam.cs340.tickettoride.Client.Fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
+import java.util.List;
+
+import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.R;
+import androidteam.cs340.tickettoride.Shared.Game;
+import androidteam.cs340.tickettoride.Shared.Message;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link MessageFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link MessageFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class MessageFragment extends Fragment {
-
+    private RecyclerView mMessageRecyclerView;
     private OnFragmentInteractionListener mListener;
-
-    public MessageFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MessageFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MessageFragment newInstance(String param1, String param2) {
-        MessageFragment fragment = new MessageFragment();
-        Bundle args = new Bundle();
-
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,14 +39,10 @@ public class MessageFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_message, container, false);
 
-        return view;
-    }
+        mMessageRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_message);
+        mMessageRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+        return view;
     }
 
     @Override
@@ -73,6 +53,52 @@ public class MessageFragment extends Fragment {
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    private class MessageHolder extends RecyclerView.ViewHolder {
+        private TextView mMessageTitle;
+        private TextView mMessageText;
+        private Message mMessage;
+
+        public MessageHolder(LayoutInflater inflater, ViewGroup parent) {
+            super(inflater.inflate(R.layout.list_item_message, parent, false));
+            mMessageTitle = (TextView) itemView.findViewById(R.id.message_title);
+            mMessageText = (TextView) itemView.findViewById(R.id.message_text);
+        }
+
+        public void bind(Message message) {
+            mMessage = message;
+            //TODO: SET ATTRIBUTES FOR SPECIFIC CELLS
+        }
+    }
+
+
+
+
+    private class MessageAdapter extends RecyclerView.Adapter<MessageFragment.MessageHolder> {
+        private List<Message> mMessage;
+
+        public MessageAdapter(List<Message> message) {
+            mMessage = message;
+        }
+
+        @NonNull
+        @Override
+        public MessageFragment.MessageHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
+            return new MessageFragment.MessageHolder(layoutInflater, parent);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull MessageFragment.MessageHolder messageHolder, int i) {
+            Message message = mMessage.get(i);
+            messageHolder.bind(message);
+        }
+
+        @Override
+        public int getItemCount() {
+            return mMessage.size();
         }
     }
 

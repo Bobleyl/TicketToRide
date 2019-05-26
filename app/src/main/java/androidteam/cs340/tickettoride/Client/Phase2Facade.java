@@ -59,7 +59,9 @@ public class Phase2Facade {
     }
 
     public Result claimRoute(Route route, List<TrainCard> cards, Player player){
-        //TODO: CHECK IF THERE ARE SUFFICIENT CARDS FOR THAT ROUTE, RETURN THOSE CARDS TO DECK AND PROCEED
+        for(TrainCard card : cards){
+            //TODO: CHECK IF THERE ARE SUFFICIENT CARDS FOR THAT ROUTE
+        }
         return ServerProxy.SINGLETON.claimRoute(currentGame.getUID(),currentPlayer.getUID(), route);
     }
 
