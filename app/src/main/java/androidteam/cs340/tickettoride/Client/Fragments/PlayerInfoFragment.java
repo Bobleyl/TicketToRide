@@ -14,9 +14,10 @@ import android.widget.TextView;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import androidteam.cs340.tickettoride.Client.ModelFacade;
+import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.Game;
@@ -61,17 +62,18 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
     @Override
     public void onResume(){
         super.onResume();
-        ModelFacade.SINGLETON.addPresenter(this);
+        Phase2Facade.SINGLETON.addPresenter(this);
     }
 
     @Override
     public void onPause(){
         super.onPause();
-        ModelFacade.SINGLETON.removePresenter(this);
+        Phase2Facade.SINGLETON.removePresenter(this);
     }
 
     private void updateUI() {
-        //TODO: UPDATE COUNT OF CARDS
+        //UPDATE COUNT OF CARDS
+        updateCount(Phase2Facade.SINGLETON.getMyDeck());
         //TODO: UPDATE CARD DECKS
         //TODO: UPDATE DESTINATION CARDS IN HAND
     }
@@ -177,21 +179,72 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         myDialog.show();
     }
 
+    //count through personal card deck and update counts for each color
+    private void updateCount(List<TrainCard> cards){
+        int orange = 0;
+        int white = 0;
+        int red = 0;
+        int wild = 0;
+        int blue = 0;
+        int green = 0;
+        int purple = 0;
+        int black = 0;
+        int yellow = 0;
+        for(TrainCard card : cards){
+            if(card.color == "black"){
+                black = black + 1;
+                mBlackCount.setText(black);
+            }
+            if(card.color == "white"){
+                white = white + 1;
+                mWhiteCount.setText(white);
+            }
+            if(card.color == "blue"){
+                blue = blue + 1;
+                mBlueCount.setText(blue);
+            }
+            if(card.color == "orange"){
+                orange = orange + 1;
+                mOrangeCount.setText(orange);
+            }
+            if(card.color == "red"){
+                red = red + 1;
+                mRedCount.setText(red);
+            }
+            if(card.color == "wild"){
+                wild = wild + 1;
+                mWildCount.setText(wild);
+            }
+            if(card.color == "yellow"){
+                yellow = yellow + 1;
+                mYellowCount.setText(yellow);
+            }
+            if(card.color == "green"){
+                green = green + 1;
+                mGreenCount.setText(green);
+            }
+            if(card.color == "purple"){
+                purple = purple + 1;
+                mPurpleCount.setText(purple);
+            }
+        }
+    }
+
     private void chooseDownCard(){
         Toast.makeText(getActivity(), "Drawing Card..." , Toast.LENGTH_SHORT).show();
-        //Result result = ModelFacade.SINGLETON.drawDown(card);
+        //Result result = Phase2Facade.SINGLETON.drawDown(card);
         //TODO: ADD NEW CARD COUNT TO APPROPRIATE CARD COUNT
     }
 
     private void chooseUpCard(int position){
         Toast.makeText(getActivity(), "Drawing Card..." , Toast.LENGTH_SHORT).show();
-        //Result result = ModelFacade.SINGLETON.drawUp(card);
+        //Result result = Phase2Facade.SINGLETON.drawUp(card);
         //TODO: ADD NEW CARD COUNT TO APPROPRIATE CARD COUNT
     }
 
     private void chooseDestinationCard(){
         //TODO: OPEN FRAGMENT FOR CHOOSING DESTINATION CARDS, BUT ALLOW RETURNING 0-2 INSTEAD OF 0-1
-        //Result result = ModelFacade.SINGLETON.drawDestination(card);
+        //Result result = Phase2Facade.SINGLETON.drawDestination(card);
         //TODO: ADD NEW CARDS TO DESTINATION HAND
     }
 

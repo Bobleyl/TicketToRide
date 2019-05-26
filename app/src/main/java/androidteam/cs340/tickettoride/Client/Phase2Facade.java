@@ -23,6 +23,8 @@ public class Phase2Facade {
     private List<IPresenter> presenters;
     private TrainCardDeck currentDecks;
     private DestinationCardDeck currentDestinationDeck;
+    private DestinationCardDeck currentMyDestinationDeck;
+    private List<TrainCard> currentMyDeck;
 
     private Phase2Facade(){
         turnOrder = new ArrayList<>();
@@ -83,6 +85,14 @@ public class Phase2Facade {
         return currentDecks.getDownDeck();
     }
 
+    public DestinationCardDeck getDestinationDeck(){
+        return this.currentDestinationDeck;
+    }
+
+    public DestinationCardDeck getMyDestinationDeck(){
+        return this.currentMyDestinationDeck;
+    }
+
     public Player getCurrentPlayer() {
         return currentPlayer;
     }
@@ -107,10 +117,8 @@ public class Phase2Facade {
         this.turnOrder = turnOrder;
     }
 
-    //TODO: METHOD FOR GETTING COUNTS OF EACH COLOR CARD IN HAND
-    //TODO: METHOD FOR GETTING CURRENT DECK FOR DOWN CARDS
-    //TODO: METHOD FOR GETTING CURRENT DECK FOR UP CARDS
-    //TODO: METHOD FOR GETTING CURRENT DECK FOR DESTINATION CARDS
-    //TODO: METHOD FOR GETTING CURRENT DECK FOR DESTINATION HAND OF CARDS
+    public List<TrainCard> getMyDeck(){
+        return this.currentMyDeck;
+    }
 
 }
