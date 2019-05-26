@@ -2,505 +2,220 @@ package androidteam.cs340.tickettoride.Shared;
 
 public enum Route {
 
-    LosAngeles_SanFrancisco {
-        public String color = "yellow";
-        public int length = 3;
-    },
-
-    LosAngeles_SanFrancisco_2 {
-        public String color = "pink";
-        public int length = 3;
-    },
-
-    SanFrancisco_Portland {
-        public String color = "green";
-        public int length = 5;
-    },
-
-    SanFrancisco_Portland_2 {
-        public String color = "pink";
-        public int length = 5;
-    },
-
-    Portland_Seattle {
-        public String color = "grey";
-        public int length = 1;
-    },
-
-    Portland_Seattle_2 {
-        public String color = "grey";
-        public int length = 1;
-    },
-
-    Seattle_Vancouver {
-        public String color = "grey";
-        public int length = 1;
-    },
-
-    Seattle_Vancouver_2 {
-        public String color = "grey";
-        public int length = 1;
-    },
-
-    Vancouver_Calgary {
-        public String color = "grey";
-        public int length = 3;
-    },
-
-    Calgary_Winnipeg {
-        public String color = "white";
-        public int length = 5;
-    },
-
-    Winnipeg_SaultSteMarie {
-        public String color = "grey";
-        public int length = 5;
-    },
-
-    SaultSteMarie_Montreal {
-        public String color = "black";
-        public int length = 5;
-    },
-
-    Montreal_Boston {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    Montreal_Boston_2 {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    Boston_NewYork {
-        public String color = "yellow";
-        public int length = 2;
-    },
-
-    Boston_NewYork_2 {
-        public String color = "red";
-        public int length = 2;
-    },
-
-    NewYork_Washington {
-        public String color = "black";
-        public int length = 2;
-    },
-
-    NewYork_Washington_2 {
-        public String color = "orange";
-        public int length = 2;
-    },
-
-    Washington_Raleigh {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    Washington_Raleigh_2  {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    Raleigh_Charleston  {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    Charleston_Miami  {
-        public String color = "pink";
-        public int length = 4;
-    },
-
-    Miami_NewOrleans  {
-        public String color = "red";
-        public int length = 6;
-    },
-
-    NewOrleans_Houston  {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    Houston_ElPaso  {
-        public String color = "green";
-        public int length = 6;
-    },
-
-    ElPaso_LosAngeles  {
-        public String color = "black";
-        public int length = 6;
-    },
-
-    LosAngeles_LasVegas  {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    LosAngeles_Phoenix  {
-        public String color = "grey";
-        public int length = 3;
-    },
-
-    SanFrancisco_SaltLakeCity {
-        public String color = "white";
-        public int length = 5;
-    },
-
-    SanFrancisco_SaltLakeCity_2 {
-        public String color = "orange";
-        public int length = 5;
-    },
-
-    Portland_SaltLakeCity {
-        public String color = "blue";
-        public int length = 6;
-    },
-
-    Seattle_Calgary {
-        public String color = "grey";
-        public int length = 4;
-    },
-
-    Calgary_Hellena {
-        public String color = "grey";
-        public int length = 4;
-    },
-
-    Winnipeg_Duluth {
-        public String color = "black";
-        public int length = 4;
-    },
-
-    SaultSteMarie_Duluth {
-        public String color = "grey";
-        public int length = 3;
-    },
-
-    SaultSteMarie_Toronto {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    Montreal_Toronto {
-        public String color = "grey";
-        public int length = 3;
-    },
-
-    Montreal_NewYork {
-        public String color = "blue";
-        public int length = 3;
-    },
-
-    NewYork_Pittsburgh {
-        public String color = "white";
-        public int length = 2;
-    },
-
-    NewYork_Pittsburgh_2 {
-        public String color = "green";
-        public int length = 2;
-    },
-
-    Washington_Pittsburgh {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    Raleigh_Nashville {
-        public String color = "black";
-        public int length = 3;
-    },
-
-    Raleigh_Atlanta {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    Raleigh_Atlanta_2 {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    Charleston_Atlanta {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    Miami_Atlanta {
-        public String color = "blue";
-        public int length = 5;
-    },
-
-    NewOrleans_Atlanta {
-        public String color = "yellow";
-        public int length = 4;
-    },
-
-    NewOrleans_Atlanta_2 {
-        public String color = "orange";
-        public int length = 4;
-    },
-
-    NewOrleans_LittleRock {
-        public String color = "green";
-        public int length = 3;
-    },
-
-    Houston_Dallas {
-        public String color = "grey";
-        public int length = 1;
-    },
-
-    Houston_Dallas_2 {
-        public String color = "grey";
-        public int length = 1;
-    },
-
-    ElPaso_Phoenix {
-        public String color = "grey";
-        public int length = 3;
-    },
-
-    ElPaso_SantaFe {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    ElPaso_OklahomaCity {
-        public String color = "yellow";
-        public int length = 5;
-    },
-
-    ElPaso_Dallas {
-        public String color = "red";
-        public int length = 4;
-    },
-
-    SaltLakeCity_LasVegas {
-        public String color = "orange";
-        public int length = 3;
-    },
-
-    SaltLakeCity_Denver {
-        public String color = "red";
-        public int length = 3;
-    },
-
-    SaltLakeCity_Denver_2 {
-        public String color = "yellow";
-        public int length = 3;
-    },
-
-    SaltLakeCity_Hellena {
-        public String color = "pink";
-        public int length = 3;
-    },
-
-    Hellena_Duluth {
-        public String color = "orange";
-        public int length = 6;
-    },
-
-    Hellena_Denver {
-        public String color = "green";
-        public int length = 4;
-    },
-
-    Hellena_Omaha {
-        public String color = "red";
-        public int length = 5;
-    },
-
-    Duluth_Toronto {
-        public String color = "pink";
-        public int length = 6;
-    },
-
-    Duluth_Chicago {
-        public String color = "red";
-        public int length = 3;
-    },
-
-    Pittsburgh_Toronto {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    Pittsburgh_Chicago {
-        public String color = "orange";
-        public int length = 3;
-    },
-
-    Pittsburgh_Chicago_2 {
-        public String color = "black";
-        public int length = 3;
-    },
-
-    Pittsburgh_Raleigh {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    Pittsburgh_Nashville {
-        public String color = "yellow";
-        public int length = 4;
-    },
-
-    Pittsburgh_SaintLouis {
-        public String color = "green";
-        public int length = 5;
-    },
-
-    Chicago_Toronto{
-        public String color = "white";
-        public int length = 4;
-    },
-
-    Chicago_Omaha {
-        public String color = "blue";
-        public int length = 4;
-    },
-
-    Chicago_SaintLouis {
-        public String color = "green";
-        public int length = 2;
-    },
-
-    Chicago_SaintLouis_2 {
-        public String color = "white";
-        public int length = 2;
-    },
-
-    SaintLouis_Nashville {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    SaintLouis_KansasCity {
-        public String color = "pink";
-        public int length = 2;
-    },
-
-    SaintLouis_KansasCity_2 {
-        public String color = "blue";
-        public int length = 2;
-    },
-
-    SaintLouis_LittleRock {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    KansasCity_Omaha {
-        public String color = "grey";
-        public int length = 1;
-    },
-
-    KansasCity_Omaha_2 {
-        public String color = "grey";
-        public int length = 1;
-    },
-
-    KansasCity_Denver {
-        public String color = "black";
-        public int length = 4;
-    },
-
-    KansasCity_Denver_2 {
-        public String color = "orange";
-        public int length = 4;
-    },
-
-    KansasCity_OklahomaCity {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    KansasCity_OklahomaCity_2 {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    Denver_Phoenix {
-        public String color = "white";
-        public int length = 5;
-    },
-
-    Denver_SantaFe {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    Denver_Omaha {
-        public String color = "pink";
-        public int length = 4;
-    },
-
-    Denver_OklahomaCity {
-        public String color = "red";
-        public int length = 4;
-    },
-
-    Seattle_Hellena {
-        public String color = "yellow";
-        public int length = 6;
-    },
-
-    Winnipeg_Hellena {
-        public String color = "blue";
-        public int length = 4;
-    },
-
-    Duluth_Omaha {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    Duluth_Omaha_2 {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    Nashville_Atlanta {
-        public String color = "grey";
-        public int length = 1;
-    },
-
-    Nashville_LittleRock {
-        public String color = "white";
-        public int length = 3;
-    },
-
-    LittleRock_Dallas {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    LittleRock_OklahomaCity {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    Dallas_OklahomaCity {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    Dallas_OklahomaCity_2 {
-        public String color = "grey";
-        public int length = 2;
-    },
-
-    SantaFe_OklahomaCity {
-        public String color = "blue";
-        public int length = 3;
-    },
-
-    SantaFe_Phoenix {
-        public String color = "grey";
-        public int length = 3;
+    LosAngeles_SanFrancisco ("yellow", 3),
+
+    LosAngeles_SanFrancisco_2 ("pink", 3) ,
+
+    SanFrancisco_Portland ("green", 5) ,
+
+    SanFrancisco_Portland_2 ("pink", 5) ,
+
+    Portland_Seattle ("grey", 1) ,
+
+    Portland_Seattle_2 ("grey", 1) ,
+
+    Seattle_Vancouver ("grey", 1) ,
+
+    Seattle_Vancouver_2 ("grey", 1) ,
+
+    Vancouver_Calgary ("grey", 3) ,
+
+    Calgary_Winnipeg ("white", 5) ,
+
+    Winnipeg_SaultSteMarie ("grey", 5),
+
+    SaultSteMarie_Montreal ("black", 5),
+
+    Montreal_Boston ("grey", 2),
+
+    Montreal_Boston_2 ("grey", 2),
+
+    Boston_NewYork ("yellow", 2),
+
+    Boston_NewYork_2 ("red", 2),
+
+    NewYork_Washington ("black", 2) ,
+
+    NewYork_Washington_2 ("orange", 2) ,
+
+    Washington_Raleigh ("grey", 2) ,
+
+    Washington_Raleigh_2 ("grey", 2) ,
+
+    Raleigh_Charleston ("grey", 2) ,
+
+    Charleston_Miami ("pink", 4) ,
+
+    Miami_NewOrleans ("red", 6) ,
+
+    NewOrleans_Houston ("grey", 2) ,
+
+    Houston_ElPaso ("green", 6) ,
+
+    ElPaso_LosAngeles ("black", 6) ,
+
+    LosAngeles_LasVegas ("grey", 2) ,
+
+    LosAngeles_Phoenix ("grey", 3) ,
+
+    SanFrancisco_SaltLakeCity("white", 5) ,
+
+    SanFrancisco_SaltLakeCity_2("orange", 5) ,
+
+    Portland_SaltLakeCity ("blue", 6),
+
+    Seattle_Calgary("grey", 4) ,
+
+    Calgary_Hellena ("grey", 4),
+
+    Winnipeg_Duluth ("black", 4),
+
+    SaultSteMarie_Duluth("grey", 3) ,
+
+    SaultSteMarie_Toronto("grey", 2) ,
+
+    Montreal_Toronto("grey", 3) ,
+
+    Montreal_NewYork ("blue", 3),
+
+    NewYork_Pittsburgh("white", 2) ,
+
+    NewYork_Pittsburgh_2("green", 2) ,
+
+    Washington_Pittsburgh("grey", 2) ,
+
+    Raleigh_Nashville("black", 3) ,
+
+    Raleigh_Atlanta("grey", 2) ,
+
+    Raleigh_Atlanta_2("grey", 2) ,
+
+    Charleston_Atlanta("grey", 2) ,
+
+    Miami_Atlanta("blue", 5) ,
+
+    NewOrleans_Atlanta("yellow", 4) ,
+
+    NewOrleans_Atlanta_2("orange", 4) ,
+
+    NewOrleans_LittleRock("green", 3) ,
+
+    Houston_Dallas("grey", 1) ,
+
+    Houston_Dallas_2("grey", 1) ,
+
+    ElPaso_Phoenix("grey", 3) ,
+
+    ElPaso_SantaFe("grey", 2) ,
+
+    ElPaso_OklahomaCity("yellow", 5) ,
+
+    ElPaso_Dallas("red", 4) ,
+
+    SaltLakeCity_LasVegas("orange", 3) ,
+
+    SaltLakeCity_Denver("red", 3) ,
+
+    SaltLakeCity_Denver_2("yellow", 3) ,
+
+    SaltLakeCity_Hellena("pink", 3) ,
+
+    Hellena_Duluth("orange", 6) ,
+
+    Hellena_Denver ("green", 4) ,
+
+    Hellena_Omaha ("red", 5) ,
+
+    Duluth_Toronto("pink", 6) ,
+
+    Duluth_Chicago("red", 3) ,
+
+    Pittsburgh_Toronto("grey", 2) ,
+
+    Pittsburgh_Chicago("orange", 3) ,
+
+    Pittsburgh_Chicago_2("black", 3) ,
+
+    Pittsburgh_Raleigh("grey", 2) ,
+
+    Pittsburgh_Nashville("yellow", 4) ,
+
+    Pittsburgh_SaintLouis("green", 5) ,
+
+    Chicago_Toronto("white", 4) ,
+
+    Chicago_Omaha("blue", 4) ,
+
+    Chicago_SaintLouis("green", 2) ,
+
+    Chicago_SaintLouis_2("white", 2) ,
+
+    SaintLouis_Nashville("grey", 2) ,
+
+    SaintLouis_KansasCity("pink", 2) ,
+
+    SaintLouis_KansasCity_2("blue", 2) ,
+
+    SaintLouis_LittleRock("grey", 2) ,
+
+    KansasCity_Omaha("grey", 1) ,
+
+    KansasCity_Omaha_2("grey", 1) ,
+
+    KansasCity_Denver("black", 4) ,
+
+    KansasCity_Denver_2("orange", 4),
+
+    KansasCity_OklahomaCity("grey", 2),
+
+    KansasCity_OklahomaCity_2("grey", 2),
+
+    Denver_Phoenix("white", 5),
+
+    Denver_SantaFe("grey", 2),
+
+    Denver_Omaha("pink", 4),
+
+    Denver_OklahomaCity("red", 4),
+
+    Seattle_Hellena("yellow", 6),
+
+    Winnipeg_Hellena("blue", 4),
+
+    Duluth_Omaha("grey", 2),
+
+    Duluth_Omaha_2("grey", 2),
+
+    Nashville_Atlanta("grey", 1),
+
+    Nashville_LittleRock("white", 3),
+
+    LittleRock_Dallas("grey", 2),
+
+    LittleRock_OklahomaCity("grey", 2),
+
+    Dallas_OklahomaCity("grey", 2),
+
+    Dallas_OklahomaCity_2("grey", 2),
+
+    SantaFe_OklahomaCity("blue", 3),
+
+    SantaFe_Phoenix("grey", 3);
+
+    public int length = 0;
+    public String color = "";
+
+    Route(String color_, int length_) {
+        length = length_;
+        color = color_;
+    }
+
+    int showLength() {
+        return length;
+    }
+
+    String showColor() {
+        return color;
     }
 
 }
-
