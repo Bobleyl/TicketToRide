@@ -11,7 +11,7 @@ import androidteam.cs340.tickettoride.Shared.DestinationCard;
 import androidteam.cs340.tickettoride.Shared.TrainCard;
 import androidteam.cs340.tickettoride.Shared.TrainCardDeck;
 import androidteam.cs340.tickettoride.Shared.Result;
-import androidteam.cs340.tickettoride.Shared.Message;
+//import androidteam.cs340.tickettoride.Shared.Message;
 import androidteam.cs340.tickettoride.Shared.Colors;
 import androidteam.cs340.tickettoride.Shared.Routes;
 import androidteam.cs340.tickettoride.Shared.Route;
@@ -63,21 +63,22 @@ public class Phase2Facade {
         return ServerProxy.SINGLETON.claimRoute(currentGame.getUID(),currentPlayer.getUID(), route);
     }
 
-//    public Result drawUp(String cardID, Player player){
-//        return ServerProxy.SINGLETON.drawUp(cardID, player);
-//    }
+    public Result drawUp(int position){
+        return ServerProxy.SINGLETON.drawTrainCardFaceUp(currentGame.getUID(), currentPlayer.getUID(), position);
+    }
 
-//    public Result drawDown(Player player){
-//        return ServerProxy.SINGLETON.drawDown(player);
-//    }
+    public Result drawDown(){
+        return ServerProxy.SINGLETON.drawTrainCardFaceDown(currentGame.getUID(),currentPlayer.getUID());
+    }
 
-//    public Result drawDestination(DestinationCard card, Player player){
-//        return ServerProxy.SINGLETON.drawDown(player);
-//    }
+    public Result drawDestination(DestinationCard card){
+        //TODO: ADD IN CARD THAT'S BEING PASSED THROUGH COMMAND
+        return ServerProxy.SINGLETON.drawDestinationCard(currentGame.getUID(),currentPlayer.getUID());
+    }
 
-//    public Result sendMessage(Message message){
-//        return ServerProxy.SINGLETON.sendMessage(message);
-//    }
+    public Result sendMessage(String message){
+        return ServerProxy.SINGLETON.sendMessage(currentGame.getUID(),currentPlayer.getUID(),message);
+    }
 
     public Result endTurn(){
         return ServerProxy.SINGLETON.endTurn(currentGame.getUID(), currentPlayer.getUID());
