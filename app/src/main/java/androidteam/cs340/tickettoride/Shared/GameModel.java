@@ -1,6 +1,7 @@
 package androidteam.cs340.tickettoride.Shared;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GameModel {
@@ -11,9 +12,9 @@ public class GameModel {
 
     private List<Player> playersList = new ArrayList<>();
     private List<Message> messages = new ArrayList<>();
-    private List<TrainCard> trainCardDeckDown = new ArrayList<>();
-    private TrainCard[] trainCardDeckUp = new TrainCard[5];
     private List<DestinationCard> destinationCards = new ArrayList<>();
+    private TrainCardDeck trainCardDeck;
+    List<Route> availableRoutes = new ArrayList<>(Arrays.asList(Route.values()));
 
     public GameModel(){ }
 
@@ -33,14 +34,6 @@ public class GameModel {
 
     public List<DestinationCard> getDestinationCardDeck() { return this.destinationCards; }
 
-    public void setTrainCardDeckDown(List<TrainCard> trainCardDeckDown) { this.trainCardDeckDown = trainCardDeckDown; }
-
-    public List<TrainCard> getTrainCardDeckDown() { return this.trainCardDeckDown; }
-
-    public void setTrainCardDeckUp(TrainCard[] trainCardDeckUp) { this.trainCardDeckUp = trainCardDeckUp; }
-
-    public TrainCard[] getTrainCardDeckUp() { return this.trainCardDeckUp; }
-
     public void setPlayerList(List<Player> players){ this.playersList = players; }
 
     public List<Player> getPlayersList() {
@@ -58,5 +51,17 @@ public class GameModel {
     public int getGameSize() {
         return gameSize;
     }
+
+    public void setAvailableRoutes(List<Route> routes) {
+        this.availableRoutes = routes;
+    }
+
+    public List<Route> getAvailableRoutes() {
+        return availableRoutes;
+    }
+
+    public void setTrainCardDeck(TrainCardDeck trainCardDeck) { this.trainCardDeck = trainCardDeck;}
+
+    public TrainCardDeck getTrainCardDeck() { return trainCardDeck;}
 
 }
