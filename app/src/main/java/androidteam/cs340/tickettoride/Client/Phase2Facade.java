@@ -18,6 +18,7 @@ import androidteam.cs340.tickettoride.Shared.Route;
 
 public class Phase2Facade {
 
+    // TODO: GET RID OF DECKS, CALL ON GAMEMODEL TO GET INFORMATION.
     private Player currentPlayer;
     private Game currentGame;
     private List<Player> turnOrder;
@@ -30,7 +31,6 @@ public class Phase2Facade {
     private Phase2Facade(){
         turnOrder = new ArrayList<>();
         currentPlayer = ModelFacade.SINGLETON.getPlayer();
-        currentGame = ModelFacade.SINGLETON.getGame();
     }
 
     public static Phase2Facade SINGLETON = new Phase2Facade();

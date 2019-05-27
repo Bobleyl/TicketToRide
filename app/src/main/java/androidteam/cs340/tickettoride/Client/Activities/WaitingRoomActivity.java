@@ -89,7 +89,6 @@ public class WaitingRoomActivity extends AppCompatActivity {
         List<Player> players = game.getPlayersList();
         if(!found){
             System.out.println("GAME IS FULL, LET'S PLAY");
-            //TODO: START GAME COMMAND
             Intent intent = new Intent(WaitingRoomActivity.this, GameActivity.class);
             startActivity(intent);
         }
