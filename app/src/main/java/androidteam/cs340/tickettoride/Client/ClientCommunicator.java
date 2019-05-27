@@ -39,8 +39,8 @@ public class ClientCommunicator {
         String url_ = "http://ec2-18-224-234-208.us-east-2.compute.amazonaws.com:7000/execute";
         //String url_ = "http://localhost:7001/execute";
 
-        System.out.println(command);
-        System.out.println(url_);
+        //System.out.println(command);
+        //System.out.println(url_);
 
         try {
 
@@ -67,7 +67,7 @@ public class ClientCommunicator {
 
             //Send connection
             result.connect();
-            System.out.println(result.getResponseCode());
+            //System.out.println(result.getResponseCode());
 
             if (result.getResponseCode() == HttpURLConnection.HTTP_OK) {
 

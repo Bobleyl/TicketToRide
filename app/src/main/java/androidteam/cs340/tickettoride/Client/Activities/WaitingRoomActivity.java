@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import androidteam.cs340.tickettoride.Client.ModelFacade;
 import androidteam.cs340.tickettoride.Client.Presenters.WaitingRoomPresenter;
@@ -77,9 +78,11 @@ public class WaitingRoomActivity extends AppCompatActivity {
 
     private void populatePlayerList(){
         Game game = ModelFacade.SINGLETON.getGame();
+        //System.out.println(game.getUID());
         List<Game> games = ModelFacade.SINGLETON.getLobbyGames();
-        System.out.println(game.getUID());
+        //System.out.println(game.getUID());
         boolean found = false;
+
         for(Game game1 : games) {
             if(game.getUID().equals(game1.getUID())) {
                 found = true;
@@ -87,9 +90,9 @@ public class WaitingRoomActivity extends AppCompatActivity {
         }
 
         List<Player> players = game.getPlayersList();
-        if(!found){
+        if(!found && (players.size() >= 1)){
             System.out.println("GAME IS FULL, LET'S PLAY");
-            //TODO: START GAME COMMAND
+
             Intent intent = new Intent(WaitingRoomActivity.this, GameActivity.class);
             startActivity(intent);
         }
