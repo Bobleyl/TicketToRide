@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Client.Activities.GameActivity"
+    android:id="@+id/constraint_layout">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/player_summary_layout"
+        android:layout_width="130dp"
+        android:layout_height="268dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/button_layout"
+        app:layout_constraintLeft_toLeftOf="@+id/constraint_layout"
+        app:layout_constraintRight_toLeftOf="@+id/main_game_fragment_container"
+        app:layout_constraintTop_toTopOf="@+id/main_game_fragment_container"
+        app:layout_constraintVertical_bias="0.6">
+
+        <TextView
+            android:id="@+id/player1_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/player2_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/player3_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/player4_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/player5_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+    </LinearLayout>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/main_game_fragment_container"
+        android:layout_width="575dp"
+        android:layout_height="311dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toTopOf="@+id/button_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/constraint_layout"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/button_layout"
+        android:layout_width="568dp"
+        android:layout_height="74dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/constraint_layout"
+        app:layout_constraintLeft_toLeftOf="@+id/main_game_fragment_container"
+        app:layout_constraintRight_toRightOf="@+id/main_game_fragment_container"
+        app:layout_constraintTop_toBottomOf="@+id/main_game_fragment_container">
+
+        <Button
+            android:id="@+id/map_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Map" />
+
+        <Button
+            android:id="@+id/game_info_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Game Info" />
+
+        <Button
+            android:id="@+id/chat_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Chat" />
+    </LinearLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>

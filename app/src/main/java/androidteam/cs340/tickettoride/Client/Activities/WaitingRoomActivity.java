@@ -89,7 +89,7 @@ public class WaitingRoomActivity extends AppCompatActivity {
         List<Player> players = game.getPlayersList();
         if(!found){
             System.out.println("GAME IS FULL, LET'S PLAY");
-            Intent intent = new Intent(WaitingRoomActivity.this, StartGame.class);
+            Intent intent = new Intent(WaitingRoomActivity.this, GameActivity.class);
             startActivity(intent);
         }
         mPlayerCount.setText(players.size() + " / " + game.getGameSize());

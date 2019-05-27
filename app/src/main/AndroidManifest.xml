@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Client.Activities.StartGame"
+            android:name=".Client.Activities.GameActivity"
             android:screenOrientation="landscape" />
         <activity
             android:name=".Client.Activities.WaitingRoomActivity"

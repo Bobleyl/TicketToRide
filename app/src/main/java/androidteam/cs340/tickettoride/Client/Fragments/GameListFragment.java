@@ -1,13 +1,11 @@
 package androidteam.cs340.tickettoride.Client.Fragments;
 
 import android.content.Intent;
-import android.graphics.ColorSpace;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,9 +21,7 @@ import java.util.List;
 import java.util.UUID;
 
 import androidteam.cs340.tickettoride.Client.Activities.LobbyActivity;
-import androidteam.cs340.tickettoride.Client.Activities.LoginRegisterActivity;
-import androidteam.cs340.tickettoride.Client.Activities.StartGame;
-import androidteam.cs340.tickettoride.Client.Activities.WaitingRoomActivity;
+import androidteam.cs340.tickettoride.Client.Activities.GameActivity;
 import androidteam.cs340.tickettoride.Client.ModelFacade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.R;
@@ -223,9 +219,9 @@ public class GameListFragment extends Fragment implements IPresenter {
             ((LobbyActivity)getActivity()).startWaitingRoom();
             if(lastPlayer == true){
                 System.out.println("I'm the last player in, let's play!");
-                Intent intent = new Intent(getActivity(), StartGame.class);
+                Intent intent = new Intent(getActivity(), GameActivity.class);
                 startActivity(intent);
-                //toast here to StartGame Activity
+                //toast here to GameActivity Activity
             }
         }
         else{
