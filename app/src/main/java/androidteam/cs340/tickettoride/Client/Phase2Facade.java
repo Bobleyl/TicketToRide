@@ -19,7 +19,7 @@ public class Phase2Facade {
     private Player currentPlayer;
     private Game currentGame;
     private List<Player> turnOrder;
-    private List<IPresenter> presenters;
+    private List<IPresenter> presenters = new ArrayList<>();
     private TrainCardDeck currentDecks;
     private DestinationCardDeck currentDestinationDeck;
     private DestinationCardDeck currentMyDestinationDeck;

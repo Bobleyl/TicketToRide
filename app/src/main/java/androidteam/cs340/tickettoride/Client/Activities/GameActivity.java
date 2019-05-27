@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidteam.cs340.tickettoride.Client.Fragments.GameListFragment;
 import androidteam.cs340.tickettoride.Client.Fragments.PlayerInfoFragment;
+import androidteam.cs340.tickettoride.Client.Presenters.GameActivityPresenter;
 import androidteam.cs340.tickettoride.R;
 
 public class GameActivity extends AppCompatActivity implements PlayerInfoFragment.OnFragmentInteractionListener {
@@ -25,12 +26,17 @@ public class GameActivity extends AppCompatActivity implements PlayerInfoFragmen
     TextView mPlayer4TextView;
     TextView mPlayer5TextView;
 
+    GameActivityPresenter mGameActivityPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        mGameActivityPresenter = new GameActivityPresenter();
 
+
+        //TODO: Make this activity start on the correct fragent.
         if (findViewById(R.id.main_game_fragment_container) != null) {
             if (savedInstanceState != null) {
                 return;
