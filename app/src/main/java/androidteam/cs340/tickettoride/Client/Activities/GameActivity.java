@@ -1,22 +1,29 @@
 package androidteam.cs340.tickettoride.Client.Activities;
 
 import android.net.Uri;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidteam.cs340.tickettoride.Client.Fragments.GameListFragment;
+import androidteam.cs340.tickettoride.Client.Fragments.MapFragment;
+import androidteam.cs340.tickettoride.Client.Fragments.MessageFragment;
 import androidteam.cs340.tickettoride.Client.Fragments.PlayerInfoFragment;
 import androidteam.cs340.tickettoride.Client.Presenters.GameActivityPresenter;
 import androidteam.cs340.tickettoride.R;
 
-public class GameActivity extends AppCompatActivity implements PlayerInfoFragment.OnFragmentInteractionListener {
+public class GameActivity extends AppCompatActivity implements
+        MapFragment.OnFragmentInteractionListener,
+        MessageFragment.OnFragmentInteractionListener,
+        PlayerInfoFragment.OnFragmentInteractionListener {
     Button mMapButton;
     Button mGameInfoButton;
     Button mChatButton;
@@ -56,12 +63,43 @@ public class GameActivity extends AppCompatActivity implements PlayerInfoFragmen
         mPlayer4TextView = (TextView) findViewById(R.id.player4_text_view);
         mPlayer5TextView = (TextView) findViewById(R.id.player5_text_view);
 
+        mMapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MapFragment mapFragment = new MapFragment();
+                startNewFragment(mapFragment);
+            }
+        });
+
+        mChatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MessageFragment messageFragment = new MessageFragment();
+                startNewFragment(messageFragment);
+            }
+        });
+
+        mGameInfoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PlayerInfoFragment playerInfoFragment = new PlayerInfoFragment();
+                startNewFragment(playerInfoFragment);
+            }
+        });
+
+    }
+
+    private void startNewFragment(Fragment toStart) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main_game_fragment_container, toStart).commit();
     }
 
     @Override
     public void onFragmentInteraction(Uri uri) {
         //TODO: What should be put here?
     }
+
+
 
     @Override
     public void onBackPressed(){
