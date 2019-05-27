@@ -1,5 +1,7 @@
 package androidteam.cs340.tickettoride.Client;
 
+import android.graphics.ColorSpace;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +29,8 @@ public class Phase2Facade {
 
     private Phase2Facade(){
         turnOrder = new ArrayList<>();
+        currentPlayer = ModelFacade.SINGLETON.getPlayer();
+        currentGame = ModelFacade.SINGLETON.getGame();
     }
 
     public static Phase2Facade SINGLETON = new Phase2Facade();
