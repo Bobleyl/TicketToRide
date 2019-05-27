@@ -1,5 +1,6 @@
 package server;
 
+import androidteam.cs340.tickettoride.Shared.GameModel;
 import androidteam.cs340.tickettoride.Shared.Message;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;

@@ -12,7 +12,7 @@ public class GameModel {
 
     private List<Player> playersList = new ArrayList<>();
     private List<Message> messages = new ArrayList<>();
-    private List<DestinationCard> destinationCards = new ArrayList<>();
+    private DestinationCardDeck destinationCardDeck;
     private TrainCardDeck trainCardDeck;
     List<Route> availableRoutes = new ArrayList<>(Arrays.asList(Route.values()));
 
@@ -30,9 +30,9 @@ public class GameModel {
 
     public List<Message> getMessages() { return this.messages; }
 
-    public void setDestinationCardDeck(List<DestinationCard> destinationCardDeck) { this.destinationCards = destinationCardDeck; }
+    public void setDestinationCardDeck(DestinationCardDeck destinationCardDeck) { this.destinationCardDeck = destinationCardDeck; }
 
-    public List<DestinationCard> getDestinationCardDeck() { return this.destinationCards; }
+    public DestinationCardDeck getDestinationCardDeck() { return this.destinationCardDeck; }
 
     public void setPlayerList(List<Player> players){ this.playersList = players; }
 

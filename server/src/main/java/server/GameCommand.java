@@ -1,5 +1,7 @@
 package server;
 
+import androidteam.cs340.tickettoride.Shared.GameModel;
+
 import java.util.HashMap;
 
 public class GameCommand implements CommandInterface {

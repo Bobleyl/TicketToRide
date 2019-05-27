@@ -2,6 +2,7 @@ package server;
 
 import androidteam.cs340.tickettoride.Shared.DestinationCard;
 import androidteam.cs340.tickettoride.Shared.DestinationCardDeck;
+import androidteam.cs340.tickettoride.Shared.GameModel;
 import androidteam.cs340.tickettoride.Shared.Player;
 
 import java.util.ArrayList;
