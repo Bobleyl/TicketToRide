@@ -12,8 +12,6 @@ import androidteam.cs340.tickettoride.Shared.TrainCard;
 import androidteam.cs340.tickettoride.Shared.TrainCardDeck;
 import androidteam.cs340.tickettoride.Shared.Result;
 import androidteam.cs340.tickettoride.Shared.Message;
-import androidteam.cs340.tickettoride.Shared.Colors;
-import androidteam.cs340.tickettoride.Shared.Routes;
 import androidteam.cs340.tickettoride.Shared.Route;
 
 public class Phase2Facade {

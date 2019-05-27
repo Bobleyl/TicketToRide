@@ -1,7 +1,7 @@
 package server;
 
+import androidteam.cs340.tickettoride.Shared.*;
 import com.google.gson.Gson;
-import server.shared.*;
 
 import java.util.HashMap;
 import java.util.List;

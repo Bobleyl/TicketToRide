@@ -66,6 +66,12 @@ public class TrainCardDeck {
         return card;
     }
 
+    public void returnCard(TrainCard card) {
+        assert !discard.contains(card);
+
+        discard.add(card);
+    }
+
     private void refreshDownDeck() {
         downDeck = discard;
         Collections.shuffle(downDeck);

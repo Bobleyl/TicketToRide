@@ -1,6 +1,6 @@
 package server;
 
-import server.shared.*;
+import androidteam.cs340.tickettoride.Shared.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,12 +59,24 @@ public class LobbyGameModel {
         DestinationCardDeck destinationCardDeck = new DestinationCardDeck();
         TrainCardDeck trainCardDeck = new TrainCardDeck();
 
+        //Delete out double routes...
+        List<Route> routes = game.getAvailableRoutes();
+        if(numPlayersToStart <= 3) {
+            for(int route_index = 0; route_index < routes.size(); route_index++) {
+                if(routes.get(route_index).toString().contains("_2")) {
+                    routes.remove(route_index);
+                }
+            }
+            //Update routes
+            game.setAvailableRoutes(routes);
+        }
 
         for (String player : playerIDs) {
             Player currentPlayer = new Player(player);
 
             //Set color and name
             currentPlayer.setColor(colors[i]);
+            currentPlayer.setUID(player);
             i++;
             currentPlayer.setName("Player" + i);
 
@@ -77,6 +89,15 @@ public class LobbyGameModel {
             }
             currentPlayer.setDestinationHand(destinationCards);
 
+            //Add 4 cards to players trainCardHand
+            int k = 0;
+            List<TrainCard> trainCards = new ArrayList<>();
+            while (k < 4) {
+                trainCards.add(trainCardDeck.drawFromDown());
+                k++;
+            }
+            currentPlayer.setTrainCardsHand(trainCards);
+
             //Add object to array list
             players.add(currentPlayer);
         }
@@ -85,9 +106,8 @@ public class LobbyGameModel {
         game.setPlayerTurn(playerIDs.get(0));
         game.setPlayerList(players);
         game.setGameSize(numPlayersToStart);
-        game.setDestinationCardDeck(destinationCardDeck.getDeck());
-        game.setTrainCardDeckDown(trainCardDeck.getDownDeck());
-        game.setTrainCardDeckUp(trainCardDeck.getUpDeck());
+        game.setDestinationCardDeck(destinationCardDeck);
+        game.setTrainCardDeck(trainCardDeck);
         System.out.println(gameID);
         GameList.SINGLETON.addGame(game);
 

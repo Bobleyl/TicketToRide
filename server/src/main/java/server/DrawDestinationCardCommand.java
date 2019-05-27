@@ -1,6 +1,8 @@
 package server;
 
-import server.shared.*;
+import androidteam.cs340.tickettoride.Shared.DestinationCard;
+import androidteam.cs340.tickettoride.Shared.DestinationCardDeck;
+import androidteam.cs340.tickettoride.Shared.Player;
 
 import java.util.ArrayList;
 import java.util.HashMap;

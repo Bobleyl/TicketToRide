@@ -1,4 +1,4 @@
-package server.shared;
+package server;
 
 public class ReturnMessage {
 

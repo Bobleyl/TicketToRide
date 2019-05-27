@@ -1,11 +1,6 @@
 package server;
 
-import server.shared.GameList;
-import server.shared.GameModel;
-import server.shared.ReturnMessage;
-
 import java.util.HashMap;
-import java.util.List;
 
 public class GameCommand implements CommandInterface {
 
