@@ -7,5 +7,6 @@ public enum Colors {
     private Colors(String color){
         this.color = color;
     }
+    String showColor() { return  color; }
 
 }

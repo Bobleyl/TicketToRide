@@ -2,9 +2,11 @@ package androidteam.cs340.tickettoride.Shared;
 
 public enum Route {
 
-    LosAngeles_SanFrancisco ("yellow", 3),
 
-    LosAngeles_SanFrancisco_2 ("pink", 3) ,
+
+    LosAngeles_SanFrancisco (Colors.yellow.showColor(), 3),
+
+    LosAngeles_SanFrancisco_2 (Colors.pink.showColor(), 3) ,
 
     SanFrancisco_Portland ("green", 5) ,
 
