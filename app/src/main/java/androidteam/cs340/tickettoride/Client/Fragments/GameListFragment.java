@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import androidteam.cs340.tickettoride.Client.Activities.LobbyActivity;
 import androidteam.cs340.tickettoride.Client.Activities.GameActivity;
 import androidteam.cs340.tickettoride.Client.ModelFacade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
+import androidteam.cs340.tickettoride.Client.ServerProxy;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.Game;
 import androidteam.cs340.tickettoride.Shared.Result;
@@ -98,6 +100,7 @@ public class GameListFragment extends Fragment implements IPresenter {
         mCreateGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mCreateGameButton.setEnabled(false);
                 createGame();
             }
         });
@@ -218,6 +221,12 @@ public class GameListFragment extends Fragment implements IPresenter {
         if(result.getStatusCode() == HttpURLConnection.HTTP_NO_CONTENT){
             ((LobbyActivity)getActivity()).startWaitingRoom();
             if(lastPlayer == true){
+
+                Result resultDelete = ServerProxy.SINGLETON.deleteGame(toJoin.getUID());
+                Log.d("WAITING_ROOM", "Deleted game...");
+
+                Log.d("WAITING_ROOM", Integer.toString(resultDelete.getStatusCode()));
+
                 System.out.println("I'm the last player in, let's play!");
                 Intent intent = new Intent(getActivity(), GameActivity.class);
                 startActivity(intent);

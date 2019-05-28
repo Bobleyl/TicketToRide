@@ -2,21 +2,23 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Client.Activities.GameActivity"
-    android:id="@+id/constraint_layout">
+    tools:context=".Client.Activities.GameActivity">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/player_summary_layout"
-        android:layout_width="130dp"
-        android:layout_height="268dp"
+        android:layout_width="115dp"
+        android:layout_height="269dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="600dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/button_layout"
-        app:layout_constraintLeft_toLeftOf="@+id/constraint_layout"
-        app:layout_constraintRight_toLeftOf="@+id/main_game_fragment_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/main_game_fragment_container"
-        app:layout_constraintVertical_bias="0.6">
+        app:layout_constraintVertical_bias="0.657">
 
         <TextView
             android:id="@+id/player1_text_view"
@@ -51,11 +53,14 @@
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/main_game_fragment_container"
-        android:layout_width="575dp"
-        android:layout_height="311dp"
+        android:layout_width="584dp"
+        android:layout_height="326dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
         android:layout_weight="1"
         app:layout_constraintBottom_toTopOf="@+id/button_layout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/player_summary_layout"
         app:layout_constraintTop_toTopOf="@id/constraint_layout"
         app:layout_constraintVertical_bias="1.0" />
 
@@ -90,7 +95,6 @@
             android:layout_weight="1"
             android:text="Chat" />
     </LinearLayout>
-
 
 
 </android.support.constraint.ConstraintLayout>

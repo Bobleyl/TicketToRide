@@ -21,7 +21,7 @@
         android:text="@string/zero"
         app:layout_constraintBottom_toTopOf="@+id/pinkCard"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintHorizontal_bias="0.027"
         app:layout_constraintStart_toEndOf="@+id/whiteCount"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
@@ -39,7 +39,7 @@
         android:text="@string/zero"
         app:layout_constraintBottom_toTopOf="@+id/orangeCard"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.139"
+        app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toEndOf="@+id/greenCount"
         app:layout_constraintTop_toTopOf="@+id/greenCount"
         app:layout_constraintVertical_bias="0.0" />
@@ -58,10 +58,10 @@
         android:text="@string/zero"
         app:layout_constraintBottom_toTopOf="@+id/blackCard"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintHorizontal_bias="0.026"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wildCard"
-        app:layout_constraintVertical_bias="0.515"
+        app:layout_constraintVertical_bias="0.518"
         tools:targetApi="o" />
 
     <EditText
@@ -78,15 +78,15 @@
         android:text="@string/zero"
         app:layout_constraintBottom_toTopOf="@+id/blueCard"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.097"
+        app:layout_constraintHorizontal_bias="0.012"
         app:layout_constraintStart_toEndOf="@+id/redCount"
         app:layout_constraintTop_toBottomOf="@+id/whiteCard"
-        app:layout_constraintVertical_bias="0.515" />
+        app:layout_constraintVertical_bias="0.518" />
 
     <ImageView
         android:id="@+id/blackCard"
-        android:layout_width="80dp"
-        android:layout_height="65dp"
+        android:layout_width="40dp"
+        android:layout_height="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -102,8 +102,8 @@
 
     <ImageView
         android:id="@+id/redCard"
-        android:layout_width="80dp"
-        android:layout_height="65dp"
+        android:layout_width="40dp"
+        android:layout_height="32dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -119,8 +119,8 @@
 
     <ImageView
         android:id="@+id/blueCard"
-        android:layout_width="80dp"
-        android:layout_height="65dp"
+        android:layout_width="40dp"
+        android:layout_height="32dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -136,8 +136,8 @@
 
     <ImageView
         android:id="@+id/greenCard"
-        android:layout_width="80dp"
-        android:layout_height="65dp"
+        android:layout_width="40dp"
+        android:layout_height="32dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -153,8 +153,8 @@
 
     <ImageView
         android:id="@+id/orangeCard"
-        android:layout_width="80dp"
-        android:layout_height="65dp"
+        android:layout_width="40dp"
+        android:layout_height="32dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -170,8 +170,8 @@
 
     <ImageView
         android:id="@+id/pinkCard"
-        android:layout_width="80dp"
-        android:layout_height="65dp"
+        android:layout_width="40dp"
+        android:layout_height="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -187,8 +187,8 @@
 
     <ImageButton
         android:id="@+id/upDeck1"
-        android:layout_width="75dp"
-        android:layout_height="60dp"
+        android:layout_width="37dp"
+        android:layout_height="30dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -206,8 +206,8 @@
 
     <ImageButton
         android:id="@+id/upDeck2"
-        android:layout_width="75dp"
-        android:layout_height="60dp"
+        android:layout_width="37dp"
+        android:layout_height="30dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -225,8 +225,8 @@
 
     <ImageButton
         android:id="@+id/upDeck3"
-        android:layout_width="75dp"
-        android:layout_height="60dp"
+        android:layout_width="37dp"
+        android:layout_height="30dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -244,8 +244,8 @@
 
     <ImageButton
         android:id="@+id/upDeck4"
-        android:layout_width="75dp"
-        android:layout_height="60dp"
+        android:layout_width="37dp"
+        android:layout_height="30dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -254,17 +254,17 @@
         android:contentDescription="@string/zero"
         android:scaleType="fitXY"
         android:src="@drawable/purple_train_card"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/trainCount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/upDeck3"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096" />
+        app:layout_constraintVertical_bias="0.36" />
 
     <ImageButton
         android:id="@+id/upDeck5"
-        android:layout_width="75dp"
-        android:layout_height="60dp"
+        android:layout_width="37dp"
+        android:layout_height="30dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -273,17 +273,17 @@
         android:contentDescription="@string/zero"
         android:scaleType="fitXY"
         android:src="@drawable/purple_train_card"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/trainCount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/upDeck4"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096" />
+        app:layout_constraintVertical_bias="0.36" />
 
     <ImageView
         android:id="@+id/whiteCard"
-        android:layout_width="80dp"
-        android:layout_height="65dp"
+        android:layout_width="40dp"
+        android:layout_height="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -299,8 +299,8 @@
 
     <ImageView
         android:id="@+id/yellowCard"
-        android:layout_width="80dp"
-        android:layout_height="65dp"
+        android:layout_width="40dp"
+        android:layout_height="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -316,8 +316,8 @@
 
     <ImageView
         android:id="@+id/wildCard"
-        android:layout_width="80dp"
-        android:layout_height="65dp"
+        android:layout_width="40dp"
+        android:layout_height="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -346,7 +346,7 @@
         android:text="@string/zero"
         app:layout_constraintBottom_toTopOf="@+id/pinkCard"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintHorizontal_bias="0.071"
         app:layout_constraintStart_toEndOf="@+id/pinkCount"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
@@ -359,17 +359,17 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/zero"
         android:inputType="number"
         android:text="@string/zero"
         app:layout_constraintBottom_toTopOf="@+id/whiteCard"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintHorizontal_bias="0.01"
         app:layout_constraintStart_toEndOf="@+id/yellowCount"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/yellowCount"
@@ -379,17 +379,17 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/zero"
         android:inputType="number"
         android:text="@string/zero"
         app:layout_constraintBottom_toTopOf="@+id/yellowCard"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintHorizontal_bias="0.011"
         app:layout_constraintStart_toEndOf="@+id/wildCount"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/wildCount"
@@ -399,17 +399,17 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/zero"
         android:inputType="number"
         android:text="@string/zero"
         app:layout_constraintBottom_toTopOf="@+id/wildCard"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/redCount"
@@ -418,17 +418,17 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/zero"
         android:inputType="number"
         android:text="@string/zero"
         app:layout_constraintBottom_toTopOf="@+id/redCard"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintHorizontal_bias="0.029"
         app:layout_constraintStart_toEndOf="@+id/blackCount"
         app:layout_constraintTop_toBottomOf="@+id/yellowCard"
-        app:layout_constraintVertical_bias="0.515"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="0.518" />
 
     <EditText
         android:id="@+id/greenCount"
@@ -444,15 +444,15 @@
         android:text="@string/zero"
         app:layout_constraintBottom_toTopOf="@+id/greenCard"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintHorizontal_bias="0.038"
         app:layout_constraintStart_toEndOf="@+id/blueCount"
         app:layout_constraintTop_toBottomOf="@+id/pinkCard"
-        app:layout_constraintVertical_bias="0.515" />
+        app:layout_constraintVertical_bias="0.518" />
 
     <ImageButton
         android:id="@+id/downDeck"
-        android:layout_width="126dp"
-        android:layout_height="91dp"
+        android:layout_width="63dp"
+        android:layout_height="45dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -470,8 +470,8 @@
 
     <ImageButton
         android:id="@+id/destinationDeck"
-        android:layout_width="126dp"
-        android:layout_height="91dp"
+        android:layout_width="63dp"
+        android:layout_height="45dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -489,8 +489,8 @@
 
     <ImageButton
         android:id="@+id/destinationCards"
-        android:layout_width="81dp"
-        android:layout_height="108dp"
+        android:layout_width="40dp"
+        android:layout_height="54dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -499,15 +499,15 @@
         android:onClick="showPopUp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.732"
+        app:layout_constraintHorizontal_bias="0.214"
         app:layout_constraintStart_toEndOf="@+id/orangeCard"
         app:layout_constraintTop_toBottomOf="@+id/upDeck5"
-        app:layout_constraintVertical_bias="0.871" />
+        app:layout_constraintVertical_bias="0.827" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="35dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="148dp"
         android:layout_marginEnd="8dp"
@@ -516,9 +516,9 @@
         android:src="@drawable/train_car"
         app:layout_constraintBottom_toBottomOf="@+id/orangeCount"
         app:layout_constraintEnd_toStartOf="@+id/destinationCards"
-        app:layout_constraintHorizontal_bias="0.195"
+        app:layout_constraintHorizontal_bias="0.131"
         app:layout_constraintStart_toEndOf="@+id/pinkCard"
         app:layout_constraintTop_toBottomOf="@+id/upDeck3"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.569" />
 
 </android.support.constraint.ConstraintLayout>

@@ -1,13 +1,8 @@
-package androidteam.cs340.tickettoride.Client.ServerPoller;
+package androidteam.cs340.tickettoride.Client.Poller;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidteam.cs340.tickettoride.Shared.Game;
-import androidteam.cs340.tickettoride.Shared.Lobby;
+import androidteam.cs340.tickettoride.Shared.GameModel;
 import androidteam.cs340.tickettoride.Shared.LobbyGameModel;
 import androidteam.cs340.tickettoride.Shared.LobbyModel;
 import androidteam.cs340.tickettoride.Shared.Player;
@@ -84,4 +79,19 @@ public class ParseResults {
         return games;
     }
 
+    public GameModel parseGameResult(Result result) {
+
+        //Check result
+        System.out.println(result.getData());
+
+        Gson gson = new Gson();
+
+        //Allow arrayList
+        TypeToken<GameModel> token = new TypeToken<GameModel>() {};
+
+        //Load values into arrayList
+        GameModel game = gson.fromJson(result.getData(), token.getType());
+
+        return game;
+    }
 }

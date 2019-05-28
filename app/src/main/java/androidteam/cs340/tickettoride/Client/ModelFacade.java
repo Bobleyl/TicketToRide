@@ -1,19 +1,21 @@
 package androidteam.cs340.tickettoride.Client;
 
+import com.google.gson.Gson;
+
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
-import androidteam.cs340.tickettoride.Client.ServerPoller.LobbyPollerCommand;
-import androidteam.cs340.tickettoride.Client.ServerPoller.ParseResults;
+import androidteam.cs340.tickettoride.Client.Poller.Lobby.LobbyPollerCommand;
+import androidteam.cs340.tickettoride.Client.Poller.ParseResults;
 import androidteam.cs340.tickettoride.Shared.Game;
+import androidteam.cs340.tickettoride.Shared.GameModel;
 import androidteam.cs340.tickettoride.Shared.Lobby;
 import androidteam.cs340.tickettoride.Shared.Player;
 import androidteam.cs340.tickettoride.Shared.Result;
 import androidteam.cs340.tickettoride.Shared.User;
-import androidteam.cs340.tickettoride.Client.ServerPoller.LobbyPoller;
+import androidteam.cs340.tickettoride.Client.Poller.Lobby.LobbyPoller;
 
 public class ModelFacade {
     private Lobby currentLobby;
@@ -99,6 +101,17 @@ public class ModelFacade {
         }
 
         updatePresenter();
+    }
+
+    public void updateCurrentGame(Result result) {
+
+        // Under construction
+
+
+        GameModel game = ParseResults.SINGLETON.parseGameResult(result);
+        /*currentGame = game;
+
+        updatePresenter();*/
     }
 
     public Result createGame(String playerID, int size){

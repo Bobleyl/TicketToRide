@@ -1,11 +1,9 @@
 package androidteam.cs340.tickettoride.Client.Presenters;
 
-import android.view.Display;
-
 import java.util.UUID;
 
 import androidteam.cs340.tickettoride.Client.ModelFacade;
-import androidteam.cs340.tickettoride.Client.ServerPoller.ParseResults;
+import androidteam.cs340.tickettoride.Client.Poller.ParseResults;
 import androidteam.cs340.tickettoride.Shared.Player;
 import androidteam.cs340.tickettoride.Shared.Result;
 import androidteam.cs340.tickettoride.Shared.User;

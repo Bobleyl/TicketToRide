@@ -1,4 +1,4 @@
-package androidteam.cs340.tickettoride.Shared;
+package Shared;
 
 public enum Route {
 

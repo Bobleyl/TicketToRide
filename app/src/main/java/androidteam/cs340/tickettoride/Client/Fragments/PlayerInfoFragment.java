@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import java.net.HttpURLConnection;
 import java.util.List;
+import java.util.UUID;
 
 import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
@@ -59,6 +60,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
     @Override
     public void onResume(){
         super.onResume();
+        this.ID = UUID.randomUUID().toString();
         Phase2Facade.SINGLETON.addPresenter(this);
     }
 

@@ -1,4 +1,4 @@
-package androidteam.cs340.tickettoride.Client.ServerPoller;
+package androidteam.cs340.tickettoride.Client.Poller;
 
 import androidteam.cs340.tickettoride.Shared.Result;
 
@@ -11,11 +11,10 @@ public abstract class ServerPoller {
     private IPollerCommand command;
     private Timer timer;
 
-    ServerPoller(IPollerCommand command, int frequency) {
+    public ServerPoller(IPollerCommand command, int frequency) {
 
         this.command = command;
         this.frequency = frequency;
-        timer = new Timer();
     }
 
     private void poll() {
@@ -25,11 +24,16 @@ public abstract class ServerPoller {
         command.execute(result);
     }
 
-    public void stop() {
+    public synchronized void stop() {
         timer.cancel();
+        timer = null;
     }
 
     public synchronized void start() {
+
+        if (timer == null) {
+            timer = new Timer();
+        }
 
         TimerTask timerTask = new TimerTask() {
             @Override
@@ -41,5 +45,5 @@ public abstract class ServerPoller {
         timer.schedule(timerTask, 0, frequency);
     }
 
-    abstract Result getServerData();
+    public abstract Result getServerData();
 }
