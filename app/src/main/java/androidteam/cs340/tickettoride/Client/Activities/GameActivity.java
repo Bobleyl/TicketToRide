@@ -11,10 +11,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidteam.cs340.tickettoride.Client.Fragments.DestinationCardFragment;
 import androidteam.cs340.tickettoride.Client.Fragments.GameListFragment;
 import androidteam.cs340.tickettoride.Client.Fragments.PlayerInfoFragment;
 import androidteam.cs340.tickettoride.Client.Presenters.GameActivityPresenter;
 import androidteam.cs340.tickettoride.R;
+import androidteam.cs340.tickettoride.Shared.DestinationCard;
 
 public class GameActivity extends AppCompatActivity implements PlayerInfoFragment.OnFragmentInteractionListener {
     Button mMapButton;
@@ -41,7 +43,8 @@ public class GameActivity extends AppCompatActivity implements PlayerInfoFragmen
             if (savedInstanceState != null) {
                 return;
             }
-            PlayerInfoFragment firstFragment = new PlayerInfoFragment();
+            //PlayerInfoFragment firstFragment = new PlayerInfoFragment();
+            DestinationCardFragment firstFragment = new DestinationCardFragment();
             firstFragment.setArguments(getIntent().getExtras());
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.main_game_fragment_container, firstFragment).commit();

@@ -135,4 +135,8 @@ public class Phase2Facade {
         return currentPlayer.getTrainCars();
     }
 
+    public List<DestinationCard> getPlayerDestinationCards(){
+        return currentPlayer.getDestinationHand();
+    }
+
 }
