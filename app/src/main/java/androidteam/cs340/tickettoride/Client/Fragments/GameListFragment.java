@@ -100,6 +100,7 @@ public class GameListFragment extends Fragment implements IPresenter {
         mCreateGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mCreateGameButton.setEnabled(false);
                 createGame();
             }
         });
