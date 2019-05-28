@@ -16,7 +16,6 @@ public class GamePoller extends ServerPoller {
 
     @Override
     public Result getServerData() {
-
         //This should create the json to send or have a method in the ServerProxy
         return ServerProxy.SINGLETON.game(gameID);
     }
