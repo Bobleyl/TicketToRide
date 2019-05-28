@@ -1,6 +1,10 @@
 package server;
 
-import androidteam.cs340.tickettoride.Shared.*;
+
+import Shared.DestinationCard;
+import Shared.DestinationCardDeck;
+import Shared.GameModel;
+import Shared.Player;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

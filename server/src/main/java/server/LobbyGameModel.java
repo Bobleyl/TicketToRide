@@ -1,6 +1,8 @@
 package server;
 
-import androidteam.cs340.tickettoride.Shared.*;
+
+
+import Shared.*;
 
 import java.util.ArrayList;
 import java.util.List;
