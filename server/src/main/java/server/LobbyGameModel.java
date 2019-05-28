@@ -1,6 +1,8 @@
 package server;
 
-import androidteam.cs340.tickettoride.Shared.*;
+
+
+import Shared.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +43,8 @@ public class LobbyGameModel {
             startGame();
 
             //Remove game from lobby
-            LobbyModel.SINGLETON.deleteGame(gameID);
+            //Moved to DeleteGameCommand
+            //LobbyModel.SINGLETON.deleteGame(gameID);
         }
 
         return true;

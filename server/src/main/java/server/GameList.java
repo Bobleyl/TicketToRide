@@ -1,6 +1,6 @@
 package server;
 
-import androidteam.cs340.tickettoride.Shared.GameModel;
+import Shared.GameModel;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,10 @@
 package server;
 
-import androidteam.cs340.tickettoride.Shared.GameModel;
-import androidteam.cs340.tickettoride.Shared.Player;
-import androidteam.cs340.tickettoride.Shared.TrainCard;
-import androidteam.cs340.tickettoride.Shared.TrainCardDeck;
+
+import Shared.GameModel;
+import Shared.Player;
+import Shared.TrainCard;
+import Shared.TrainCardDeck;
 
 import java.util.ArrayList;
 import java.util.HashMap;

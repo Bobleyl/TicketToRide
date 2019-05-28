@@ -1,5 +1,7 @@
 package androidteam.cs340.tickettoride.Client;
 
+import android.util.Log;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.ArrayType;
 import com.google.gson.Gson;
@@ -36,11 +38,11 @@ public class ClientCommunicator {
 
     public Result send(String command) {
 
-        //String url_ = "http://ec2-18-224-234-208.us-east-2.compute.amazonaws.com:7000/execute";
-        String url_ = "http://localhost:7000/execute";
+        String url_ = "http://ec2-18-224-234-208.us-east-2.compute.amazonaws.com:7000/execute";
+        //String url_ = "http://192.168.1.198:7001/execute";
 
-        //System.out.println(command);
-        //System.out.println(url_);
+        Log.d("CLIENT_COMMUNICATOR", command);
+        Log.d("CLIENT_COMMUNICATOR", url_);
 
         try {
 
@@ -67,7 +69,7 @@ public class ClientCommunicator {
 
             //Send connection
             result.connect();
-            //System.out.println(result.getResponseCode());
+            Log.d("CLIENT_COMMUNICATOR", Integer.toString(result.getResponseCode()));
 
             if (result.getResponseCode() == HttpURLConnection.HTTP_OK) {
 
@@ -86,6 +88,7 @@ public class ClientCommunicator {
 
         }
         catch (Exception e) {
+            Log.d("CLIENT_COMMUNICATOR", e.toString());
             e.printStackTrace();
             return new Result(400, "error", "Error in ClientCommunicator");
         }
