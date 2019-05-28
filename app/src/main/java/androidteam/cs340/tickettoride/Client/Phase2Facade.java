@@ -56,12 +56,12 @@ public class Phase2Facade {
         gamePoller.start();
     }
 
-    public void updateCurrentGames(Result result) {
+    public void updateCurrentGame(Result result) {
         GameModel gamesModel = new GameModel();
         gamesModel = ParseResults.SINGLETON.parseGameResult(result);
-
         currentGame = gamesModel;
-
+        System.out.println("DATA::: ");
+        System.out.println(currentGame);
         updatePresenter();
     }
 
