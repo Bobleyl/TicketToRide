@@ -5,6 +5,7 @@ import android.graphics.ColorSpace;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidteam.cs340.tickettoride.Client.Poller.ParseResults;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.Client.Poller.Game.GamePoller;
 import androidteam.cs340.tickettoride.Client.Poller.Game.GamePollerCommand;
@@ -44,6 +45,15 @@ public class Phase2Facade {
     //TODO: ADD LOGIC TO WAITINGROOM PRESENTER TO START POLLER
     public void startPoller(){
         gamePoller.start();
+    }
+
+    public void updateCurrentGames(Result result) {
+        GameModel gamesModel = new GameModel();
+        gamesModel = ParseResults.SINGLETON.parseGameResult(result);
+
+        currentGame = gamesModel;
+
+        updatePresenter();
     }
 
     public void updatePresenter() {
