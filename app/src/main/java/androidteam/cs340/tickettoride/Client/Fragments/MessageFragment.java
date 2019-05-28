@@ -16,22 +16,53 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import java.util.List;
+import java.util.UUID;
 
 import androidteam.cs340.tickettoride.Client.Phase2Facade;
+import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.Game;
 import androidteam.cs340.tickettoride.Shared.Message;
 
 
-public class MessageFragment extends Fragment {
+public class MessageFragment extends Fragment implements IPresenter {
     private RecyclerView mMessageRecyclerView;
     private OnFragmentInteractionListener mListener;
+    private String ID;
+
+    public MessageFragment() {
+        //Give the newly generated presenter an ID
+        this.ID = UUID.randomUUID().toString();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
     }
+
+    @Override
+    public void Update() {
+        //TODO: Implement this method here.
+    }
+
+    @Override
+    public String getID() {
+        return ID;
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        this.ID = UUID.randomUUID().toString();
+        Phase2Facade.SINGLETON.addPresenter(this);
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        Phase2Facade.SINGLETON.removePresenter(this);
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

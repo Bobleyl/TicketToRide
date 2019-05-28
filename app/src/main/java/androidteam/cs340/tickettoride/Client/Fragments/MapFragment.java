@@ -8,6 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.UUID;
+
+import androidteam.cs340.tickettoride.Client.Phase2Facade;
+import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.R;
 
 /**
@@ -18,12 +22,40 @@ import androidteam.cs340.tickettoride.R;
  * Use the {@link MapFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MapFragment extends Fragment {
+public class MapFragment extends Fragment implements IPresenter {
 
     private OnFragmentInteractionListener mListener;
+    private String ID;
 
     public MapFragment() {
         // Required empty public constructor
+
+        //Give the newly generated presenter an ID.
+        // Should this constructor be empty?
+        this.ID = UUID.randomUUID().toString();
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        this.ID = UUID.randomUUID().toString();
+        Phase2Facade.SINGLETON.addPresenter(this);
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        Phase2Facade.SINGLETON.removePresenter(this);
+    }
+
+    @Override
+    public void Update() {
+        //TODO: Implement this method here.
+    }
+
+    @Override
+    public String getID() {
+        return ID;
     }
 
     /**
