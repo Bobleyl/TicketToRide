@@ -28,7 +28,7 @@ public class Phase2Facade {
     private List<Player> turnOrder;
     private List<IPresenter> presenters = new ArrayList<>();
     private GamePollerCommand command = new GamePollerCommand();
-    private GamePoller gamePoller = new GamePoller(command, 1000, currentGame.getGameID());
+    private GamePoller gamePoller = new GamePoller(command, 1000, ModelFacade.SINGLETON.getGameID());
 
     private Phase2Facade(){
         turnOrder = new ArrayList<>();

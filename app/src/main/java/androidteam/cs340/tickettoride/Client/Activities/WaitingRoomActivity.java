@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import androidteam.cs340.tickettoride.Client.ModelFacade;
+import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.WaitingRoomPresenter;
 import androidteam.cs340.tickettoride.Client.ServerProxy;
 import androidteam.cs340.tickettoride.R;
@@ -110,6 +111,7 @@ public class WaitingRoomActivity extends AppCompatActivity {
 
         if(!found && players.size() == game.getGameSize()){
             System.out.println("GAME IS FULL, LET'S PLAY");
+            Phase2Facade.SINGLETON.startPoller();
             Intent intent = new Intent(WaitingRoomActivity.this, GameActivity.class);
             startActivity(intent);
         }
