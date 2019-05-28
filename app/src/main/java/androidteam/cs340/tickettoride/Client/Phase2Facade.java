@@ -62,6 +62,12 @@ public class Phase2Facade {
         currentGame = gamesModel;
         System.out.println("DATA::: ");
         System.out.println(currentGame);
+
+        System.out.println("PLAYERS::: ");
+        System.out.println(currentGame.getPlayersList());
+
+        System.out.println("ID:::");
+        System.out.println(currentGame.getGameID());
         updatePresenter();
     }
 

@@ -1,6 +1,7 @@
 package androidteam.cs340.tickettoride.Client.Fragments;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,27 +27,41 @@ import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.DestinationCard;
 
+import static androidteam.cs340.tickettoride.Client.Phase2Facade.SINGLETON;
+
 public class DestinationCardFragment extends Fragment implements IPresenter {
     private String ID;
+    private Boolean isStart;
 
     private TextView mCard1Text;
     private TextView mCard1Points;
     private TextView mCard1Status;
+    private LinearLayout mCard1Box;
+
     private TextView mCard2Text;
     private TextView mCard2Points;
     private TextView mCard2Status;
+    private LinearLayout mCard2Box;
+
     private TextView mCard3Text;
     private TextView mCard3Points;
     private TextView mCard3Status;
+    private LinearLayout mCard3Box;
 
 
     public void updateUI(){
-        return;
+        List<DestinationCard> destCards = Phase2Facade.SINGLETON.getPlayerDestinationCards();
+        if(destCards.size() < 3){
+            return;
+        }
+        else{
+            populateCards(destCards);
+        }
     }
 
     @Override
     public String getID(){
-        return "";
+        return ID;
     }
 
 
@@ -61,20 +77,17 @@ public class DestinationCardFragment extends Fragment implements IPresenter {
     @Override
     public void onResume(){
         super.onResume();
-        Phase2Facade.SINGLETON.addPresenter(this);
+        SINGLETON.addPresenter(this);
     }
 
     @Override
     public void onPause(){
         super.onPause();
-        Phase2Facade.SINGLETON.removePresenter(this);
+        SINGLETON.removePresenter(this);
     }
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
-
-    // TODO: Rename and change types of parameters
-    private Boolean isStart;
 
     public DestinationCardFragment() {
         // Required empty public constructor
@@ -104,26 +117,27 @@ public class DestinationCardFragment extends Fragment implements IPresenter {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Grab the arguments to the fragment
+        isStart = getArguments().getBoolean("isStart");
+        Toast.makeText(getContext(), isStart.toString(), Toast.LENGTH_SHORT).show();
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_destination_card, container, false);
-
-        // Set views for buttons, recyclerView and Spinner.
-//        mGameRecyclerView = (RecyclerView) view.findViewById(R.id.game_list_recycler_view);
-//        mGameRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-//        mCreateGameButton = (Button) view.findViewById(R.id.create_game_button);
-//        mNumberOfPlayersSpinner = (Spinner) view.findViewById(R.id.number_of_players_spinner);
 
         mCard1Text = (TextView) view.findViewById(R.id.dest_card_1_text);
         mCard1Points = (TextView) view.findViewById(R.id.dest_card_1_points);
         mCard1Status = (TextView) view.findViewById(R.id.dest_card_1_status);
+        mCard1Box = (LinearLayout) view.findViewById(R.id.dest_card_1_box); 
 
         mCard2Text = (TextView) view.findViewById(R.id.dest_card_2_text);
         mCard2Points = (TextView) view.findViewById(R.id.dest_card_2_points);
         mCard2Status = (TextView) view.findViewById(R.id.dest_card_2_status);
+        mCard2Box = (LinearLayout) view.findViewById(R.id.dest_card_2_box);
 
         mCard3Text = (TextView) view.findViewById(R.id.dest_card_3_text);
         mCard3Points = (TextView) view.findViewById(R.id.dest_card_3_points);
         mCard3Status = (TextView) view.findViewById(R.id.dest_card_3_status);
+        mCard3Box = (LinearLayout) view.findViewById(R.id.dest_card_3_box);
 
         List<DestinationCard> cards = new ArrayList<>(Arrays.asList(DestinationCard.values()));
 
@@ -131,23 +145,38 @@ public class DestinationCardFragment extends Fragment implements IPresenter {
             Toast.makeText(getActivity(), "Too Few Cards" , Toast.LENGTH_SHORT).show();
         }
         else{
-            DestinationCard card1 = cards.get(0);
-            DestinationCard card2 = cards.get(1);
-            DestinationCard card3 = cards.get(2);
-
-            mCard1Text.setText(card1.cityA + " --> " + card1.cityB);
-            mCard1Points.setText(card1.points + "");
-            mCard1Status.setText("Keeping");
-
-            mCard2Text.setText(card2.cityA + " --> " + card2.cityB);
-            mCard2Points.setText(card2.points + "");
-            mCard2Status.setText("Keeping");
-
-            mCard3Text.setText(card3.cityA + " --> " + card3.cityB);
-            mCard3Points.setText(card3.points + "");
-            mCard3Status.setText("Keeping");
+            populateCards(cards);
+            toKeep(mCard1Box,mCard1Status);
+            toKeep(mCard2Box,mCard2Status);
+            toKeep(mCard3Box,mCard3Status);
         }
 
         return view;
+    }
+
+    private void toKeep(LinearLayout layout, TextView txt) {
+        layout.setBackgroundColor(Color.green(15));
+        txt.setText("KEEPING");
+    }
+
+    private void toReturn(LinearLayout layout, TextView txt){
+        layout.setBackgroundColor(Color.blue(15));
+        txt.setText("RETURNING");
+    }
+
+    private void populateCards(List<DestinationCard> destCards){
+        DestinationCard card1 = destCards.get(0);
+        DestinationCard card2 = destCards.get(1);
+        DestinationCard card3 = destCards.get(2);
+
+        mCard1Text.setText(card1.cityA + " --> " + card1.cityB);
+        mCard1Points.setText(card1.points + "");
+
+
+        mCard2Text.setText(card2.cityA + " --> " + card2.cityB);
+        mCard2Points.setText(card2.points + "");
+
+        mCard3Text.setText(card3.cityA + " --> " + card3.cityB);
+        mCard3Points.setText(card3.points + "");
     }
 }

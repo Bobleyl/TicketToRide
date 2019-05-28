@@ -52,7 +52,10 @@ public class GameActivity extends AppCompatActivity implements
             }
             //PlayerInfoFragment firstFragment = new PlayerInfoFragment();
             DestinationCardFragment firstFragment = new DestinationCardFragment();
-            firstFragment.setArguments(getIntent().getExtras());
+//            firstFragment.setArguments(getIntent().getExtras());
+            Bundle bundle = new Bundle();
+            bundle.putBoolean("isStart", true);
+            firstFragment.setArguments(bundle);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.main_game_fragment_container, firstFragment).commit();
         }
