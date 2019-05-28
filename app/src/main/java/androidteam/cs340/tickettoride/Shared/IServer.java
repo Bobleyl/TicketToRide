@@ -17,5 +17,6 @@ public interface IServer {
     Result sendMessage(String gameID, String playerID, Message message);
     Result claimRoute(String gameID, String playerID, Route route);
     Result endTurn(String gameID, String playerID);
+    Result deleteGame(String gameID);
 
 }

@@ -41,7 +41,8 @@ public class LobbyGameModel {
             startGame();
 
             //Remove game from lobby
-            LobbyModel.SINGLETON.deleteGame(gameID);
+            //Moved to DeleteGameCommand
+            //LobbyModel.SINGLETON.deleteGame(gameID);
         }
 
         return true;
