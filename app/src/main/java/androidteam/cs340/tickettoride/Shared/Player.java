@@ -10,7 +10,7 @@ public class Player {
 
     private List<DestinationCard> destinationHand;
     private List<TrainCard> trainCardsHand;
-    private List<DestinationCard> tempDestinationCard;
+    private List<DestinationCard> tempDestinationCard = new ArrayList<>();
     private List<Route> claimedRoutes;
     private int score;
     private int trainCars;
@@ -49,11 +49,19 @@ public class Player {
         this.name = name;
     }
 
+    public List<DestinationCard> getTempDestinationCard() {
+        return tempDestinationCard;
+    }
+
+    public void setTempDestinationCard(List<DestinationCard> tempDestinationCard) { this.tempDestinationCard = tempDestinationCard; }
+
     public List<DestinationCard> getDestinationHand() {
         return destinationHand;
     }
 
     public void addToDestinationHand(DestinationCard destinationCard) { destinationHand.add(destinationCard);}
+
+    public void addToTempDestHand(DestinationCard destinationCard) { tempDestinationCard.add(destinationCard);}
 
     public void setDestinationHand(List<DestinationCard> destinationHand) {
         this.destinationHand = destinationHand;
@@ -62,13 +70,6 @@ public class Player {
     public List<TrainCard> getTrainCardsHand() {
         return trainCardsHand;
     }
-
-    public List<DestinationCard> getTempDestinationCard() {
-        return tempDestinationCard;
-    }
-
-    public void setTempDestinationCard(List<DestinationCard> tempDestinationCard) { this.tempDestinationCard = tempDestinationCard; }
-
 
     public void setTrainCardsHand(List<TrainCard> trainCardsHand) {
         this.trainCardsHand = trainCardsHand;

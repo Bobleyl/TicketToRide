@@ -13,7 +13,7 @@ public class DestinationCardDeck {
         Collections.shuffle(deck);
     }
 
-    public DestinationCard getCard() {
+    public void getCard(Player player) {
 
         if (deck.size() == 0 && discard.size() > 0) {
             deck = discard;
@@ -24,10 +24,9 @@ public class DestinationCardDeck {
         if (deck.size() > 0) {
             DestinationCard card = deck.get(0);
             deck.remove(0);
-            return card;
+            player.addToTempDestHand(card);
         }
 
-        return null;
     }
 
     public void returnCard(DestinationCard card) {
