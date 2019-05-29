@@ -56,7 +56,6 @@ public class Phase2Facade {
         GamePollerCommand command = new GamePollerCommand();
         GamePoller gp = new GamePoller(command, 1000, getGameID());
         gp.start();
-
     }
 
     public void updateCurrentGame(Result result) {
@@ -73,6 +72,7 @@ public class Phase2Facade {
         System.out.println("ID:::");
         System.out.println(currentGame.getGameID());
 
+        System.out.println("PLAYER DECK: " + currentGame.getDestinationCardDeck().getDeck().size());
         for (Player player : currentGame.getPlayersList()) {
             if (player.getUID().equals(ModelFacade.SINGLETON.getPlayer().getUID())) {
                 currentPlayer = player;

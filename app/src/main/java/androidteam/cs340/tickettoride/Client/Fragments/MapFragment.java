@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Spinner;
+import android.widget.Button;
 
 import java.util.UUID;
 
@@ -25,7 +27,9 @@ import androidteam.cs340.tickettoride.R;
 public class MapFragment extends Fragment implements IPresenter {
 
     private OnFragmentInteractionListener mListener;
+    private Button mClaimRoute;
     private String ID;
+    private Spinner mRouteSpinner;
 
     public MapFragment() {
         // Required empty public constructor
@@ -58,15 +62,6 @@ public class MapFragment extends Fragment implements IPresenter {
         return ID;
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MapFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static MapFragment newInstance(String param1, String param2) {
         MapFragment fragment = new MapFragment();
 
@@ -83,7 +78,12 @@ public class MapFragment extends Fragment implements IPresenter {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_map, container, false);
+        View view = inflater.inflate(R.layout.fragment_map, container, false);
+
+        mRouteSpinner = view.findViewById(R.id.claimRouteSpinner);
+        mClaimRoute = view.findViewById(R.id.claimRoute);
+
+        return view;
     }
 
 
