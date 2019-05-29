@@ -1,7 +1,5 @@
 package server;
 
-
-
 import Shared.*;
 
 import java.util.ArrayList;
@@ -90,7 +88,7 @@ public class LobbyGameModel {
                 destinationCards.add(destinationCardDeck.getCard());
                 j++;
             }
-            currentPlayer.setDestinationHand(destinationCards);
+            currentPlayer.setTempDestinationCard(destinationCards);
 
             //Add 4 cards to players trainCardHand
             int k = 0;

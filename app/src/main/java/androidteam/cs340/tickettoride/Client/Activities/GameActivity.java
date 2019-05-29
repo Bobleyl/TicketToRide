@@ -26,11 +26,14 @@ import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.GameActivityPresenter;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.DestinationCard;
+import androidteam.cs340.tickettoride.Shared.Player;
+
 
 public class GameActivity extends AppCompatActivity implements
         MapFragment.OnFragmentInteractionListener,
         MessageFragment.OnFragmentInteractionListener,
         PlayerInfoFragment.OnFragmentInteractionListener {
+
     Button mMapButton;
     Button mGameInfoButton;
     Button mChatButton;
@@ -42,12 +45,60 @@ public class GameActivity extends AppCompatActivity implements
 
     GameActivityPresenter mGameActivityPresenter;
 
+    public void upDatePlayerTextViews(final List<Player> players) {
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                updateUI(players);
+            }
+        });
+    }
+
+    private void updateUI(List<Player> players) {
+        StringBuilder playerText = new StringBuilder();
+        if(players.size() >= 1 && players.get(0) != null) {
+            Player currentPlayer = players.get(0);
+            playerText.append(currentPlayer.getName() + "\n" + currentPlayer.getScore() + "/" +
+                    currentPlayer.getTrainCardsHand().size());
+            mPlayer1TextView.setText(playerText.toString());
+        }
+        if(players.size() >= 2 && players.get(1) != null) {
+            playerText = new StringBuilder();
+            Player currentPlayer = players.get(1);
+            playerText.append(currentPlayer.getName() + "\n" + currentPlayer.getScore() + "/" +
+                    currentPlayer.getTrainCardsHand().size());
+            mPlayer2TextView.setText(playerText.toString());
+        }
+        if(players.size() >= 3 && players.get(2) != null) {
+            playerText = new StringBuilder();
+            Player currentPlayer = players.get(2);
+            playerText.append(currentPlayer.getName() + "\n" + currentPlayer.getScore() + "/" +
+                    currentPlayer.getTrainCardsHand().size());
+            mPlayer3TextView.setText(playerText.toString());
+        }
+        if(players.size() >= 4 && players.get(3) != null) {
+            playerText = new StringBuilder();
+            Player currentPlayer = players.get(3);
+            playerText.append(currentPlayer.getName() + "\n" + currentPlayer.getScore() + "/" +
+                    currentPlayer.getTrainCardsHand().size());
+            mPlayer4TextView.setText(playerText.toString());
+        }
+        if(players.size() >= 5 && players.get(4) != null) {
+            playerText = new StringBuilder();
+            Player currentPlayer = players.get(4);
+            playerText.append(currentPlayer.getName() + "\n" + currentPlayer.getScore() + "/" +
+                    currentPlayer.getTrainCardsHand().size());
+            mPlayer5TextView.setText(playerText.toString());
+        }
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        mGameActivityPresenter = new GameActivityPresenter();
+        mGameActivityPresenter = new GameActivityPresenter(this);
 
         Phase2Facade.SINGLETON.setGameID(ModelFacade.SINGLETON.getGameID());
         ModelFacade.SINGLETON.stopPoller();
@@ -111,9 +162,8 @@ public class GameActivity extends AppCompatActivity implements
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-        //TODO: What should be put here?
+        //Needs to be implemented, but not sure what it does.
     }
-
 
 
     @Override

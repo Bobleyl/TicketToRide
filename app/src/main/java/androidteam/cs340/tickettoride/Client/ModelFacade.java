@@ -118,6 +118,12 @@ public class ModelFacade {
         updatePresenter();*/
     }
 
+
+    public Result joinGame(){
+        String playerID = currentPlayer.getUID();
+        return ServerProxy.SINGLETON.joinGame(playerID, currentGame.getUID());
+    }
+
     public Result createGame(String playerID, int size){
         Result createGameResult = ServerProxy.SINGLETON.createGame(playerID, size);
         if(createGameResult.getStatusCode() == HttpURLConnection.HTTP_OK) {
@@ -126,11 +132,6 @@ public class ModelFacade {
             currentGame.setUID(createGameResult.getData());
         }
         return createGameResult;
-    }
-
-    public Result joinGame(){
-        String playerID = currentPlayer.getUID();
-        return ServerProxy.SINGLETON.joinGame(playerID, currentGame.getUID());
     }
 
 }

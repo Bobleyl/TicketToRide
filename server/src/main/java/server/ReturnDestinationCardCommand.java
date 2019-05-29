@@ -42,13 +42,30 @@ public class ReturnDestinationCardCommand implements CommandInterface {
                 for (Player player : game.getPlayersList()) {
                     if (player.getUID().equals(playerID)) {
 
+                        //Grab all the desination cards...
                         DestinationCardDeck destinationCardDeck = game.getDestinationCardDeck();
-                        List<DestinationCard> playersDestCards = player.getDestinationHand();
+
+                        //Grab tempDestCards
+                        List<DestinationCard> tempDestCardDeck = player.getTempDestinationCard();
+
+                        //Grab players current destination cards
+                        List<DestinationCard> currentDestCards = player.getDestinationHand();
+
+                        //Go through all the cards that were supposed to be returned..
                         for(DestinationCard destinationCard : destinationCards) {
                             destinationCardDeck.returnCard(destinationCard);
-                            playersDestCards.remove(destinationCard);
+                            tempDestCardDeck.remove(destinationCard);
                         }
-                        player.setDestinationHand(playersDestCards);
+
+
+                        currentDestCards.addAll(tempDestCardDeck);
+
+                        player.setDestinationHand(currentDestCards);
+
+                        //Empty temp hand
+                        player.setTempDestinationCard(new ArrayList<>());
+
+                        game.setDestinationCardDeck(destinationCardDeck);
 
                         returnMessage.setReponseMessage("success");
                         successfulExecute = true;

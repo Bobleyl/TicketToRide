@@ -10,6 +10,7 @@ public class Player {
 
     private List<DestinationCard> destinationHand;
     private List<TrainCard> trainCardsHand;
+    private List<DestinationCard> tempDestinationCard;
     private List<Route> claimedRoutes;
     private int score;
     private int trainCars;
@@ -53,6 +54,12 @@ public class Player {
     }
 
     public void addToDestinationHand(DestinationCard destinationCard) { destinationHand.add(destinationCard);}
+
+    public List<DestinationCard> getTempDestinationCard() {
+        return tempDestinationCard;
+    }
+
+    public void setTempDestinationCard(List<DestinationCard> tempDestinationCard) { this.tempDestinationCard = tempDestinationCard; }
 
     public void setDestinationHand(List<DestinationCard> destinationHand) {
         this.destinationHand = destinationHand;

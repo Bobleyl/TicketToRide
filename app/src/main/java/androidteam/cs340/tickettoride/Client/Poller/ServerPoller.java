@@ -1,7 +1,5 @@
 package androidteam.cs340.tickettoride.Client.Poller;
 
-import android.util.Log;
-
 import androidteam.cs340.tickettoride.Shared.Result;
 
 import java.util.Timer;

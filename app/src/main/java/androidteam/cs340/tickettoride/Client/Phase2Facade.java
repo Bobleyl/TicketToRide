@@ -3,6 +3,7 @@ package androidteam.cs340.tickettoride.Client;
 import android.graphics.ColorSpace;
 import android.util.Log;
 
+import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
