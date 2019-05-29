@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 import androidteam.cs340.tickettoride.Client.Fragments.DestinationCardFragment;
 import androidteam.cs340.tickettoride.Client.Fragments.GameListFragment;
 import androidteam.cs340.tickettoride.Client.Fragments.MapFragment;
@@ -117,5 +119,11 @@ public class GameActivity extends AppCompatActivity implements
     @Override
     public void onBackPressed(){
         Toast.makeText(GameActivity.this, "Where do you think you're going?",Toast.LENGTH_LONG).show();
+    }
+
+    public void submitDestinationCards(List<DestinationCard> destCards){
+        Toast.makeText(this, "Submitting Cards", Toast.LENGTH_SHORT).show();
+        //TODO:Add call to returnDestCard function
+        startNewFragment(new PlayerInfoFragment());
     }
 }
