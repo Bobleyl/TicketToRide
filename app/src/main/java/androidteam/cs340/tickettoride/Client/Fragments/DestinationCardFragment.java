@@ -86,19 +86,8 @@ public class DestinationCardFragment extends Fragment implements IPresenter {
         SINGLETON.removePresenter(this);
     }
 
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-
     public DestinationCardFragment() {
         // Required empty public constructor
-    }
-
-    public static DestinationCardFragment newInstance(Boolean isStart) {
-        DestinationCardFragment fragment = new DestinationCardFragment();
-        Bundle args = new Bundle();
-        args.putBoolean(ARG_PARAM1, isStart);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
@@ -107,10 +96,21 @@ public class DestinationCardFragment extends Fragment implements IPresenter {
 
         //Generate a new UUID for the presenter
         ID = UUID.randomUUID().toString();
+    }
 
-        //Figure out if we're doing the start of game destination card selection or not
-        if (getArguments() != null) {
-            isStart = getArguments().getBoolean(ARG_PARAM1);
+    class BoxListener implements View.OnClickListener{
+        @Override
+        public void onClick(View v) {
+            LinearLayout box = (LinearLayout) v;
+            if(box == mCard1Box){
+                Toast.makeText(getContext(), "Clicking 1", Toast.LENGTH_SHORT).show();
+            }
+            else if(box == mCard2Box){
+                Toast.makeText(getContext(), "Clicking 2", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                Toast.makeText(getContext(), "Clicking 3", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -127,18 +127,24 @@ public class DestinationCardFragment extends Fragment implements IPresenter {
         mCard1Text = (TextView) view.findViewById(R.id.dest_card_1_text);
         mCard1Points = (TextView) view.findViewById(R.id.dest_card_1_points);
         mCard1Status = (TextView) view.findViewById(R.id.dest_card_1_status);
-        mCard1Box = (LinearLayout) view.findViewById(R.id.dest_card_1_box); 
+        mCard1Box = (LinearLayout) view.findViewById(R.id.dest_card_1_box);
+        mCard1Box.setOnClickListener(new BoxListener());
 
         mCard2Text = (TextView) view.findViewById(R.id.dest_card_2_text);
         mCard2Points = (TextView) view.findViewById(R.id.dest_card_2_points);
         mCard2Status = (TextView) view.findViewById(R.id.dest_card_2_status);
         mCard2Box = (LinearLayout) view.findViewById(R.id.dest_card_2_box);
+        mCard2Box.setOnClickListener(new BoxListener());
+
 
         mCard3Text = (TextView) view.findViewById(R.id.dest_card_3_text);
         mCard3Points = (TextView) view.findViewById(R.id.dest_card_3_points);
         mCard3Status = (TextView) view.findViewById(R.id.dest_card_3_status);
         mCard3Box = (LinearLayout) view.findViewById(R.id.dest_card_3_box);
+        mCard3Box.setOnClickListener(new BoxListener());
 
+
+        //Get the destination cards and initialize the cards
         List<DestinationCard> cards = new ArrayList<>(Arrays.asList(DestinationCard.values()));
 
         if(cards.size() < 3){
@@ -159,7 +165,7 @@ public class DestinationCardFragment extends Fragment implements IPresenter {
         txt.setText("KEEPING");
     }
 
-    private void toReturn(LinearLayout layout, TextView txt){
+    private void toReturning(LinearLayout layout, TextView txt){
         layout.setBackgroundColor(Color.blue(15));
         txt.setText("RETURNING");
     }
@@ -178,5 +184,14 @@ public class DestinationCardFragment extends Fragment implements IPresenter {
 
         mCard3Text.setText(card3.cityA + " --> " + card3.cityB);
         mCard3Points.setText(card3.points + "");
+    }
+
+    private boolean isKeeping(TextView txt){
+        if(txt.getText().equals("KEEPING")){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
