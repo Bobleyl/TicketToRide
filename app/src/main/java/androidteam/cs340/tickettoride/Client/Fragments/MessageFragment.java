@@ -31,6 +31,7 @@ public class MessageFragment extends Fragment implements IPresenter {
     private RecyclerView mMessageRecyclerView;
     private Button mSendMessageButton;
     private MessageAdapter mAdapter;
+    private int messageListSize = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -99,8 +100,11 @@ public class MessageFragment extends Fragment implements IPresenter {
 
     private void updateUI() {
         List<Message> messages = Phase2Facade.SINGLETON.getMessages();
-        mAdapter = new MessageAdapter(messages);
-        mMessageRecyclerView.setAdapter(mAdapter);
+        if(messageListSize != messages.size()) {
+            messageListSize = messages.size();
+            mAdapter = new MessageAdapter(messages);
+            mMessageRecyclerView.setAdapter(mAdapter);
+        }
     }
 
     @Override
