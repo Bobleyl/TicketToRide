@@ -24,6 +24,7 @@ import java.util.UUID;
 import androidteam.cs340.tickettoride.Client.Activities.LobbyActivity;
 import androidteam.cs340.tickettoride.Client.Activities.GameActivity;
 import androidteam.cs340.tickettoride.Client.ModelFacade;
+import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.Client.ServerProxy;
 import androidteam.cs340.tickettoride.R;
@@ -226,6 +227,12 @@ public class GameListFragment extends Fragment implements IPresenter {
                 Log.d("WAITING_ROOM", "Deleted game...");
 
                 Log.d("WAITING_ROOM", Integer.toString(resultDelete.getStatusCode()));
+
+                Log.d("WAITING_ROOM", "GAME IS FULL, LET'S PLAY");
+                Phase2Facade.SINGLETON.setGameID(ModelFacade.SINGLETON.getGameID());
+                ModelFacade.SINGLETON.stopPoller();
+                Log.d("WAITING_ROOM", Phase2Facade.SINGLETON.getGameID());
+                Phase2Facade.SINGLETON.startPoller();
 
                 System.out.println("I'm the last player in, let's play!");
                 Intent intent = new Intent(getActivity(), GameActivity.class);
