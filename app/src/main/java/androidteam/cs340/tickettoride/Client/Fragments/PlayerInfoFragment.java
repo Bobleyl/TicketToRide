@@ -184,7 +184,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
     private void updateUpDeck(TrainCard[] cards){
         int count = 0;
         for(TrainCard card : cards){
-            if(card.color == "black"){
+            if(card.color.equals("black")){
                 if(count == 0){
                     mUpDeck1.setBackgroundResource(R.drawable.black_train_card);
                 }
@@ -201,7 +201,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                     mUpDeck5.setBackgroundResource(R.drawable.black_train_card);
                 }
             }
-            if(card.color == "blue"){
+            if(card.color.equals("blue")){
                 if(count == 0){
                     mUpDeck1.setBackgroundResource(R.drawable.blue_train_card);
                 }
@@ -218,7 +218,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                     mUpDeck5.setBackgroundResource(R.drawable.blue_train_card);
                 }
             }
-            if(card.color == "white"){
+            if(card.color.equals("white")){
                 if(count == 0){
                     mUpDeck1.setBackgroundResource(R.drawable.white_train_card);
                 }
@@ -235,7 +235,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                     mUpDeck5.setBackgroundResource(R.drawable.white_train_card);
                 }
             }
-            if(card.color == "orange"){
+            if(card.color.equals("orange")){
                 if(count == 0){
                     mUpDeck1.setBackgroundResource(R.drawable.orange_train_card);
                 }
@@ -252,7 +252,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                     mUpDeck5.setBackgroundResource(R.drawable.orange_train_card);
                 }
             }
-            if(card.color == "yellow"){
+            if(card.color.equals("yellow")){
                 if(count == 0){
                     mUpDeck1.setBackgroundResource(R.drawable.yellow_train_card);
                 }
@@ -269,7 +269,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                     mUpDeck5.setBackgroundResource(R.drawable.yellow_train_card);
                 }
             }
-            if(card.color == "green"){
+            if(card.color.equals("green")){
                 if(count == 0){
                     mUpDeck1.setBackgroundResource(R.drawable.green_train_card);
                 }
@@ -286,7 +286,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                     mUpDeck5.setBackgroundResource(R.drawable.green_train_card);
                 }
             }
-            if(card.color == "wild"){ // TODO: ADD wild_train_card TO DRAWABLE
+            if(card.color.equals("wild")){ // TODO: ADD wild_train_card TO DRAWABLE
                 if(count == 0){
                     //mUpDeck1.setBackgroundResource(R.drawable.wild_train_card);
                 }
@@ -303,7 +303,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                     //mUpDeck5.setBackgroundResource(R.drawable.wild_train_card);
                 }
             }
-            if(card.color == "red"){
+            if(card.color.equals("red")){
                 if(count == 0){
                     mUpDeck1.setBackgroundResource(R.drawable.red_train_card);
                 }
@@ -320,7 +320,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                     mUpDeck5.setBackgroundResource(R.drawable.red_train_card);
                 }
             }
-            if(card.color == "pink"){
+            if(card.color.equals("pink")){
                 if(count == 0){
                     mUpDeck1.setBackgroundResource(R.drawable.purple_train_card);
                 }
@@ -353,35 +353,35 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         int black = 0;
         int yellow = 0;
         for(TrainCard card : cards){
-            if(card.color == "black"){
+            if(card.color.equals("black")){
                 black = black + 1;
                 mBlackCount.setText(black);
             }
-            if(card.color == "white"){
+            if(card.color.equals("white")){
                 white = white + 1;
                 mWhiteCount.setText(white);
             }
-            if(card.color == "blue"){
+            if(card.color.equals("blue")){
                 blue = blue + 1;
                 mBlueCount.setText(blue);
             }
-            if(card.color == "orange"){
+            if(card.color.equals("orange")){
                 orange = orange + 1;
                 mOrangeCount.setText(orange);
             }
-            if(card.color == "red"){
+            if(card.color.equals("red")){
                 red = red + 1;
                 mRedCount.setText(red);
             }
-            if(card.color == "wild"){
+            if(card.color.equals("wild")){
                 wild = wild + 1;
                 mWildCount.setText(wild);
             }
-            if(card.color == "yellow"){
+            if(card.color.equals("yellow")){
                 yellow = yellow + 1;
                 mYellowCount.setText(yellow);
             }
-            if(card.color == "green"){
+            if(card.color.equals("green")){
                 green = green + 1;
                 mGreenCount.setText(green);
             }

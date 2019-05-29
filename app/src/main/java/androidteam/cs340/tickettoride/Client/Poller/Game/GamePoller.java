@@ -1,5 +1,7 @@
 package androidteam.cs340.tickettoride.Client.Poller.Game;
 
+import android.util.Log;
+
 import androidteam.cs340.tickettoride.Client.Poller.IPollerCommand;
 import androidteam.cs340.tickettoride.Client.Poller.ServerPoller;
 import androidteam.cs340.tickettoride.Client.ServerProxy;
