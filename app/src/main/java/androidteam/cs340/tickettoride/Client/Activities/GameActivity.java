@@ -14,8 +14,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import androidteam.cs340.tickettoride.Client.Fragments.DestinationCardFragment;
 import androidteam.cs340.tickettoride.Client.Fragments.GameListFragment;
 import androidteam.cs340.tickettoride.Client.Fragments.MapFragment;
 import androidteam.cs340.tickettoride.Client.Fragments.MessageFragment;
@@ -24,7 +26,9 @@ import androidteam.cs340.tickettoride.Client.ModelFacade;
 import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.GameActivityPresenter;
 import androidteam.cs340.tickettoride.R;
+import androidteam.cs340.tickettoride.Shared.DestinationCard;
 import androidteam.cs340.tickettoride.Shared.Player;
+
 
 public class GameActivity extends AppCompatActivity implements
         MapFragment.OnFragmentInteractionListener,
@@ -107,8 +111,11 @@ public class GameActivity extends AppCompatActivity implements
             if (savedInstanceState != null) {
                 return;
             }
-            PlayerInfoFragment firstFragment = new PlayerInfoFragment();
-            firstFragment.setArguments(getIntent().getExtras());
+
+            DestinationCardFragment firstFragment = new DestinationCardFragment();
+            Bundle bundle = new Bundle();
+            bundle.putBoolean("isStart", true);
+            firstFragment.setArguments(bundle);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.main_game_fragment_container, firstFragment).commit();
         }
@@ -162,5 +169,19 @@ public class GameActivity extends AppCompatActivity implements
     @Override
     public void onBackPressed(){
         Toast.makeText(GameActivity.this, "Where do you think you're going?",Toast.LENGTH_LONG).show();
+    }
+
+    public void submitDestinationCards(List<DestinationCard> destCards){
+        Toast.makeText(this, "Submitting Cards", Toast.LENGTH_SHORT).show();
+        Phase2Facade.SINGLETON.returnDestination((ArrayList<DestinationCard>)destCards);
+        startNewFragment(new PlayerInfoFragment());
+    }
+
+    public void drawDestinationCards(){
+        Bundle args = new Bundle();
+        args.putBoolean("isStart",false);
+        DestinationCardFragment fragment = new DestinationCardFragment();
+        fragment.setArguments(args);
+        startNewFragment(fragment);
     }
 }

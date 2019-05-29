@@ -44,7 +44,7 @@ public class DrawDestinationCardCommand implements CommandInterface {
                             }
                             j++;
                         }
-                        player.setDestinationHand(playerDeck);
+                        player.setTempDestinationCard(playerDeck);
                         successfulExecute = true;
                         returnMessage.setReponseMessage("success");
                     }

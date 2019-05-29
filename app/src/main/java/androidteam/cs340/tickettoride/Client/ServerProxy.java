@@ -133,6 +133,7 @@ public class ServerProxy implements IServer {
         JsonObject values = new JsonObject();
         values.addProperty("game_id", gameID);
         values.addProperty("player_id", playerID);
+        values.addProperty("position", position);
         root.add("values", values);
 
         return ClientCommunicator.SINGLETON.send(root.toString());

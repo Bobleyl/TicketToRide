@@ -8,3 +8,5 @@
 .externalNativeBuild
 /server/target
 /out
+/target
+/shared/target

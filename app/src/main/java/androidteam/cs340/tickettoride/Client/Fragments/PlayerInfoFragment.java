@@ -18,6 +18,7 @@ import java.net.HttpURLConnection;
 import java.util.List;
 import java.util.UUID;
 
+import androidteam.cs340.tickettoride.Client.Activities.GameActivity;
 import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.R;
@@ -73,7 +74,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         Phase2Facade.SINGLETON.removePresenter(this);
     }
 
-    private void updateUI() { // TODO: ONLY UPDATE SPECIFIC THINGS WHEN THERE IS A CHANGE TO THEM
+    private void updateUI() {
         updateCount(Phase2Facade.SINGLETON.getMyDeck()); // UPDATES THE COUNT OF THE CARDS IN PLAYERS HAND
         mTrainCount.setText(String.valueOf(Phase2Facade.SINGLETON.getTrainCars())); // UPDATES THE COUNT OF TRAIN CARS IN PLAYERS POSSESSION.
         updateUpDeck(Phase2Facade.SINGLETON.getUpdeck()); // UPDATES THE FACE UP CARDS
@@ -184,157 +185,157 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
     private void updateUpDeck(TrainCard[] cards){
         int count = 0;
         for(TrainCard card : cards){
-            if(card.color.equals("black")){
+            if(card.equals("black")){
                 if(count == 0){
-                    mUpDeck1.setBackgroundResource(R.drawable.black_train_card);
+                    mUpDeck1.setImageResource(R.drawable.black_train_card);
                 }
                 if(count == 1){
-                    mUpDeck2.setBackgroundResource(R.drawable.black_train_card);
+                    mUpDeck2.setImageResource(R.drawable.black_train_card);
                 }
                 if(count == 2){
-                    mUpDeck3.setBackgroundResource(R.drawable.black_train_card);
+                    mUpDeck3.setImageResource(R.drawable.black_train_card);
                 }
                 if(count == 3){
-                    mUpDeck4.setBackgroundResource(R.drawable.black_train_card);
+                    mUpDeck4.setImageResource(R.drawable.black_train_card);
                 }
                 if(count == 4){
-                    mUpDeck5.setBackgroundResource(R.drawable.black_train_card);
+                    mUpDeck5.setImageResource(R.drawable.black_train_card);
                 }
             }
             if(card.color.equals("blue")){
                 if(count == 0){
-                    mUpDeck1.setBackgroundResource(R.drawable.blue_train_card);
+                    mUpDeck1.setImageResource(R.drawable.blue_train_card);
                 }
                 if(count == 1){
-                    mUpDeck2.setBackgroundResource(R.drawable.blue_train_card);
+                    mUpDeck2.setImageResource(R.drawable.blue_train_card);
                 }
                 if(count == 2){
-                    mUpDeck3.setBackgroundResource(R.drawable.blue_train_card);
+                    mUpDeck3.setImageResource(R.drawable.blue_train_card);
                 }
                 if(count == 3){
-                    mUpDeck4.setBackgroundResource(R.drawable.blue_train_card);
+                    mUpDeck4.setImageResource(R.drawable.blue_train_card);
                 }
                 if(count == 4){
-                    mUpDeck5.setBackgroundResource(R.drawable.blue_train_card);
+                    mUpDeck5.setImageResource(R.drawable.blue_train_card);
                 }
             }
             if(card.color.equals("white")){
                 if(count == 0){
-                    mUpDeck1.setBackgroundResource(R.drawable.white_train_card);
+                    mUpDeck1.setImageResource(R.drawable.white_train_card);
                 }
                 if(count == 1){
-                    mUpDeck2.setBackgroundResource(R.drawable.white_train_card);
+                    mUpDeck2.setImageResource(R.drawable.white_train_card);
                 }
                 if(count == 2){
-                    mUpDeck3.setBackgroundResource(R.drawable.white_train_card);
+                    mUpDeck3.setImageResource(R.drawable.white_train_card);
                 }
                 if(count == 3){
-                    mUpDeck4.setBackgroundResource(R.drawable.white_train_card);
+                    mUpDeck4.setImageResource(R.drawable.white_train_card);
                 }
                 if(count == 4){
-                    mUpDeck5.setBackgroundResource(R.drawable.white_train_card);
+                    mUpDeck5.setImageResource(R.drawable.white_train_card);
                 }
             }
             if(card.color.equals("orange")){
                 if(count == 0){
-                    mUpDeck1.setBackgroundResource(R.drawable.orange_train_card);
+                    mUpDeck1.setImageResource(R.drawable.orange_train_card);
                 }
                 if(count == 1){
-                    mUpDeck2.setBackgroundResource(R.drawable.orange_train_card);
+                    mUpDeck2.setImageResource(R.drawable.orange_train_card);
                 }
                 if(count == 2){
-                    mUpDeck3.setBackgroundResource(R.drawable.orange_train_card);
+                    mUpDeck3.setImageResource(R.drawable.orange_train_card);
                 }
                 if(count == 3){
-                    mUpDeck4.setBackgroundResource(R.drawable.orange_train_card);
+                    mUpDeck4.setImageResource(R.drawable.orange_train_card);
                 }
                 if(count == 4){
-                    mUpDeck5.setBackgroundResource(R.drawable.orange_train_card);
+                    mUpDeck5.setImageResource(R.drawable.orange_train_card);
                 }
             }
             if(card.color.equals("yellow")){
                 if(count == 0){
-                    mUpDeck1.setBackgroundResource(R.drawable.yellow_train_card);
+                    mUpDeck1.setImageResource(R.drawable.yellow_train_card);
                 }
                 if(count == 1){
-                    mUpDeck2.setBackgroundResource(R.drawable.yellow_train_card);
+                    mUpDeck2.setImageResource(R.drawable.yellow_train_card);
                 }
                 if(count == 2){
-                    mUpDeck3.setBackgroundResource(R.drawable.yellow_train_card);
+                    mUpDeck3.setImageResource(R.drawable.yellow_train_card);
                 }
                 if(count == 3){
-                    mUpDeck4.setBackgroundResource(R.drawable.yellow_train_card);
+                    mUpDeck4.setImageResource(R.drawable.yellow_train_card);
                 }
                 if(count == 4){
-                    mUpDeck5.setBackgroundResource(R.drawable.yellow_train_card);
+                    mUpDeck5.setImageResource(R.drawable.yellow_train_card);
                 }
             }
             if(card.color.equals("green")){
                 if(count == 0){
-                    mUpDeck1.setBackgroundResource(R.drawable.green_train_card);
+                    mUpDeck1.setImageResource(R.drawable.green_train_card);
                 }
                 if(count == 1){
-                    mUpDeck2.setBackgroundResource(R.drawable.green_train_card);
+                    mUpDeck2.setImageResource(R.drawable.green_train_card);
                 }
                 if(count == 2){
-                    mUpDeck3.setBackgroundResource(R.drawable.green_train_card);
+                    mUpDeck3.setImageResource(R.drawable.green_train_card);
                 }
                 if(count == 3){
-                    mUpDeck4.setBackgroundResource(R.drawable.green_train_card);
+                    mUpDeck4.setImageResource(R.drawable.green_train_card);
                 }
                 if(count == 4){
-                    mUpDeck5.setBackgroundResource(R.drawable.green_train_card);
+                    mUpDeck5.setImageResource(R.drawable.green_train_card);
                 }
             }
-            if(card.color.equals("wild")){ // TODO: ADD wild_train_card TO DRAWABLE
+            if(card.color.equals("wild")){
                 if(count == 0){
-                    //mUpDeck1.setBackgroundResource(R.drawable.wild_train_card);
+                    mUpDeck1.setImageResource(R.drawable.wild_train_car);
                 }
                 if(count == 1){
-                    //mUpDeck2.setBackgroundResource(R.drawable.wild_train_card);
+                    mUpDeck2.setImageResource(R.drawable.wild_train_car);
                 }
                 if(count == 2){
-                    //mUpDeck3.setBackgroundResource(R.drawable.wild_train_card);
+                    mUpDeck3.setImageResource(R.drawable.wild_train_car);
                 }
                 if(count == 3){
-                    //mUpDeck4.setBackgroundResource(R.drawable.wild_train_card);
+                    mUpDeck4.setImageResource(R.drawable.wild_train_car);
                 }
                 if(count == 4){
-                    //mUpDeck5.setBackgroundResource(R.drawable.wild_train_card);
+                    mUpDeck5.setImageResource(R.drawable.wild_train_car);
                 }
             }
             if(card.color.equals("red")){
                 if(count == 0){
-                    mUpDeck1.setBackgroundResource(R.drawable.red_train_card);
+                    mUpDeck1.setImageResource(R.drawable.red_train_card);
                 }
                 if(count == 1){
-                    mUpDeck2.setBackgroundResource(R.drawable.red_train_card);
+                    mUpDeck2.setImageResource(R.drawable.red_train_card);
                 }
                 if(count == 2){
-                    mUpDeck3.setBackgroundResource(R.drawable.red_train_card);
+                    mUpDeck3.setImageResource(R.drawable.red_train_card);
                 }
                 if(count == 3){
-                    mUpDeck4.setBackgroundResource(R.drawable.red_train_card);
+                    mUpDeck4.setImageResource(R.drawable.red_train_card);
                 }
                 if(count == 4){
-                    mUpDeck5.setBackgroundResource(R.drawable.red_train_card);
+                    mUpDeck5.setImageResource(R.drawable.red_train_card);
                 }
             }
             if(card.color.equals("pink")){
                 if(count == 0){
-                    mUpDeck1.setBackgroundResource(R.drawable.purple_train_card);
+                    mUpDeck1.setImageResource(R.drawable.purple_train_card);
                 }
                 if(count == 1){
-                    mUpDeck2.setBackgroundResource(R.drawable.purple_train_card);
+                    mUpDeck2.setImageResource(R.drawable.purple_train_card);
                 }
                 if(count == 2){
-                    mUpDeck3.setBackgroundResource(R.drawable.purple_train_card);
+                    mUpDeck3.setImageResource(R.drawable.purple_train_card);
                 }
                 if(count == 3){
-                    mUpDeck4.setBackgroundResource(R.drawable.purple_train_card);
+                    mUpDeck4.setImageResource(R.drawable.purple_train_card);
                 }
                 if(count == 4){
-                    mUpDeck5.setBackgroundResource(R.drawable.purple_train_card);
+                    mUpDeck5.setImageResource(R.drawable.purple_train_card);
                 }
             }
             count++;
@@ -343,6 +344,8 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
 
     //count through personal card deck and update counts for each color
     private void updateCount(List<TrainCard> cards){
+        System.out.println("UPDATING PLAYERINFO");
+        System.out.println(cards);
         int orange = 0;
         int white = 0;
         int red = 0;
@@ -353,41 +356,43 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         int black = 0;
         int yellow = 0;
         for(TrainCard card : cards){
+            System.out.println("TYPE OF CARD DRAWN::");
+            System.out.println(card);
             if(card.color.equals("black")){
                 black = black + 1;
-                mBlackCount.setText(black);
+                mBlackCount.setText("" + black);
             }
             if(card.color.equals("white")){
                 white = white + 1;
-                mWhiteCount.setText(white);
+                mWhiteCount.setText("" + white);
             }
             if(card.color.equals("blue")){
                 blue = blue + 1;
-                mBlueCount.setText(blue);
+                mBlueCount.setText("" + blue);
             }
             if(card.color.equals("orange")){
                 orange = orange + 1;
-                mOrangeCount.setText(orange);
+                mOrangeCount.setText("" + orange);
             }
             if(card.color.equals("red")){
                 red = red + 1;
-                mRedCount.setText(red);
+                mRedCount.setText("" + red);
             }
             if(card.color.equals("wild")){
                 wild = wild + 1;
-                mWildCount.setText(wild);
+                mWildCount.setText("" + wild);
             }
             if(card.color.equals("yellow")){
                 yellow = yellow + 1;
-                mYellowCount.setText(yellow);
+                mYellowCount.setText("" + yellow);
             }
             if(card.color.equals("green")){
                 green = green + 1;
-                mGreenCount.setText(green);
+                mGreenCount.setText(""  + green);
             }
             if(card.color == "purple"){
                 purple = purple + 1;
-                mPinkCount.setText(purple);
+                mPinkCount.setText("" + purple);
             }
         }
     }
@@ -416,6 +421,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         //TODO: OPEN FRAGMENT FOR CHOOSING DESTINATION CARDS, BUT ALLOW RETURNING 0-2 INSTEAD OF 0-1
         //Result result = Phase2Facade.SINGLETON.drawDestination(card);
         //TODO: PASS RESULT TO NEW FRAGMENT
+        ((GameActivity)getActivity()).drawDestinationCards();
     }
 
     @Override
