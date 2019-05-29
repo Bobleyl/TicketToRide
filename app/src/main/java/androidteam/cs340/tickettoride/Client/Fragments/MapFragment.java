@@ -111,7 +111,7 @@ public class MapFragment extends Fragment implements IPresenter {
         return view;
     }
 
-    public void updateSpinner(){ //TODO: BREAKING BECAUSE SPINNER IS GOING OFF FRAGMENT INTO THE ACTIVITY VIEW.
+    public void updateSpinner(){
         int size = Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes().size();
         String[] items = new String[size];
         boolean update = true;

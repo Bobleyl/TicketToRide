@@ -23,6 +23,7 @@ import java.util.UUID;
 
 import androidteam.cs340.tickettoride.Client.Activities.LobbyActivity;
 import androidteam.cs340.tickettoride.Client.Activities.GameActivity;
+import androidteam.cs340.tickettoride.Client.Activities.WaitingRoomActivity;
 import androidteam.cs340.tickettoride.Client.ModelFacade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.Client.ServerProxy;
@@ -220,18 +221,6 @@ public class GameListFragment extends Fragment implements IPresenter {
         Result result = ModelFacade.SINGLETON.joinGame();
         if(result.getStatusCode() == HttpURLConnection.HTTP_NO_CONTENT){
             ((LobbyActivity)getActivity()).startWaitingRoom();
-            if(lastPlayer == true){
-
-                Result resultDelete = ServerProxy.SINGLETON.deleteGame(toJoin.getUID());
-                Log.d("WAITING_ROOM", "Deleted game...");
-
-                Log.d("WAITING_ROOM", Integer.toString(resultDelete.getStatusCode()));
-
-                System.out.println("I'm the last player in, let's play!");
-                Intent intent = new Intent(getActivity(), GameActivity.class);
-                startActivity(intent);
-                //toast here to GameActivity Activity
-            }
         }
         else{
             Toast.makeText(getActivity(), result.getErrorInfo(), Toast.LENGTH_SHORT).show();
