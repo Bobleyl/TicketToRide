@@ -189,7 +189,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
 
         int i = 0;
         for(DestinationCard card : Phase2Facade.SINGLETON.getMyDestinationDeck()){
-            items[i] = card.cityA;
+            items[i] = (card.cityA + " to " + card.cityB + " worth " + card.points + " points");
             i++;
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
@@ -445,9 +445,6 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
     }
 
     private void chooseDestinationCard(){
-        //TODO: OPEN FRAGMENT FOR CHOOSING DESTINATION CARDS, BUT ALLOW RETURNING 0-2 INSTEAD OF 0-1
-        //Result result = Phase2Facade.SINGLETON.drawDestination(card);
-        //TODO: PASS RESULT TO NEW FRAGMENT
         ((GameActivity)getActivity()).drawDestinationCards();
     }
 
@@ -472,7 +469,4 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
 
         void onFragmentInteraction(Uri uri);
     }
-
-    //TODO: LOGIC AND METHODS FOR RECYCLER VIEW INSIDE OF THE POP UP.
-    //TODO: ADD TRAIN CARD LIST TO RECYCLER VIEW IN POP UP.
 }
