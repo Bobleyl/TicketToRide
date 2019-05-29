@@ -67,7 +67,7 @@ public class MessageFragment extends Fragment implements IPresenter {
 
         public void bind(Message message) {
             String playerID = message.getPlayerID().substring( 0, 4);
-            mMessageTitle.setText(playerID);
+            mMessageTitle.setText("Player " + playerID);
             mMessageText.setText(message.getTextMessage());
         }
     }
