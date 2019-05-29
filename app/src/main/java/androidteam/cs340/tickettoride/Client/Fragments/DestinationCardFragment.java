@@ -122,13 +122,13 @@ public class DestinationCardFragment extends Fragment implements IPresenter {
         @Override
         public void onClick(View v) {
             List<DestinationCard> destCards = new ArrayList<DestinationCard>();
-            if(isKeeping(mCard1Status)){
+            if(!isKeeping(mCard1Status)){
                 destCards.add(destCard1);
             }
-            if(isKeeping(mCard2Status)){
+            if(!isKeeping(mCard2Status)){
                 destCards.add(destCard2);
             }
-            if(isKeeping(mCard3Status)){
+            if(!isKeeping(mCard3Status)){
                 destCards.add(destCard3);
             }
             ((GameActivity)getActivity()).submitDestinationCards(destCards);

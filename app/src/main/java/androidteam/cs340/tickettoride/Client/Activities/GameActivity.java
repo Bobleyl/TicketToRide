@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidteam.cs340.tickettoride.Client.Fragments.DestinationCardFragment;
@@ -172,7 +173,7 @@ public class GameActivity extends AppCompatActivity implements
 
     public void submitDestinationCards(List<DestinationCard> destCards){
         Toast.makeText(this, "Submitting Cards", Toast.LENGTH_SHORT).show();
-        //TODO:Add call to returnDestCard function
+        Phase2Facade.SINGLETON.returnDestination((ArrayList<DestinationCard>)destCards);
         startNewFragment(new PlayerInfoFragment());
     }
 
