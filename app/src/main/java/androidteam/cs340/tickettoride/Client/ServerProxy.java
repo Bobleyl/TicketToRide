@@ -102,10 +102,13 @@ public class ServerProxy implements IServer {
         JsonObject root = new JsonObject();
         root.addProperty("command", "returnDestinationCard");
 
+        Gson gson = new Gson();
+
         // Create Inner JSON Object
         JsonObject values = new JsonObject();
         values.addProperty("game_id", gameID);
         values.addProperty("player_id", playerID);
+        values.addProperty("destination_card", gson.toJson(destinationCards));
         root.add("values", values);
 
         return ClientCommunicator.SINGLETON.send(root.toString());
