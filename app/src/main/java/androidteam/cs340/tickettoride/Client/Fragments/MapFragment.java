@@ -12,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Button;
 
-import java.util.ArrayList;
 import java.util.UUID;
 import java.util.List;
 
@@ -30,7 +29,7 @@ import androidteam.cs340.tickettoride.Shared.Route;
  * create an instance of this fragment.
  */
 public class MapFragment extends Fragment implements IPresenter {
-    private List<Route> lastList = new ArrayList<>();
+    private List<Route> lastList;
     private OnFragmentInteractionListener mListener;
     private Button mClaimRoute;
     private String ID;
