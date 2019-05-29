@@ -112,10 +112,6 @@ public class WaitingRoomActivity extends AppCompatActivity {
 
         if(!found && players.size() == game.getGameSize()){
             Log.d("WAITING_ROOM", "GAME IS FULL, LET'S PLAY");
-            Phase2Facade.SINGLETON.setGameID(ModelFacade.SINGLETON.getGameID());
-            ModelFacade.SINGLETON.stopPoller();
-            Log.d("WAITING_ROOM", Phase2Facade.SINGLETON.getGameID());
-            Phase2Facade.SINGLETON.startPoller();
             Intent intent = new Intent(WaitingRoomActivity.this, GameActivity.class);
             startActivity(intent);
         }

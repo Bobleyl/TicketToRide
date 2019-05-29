@@ -1,6 +1,7 @@
 package androidteam.cs340.tickettoride.Client;
 
 import android.graphics.ColorSpace;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,21 +24,19 @@ import androidteam.cs340.tickettoride.Shared.Route;
 public class Phase2Facade {
 
     private Phase2Facade(){
-        turnOrder = new ArrayList<>();
-        currentPlayer = ModelFacade.SINGLETON.getPlayer();
-        currentGame = new GameModel();
-        gamePoller = new GamePoller(command, 1000, getGameID());
+        //turnOrder = new ArrayList<>();
+        //currentPlayer = ModelFacade.SINGLETON.getPlayer();
+        //currentGame = new GameModel();
+        //gamePoller = new GamePoller(command, 1000, getGameID());
     }
 
     public static Phase2Facade SINGLETON = new Phase2Facade();
 
     // TODO: GET RID OF DECKS, CALL ON GAMEMODEL TO GET INFORMATION.
     private Player currentPlayer;
-    private GameModel currentGame;
+    private GameModel currentGame = new GameModel();
     private List<Player> turnOrder;
     private List<IPresenter> presenters = new ArrayList<>();
-    private GamePollerCommand command = new GamePollerCommand();
-    private GamePoller gamePoller;
 
     public void setGameID(String id){
         currentGame.setGameID(id);
@@ -51,15 +50,20 @@ public class Phase2Facade {
         presenters.add(toAdd);
     }
 
-    //TODO: ADD LOGIC TO WAITINGROOM PRESENTER TO START POLLER
     public void startPoller(){
-        gamePoller.start();
+        Log.d("GAME_ACTIVITY:POLLER", getGameID());
+        GamePollerCommand command = new GamePollerCommand();
+        GamePoller gp = new GamePoller(command, 1000, getGameID());
+        gp.start();
+
     }
 
     public void updateCurrentGame(Result result) {
         GameModel gamesModel = new GameModel();
         gamesModel = ParseResults.SINGLETON.parseGameResult(result);
         currentGame = gamesModel;
+        currentPlayer = ModelFacade.SINGLETON.getPlayer();
+
         System.out.println("DATA::: ");
         System.out.println(currentGame);
         updatePresenter();
