@@ -11,9 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 import java.util.UUID;
@@ -21,17 +20,99 @@ import java.util.UUID;
 import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.R;
-import androidteam.cs340.tickettoride.Shared.Game;
 import androidteam.cs340.tickettoride.Shared.Message;
 
 
 public class MessageFragment extends Fragment implements IPresenter {
-    private RecyclerView mMessageRecyclerView;
     private OnFragmentInteractionListener mListener;
     private String ID;
 
+    private EditText mMessageEditText;
+    private RecyclerView mMessageRecyclerView;
+    private Button mSendMessageButton;
+    private MessageAdapter mAdapter;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_message, container, false);
+
+        mMessageRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_message);
+        mMessageRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        mMessageEditText = (EditText) view.findViewById(R.id.messageField);
+        mSendMessageButton = (Button) view.findViewById(R.id.message_add_button);
+
+        mSendMessageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendMessage(mMessageEditText.getText().toString());
+            }
+        });
+
+        updateUI();
+
+        return view;
+    }
+
+    private class MessageHolder extends RecyclerView.ViewHolder {
+        private TextView mMessageTitle;
+        private TextView mMessageText;
+
+        public MessageHolder(LayoutInflater inflater, ViewGroup parent) {
+            super(inflater.inflate(R.layout.list_item_message, parent, false));
+            mMessageTitle = (TextView) itemView.findViewById(R.id.message_title);
+            mMessageText = (TextView) itemView.findViewById(R.id.message_text);
+        }
+
+        public void bind(Message message) {
+            mMessageTitle.setText(message.getPlayerID());
+            mMessageText.setText(message.getTextMessage());
+        }
+    }
+
+    private class MessageAdapter extends RecyclerView.Adapter<MessageFragment.MessageHolder> {
+        private List<Message> mMessages;
+
+        public MessageAdapter(List<Message> message) {
+            mMessages = message;
+        }
+
+        @Override
+        public MessageHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
+            return new MessageHolder(layoutInflater, parent);
+        }
+
+        @Override
+        public void onBindViewHolder(MessageHolder holder, int i) {
+            Message message = mMessages.get(i);
+            holder.bind(message);
+        }
+
+        @Override
+        public int getItemCount() {
+            return mMessages.size();
+        }
+    }
+
+    private void updateUI() {
+        List<Message> messages = Phase2Facade.SINGLETON.getMessages();
+        mAdapter = new MessageAdapter(messages);
+        mMessageRecyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void Update() {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                updateUI();
+            }
+        });
+    }
+
     public MessageFragment() {
-        //Give the newly generated presenter an ID
         this.ID = UUID.randomUUID().toString();
     }
 
@@ -40,10 +121,7 @@ public class MessageFragment extends Fragment implements IPresenter {
         super.onCreate(savedInstanceState);
     }
 
-    @Override
-    public void Update() {
-        //TODO: Implement this method here.
-    }
+
 
     @Override
     public String getID() {
@@ -64,16 +142,11 @@ public class MessageFragment extends Fragment implements IPresenter {
     }
 
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_message, container, false);
 
-        mMessageRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_message);
-        mMessageRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        return view;
+    private void sendMessage(String message) {
+        Message toSend = new Message(message, Phase2Facade.SINGLETON.getCurrentPlayer().getUID());
+        Phase2Facade.SINGLETON.sendMessage(toSend);
     }
 
     @Override
@@ -84,52 +157,6 @@ public class MessageFragment extends Fragment implements IPresenter {
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    private class MessageHolder extends RecyclerView.ViewHolder {
-        private TextView mMessageTitle;
-        private TextView mMessageText;
-        private Message mMessage;
-
-        public MessageHolder(LayoutInflater inflater, ViewGroup parent) {
-            super(inflater.inflate(R.layout.list_item_message, parent, false));
-            mMessageTitle = (TextView) itemView.findViewById(R.id.message_title);
-            mMessageText = (TextView) itemView.findViewById(R.id.message_text);
-        }
-
-        public void bind(Message message) {
-            mMessage = message;
-            //TODO: SET ATTRIBUTES FOR SPECIFIC CELLS
-        }
-    }
-
-
-
-
-    private class MessageAdapter extends RecyclerView.Adapter<MessageFragment.MessageHolder> {
-        private List<Message> mMessage;
-
-        public MessageAdapter(List<Message> message) {
-            mMessage = message;
-        }
-
-        @NonNull
-        @Override
-        public MessageFragment.MessageHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-            return new MessageFragment.MessageHolder(layoutInflater, parent);
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull MessageFragment.MessageHolder messageHolder, int i) {
-            Message message = mMessage.get(i);
-            messageHolder.bind(message);
-        }
-
-        @Override
-        public int getItemCount() {
-            return mMessage.size();
         }
     }
 

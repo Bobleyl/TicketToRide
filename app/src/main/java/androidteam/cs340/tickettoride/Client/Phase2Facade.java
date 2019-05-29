@@ -117,6 +117,7 @@ public class Phase2Facade {
 
     // END OF COMMANDS --------------- // ------------------
 
+    public List<Message> getMessages() { return currentGame.getMessages(); }
 
     public TrainCard[] getUpdeck(){
         return currentGame.getTrainCardDeck().getUpDeck();
