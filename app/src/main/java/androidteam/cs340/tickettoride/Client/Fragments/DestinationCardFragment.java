@@ -52,7 +52,7 @@ public class DestinationCardFragment extends Fragment implements IPresenter {
 
 
     public void updateUI(){
-        List<DestinationCard> destCards = Phase2Facade.SINGLETON.getPlayerDestinationCards();
+        List<DestinationCard> destCards = Phase2Facade.SINGLETON.getTempDestinationCards();
         if(destCards.size() < 3){
             return;
         }
@@ -141,7 +141,7 @@ public class DestinationCardFragment extends Fragment implements IPresenter {
 
         // Grab the arguments to the fragment
         isStart = getArguments().getBoolean("isStart");
-        Toast.makeText(getContext(), isStart.toString(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(), isStart.toString(), Toast.LENGTH_SHORT).show();
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_destination_card, container, false);
