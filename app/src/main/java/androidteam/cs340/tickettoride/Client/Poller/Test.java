@@ -8,7 +8,7 @@ public class Test {
     public static void main(String[] args) {
 
         GamePollerCommand command = new GamePollerCommand();
-        GamePoller gp = new GamePoller(command, 1000, "d9665f74-e73a-4e14-a0cb-36da981ff3d9");
+        GamePoller gp = new GamePoller(command, 1000, "f51ca60f-9256-4729-a53b-5165c8f47f33");
         gp.start();
 
         while (true) {

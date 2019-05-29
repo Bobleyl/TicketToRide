@@ -85,10 +85,10 @@ public class LobbyGameModel {
             int j = 0;
             List<DestinationCard> destinationCards = new ArrayList<>();
             while (j < 3) {
-                destinationCards.add(destinationCardDeck.getCard());
+                destinationCardDeck.getCard(currentPlayer);
                 j++;
             }
-            currentPlayer.setTempDestinationCard(destinationCards);
+            //currentPlayer.setTempDestinationCard(destinationCards);
 
             //Add 4 cards to players trainCardHand
             int k = 0;

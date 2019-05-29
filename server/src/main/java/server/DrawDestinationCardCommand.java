@@ -34,17 +34,17 @@ public class DrawDestinationCardCommand implements CommandInterface {
 
                         int j = 0;
                         DestinationCardDeck destinationCardDeck = game.getDestinationCardDeck();
-                        List<DestinationCard> playerDeck = player.getDestinationHand();
+                        List<DestinationCard> playerDeck = new ArrayList<>();
 
                         while (j < 3) {
-                            DestinationCard destinationCard = destinationCardDeck.getCard();
-                            if (destinationCard != null) {
+                            destinationCardDeck.getCard(player);
+                            /*if (destinationCard != null) {
                                 playerDeck.add(destinationCard);
                                 drawnCards++;
-                            }
+                            }*/
                             j++;
                         }
-                        player.setTempDestinationCard(playerDeck);
+                        //player.setTempDestinationCard(playerDeck);
                         successfulExecute = true;
                         returnMessage.setReponseMessage("success");
                     }
