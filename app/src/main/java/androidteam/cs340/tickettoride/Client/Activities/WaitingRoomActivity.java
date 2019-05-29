@@ -88,7 +88,7 @@ public class WaitingRoomActivity extends AppCompatActivity {
         List<Player> players = game.getPlayersList();
         GameModel gameModel = Phase2Facade.SINGLETON.getCurrentGame();
 
-        Phase2Facade.SINGLETON.setGameID(ModelFacade.SINGLETON.getGameID());
+        Phase2Facade.SINGLETON.setGameID(game.getUID());
         Log.d("GAME_ACTIVITY:GAME_ID", Phase2Facade.SINGLETON.getGameID());
         Phase2Facade.SINGLETON.startPoller();
 

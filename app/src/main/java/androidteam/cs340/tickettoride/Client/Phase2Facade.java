@@ -61,24 +61,26 @@ public class Phase2Facade {
     public void updateCurrentGame(Result result) {
         GameModel gamesModel = new GameModel();
         gamesModel = ParseResults.SINGLETON.parseGameResult(result);
-        currentGame = gamesModel;
+        if (gamesModel != null) {
+            currentGame = gamesModel;
 
-        System.out.println("DATA::: ");
-        System.out.println(currentGame);
+            System.out.println("DATA::: ");
+            System.out.println(currentGame);
 
-        System.out.println("PLAYERS::: ");
-        System.out.println(currentGame.getPlayersList());
+            System.out.println("PLAYERS::: ");
+            System.out.println(currentGame.getPlayersList());
 
-        System.out.println("ID:::");
-        System.out.println(currentGame.getGameID());
+            System.out.println("ID:::");
+            System.out.println(currentGame.getGameID());
 
-        System.out.println("PLAYER DECK: " + currentGame.getDestinationCardDeck().getDeck().size());
-        for (Player player : currentGame.getPlayersList()) {
-            if (player.getUID().equals(ModelFacade.SINGLETON.getPlayer().getUID())) {
-                currentPlayer = player;
+            System.out.println("PLAYER DECK: " + currentGame.getDestinationCardDeck().getDeck().size());
+            for (Player player : currentGame.getPlayersList()) {
+                if (player.getUID().equals(ModelFacade.SINGLETON.getPlayer().getUID())) {
+                    currentPlayer = player;
+                }
             }
+            updatePresenter();
         }
-        updatePresenter();
     }
 
     public void updatePresenter() {
