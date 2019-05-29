@@ -58,7 +58,12 @@ public class MapFragment extends Fragment implements IPresenter {
 
     @Override
     public void Update() {
-        updateSpinner();
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                updateSpinner();
+            }
+        });
     }
 
     @Override
@@ -83,8 +88,8 @@ public class MapFragment extends Fragment implements IPresenter {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_map, container,false);
 
-        mRouteSpinner = view.findViewById(R.id.claimRouteSpinner);
-        mClaimRoute = view.findViewById(R.id.claimRoute);
+        mRouteSpinner = (Spinner) view.findViewById(R.id.claimRouteSpinner);
+        mClaimRoute = (Button) view.findViewById(R.id.claimRoute);
 
         String[] items = new String[]{"Values"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
