@@ -15,7 +15,6 @@ public class GameActivityPresenter implements IPresenter {
     public void Update() {
         List<Player> currentPlayers = Phase2Facade.SINGLETON.getCurrentGame().getPlayersList();
         currentActivity.upDatePlayerTextViews(currentPlayers);
-
     }
 
     @Override

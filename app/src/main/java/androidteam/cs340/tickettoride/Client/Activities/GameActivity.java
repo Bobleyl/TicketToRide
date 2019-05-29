@@ -42,35 +42,48 @@ public class GameActivity extends AppCompatActivity implements
 
     GameActivityPresenter mGameActivityPresenter;
 
-    public void upDatePlayerTextViews(List<Player> players) {
+    public void upDatePlayerTextViews(final List<Player> players) {
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                updateUI(players);
+            }
+        });
+    }
+
+    private void updateUI(List<Player> players) {
         StringBuilder playerText = new StringBuilder();
-        if(players.get(0) != null) {
+        if(players.size() >= 1 && players.get(0) != null) {
             Player currentPlayer = players.get(0);
-            playerText.append(currentPlayer.getName() + currentPlayer.getScore() +
+            playerText.append(currentPlayer.getName() + "\n" + currentPlayer.getScore() + "/" +
                     currentPlayer.getTrainCardsHand().size());
             mPlayer1TextView.setText(playerText.toString());
         }
-        if(players.get(1) != null) {
-            Player currentPlayer = players.get(0);
-            playerText.append(currentPlayer.getName() + currentPlayer.getScore() +
+        if(players.size() >= 2 && players.get(1) != null) {
+            playerText = new StringBuilder();
+            Player currentPlayer = players.get(1);
+            playerText.append(currentPlayer.getName() + "\n" + currentPlayer.getScore() + "/" +
                     currentPlayer.getTrainCardsHand().size());
             mPlayer2TextView.setText(playerText.toString());
         }
-        if(players.get(2) != null) {
-            Player currentPlayer = players.get(0);
-            playerText.append(currentPlayer.getName() + currentPlayer.getScore() +
+        if(players.size() >= 3 && players.get(2) != null) {
+            playerText = new StringBuilder();
+            Player currentPlayer = players.get(2);
+            playerText.append(currentPlayer.getName() + "\n" + currentPlayer.getScore() + "/" +
                     currentPlayer.getTrainCardsHand().size());
             mPlayer3TextView.setText(playerText.toString());
         }
-        if(players.get(3) != null) {
-            Player currentPlayer = players.get(0);
-            playerText.append(currentPlayer.getName() + currentPlayer.getScore() +
+        if(players.size() >= 4 && players.get(3) != null) {
+            playerText = new StringBuilder();
+            Player currentPlayer = players.get(3);
+            playerText.append(currentPlayer.getName() + "\n" + currentPlayer.getScore() + "/" +
                     currentPlayer.getTrainCardsHand().size());
             mPlayer4TextView.setText(playerText.toString());
         }
-        if(players.get(4) != null) {
-            Player currentPlayer = players.get(0);
-            playerText.append(currentPlayer.getName() + currentPlayer.getScore() +
+        if(players.size() >= 5 && players.get(4) != null) {
+            playerText = new StringBuilder();
+            Player currentPlayer = players.get(4);
+            playerText.append(currentPlayer.getName() + "\n" + currentPlayer.getScore() + "/" +
                     currentPlayer.getTrainCardsHand().size());
             mPlayer5TextView.setText(playerText.toString());
         }
