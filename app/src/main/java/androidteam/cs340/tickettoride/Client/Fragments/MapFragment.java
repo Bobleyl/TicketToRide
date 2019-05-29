@@ -12,7 +12,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Button;
 
+import java.util.ArrayList;
 import java.util.UUID;
+import java.util.List;
 
 import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
@@ -28,7 +30,7 @@ import androidteam.cs340.tickettoride.Shared.Route;
  * create an instance of this fragment.
  */
 public class MapFragment extends Fragment implements IPresenter {
-
+    private List<Route> lastList = new ArrayList<>();
     private OnFragmentInteractionListener mListener;
     private Button mClaimRoute;
     private String ID;
@@ -113,26 +115,35 @@ public class MapFragment extends Fragment implements IPresenter {
     public void updateSpinner(){ //TODO: BREAKING BECAUSE SPINNER IS GOING OFF FRAGMENT INTO THE ACTIVITY VIEW.
         int size = Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes().size();
         String[] items = new String[size];
+        boolean update = true;
 
-        int i = 0;
-        for(Route route : Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes()){
-            items[i] = ("" + route);
-            i++;
+        if(lastList.size() == Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes().size()){
+            update = false;
+        }else{
+            lastList = Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes();
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
-        mRouteSpinner.setAdapter(adapter);
 
-        mRouteSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                mRouteString = (String) parent.getSelectedItem();
+        if(update == true){
+            int i = 0;
+            for(Route route : Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes()){
+                items[i] = ("" + route);
+                i++;
             }
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
+            mRouteSpinner.setAdapter(adapter);
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            mRouteSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    mRouteString = (String) parent.getSelectedItem();
+                }
 
-            }
-        });
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+        }
     }
 
 
