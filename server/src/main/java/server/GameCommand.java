@@ -22,7 +22,6 @@ public class GameCommand implements CommandInterface {
             }
         }
 
-        throw new Exception("Failed to return game");
-
+        return null;
     }
 }

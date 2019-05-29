@@ -70,8 +70,6 @@
             <groupId>cs340</groupId>
             <artifactId>TicketToRideShared</artifactId>
             <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/../shared/target/TicketToRideShared-1.0.jar</systemPath>
         </dependency>
     </dependencies>
 </project>
