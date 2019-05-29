@@ -47,6 +47,8 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
     private TextView mBlackCount;
     private TextView mYellowCount;
     private TextView mTrainCount;
+    private TextView mDestinationCount;
+    private TextView mDownCount;
     private String mDestinationStringSelected;
     private Spinner mDestinationSpinner;
 
@@ -111,6 +113,8 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         mPinkCount = view.findViewById(R.id.pinkCount);
         mYellowCount = view.findViewById(R.id.yellowCount);
         mTrainCount = view.findViewById(R.id.trainCount);
+        mDestinationCount = view.findViewById(R.id.destinationCount);
+        mDownCount = view.findViewById(R.id.downCount);
         mDestinationSpinner = view.findViewById(R.id.destinationSpinner);
 
         String[] items = new String[]{"Values"};
@@ -382,6 +386,8 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         int purple = 0;
         int black = 0;
         int yellow = 0;
+        mDestinationCount.setText("" + Phase2Facade.SINGLETON.destinationSize());
+        mDownCount.setText("" + Phase2Facade.SINGLETON.getDownDeck().size());
         for(TrainCard card : cards){
             System.out.println("TYPE OF CARD DRAWN::");
             System.out.println(card);

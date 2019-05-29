@@ -142,6 +142,10 @@ public class Phase2Facade {
         return currentGame.getDestinationCardDeck();
     }
 
+    public int destinationSize(){
+        return currentGame.getDestinationCardDeck().getDeck().size();
+    }
+
     public List<DestinationCard> getMyDestinationDeck(){
         return currentPlayer.getDestinationHand();
     }
