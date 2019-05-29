@@ -100,7 +100,7 @@ public class DestinationCardFragment extends Fragment implements IPresenter {
         ID = UUID.randomUUID().toString();
     }
 
-    class BoxListener implements View.OnClickListener{
+    private class BoxListener implements View.OnClickListener{
         @Override
         public void onClick(View v) {
             LinearLayout box = (LinearLayout) v;
@@ -118,7 +118,7 @@ public class DestinationCardFragment extends Fragment implements IPresenter {
         }
     }
 
-    class DestCardSubmitListener implements View.OnClickListener{
+    private class DestCardSubmitListener implements View.OnClickListener{
         @Override
         public void onClick(View v) {
             List<DestinationCard> destCards = new ArrayList<DestinationCard>();
