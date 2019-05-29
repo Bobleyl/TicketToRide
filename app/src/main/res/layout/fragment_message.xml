@@ -40,15 +40,17 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_message"
-        android:layout_width="522dp"
-        android:layout_height="398dp"
+        android:layout_width="483dp"
+        android:layout_height="240dp"
         android:layout_margin="0dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="4dp"
         android:padding="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.88"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     </android.support.v7.widget.RecyclerView>
 

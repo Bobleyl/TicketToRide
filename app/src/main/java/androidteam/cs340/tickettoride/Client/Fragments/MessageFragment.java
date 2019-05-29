@@ -66,7 +66,8 @@ public class MessageFragment extends Fragment implements IPresenter {
         }
 
         public void bind(Message message) {
-            mMessageTitle.setText(message.getPlayerID());
+            String playerID = message.getPlayerID().substring( 0, 4);
+            mMessageTitle.setText(playerID);
             mMessageText.setText(message.getTextMessage());
         }
     }
@@ -145,7 +146,7 @@ public class MessageFragment extends Fragment implements IPresenter {
 
 
     private void sendMessage(String message) {
-        Message toSend = new Message(message, Phase2Facade.SINGLETON.getCurrentPlayer().getUID());
+        Message toSend = new Message(Phase2Facade.SINGLETON.getCurrentPlayer().getUID(), message);
         Phase2Facade.SINGLETON.sendMessage(toSend);
     }
 
