@@ -53,6 +53,7 @@ public class DestinationCardFragment extends Fragment implements IPresenter {
 
     public void updateUI(){
         List<DestinationCard> destCards = Phase2Facade.SINGLETON.getTempDestinationCards();
+        populateCards(destCards);
         if(destCards.size() < 3){
             return;
         }
