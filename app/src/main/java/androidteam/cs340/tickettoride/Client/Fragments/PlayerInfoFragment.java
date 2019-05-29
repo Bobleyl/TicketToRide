@@ -18,6 +18,7 @@ import java.net.HttpURLConnection;
 import java.util.List;
 import java.util.UUID;
 
+import androidteam.cs340.tickettoride.Client.Activities.GameActivity;
 import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.R;
@@ -420,6 +421,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         //TODO: OPEN FRAGMENT FOR CHOOSING DESTINATION CARDS, BUT ALLOW RETURNING 0-2 INSTEAD OF 0-1
         //Result result = Phase2Facade.SINGLETON.drawDestination(card);
         //TODO: PASS RESULT TO NEW FRAGMENT
+        ((GameActivity)getActivity()).drawDestinationCards();
     }
 
     @Override

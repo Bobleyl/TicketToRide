@@ -110,9 +110,8 @@ public class GameActivity extends AppCompatActivity implements
             if (savedInstanceState != null) {
                 return;
             }
-            //PlayerInfoFragment firstFragment = new PlayerInfoFragment();
+
             DestinationCardFragment firstFragment = new DestinationCardFragment();
-//            firstFragment.setArguments(getIntent().getExtras());
             Bundle bundle = new Bundle();
             bundle.putBoolean("isStart", true);
             firstFragment.setArguments(bundle);
@@ -175,5 +174,13 @@ public class GameActivity extends AppCompatActivity implements
         Toast.makeText(this, "Submitting Cards", Toast.LENGTH_SHORT).show();
         //TODO:Add call to returnDestCard function
         startNewFragment(new PlayerInfoFragment());
+    }
+
+    public void drawDestinationCards(){
+        Bundle args = new Bundle();
+        args.putBoolean("isStart",false);
+        DestinationCardFragment fragment = new DestinationCardFragment();
+        fragment.setArguments(args);
+        startNewFragment(fragment);
     }
 }
