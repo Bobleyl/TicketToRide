@@ -496,10 +496,10 @@
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/zero"
         android:src="@drawable/train_car"
-        app:layout_constraintBottom_toBottomOf="@+id/orangeCount"
+        app:layout_constraintBottom_toBottomOf="@+id/pinkCard"
         app:layout_constraintStart_toEndOf="@+id/pinkCard"
         app:layout_constraintTop_toBottomOf="@+id/upDeck3"
-        app:layout_constraintVertical_bias="0.569" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Spinner
         android:id="@+id/destinationSpinner"

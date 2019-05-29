@@ -63,11 +63,6 @@ public class Phase2Facade {
         GameModel gamesModel = new GameModel();
         gamesModel = ParseResults.SINGLETON.parseGameResult(result);
         currentGame = gamesModel;
-        for(Player player : currentGame.getPlayersList()){
-            if(player.getUID().equals(currentPlayer.getUID())){
-                currentPlayer = player;
-            }
-        }
 
         System.out.println("DATA::: ");
         System.out.println(currentGame);
@@ -77,6 +72,12 @@ public class Phase2Facade {
 
         System.out.println("ID:::");
         System.out.println(currentGame.getGameID());
+
+        for (Player player : currentGame.getPlayersList()) {
+            if (player.getUID().equals(ModelFacade.SINGLETON.getPlayer().getUID())) {
+                currentPlayer = player;
+            }
+        }
         updatePresenter();
     }
 
