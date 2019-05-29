@@ -359,39 +359,39 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
             System.out.println(card);
             if(card.color.equals("black")){
                 black = black + 1;
-                mBlackCount.setText(black);
+                mBlackCount.setText("" + black);
             }
             if(card.color.equals("white")){
                 white = white + 1;
-                mWhiteCount.setText(white);
+                mWhiteCount.setText("" + white);
             }
             if(card.color.equals("blue")){
                 blue = blue + 1;
-                mBlueCount.setText(blue);
+                mBlueCount.setText("" + blue);
             }
             if(card.color.equals("orange")){
                 orange = orange + 1;
-                mOrangeCount.setText(orange);
+                mOrangeCount.setText("" + orange);
             }
             if(card.color.equals("red")){
                 red = red + 1;
-                mRedCount.setText(red);
+                mRedCount.setText("" + red);
             }
             if(card.color.equals("wild")){
                 wild = wild + 1;
-                mWildCount.setText(wild);
+                mWildCount.setText("" + wild);
             }
             if(card.color.equals("yellow")){
                 yellow = yellow + 1;
-                mYellowCount.setText(yellow);
+                mYellowCount.setText("" + yellow);
             }
             if(card.color.equals("green")){
                 green = green + 1;
-                mGreenCount.setText(green);
+                mGreenCount.setText(""  + green);
             }
             if(card.color == "purple"){
                 purple = purple + 1;
-                mPinkCount.setText(purple);
+                mPinkCount.setText("" + purple);
             }
         }
     }
