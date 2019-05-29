@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Button;
 
+import java.util.ArrayList;
 import java.util.UUID;
 import java.util.List;
 
@@ -29,7 +30,7 @@ import androidteam.cs340.tickettoride.Shared.Route;
  * create an instance of this fragment.
  */
 public class MapFragment extends Fragment implements IPresenter {
-    private List<Route> lastList;
+    private List<Route> lastList = new ArrayList<>();
     private OnFragmentInteractionListener mListener;
     private Button mClaimRoute;
     private String ID;
@@ -111,7 +112,7 @@ public class MapFragment extends Fragment implements IPresenter {
         return view;
     }
 
-    public void updateSpinner(){ //TODO: BREAKING BECAUSE SPINNER IS GOING OFF FRAGMENT INTO THE ACTIVITY VIEW.
+    public void updateSpinner(){
         int size = Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes().size();
         String[] items = new String[size];
         boolean update = true;
