@@ -182,6 +182,12 @@ public class Phase2Facade {
         return currentPlayer.getDestinationHand();
     }
 
+    public Result updateTempDestinationHand() {
+        Log.d("GAME_ACTIVITY:G_ID", currentGame.getGameID());
+        Log.d("GAME_ACTIVITY:P_ID:", currentPlayer.getUID());
+        return ServerProxy.SINGLETON.drawDestinationCard(currentGame.getGameID(), currentPlayer.getUID());
+    }
+
     public List<DestinationCard> getTempDestinationCards(){
         return currentPlayer.getTempDestinationCard();
     }

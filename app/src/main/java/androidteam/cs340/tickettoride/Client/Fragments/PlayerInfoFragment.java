@@ -451,7 +451,14 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
     }
 
     private void chooseDestinationCard(){
-        ((GameActivity)getActivity()).drawDestinationCards();
+
+        Result resultGetTemp = Phase2Facade.SINGLETON.updateTempDestinationHand();
+        if (resultGetTemp.getStatusCode() == 200) {
+            ((GameActivity)getActivity()).drawDestinationCards();
+        } else {
+            Toast.makeText(getActivity(), "Error: " + resultGetTemp.getStatusCode(),Toast.LENGTH_LONG).show();
+        }
+
     }
 
     @Override
