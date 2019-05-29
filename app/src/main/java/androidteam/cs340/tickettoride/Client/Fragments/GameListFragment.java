@@ -206,16 +206,7 @@ public class GameListFragment extends Fragment implements IPresenter {
     }
 
     private void joinGame(Game toJoin){
-        boolean lastPlayer = false;
         Toast.makeText(getActivity(), "Joining Game", Toast.LENGTH_SHORT).show();
-        //Check if I'm the last player attempting to join
-        if(toJoin.getGameSize() == toJoin.getPlayersList().size() + 1){
-            if(gameCreated){ //That user you are seeing already is yourself
-                lastPlayer = false;
-            }else{ //That user you are seeing is someone else
-                lastPlayer = true;
-            }
-        }
 
         ModelFacade.SINGLETON.setGame(toJoin);
         Result result = ModelFacade.SINGLETON.joinGame();

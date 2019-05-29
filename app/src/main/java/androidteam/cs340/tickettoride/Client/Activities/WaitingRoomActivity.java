@@ -19,6 +19,7 @@ import androidteam.cs340.tickettoride.Client.Presenters.WaitingRoomPresenter;
 import androidteam.cs340.tickettoride.Client.ServerProxy;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.Game;
+import androidteam.cs340.tickettoride.Shared.GameModel;
 import androidteam.cs340.tickettoride.Shared.Player;
 import androidteam.cs340.tickettoride.Shared.Result;
 
@@ -84,34 +85,14 @@ public class WaitingRoomActivity extends AppCompatActivity {
     private void populatePlayerList() {
 
         Game game = ModelFacade.SINGLETON.getGame();
-        //System.out.println(game.getUID());
-        List<Game> games = ModelFacade.SINGLETON.getLobbyGames();
-
         List<Player> players = game.getPlayersList();
+        GameModel gameModel = Phase2Facade.SINGLETON.getCurrentGame();
 
-        boolean found = false;
+        Phase2Facade.SINGLETON.setGameID(ModelFacade.SINGLETON.getGameID());
+        Log.d("GAME_ACTIVITY:GAME_ID", Phase2Facade.SINGLETON.getGameID());
+        Phase2Facade.SINGLETON.startPoller();
 
-        Log.d("WAITING_ROOM", game.getUID());
-        Log.d("WAITING_ROOM", Integer.toString(game.getGameSize()));
-        Log.d("WAITING_ROOM", Integer.toString(players.size()));
-
-        for(Game game1 : games) {
-            if(game.getUID().equals(game1.getUID())) {
-                found = true;
-            }
-        }
-
-        if (players.size() == game.getGameSize() && found) {
-            Result result = ServerProxy.SINGLETON.deleteGame(game.getUID());
-            Log.d("WAITING_ROOM", "Deleted game...");
-            Log.d("WAITING_ROOM", game.getUID());
-            Log.d("WAITING_ROOM", Integer.toString(result.getStatusCode()));
-        }
-
-        Log.d("WAITING_ROOM", Boolean.toString(found));
-
-        if(!found && players.size() == game.getGameSize()){
-            Log.d("WAITING_ROOM", "GAME IS FULL, LET'S PLAY");
+        if (ServerProxy.SINGLETON.game(ModelFacade.SINGLETON.getGameID()).getStatusCode() == 200) {
             Intent intent = new Intent(WaitingRoomActivity.this, GameActivity.class);
             startActivity(intent);
         }
