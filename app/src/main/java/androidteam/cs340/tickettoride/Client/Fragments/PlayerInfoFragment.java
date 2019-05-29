@@ -7,7 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.app.Dialog;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -24,7 +26,6 @@ import androidteam.cs340.tickettoride.Shared.TrainCard;
 
 
 public class PlayerInfoFragment extends Fragment implements IPresenter {
-    Dialog myDialog; //used for pop up
 
     private ImageButton mDestinationDeck;
     private ImageButton mDownDeck;
@@ -44,6 +45,8 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
     private TextView mBlackCount;
     private TextView mYellowCount;
     private TextView mTrainCount;
+    private String mDestinationStringSelected;
+    private Spinner mDestinationSpinner;
 
     private String ID;
     private OnFragmentInteractionListener mListener;
@@ -89,7 +92,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         View view = inflater.inflate(R.layout.fragment_player_info, container, false);
 
         mDestinationDeck = view.findViewById(R.id.destinationDeck);
-        mDestinationCards = view.findViewById(R.id.destinationCards);
+        //mDestinationCards = view.findViewById(R.id.destinationCards);
         mDownDeck = view.findViewById(R.id.downDeck);
         mUpDeck1 = view.findViewById(R.id.upDeck1);
         mUpDeck2 = view.findViewById(R.id.upDeck2);
@@ -106,6 +109,24 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         mPinkCount = view.findViewById(R.id.pinkCount);
         mYellowCount = view.findViewById(R.id.yellowCount);
         mTrainCount = view.findViewById(R.id.trainCount);
+        mDestinationSpinner = view.findViewById(R.id.destinationSpinner);
+
+        String[] items = new String[]{"Test1","Test2","Test3"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
+        mDestinationSpinner.setAdapter(adapter);
+
+
+        mDestinationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                mDestinationStringSelected = (String) parent.getSelectedItem();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
         mDownDeck.setOnClickListener(new View.OnClickListener() {
@@ -157,33 +178,13 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
             }
         });
 
-        mDestinationCards.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPopUp(v);
-            }
-        });
-
         return view;
-    }
-
-
-    public void showPopUp(View view){ //should allow opening and closing of destination card pop up.
-        TextView txtClose = myDialog.findViewById(R.id.closePopUp);;
-        myDialog.setContentView(R.layout.destination_pop_up);
-        txtClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) { //if X is clicked dismiss dialog
-                myDialog.dismiss();
-            }
-        });
-        myDialog.show();
     }
 
     private void updateUpDeck(TrainCard[] cards){
         int count = 0;
         for(TrainCard card : cards){
-            if(card.color == "black"){
+            if(card.color.equals("black")){
                 if(count == 0){
                     mUpDeck1.setBackgroundResource(R.drawable.black_train_card);
                 }
@@ -200,7 +201,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                     mUpDeck5.setBackgroundResource(R.drawable.black_train_card);
                 }
             }
-            if(card.color == "blue"){
+            if(card.color.equals("blue")){
                 if(count == 0){
                     mUpDeck1.setBackgroundResource(R.drawable.blue_train_card);
                 }
@@ -217,7 +218,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                     mUpDeck5.setBackgroundResource(R.drawable.blue_train_card);
                 }
             }
-            if(card.color == "white"){
+            if(card.color.equals("white")){
                 if(count == 0){
                     mUpDeck1.setBackgroundResource(R.drawable.white_train_card);
                 }
@@ -234,7 +235,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                     mUpDeck5.setBackgroundResource(R.drawable.white_train_card);
                 }
             }
-            if(card.color == "orange"){
+            if(card.color.equals("orange")){
                 if(count == 0){
                     mUpDeck1.setBackgroundResource(R.drawable.orange_train_card);
                 }
@@ -251,7 +252,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                     mUpDeck5.setBackgroundResource(R.drawable.orange_train_card);
                 }
             }
-            if(card.color == "yellow"){
+            if(card.color.equals("yellow")){
                 if(count == 0){
                     mUpDeck1.setBackgroundResource(R.drawable.yellow_train_card);
                 }
@@ -268,7 +269,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                     mUpDeck5.setBackgroundResource(R.drawable.yellow_train_card);
                 }
             }
-            if(card.color == "green"){
+            if(card.color.equals("green")){
                 if(count == 0){
                     mUpDeck1.setBackgroundResource(R.drawable.green_train_card);
                 }
@@ -285,7 +286,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                     mUpDeck5.setBackgroundResource(R.drawable.green_train_card);
                 }
             }
-            if(card.color == "wild"){ // TODO: ADD wild_train_card TO DRAWABLE
+            if(card.color.equals("wild")){ // TODO: ADD wild_train_card TO DRAWABLE
                 if(count == 0){
                     //mUpDeck1.setBackgroundResource(R.drawable.wild_train_card);
                 }
@@ -302,7 +303,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                     //mUpDeck5.setBackgroundResource(R.drawable.wild_train_card);
                 }
             }
-            if(card.color == "red"){
+            if(card.color.equals("red")){
                 if(count == 0){
                     mUpDeck1.setBackgroundResource(R.drawable.red_train_card);
                 }
@@ -319,7 +320,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                     mUpDeck5.setBackgroundResource(R.drawable.red_train_card);
                 }
             }
-            if(card.color == "pink"){
+            if(card.color.equals("pink")){
                 if(count == 0){
                     mUpDeck1.setBackgroundResource(R.drawable.purple_train_card);
                 }
@@ -352,35 +353,35 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         int black = 0;
         int yellow = 0;
         for(TrainCard card : cards){
-            if(card.color == "black"){
+            if(card.color.equals("black")){
                 black = black + 1;
                 mBlackCount.setText(black);
             }
-            if(card.color == "white"){
+            if(card.color.equals("white")){
                 white = white + 1;
                 mWhiteCount.setText(white);
             }
-            if(card.color == "blue"){
+            if(card.color.equals("blue")){
                 blue = blue + 1;
                 mBlueCount.setText(blue);
             }
-            if(card.color == "orange"){
+            if(card.color.equals("orange")){
                 orange = orange + 1;
                 mOrangeCount.setText(orange);
             }
-            if(card.color == "red"){
+            if(card.color.equals("red")){
                 red = red + 1;
                 mRedCount.setText(red);
             }
-            if(card.color == "wild"){
+            if(card.color.equals("wild")){
                 wild = wild + 1;
                 mWildCount.setText(wild);
             }
-            if(card.color == "yellow"){
+            if(card.color.equals("yellow")){
                 yellow = yellow + 1;
                 mYellowCount.setText(yellow);
             }
-            if(card.color == "green"){
+            if(card.color.equals("green")){
                 green = green + 1;
                 mGreenCount.setText(green);
             }

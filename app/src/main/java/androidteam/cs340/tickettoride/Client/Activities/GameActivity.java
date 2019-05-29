@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,6 +19,8 @@ import androidteam.cs340.tickettoride.Client.Fragments.GameListFragment;
 import androidteam.cs340.tickettoride.Client.Fragments.MapFragment;
 import androidteam.cs340.tickettoride.Client.Fragments.MessageFragment;
 import androidteam.cs340.tickettoride.Client.Fragments.PlayerInfoFragment;
+import androidteam.cs340.tickettoride.Client.ModelFacade;
+import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.GameActivityPresenter;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.DestinationCard;
@@ -44,6 +47,10 @@ public class GameActivity extends AppCompatActivity implements
 
         mGameActivityPresenter = new GameActivityPresenter();
 
+        Phase2Facade.SINGLETON.setGameID(ModelFacade.SINGLETON.getGameID());
+        ModelFacade.SINGLETON.stopPoller();
+        Log.d("GAME_ACTIVITY:GAME_ID", Phase2Facade.SINGLETON.getGameID());
+        Phase2Facade.SINGLETON.startPoller();
 
         //TODO: Make this activity start on the correct fragent.
         if (findViewById(R.id.main_game_fragment_container) != null) {
