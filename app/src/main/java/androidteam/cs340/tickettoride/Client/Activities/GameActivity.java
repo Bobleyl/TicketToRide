@@ -13,17 +13,21 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 import androidteam.cs340.tickettoride.Client.Fragments.GameListFragment;
 import androidteam.cs340.tickettoride.Client.Fragments.MapFragment;
 import androidteam.cs340.tickettoride.Client.Fragments.MessageFragment;
 import androidteam.cs340.tickettoride.Client.Fragments.PlayerInfoFragment;
 import androidteam.cs340.tickettoride.Client.Presenters.GameActivityPresenter;
 import androidteam.cs340.tickettoride.R;
+import androidteam.cs340.tickettoride.Shared.Player;
 
 public class GameActivity extends AppCompatActivity implements
         MapFragment.OnFragmentInteractionListener,
         MessageFragment.OnFragmentInteractionListener,
         PlayerInfoFragment.OnFragmentInteractionListener {
+
     Button mMapButton;
     Button mGameInfoButton;
     Button mChatButton;
@@ -35,12 +39,47 @@ public class GameActivity extends AppCompatActivity implements
 
     GameActivityPresenter mGameActivityPresenter;
 
+    public void upDatePlayerTextViews(List<Player> players) {
+        StringBuilder playerText = new StringBuilder();
+        if(players.get(0) != null) {
+            Player currentPlayer = players.get(0);
+            playerText.append(currentPlayer.getName() + currentPlayer.getScore() +
+                    currentPlayer.getTrainCardsHand().size());
+            mPlayer1TextView.setText(playerText.toString());
+        }
+        if(players.get(1) != null) {
+            Player currentPlayer = players.get(0);
+            playerText.append(currentPlayer.getName() + currentPlayer.getScore() +
+                    currentPlayer.getTrainCardsHand().size());
+            mPlayer2TextView.setText(playerText.toString());
+        }
+        if(players.get(2) != null) {
+            Player currentPlayer = players.get(0);
+            playerText.append(currentPlayer.getName() + currentPlayer.getScore() +
+                    currentPlayer.getTrainCardsHand().size());
+            mPlayer3TextView.setText(playerText.toString());
+        }
+        if(players.get(3) != null) {
+            Player currentPlayer = players.get(0);
+            playerText.append(currentPlayer.getName() + currentPlayer.getScore() +
+                    currentPlayer.getTrainCardsHand().size());
+            mPlayer4TextView.setText(playerText.toString());
+        }
+        if(players.get(4) != null) {
+            Player currentPlayer = players.get(0);
+            playerText.append(currentPlayer.getName() + currentPlayer.getScore() +
+                    currentPlayer.getTrainCardsHand().size());
+            mPlayer5TextView.setText(playerText.toString());
+        }
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        mGameActivityPresenter = new GameActivityPresenter();
+        mGameActivityPresenter = new GameActivityPresenter(this);
 
 
         //TODO: Make this activity start on the correct fragent.
@@ -96,9 +135,8 @@ public class GameActivity extends AppCompatActivity implements
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-        //TODO: What should be put here?
+        //Needs to be implemented, but not sure what it does.
     }
-
 
 
     @Override
