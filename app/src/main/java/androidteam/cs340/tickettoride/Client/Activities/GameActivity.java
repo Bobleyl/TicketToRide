@@ -184,4 +184,5 @@ public class GameActivity extends AppCompatActivity implements
         fragment.setArguments(args);
         startNewFragment(fragment);
     }
+
 }

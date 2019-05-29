@@ -75,7 +75,6 @@ public class MapFragment extends Fragment implements IPresenter {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -109,6 +108,7 @@ public class MapFragment extends Fragment implements IPresenter {
     public void updateSpinner(){ //TODO: BREAKING BECAUSE SPINNER IS GOING OFF FRAGMENT INTO THE ACTIVITY VIEW.
         int size = Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes().size();
         String[] items = new String[size];
+
         int i = 0;
         for(Route route : Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes()){
             items[i] = ("" + route);
@@ -116,7 +116,6 @@ public class MapFragment extends Fragment implements IPresenter {
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
         mRouteSpinner.setAdapter(adapter);
-
 
         mRouteSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

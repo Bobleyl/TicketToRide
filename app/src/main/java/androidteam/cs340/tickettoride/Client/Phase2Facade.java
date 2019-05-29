@@ -114,10 +114,6 @@ public class Phase2Facade {
         return ServerProxy.SINGLETON.drawTrainCardFaceDown(currentGame.getGameID(),currentPlayer.getUID());
     }
 
-    public Result drawDestination(){
-        return ServerProxy.SINGLETON.drawDestinationCard(currentGame.getGameID(),currentPlayer.getUID());
-    }
-
     public Result sendMessage(Message message){
         return ServerProxy.SINGLETON.sendMessage(currentGame.getGameID(),currentPlayer.getUID(),message);
     }
