@@ -95,17 +95,17 @@ public class WaitingRoomActivity extends AppCompatActivity {
         Log.d("WAITING_ROOM", Integer.toString(game.getGameSize()));
         Log.d("WAITING_ROOM", Integer.toString(players.size()));
 
-        if (players.size() == game.getGameSize()) {
-            Result result = ServerProxy.SINGLETON.deleteGame(game.getUID());
-            Log.d("WAITING_ROOM", "Deleted game...");
-            Log.d("WAITING_ROOM", game.getUID());
-            Log.d("WAITING_ROOM", Integer.toString(result.getStatusCode()));
-        }
-
         for(Game game1 : games) {
             if(game.getUID().equals(game1.getUID())) {
                 found = true;
             }
+        }
+
+        if (players.size() == game.getGameSize() && found) {
+            Result result = ServerProxy.SINGLETON.deleteGame(game.getUID());
+            Log.d("WAITING_ROOM", "Deleted game...");
+            Log.d("WAITING_ROOM", game.getUID());
+            Log.d("WAITING_ROOM", Integer.toString(result.getStatusCode()));
         }
 
         Log.d("WAITING_ROOM", Boolean.toString(found));
