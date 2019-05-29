@@ -222,6 +222,10 @@ public class DestinationCardFragment extends Fragment implements IPresenter {
     }
 
     private void switchStatus(LinearLayout layout, TextView txt){
+        if(txt.getText().equals("Waiting...")){
+            return;
+        }
+
         if(txt.getText().equals("KEEPING")){
             toReturning(layout, txt);
         }

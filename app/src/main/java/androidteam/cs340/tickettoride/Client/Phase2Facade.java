@@ -26,7 +26,7 @@ public class Phase2Facade {
 
     private Phase2Facade(){
         //turnOrder = new ArrayList<>();
-        //currentPlayer = ModelFacade.SINGLETON.getPlayer();
+        currentPlayer = ModelFacade.SINGLETON.getPlayer();
         //currentGame = new GameModel();
         //gamePoller = new GamePoller(command, 1000, getGameID());
     }
@@ -63,7 +63,11 @@ public class Phase2Facade {
         GameModel gamesModel = new GameModel();
         gamesModel = ParseResults.SINGLETON.parseGameResult(result);
         currentGame = gamesModel;
-        currentPlayer = ModelFacade.SINGLETON.getPlayer();
+        for(Player player : currentGame.getPlayersList()){
+            if(player.getUID().equals(currentPlayer.getUID())){
+                currentPlayer = player;
+            }
+        }
 
         System.out.println("DATA::: ");
         System.out.println(currentGame);
@@ -174,6 +178,10 @@ public class Phase2Facade {
 
     public List<DestinationCard> getPlayerDestinationCards(){
         return currentPlayer.getDestinationHand();
+    }
+
+    public List<DestinationCard> getTempDestinationCards(){
+        return currentPlayer.getTempDestinationCard();
     }
 
 }
