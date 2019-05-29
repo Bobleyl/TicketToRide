@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -102,6 +104,7 @@ public class MessageFragment extends Fragment implements IPresenter {
         List<Message> messages = Phase2Facade.SINGLETON.getMessages();
         if(messageListSize != messages.size()) {
             messageListSize = messages.size();
+            Collections.reverse(messages);
             mAdapter = new MessageAdapter(messages);
             mMessageRecyclerView.setAdapter(mAdapter);
         }
