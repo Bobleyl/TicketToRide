@@ -35,6 +35,10 @@ public class ModelFacade {
         lobbyPoller.start();
     }
 
+    public void stopPoller() {
+        lobbyPoller.stop();
+    }
+
     public static ModelFacade SINGLETON = new ModelFacade();
 
     public void addPresenter(IPresenter toAdd){

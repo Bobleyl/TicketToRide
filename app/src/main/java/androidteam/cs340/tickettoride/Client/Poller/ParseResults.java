@@ -83,15 +83,16 @@ public class ParseResults {
 
         //Check result
         System.out.println(result.getData());
-
+        Result game = result;
         Gson gson = new Gson();
-
+        GameModel gameModel = null;
+        gameModel = gson.fromJson(game.getData(), GameModel.class);
         //Allow arrayList
-        TypeToken<GameModel> token = new TypeToken<GameModel>() {};
+        //TypeToken<GameModel> token = new TypeToken<GameModel>() {};
 
         //Load values into arrayList
-        GameModel game = gson.fromJson(result.getData(), token.getType());
+        //GameModel game = gson.fromJson(result.getData(), token.getType());
 
-        return game;
+        return gameModel;
     }
 }

@@ -23,21 +23,30 @@ import androidteam.cs340.tickettoride.Shared.Route;
 
 public class Phase2Facade {
 
+    private Phase2Facade(){
+        turnOrder = new ArrayList<>();
+        currentPlayer = ModelFacade.SINGLETON.getPlayer();
+        currentGame = new GameModel();
+        gamePoller = new GamePoller(command, 1000, getGameID());
+    }
+
+    public static Phase2Facade SINGLETON = new Phase2Facade();
+
     // TODO: GET RID OF DECKS, CALL ON GAMEMODEL TO GET INFORMATION.
     private Player currentPlayer;
     private GameModel currentGame;
     private List<Player> turnOrder;
     private List<IPresenter> presenters = new ArrayList<>();
     private GamePollerCommand command = new GamePollerCommand();
-    private GamePoller gamePoller = new GamePoller(command, 1000, ModelFacade.SINGLETON.getGameID());
+    private GamePoller gamePoller;
 
-    private Phase2Facade(){
-        turnOrder = new ArrayList<>();
-        currentPlayer = ModelFacade.SINGLETON.getPlayer();
-        currentGame.setGameID(ModelFacade.SINGLETON.getGameID());
+    public void setGameID(String id){
+        currentGame.setGameID(id);
     }
 
-    public static Phase2Facade SINGLETON = new Phase2Facade();
+    public String getGameID(){
+        return currentGame.getGameID();
+    }
 
     public void addPresenter(IPresenter toAdd){
         presenters.add(toAdd);
@@ -48,12 +57,12 @@ public class Phase2Facade {
         gamePoller.start();
     }
 
-    public void updateCurrentGames(Result result) {
+    public void updateCurrentGame(Result result) {
         GameModel gamesModel = new GameModel();
         gamesModel = ParseResults.SINGLETON.parseGameResult(result);
-
         currentGame = gamesModel;
-
+        System.out.println("DATA::: ");
+        System.out.println(currentGame);
         updatePresenter();
     }
 

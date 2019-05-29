@@ -1,6 +1,7 @@
 package androidteam.cs340.tickettoride.Client.Activities;
 
 import android.content.Intent;
+import android.net.wifi.WifiEnterpriseConfig;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -111,6 +112,8 @@ public class WaitingRoomActivity extends AppCompatActivity {
 
         if(!found && players.size() == game.getGameSize()){
             System.out.println("GAME IS FULL, LET'S PLAY");
+            Phase2Facade.SINGLETON.setGameID(ModelFacade.SINGLETON.getGameID());
+            ModelFacade.SINGLETON.stopPoller();
             Phase2Facade.SINGLETON.startPoller();
             Intent intent = new Intent(WaitingRoomActivity.this, GameActivity.class);
             startActivity(intent);
