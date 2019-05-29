@@ -478,7 +478,7 @@
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/zero"
         android:scaleType="centerCrop"
-        android:src="@drawable/down_deck"
+        android:src="@drawable/up_deck"
         android:background="@null"
         app:layout_constraintBottom_toTopOf="@+id/wildCount"
         app:layout_constraintEnd_toEndOf="parent"

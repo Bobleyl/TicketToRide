@@ -22,6 +22,7 @@ import androidteam.cs340.tickettoride.Client.Activities.GameActivity;
 import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.R;
+import androidteam.cs340.tickettoride.Shared.DestinationCard;
 import androidteam.cs340.tickettoride.Shared.Result;
 import androidteam.cs340.tickettoride.Shared.TrainCard;
 
@@ -78,7 +79,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         updateCount(Phase2Facade.SINGLETON.getMyDeck()); // UPDATES THE COUNT OF THE CARDS IN PLAYERS HAND
         mTrainCount.setText(String.valueOf(Phase2Facade.SINGLETON.getTrainCars())); // UPDATES THE COUNT OF TRAIN CARS IN PLAYERS POSSESSION.
         updateUpDeck(Phase2Facade.SINGLETON.getUpdeck()); // UPDATES THE FACE UP CARDS
-        //TODO: UPDATE DESTINATION CARDS IN HAND
+        updateSpinner();
     }
 
     public String getID(){
@@ -112,7 +113,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         mTrainCount = view.findViewById(R.id.trainCount);
         mDestinationSpinner = view.findViewById(R.id.destinationSpinner);
 
-        String[] items = new String[]{"Test1","Test2","Test3"};
+        String[] items = new String[]{"Values"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
         mDestinationSpinner.setAdapter(adapter);
 
@@ -180,6 +181,32 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         });
 
         return view;
+    }
+
+    private void updateSpinner(){
+        int size = Phase2Facade.SINGLETON.getMyDestinationDeck().size();
+        String[] items = new String[size];
+
+        int i = 0;
+        for(DestinationCard card : Phase2Facade.SINGLETON.getMyDestinationDeck()){
+            items[i] = card.cityA;
+            i++;
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
+        mDestinationSpinner.setAdapter(adapter);
+
+
+        mDestinationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                mDestinationStringSelected = (String) parent.getSelectedItem();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     private void updateUpDeck(TrainCard[] cards){
