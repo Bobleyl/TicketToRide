@@ -84,24 +84,27 @@ public class WaitingRoomActivity extends AppCompatActivity {
 
     private void populatePlayerList() {
 
+
         Game game = ModelFacade.SINGLETON.getGame();
-        List<Player> players = game.getPlayersList();
-        GameModel gameModel = Phase2Facade.SINGLETON.getCurrentGame();
+        if (game != null) {
+            List<Player> players = game.getPlayersList();
+            GameModel gameModel = Phase2Facade.SINGLETON.getCurrentGame();
 
-        Phase2Facade.SINGLETON.setGameID(game.getUID());
-        Log.d("GAME_ACTIVITY:GAME_ID", Phase2Facade.SINGLETON.getGameID());
-        Phase2Facade.SINGLETON.startPoller();
+            Phase2Facade.SINGLETON.setGameID(game.getUID());
+            Log.d("GAME_ACTIVITY:GAME_ID", Phase2Facade.SINGLETON.getGameID());
+            Phase2Facade.SINGLETON.startPoller();
 
-        if (ServerProxy.SINGLETON.game(ModelFacade.SINGLETON.getGameID()).getStatusCode() == 200) {
-            Intent intent = new Intent(WaitingRoomActivity.this, GameActivity.class);
-            startActivity(intent);
-        }
+            if (ServerProxy.SINGLETON.game(ModelFacade.SINGLETON.getGameID()).getStatusCode() == 200) {
+                Intent intent = new Intent(WaitingRoomActivity.this, GameActivity.class);
+                startActivity(intent);
+            }
 
-        mPlayerCount.setText(players.size() + " / " + game.getGameSize());
+            mPlayerCount.setText(players.size() + " / " + game.getGameSize());
 
-        for(int i = 0;i < players.size(); i++){
-            if(i < playerList.size()) {
-                playerList.get(i).setText("Player " + players.get(i).getUID().substring(0, 4));
+            for (int i = 0; i < players.size(); i++) {
+                if (i < playerList.size()) {
+                    playerList.get(i).setText("Player " + players.get(i).getUID().substring(0, 4));
+                }
             }
         }
     }

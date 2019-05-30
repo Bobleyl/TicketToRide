@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidteam.cs340.tickettoride.Client.Fragments.DestinationCardFragment;
-import androidteam.cs340.tickettoride.Client.Fragments.GameListFragment;
 import androidteam.cs340.tickettoride.Client.Fragments.MapFragment;
 import androidteam.cs340.tickettoride.Client.Fragments.MessageFragment;
 import androidteam.cs340.tickettoride.Client.Fragments.PlayerInfoFragment;
