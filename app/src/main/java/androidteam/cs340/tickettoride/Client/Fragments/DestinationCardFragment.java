@@ -198,19 +198,42 @@ public class DestinationCardFragment extends Fragment implements IPresenter {
     }
 
     private void populateCards(List<DestinationCard> destCards){
-        destCard1 = destCards.get(0);
-        destCard2 = destCards.get(1);
-        destCard3 = destCards.get(2);
 
-        mCard1Text.setText(destCard1.cityA + " --> " + destCard1.cityB);
-        mCard1Points.setText(destCard1.points + "");
+        if (destCards != null) {
+            if (destCards.size() == 3) {
+                destCard1 = destCards.get(0);
+                destCard2 = destCards.get(1);
+                destCard3 = destCards.get(2);
+
+                mCard1Text.setText(destCard1.cityA + " --> " + destCard1.cityB);
+                mCard1Points.setText(destCard1.points + "");
 
 
-        mCard2Text.setText(destCard2.cityA + " --> " + destCard2.cityB);
-        mCard2Points.setText(destCard2.points + "");
+                mCard2Text.setText(destCard2.cityA + " --> " + destCard2.cityB);
+                mCard2Points.setText(destCard2.points + "");
 
-        mCard3Text.setText(destCard3.cityA + " --> " + destCard3.cityB);
-        mCard3Points.setText(destCard3.points + "");
+                mCard3Text.setText(destCard3.cityA + " --> " + destCard3.cityB);
+                mCard3Points.setText(destCard3.points + "");
+            }
+            else if(destCards.size() == 2) {
+                destCard1 = destCards.get(0);
+                destCard2 = destCards.get(1);
+
+                mCard1Text.setText(destCard1.cityA + " --> " + destCard1.cityB);
+                mCard1Points.setText(destCard1.points + "");
+
+                mCard2Text.setText(destCard2.cityA + " --> " + destCard2.cityB);
+                mCard2Points.setText(destCard2.points + "");
+
+            }
+            else if(destCards.size() == 1) {
+                destCard1 = destCards.get(0);
+
+                mCard1Text.setText(destCard1.cityA + " --> " + destCard1.cityB);
+                mCard1Points.setText(destCard1.points + "");
+
+            }
+        }
     }
 
     private boolean isKeeping(TextView txt){

@@ -196,8 +196,13 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
             items[i] = (card.cityA + " to " + card.cityB + " worth " + card.points + " points");
             i++;
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
-        mDestinationSpinner.setAdapter(adapter);
+
+        try {
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, items);
+            mDestinationSpinner.setAdapter(adapter);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
 
 
         mDestinationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
