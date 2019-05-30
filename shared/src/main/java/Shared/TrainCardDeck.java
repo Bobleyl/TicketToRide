@@ -61,7 +61,10 @@ public class TrainCardDeck {
             nextCard = downDeck.get(0);
             downDeck.remove(0);
         }
-        upDeck[position] = nextCard;
+
+        if (nextCard != null) {
+            upDeck[position] = nextCard;
+        }
 
         return card;
     }

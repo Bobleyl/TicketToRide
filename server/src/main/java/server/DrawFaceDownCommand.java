@@ -35,7 +35,7 @@ public class DrawFaceDownCommand implements CommandInterface {
                         trainCards = player.getTrainCardsHand();
                         TrainCard trainCard = trainCardDeck.drawFromDown();
                         if (trainCard != null) {
-                            trainCards.add(trainCardDeck.drawFromDown());
+                            trainCards.add(trainCard);
                             successfulExecute = true;
                             returnMessage.setReponseMessage("success");
                         } else {
