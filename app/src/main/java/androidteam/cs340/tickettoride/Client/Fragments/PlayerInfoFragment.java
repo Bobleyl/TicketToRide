@@ -221,7 +221,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
     private void updateUpDeck(TrainCard[] cards){
         int count = 0;
         for(TrainCard card : cards){
-            if(card.equals("black")){
+            if(card.color.equals("black")){
                 if(count == 0){
                     mUpDeck1.setImageResource(R.drawable.black_train_card);
                 }
