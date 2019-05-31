@@ -54,7 +54,6 @@ public class ParseResults {
         ArrayList<LobbyGameModel> gameModels = gson.fromJson(result.getData(), token.getType());
         LobbyModel.SINGLETON.setGames(gameModels);
 
-
         //Insert info into game
         ArrayList<Game> games = new ArrayList<Game>();
         ArrayList<Player> players = new ArrayList<Player>();
@@ -81,18 +80,8 @@ public class ParseResults {
 
     public GameModel parseGameResult(Result result) {
 
-        //Check result
-        System.out.println(result.getData());
-        Result game = result;
         Gson gson = new Gson();
-        GameModel gameModel = null;
-        gameModel = gson.fromJson(game.getData(), GameModel.class);
-        //Allow arrayList
-        //TypeToken<GameModel> token = new TypeToken<GameModel>() {};
 
-        //Load values into arrayList
-        //GameModel game = gson.fromJson(result.getData(), token.getType());
-
-        return gameModel;
+        return gson.fromJson(result.getData(), GameModel.class);
     }
 }
