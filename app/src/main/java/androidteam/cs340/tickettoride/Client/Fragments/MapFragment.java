@@ -304,6 +304,306 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .add(new LatLng(41.2565, -95.9345), new LatLng(39.0997, -94.5786))
                 .width(10)
         );
+        Polyline mDenverOklahomaCity = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(39.7392, -104.9903), new LatLng(35.4676, -97.5164))
+                .width(10)
+        );
+
+        Polyline mSantaFeOklahomaCity = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(35.6870, -105.9378), new LatLng(35.4676, -97.5164))
+                .width(10)
+        );
+
+        Polyline mElPasoOklahomaCity = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(31.7619, -106.4850), new LatLng(35.4676, -97.5164))
+                .width(10)
+        );
+
+        Polyline mKansasCityOklahomaCity = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(39.0997, -94.5786), new LatLng(35.4676, -97.5164))
+                .width(10)
+        );
+
+        Polyline mKansasCityOklahomaCity2 = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(39.0997, -94.5786), new LatLng(35.4676, -97.5164))
+                .width(10)
+        );
+
+        Polyline mOklahomaCityDallas = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(35.4676, -97.5164), new LatLng(32.7767, -96.7970))
+                .width(10)
+        );
+
+        Polyline mOklahomaCityDallas2 = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(35.4676, -97.5164), new LatLng(32.7767, -96.7970))
+                .width(10)
+        );
+
+        Polyline mElPasoDallas = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(31.7619, -106.4850), new LatLng(32.7767, -96.7970))
+                .width(10)
+        );
+
+        Polyline mDallasHouston = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(32.7767, -96.7970), new LatLng(29.7604, -95.3698))
+                .width(10)
+        );
+
+        Polyline mDallasHouston2 = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(32.7767, -96.7970), new LatLng(29.7604, -95.3698))
+                .width(10)
+        );
+
+        Polyline mElPasoHouston = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(31.7619, -106.4850), new LatLng(29.7604, -95.3698))
+                .width(10)
+        );
+
+        Polyline mHoustonNewOrleans = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(29.7604, -95.3698), new LatLng(29.9511, -90.0715))
+                .width(10)
+        );
+
+        Polyline mLittleRockNewOrleans = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(34.7465, -92.2896), new LatLng(29.9511, -90.0715))
+                .width(10)
+        );
+
+        Polyline mDallasLittleRock = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(32.7767, -96.7970), new LatLng(34.7465, -92.2896))
+                .width(10)
+        );
+
+        Polyline mOklahomaCityLittleRock = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(35.4676, -97.5164), new LatLng(34.7465, -92.2896))
+                .width(10)
+        );
+
+        Polyline mSaintLouislittleRock = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(38.6270, -90.1994), new LatLng(34.7465, -92.2896))
+                .width(10)
+        );
+
+        Polyline mKansasCitySaintLouis = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(39.0997, -94.5786), new LatLng(38.6270, -90.1994))
+                .width(10)
+        );
+
+        Polyline mKansasCitySaintLouis2 = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(39.0997, -94.5786), new LatLng(38.6270, -90.1994))
+                .width(10)
+        );
+
+        Polyline mSaintLouisChicago = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(38.6270, -90.1994), new LatLng(41.8781, -87.6298))
+                .width(10)
+        );
+
+        Polyline mSaintLouisChicago2 = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(38.6270, -90.1994), new LatLng(41.8781, -87.6298))
+                .width(10)
+        );
+
+        Polyline mOmahaChicago = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(41.2565, -95.9345), new LatLng(41.8781, -87.6298))
+                .width(10)
+        );
+
+        Polyline mDuluthChicago = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(46.7867, -92.1005), new LatLng(41.8781, -87.6298))
+                .width(10)
+        );
+
+        Polyline mChicagoToronto = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(41.8781, -87.6298), new LatLng(43.6532, -79.3832))
+                .width(10)
+        );
+
+        Polyline mDuluthToronto = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(46.7867, -92.1005), new LatLng(43.6532, -79.3832))
+                .width(10)
+        );
+
+        Polyline mDuluthStMarie = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(46.7867, -92.1005), new LatLng(46.5136, -84.3358))
+                .width(10)
+        );
+
+        Polyline mWinnipegStMarie = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(49.8951, -97.1384), new LatLng(46.5136, -84.3358))
+                .width(10)
+        );
+
+        Polyline mStMarieToronto = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(46.5136, -84.3358), new LatLng(43.6532, -79.3832))
+                .width(10)
+        );
+
+        Polyline mStMarieMontreal = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(46.5136, -84.3358), new LatLng(45.5017, -73.5673))
+                .width(10)
+        );
+
+        Polyline mMontrealBoston = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(45.5017, -73.5673), new LatLng(42.3601, -71.0589))
+                .width(10)
+        );
+
+        Polyline mMontrealBoston2 = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(45.5017, -73.5673), new LatLng(42.3601, -71.0589))
+                .width(10)
+        );
+
+        Polyline mMontrealNewYork = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(45.5017, -73.5673), new LatLng(40.7128, -74.0060))
+                .width(10)
+        );
+
+        Polyline mTorontoMontreal = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(43.6532, -79.3832), new LatLng(45.5017, -73.5673))
+                .width(10)
+        );
+
+        Polyline mTorontoPittsburg = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(43.6532, -79.3832), new LatLng(40.4406, -79.9959))
+                .width(10)
+        );
+
+        Polyline mChicagoPittsburg = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(41.8781, -87.6298), new LatLng(40.4406, -79.9959))
+                .width(10)
+        );
+
+        Polyline mChicagoPittsburg2 = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(41.8781, -87.6298), new LatLng(40.4406, -79.9959))
+                .width(10)
+        );
+
+        Polyline mSaintLouisPittsburg = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(38.6270, -90.1994), new LatLng(40.4406, -79.9959))
+                .width(10)
+        );
+
+        Polyline mBostonNewYork = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(42.3601, -71.0589), new LatLng(40.7128, -74.0060))
+                .width(10)
+        );
+
+        Polyline mBostonNewYork2 = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(42.3601, -71.0589), new LatLng(40.7128, -74.0060))
+                .width(10)
+        );
+
+        Polyline mNewYorkPittsburg = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(40.7128, -74.0060), new LatLng(40.4406, -79.9959))
+                .width(10)
+        );
+
+        Polyline mNewYorkPittsburg2 = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(40.7128, -74.0060), new LatLng(40.4406, -79.9959))
+                .width(10)
+        );
+
+        Polyline mPittsburgWashington = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(40.4406, -79.9959), new LatLng(38.9072, -77.0369))
+                .width(10)
+        );
+
+        Polyline mNewYorkWashington = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(40.7128, -74.0060), new LatLng(38.9072, -77.0369))
+                .width(10)
+        );
+
+        Polyline mNewYorkWashington2 = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(40.7128, -74.0060), new LatLng(38.9072, -77.0369))
+                .width(10)
+        );
+
+        Polyline mWashingtonRaleigh = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(38.9072, -77.0369), new LatLng(35.7796, -78.6382))
+                .width(10)
+        );
+
+        Polyline mWashingtonRaleigh2 = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(38.9072, -77.0369), new LatLng(35.7796, -78.6382))
+                .width(10)
+        );
+
+        Polyline mPittsburgRaleigh = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(40.4406, -79.9959), new LatLng(35.7796, -78.6382))
+                .width(10)
+        );
+
+        Polyline mNashvilleRaleigh = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(36.1627, -86.7816), new LatLng(35.7796, -78.6382))
+                .width(10)
+        );
+
+        Polyline mSaintLouisNashville = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(38.6270, -90.1994), new LatLng(36.1627, -86.7816))
+                .width(10)
+        );
+
+        Polyline mPittsburgNashville = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(40.4406, -79.9959), new LatLng(36.1627, -86.7816))
+                .width(10)
+        );
+
+        Polyline mLittleRockNashville = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(34.7465, -92.2896), new LatLng(36.1627, -86.7816))
+                .width(10)
+        );
+
+        Polyline mNashvilleAtlanta = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(36.1627, -86.7816), new LatLng(33.7490, -84.3880))
+                .width(10)
+        );
+
+        Polyline mRaleighAtlanta = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(35.7796, -78.6382), new LatLng(33.7490, -84.3880))
+                .width(10)
+        );
+
+        Polyline mRaleighAtlanta2 = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(35.7796, -78.6382), new LatLng(33.7490, -84.3880))
+                .width(10)
+        );
+
+        Polyline mNewOrleansAtlanta = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(29.9511, -90.0715), new LatLng(33.7490, -84.3880))
+                .width(10)
+        );
+
+        Polyline mNewOrleansAtlanta2 = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(29.9511, -90.0715), new LatLng(33.7490, -84.3880))
+                .width(10)
+        );
+
+        Polyline mRaleighCharleston = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(35.7796, -78.6382), new LatLng(32.7765, -79.9311))
+                .width(10)
+        );
+
+        Polyline mAtlantaCharleston = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(33.7490, -84.3880), new LatLng(32.7765, -79.9311))
+                .width(10)
+        );
+
+        Polyline mCharlestonMiami = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(32.7765, -79.9311), new LatLng(25.7617, -80.1918))
+                .width(10)
+        );
+
+        Polyline mAtlantaMiami = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(33.7490, -84.3880), new LatLng(25.7617, -80.1918))
+                .width(10)
+        );
+
+        Polyline mNewOrleansMiami = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(29.9511, -90.0715), new LatLng(25.7617, -80.1918))
+                .width(10)
+        );
+
     }
 
     public void updateSpinner(){
