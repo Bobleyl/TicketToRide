@@ -11,6 +11,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Button;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -28,6 +30,7 @@ import java.util.List;
 import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.R;
+import androidteam.cs340.tickettoride.Shared.Colors;
 import androidteam.cs340.tickettoride.Shared.Route;
 
 /**
@@ -93,6 +96,16 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
     public void onMapReady(GoogleMap googleMap) {
         MapsInitializer.initialize(getContext());
         mMap = googleMap;
+
+        //Centers map on united states
+        //googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(39.8283, 98.5795), 3));
+
+        //TODO: CREATE LIST OF ROUTES AND DISPLAY IN PROPER COLORS ON MAP
+        //polyline from seattle to portland
+//        Polyline mSeattlePortland = googleMap.addPolyline(new PolylineOptions()
+//                .add(new LatLng(47.6062, 122.3321), new LatLng(45.5155, 122.6793))
+//                .width(5)
+//                .color(0xb2b3b3));
     }
 
     public void updateSpinner(){
@@ -152,6 +165,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
             @Override
             public void run() {
                 updateSpinner();
+                //TODO: UPDATE MAP ROUTE COLORS BASED ON CLAIMED ROUTES
             }
         });
     }
