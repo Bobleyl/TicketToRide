@@ -106,7 +106,6 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         Polyline mSeattlePortland = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(47.6062, -122.3321), new LatLng(45.5155, -122.6793))
                 .width(10)
-                .color(R.color.colorAccent)
         );
 
         Polyline mSeattlePortland2 = googleMap.addPolyline(new PolylineOptions()
@@ -117,7 +116,6 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         Polyline mSeattleVancouver = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(47.6062, -122.3321), new LatLng(49.2827, -123.1207))
                 .width(10)
-                .color(R.color.colorAccent)
         );
 
         Polyline mSeattleVancouver2 = googleMap.addPolyline(new PolylineOptions()
@@ -135,25 +133,25 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .width(10)
         );
 
-        Polyline mSeattleHelena = googleMap.addPolyline(new PolylineOptions()
-                .add(new LatLng(47.6062, -122.3321), new LatLng(46.5891, -112.0391))
-                .width(10)
-        );
+//        Polyline mSeattleHelena = googleMap.addPolyline(new PolylineOptions()
+//                .add(new LatLng(47.6062, -122.3321), new LatLng(46.5891, -112.0391))
+//                .width(10)
+//        );
 
         Polyline mPortlandSaltLake = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(45.5155, -122.6793), new LatLng(40.7608, -111.8910))
                 .width(10)
         );
 
-        Polyline mCalgaryHelena = googleMap.addPolyline(new PolylineOptions()
-                .add(new LatLng(51.0486, -114.0708), new LatLng(46.5891, -112.0391))
-                .width(10)
-        );
+//        Polyline mCalgaryHelena = googleMap.addPolyline(new PolylineOptions()
+//                .add(new LatLng(51.0486, -114.0708), new LatLng(46.5891, -112.0391))
+//                .width(10)
+//        );
 
-        Polyline mSaltLakeHelena = googleMap.addPolyline(new PolylineOptions()
-                .add(new LatLng(40.7608, -111.8910), new LatLng(46.5891, -112.0391))
-                .width(10)
-        );
+//        Polyline mSaltLakeHelena = googleMap.addPolyline(new PolylineOptions()
+//                .add(new LatLng(40.7608, -111.8910), new LatLng(46.5891, -112.0391))
+//                .width(10)
+//        );
 
         Polyline mPortlandSanFrancisco = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(45.5155, -122.6793), new LatLng(37.7749, -122.4194))
@@ -161,7 +159,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         );
 
         Polyline mPortlandSanFrancisco2 = googleMap.addPolyline(new PolylineOptions()
-                .add(new LatLng(45.5155, 122.6793), new LatLng(37.7749, -122.4194))
+                .add(new LatLng(45.5155, -122.6793), new LatLng(37.7749, -122.4194))
                 .width(10)
         );
 
@@ -236,39 +234,39 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         );
 
         Polyline mSaltLakeDenver2 = googleMap.addPolyline(new PolylineOptions()
-                .add(new LatLng(40.7608, -111.8910), new LatLng(45.5155, 122.6793))
+                .add(new LatLng(40.7608, -111.8910), new LatLng(39.7392, -104.9903))
                 .width(10)
         );
 
-        Polyline mHelenaDenver = googleMap.addPolyline(new PolylineOptions()
-                .add(new LatLng(46.5891, 112.0391), new LatLng(39.7392, -104.9903))
-                .width(10)
-        );
+//        Polyline mHelenaDenver = googleMap.addPolyline(new PolylineOptions()
+//                .add(new LatLng(46.5891,-112.0391), new LatLng(39.7392, -104.9903))
+//                .width(10)
+//        );
 
         Polyline mCalgaryWinnipeg = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(51.0486,-114.0708), new LatLng(49.8951, -97.1384))
                 .width(10)
         );
 
-        Polyline mHelenaWinnipeg = googleMap.addPolyline(new PolylineOptions()
-                .add(new LatLng(46.5891, 112.0391), new LatLng(49.8951, -97.1384))
-                .width(10)
-        );
+//        Polyline mHelenaWinnipeg = googleMap.addPolyline(new PolylineOptions()
+//                .add(new LatLng(46.5891,-112.0391), new LatLng(49.8951, -97.1384))
+//                .width(10)
+//        );
 
-        Polyline mHelenaDuluth = googleMap.addPolyline(new PolylineOptions()
-                .add(new LatLng(46.5891, 112.0391), new LatLng(46.7867, -92.1005))
-                .width(10)
-        );
+//        Polyline mHelenaDuluth = googleMap.addPolyline(new PolylineOptions()
+//                .add(new LatLng(46.5891,-112.0391), new LatLng(46.7867, -92.1005))
+//                .width(10)
+//        );
 
         Polyline mWinnipegDuluth = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(49.8951, -97.1384), new LatLng(46.7867, -92.1005))
                 .width(10)
         );
 
-        Polyline mHelenaOmaha = googleMap.addPolyline(new PolylineOptions()
-                .add(new LatLng(46.5891, 112.0391), new LatLng(41.2565, -95.9345))
-                .width(10)
-        );
+//        Polyline mHelenaOmaha = googleMap.addPolyline(new PolylineOptions()
+//                .add(new LatLng(46.5891,-112.0391), new LatLng(41.2565, -95.9345))
+//                .width(10)
+//        );
 
         Polyline mDenverOmaha = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(39.7392, -104.9903), new LatLng(41.2565, -95.9345))
