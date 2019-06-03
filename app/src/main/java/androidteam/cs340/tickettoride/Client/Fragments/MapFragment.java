@@ -98,14 +98,13 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         mMap = googleMap;
 
         //Centers map on united states
-        //googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(39.8283, 98.5795), 3));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(41.8780, -93.0977), 3));
 
         //TODO: CREATE LIST OF ROUTES AND DISPLAY IN PROPER COLORS ON MAP
         //polyline from seattle to portland
-//        Polyline mSeattlePortland = googleMap.addPolyline(new PolylineOptions()
-//                .add(new LatLng(47.6062, 122.3321), new LatLng(45.5155, 122.6793))
-//                .width(5)
-//                .color(0xb2b3b3));
+        Polyline mSeattlePortland = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(47.6062, -122.3321), new LatLng(45.5155, -122.6793))
+                .width(10));
     }
 
     public void updateSpinner(){
