@@ -11,6 +11,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Button;
+
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
@@ -100,10 +103,10 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         //Centers map on united states
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(41.8780, -93.0977), 3));
 
-        //TODO: CREATE LIST OF ROUTES AND DISPLAY IN PROPER COLORS ON MAP
         Polyline mSeattlePortland = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(47.6062, -122.3321), new LatLng(45.5155, -122.6793))
                 .width(10)
+                .color(R.color.colorAccent)
         );
 
         Polyline mSeattlePortland2 = googleMap.addPolyline(new PolylineOptions()
@@ -114,6 +117,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         Polyline mSeattleVancouver = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(47.6062, -122.3321), new LatLng(49.2827, -123.1207))
                 .width(10)
+                .color(R.color.colorAccent)
         );
 
         Polyline mSeattleVancouver2 = googleMap.addPolyline(new PolylineOptions()
@@ -148,6 +152,156 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
 
         Polyline mSaltLakeHelena = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(40.7608, -111.8910), new LatLng(46.5891, -112.0391))
+                .width(10)
+        );
+
+        Polyline mPortlandSanFrancisco = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(45.5155, -122.6793), new LatLng(37.7749, -122.4194))
+                .width(10)
+        );
+
+        Polyline mPortlandSanFrancisco2 = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(45.5155, 122.6793), new LatLng(37.7749, -122.4194))
+                .width(10)
+        );
+
+        Polyline mSanFranciscoSaltLake = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(37.7749, -122.4194), new LatLng(40.7608, -111.8910))
+                .width(10)
+        );
+
+        Polyline mSanFranciscoSaltLake2 = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(37.7749, -122.4194), new LatLng(40.7608, -111.8910))
+                .width(10)
+        );
+
+        Polyline mSanFranciscoLosAngeles = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(37.7749, -122.4194), new LatLng(34.0522, -118.2437))
+                .width(10)
+        );
+
+        Polyline mSanFranciscoLosAngeles2 = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(37.7749, -122.4194), new LatLng(34.0522, -118.2437))
+                .width(10)
+        );
+
+        Polyline mLosAngelesLasVegas = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(34.0522, -118.2437), new LatLng(36.1699, -115.1398))
+                .width(10)
+        );
+
+        Polyline mLasVegasSaltLake = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(36.1699, -115.1398), new LatLng(40.7608, -111.8910))
+                .width(10)
+        );
+
+        Polyline mLosAngelesPhoenix = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(34.0522, -118.2437), new LatLng(33.4484, -112.0740))
+                .width(10)
+        );
+
+        Polyline mLosAngelesElPaso = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(34.0522, -118.2437), new LatLng(31.7619, -106.4850))
+                .width(10)
+        );
+
+        Polyline mPhoenixElPaso = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(33.4484, -112.0740), new LatLng(31.7619, -106.4850))
+                .width(10)
+        );
+
+        Polyline mPhoenixSantaFe = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(33.4484, -112.0740), new LatLng(35.6870, -105.9378))
+                .width(10)
+        );
+
+        Polyline mPhoenixDenver = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(33.4484, -112.0740), new LatLng(39.7392, -104.9903))
+                .width(10)
+        );
+
+        Polyline mElPasoSantaFe = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(31.7619, -106.4850), new LatLng(35.6870, -105.9378))
+                .width(10)
+        );
+
+        Polyline mSantaFeDenver = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(35.6870, -105.9378), new LatLng(39.7392, -104.9903))
+                .width(10)
+        );
+
+        Polyline mSaltLakeDenver = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(40.7608, -111.8910), new LatLng(39.7392, -104.9903))
+                .width(10)
+        );
+
+        Polyline mSaltLakeDenver2 = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(40.7608, -111.8910), new LatLng(45.5155, 122.6793))
+                .width(10)
+        );
+
+        Polyline mHelenaDenver = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(46.5891, 112.0391), new LatLng(39.7392, -104.9903))
+                .width(10)
+        );
+
+        Polyline mCalgaryWinnipeg = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(51.0486,-114.0708), new LatLng(49.8951, -97.1384))
+                .width(10)
+        );
+
+        Polyline mHelenaWinnipeg = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(46.5891, 112.0391), new LatLng(49.8951, -97.1384))
+                .width(10)
+        );
+
+        Polyline mHelenaDuluth = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(46.5891, 112.0391), new LatLng(46.7867, -92.1005))
+                .width(10)
+        );
+
+        Polyline mWinnipegDuluth = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(49.8951, -97.1384), new LatLng(46.7867, -92.1005))
+                .width(10)
+        );
+
+        Polyline mHelenaOmaha = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(46.5891, 112.0391), new LatLng(41.2565, -95.9345))
+                .width(10)
+        );
+
+        Polyline mDenverOmaha = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(39.7392, -104.9903), new LatLng(41.2565, -95.9345))
+                .width(10)
+        );
+
+        Polyline mDuluthOmaha = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(46.7867, -92.1005), new LatLng(41.2565, -95.9345))
+                .width(10)
+        );
+
+        Polyline mDuluthOmaha2 = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(46.7867, -92.1005), new LatLng(41.2565, -95.9345))
+                .width(10)
+        );
+
+        Polyline mDenverKansasCity = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(39.7392, -104.9903), new LatLng(39.0997, -94.5786))
+                .width(10)
+        );
+
+        Polyline mDenverKansasCity2 = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(39.7392, -104.9903), new LatLng(39.0997, -94.5786))
+                .width(10)
+        );
+
+        Polyline mOmahaKansasCity = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(41.2565, -95.9345), new LatLng(39.0997, -94.5786))
+                .width(10)
+        );
+
+        Polyline mOmahaKansasCity2 = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(41.2565, -95.9345), new LatLng(39.0997, -94.5786))
                 .width(10)
         );
     }
@@ -215,7 +369,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
     }
 
     public void updateRoutes(){
-        
+
     }
 
     @Override
