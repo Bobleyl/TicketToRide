@@ -101,10 +101,55 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(41.8780, -93.0977), 3));
 
         //TODO: CREATE LIST OF ROUTES AND DISPLAY IN PROPER COLORS ON MAP
-        //polyline from seattle to portland
         Polyline mSeattlePortland = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(47.6062, -122.3321), new LatLng(45.5155, -122.6793))
-                .width(10));
+                .width(10)
+        );
+
+        Polyline mSeattlePortland2 = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(47.6062, -122.3321), new LatLng(45.5155, -122.6793))
+                .width(10)
+        );
+
+        Polyline mSeattleVancouver = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(47.6062, -122.3321), new LatLng(49.2827, -123.1207))
+                .width(10)
+        );
+
+        Polyline mSeattleVancouver2 = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(47.6062, -122.3321), new LatLng(49.2827, -123.1207))
+                .width(10)
+        );
+
+        Polyline mVancouverCalgary = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(49.2827, -123.1207), new LatLng(51.0486, -114.0708))
+                .width(10)
+        );
+
+        Polyline mSeattleCalgary = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(47.6062, -122.3321), new LatLng(51.0486, -114.0708))
+                .width(10)
+        );
+
+        Polyline mSeattleHelena = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(47.6062, -122.3321), new LatLng(46.5891, -112.0391))
+                .width(10)
+        );
+
+        Polyline mPortlandSaltLake = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(45.5155, -122.6793), new LatLng(40.7608, -111.8910))
+                .width(10)
+        );
+
+        Polyline mCalgaryHelena = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(51.0486, -114.0708), new LatLng(46.5891, -112.0391))
+                .width(10)
+        );
+
+        Polyline mSaltLakeHelena = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(40.7608, -111.8910), new LatLng(46.5891, -112.0391))
+                .width(10)
+        );
     }
 
     public void updateSpinner(){
@@ -164,9 +209,13 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
             @Override
             public void run() {
                 updateSpinner();
-                //TODO: UPDATE MAP ROUTE COLORS BASED ON CLAIMED ROUTES
+                updateRoutes();
             }
         });
+    }
+
+    public void updateRoutes(){
+        
     }
 
     @Override
