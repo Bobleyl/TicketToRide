@@ -1,6 +1,7 @@
 package androidteam.cs340.tickettoride.Client.Fragments;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -106,146 +107,175 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         Polyline mSeattlePortland = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(47.6062, -122.3321), new LatLng(45.5155, -122.6793))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mSeattlePortland2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(47.6062, -122.3321), new LatLng(45.5155, -122.6793))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mSeattleVancouver = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(47.6062, -122.3321), new LatLng(49.2827, -123.1207))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mSeattleVancouver2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(47.6062, -122.3321), new LatLng(49.2827, -123.1207))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mVancouverCalgary = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(49.2827, -123.1207), new LatLng(51.0486, -114.0708))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mSeattleCalgary = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(47.6062, -122.3321), new LatLng(51.0486, -114.0708))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mSeattleHelena = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(47.6062, -122.3321), new LatLng(46.5891, -112.0391))
                 .width(10)
+                .color(Color.YELLOW)
         );
 
         Polyline mPortlandSaltLake = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(45.5155, -122.6793), new LatLng(40.7608, -111.8910))
                 .width(10)
+                .color(Color.CYAN)
         );
 
         Polyline mSaltLakeHelena = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(40.7608, -111.8910), new LatLng(46.5891, -112.0391))
                 .width(10)
+                .color(Color.RED)
         );
 
         Polyline mPortlandSanFrancisco = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(45.5155, -122.6793), new LatLng(37.7749, -122.4194))
                 .width(10)
+                .color(Color.GREEN)
         );
 
         Polyline mPortlandSanFrancisco2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(45.5155, -122.6793), new LatLng(37.7749, -122.4194))
                 .width(10)
+                .color(Color.RED)
         );
 
         Polyline mSanFranciscoSaltLake = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(37.7749, -122.4194), new LatLng(40.7608, -111.8910))
                 .width(10)
+                .color(Color.WHITE)
         );
 
         Polyline mSanFranciscoSaltLake2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(37.7749, -122.4194), new LatLng(40.7608, -111.8910))
                 .width(10)
+                .color(Color.RED)
         );
 
         Polyline mSanFranciscoLosAngeles = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(37.7749, -122.4194), new LatLng(34.0522, -118.2437))
                 .width(10)
+                .color(Color.YELLOW)
         );
 
         Polyline mSanFranciscoLosAngeles2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(37.7749, -122.4194), new LatLng(34.0522, -118.2437))
                 .width(10)
+                .color(Color.RED)
         );
 
         Polyline mLosAngelesLasVegas = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(34.0522, -118.2437), new LatLng(36.1699, -115.1398))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mLasVegasSaltLake = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(36.1699, -115.1398), new LatLng(40.7608, -111.8910))
                 .width(10)
+                .color(Color.RED)
         );
 
         Polyline mLosAngelesPhoenix = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(34.0522, -118.2437), new LatLng(33.4484, -112.0740))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mLosAngelesElPaso = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(34.0522, -118.2437), new LatLng(31.7619, -106.4850))
                 .width(10)
+                .color(Color.BLACK)
         );
 
         Polyline mPhoenixElPaso = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(33.4484, -112.0740), new LatLng(31.7619, -106.4850))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mPhoenixSantaFe = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(33.4484, -112.0740), new LatLng(35.6870, -105.9378))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mPhoenixDenver = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(33.4484, -112.0740), new LatLng(39.7392, -104.9903))
                 .width(10)
+                .color(Color.WHITE)
         );
 
         Polyline mElPasoSantaFe = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(31.7619, -106.4850), new LatLng(35.6870, -105.9378))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mSantaFeDenver = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(35.6870, -105.9378), new LatLng(39.7392, -104.9903))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mSaltLakeDenver = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(40.7608, -111.8910), new LatLng(39.7392, -104.9903))
                 .width(10)
+                .color(Color.RED)
         );
 
         Polyline mSaltLakeDenver2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(40.7608, -111.8910), new LatLng(39.7392, -104.9903))
                 .width(10)
+                .color(Color.YELLOW)
         );
 
         Polyline mHelenaDenver = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(46.5891,-112.0391), new LatLng(39.7392, -104.9903))
                 .width(10)
+                .color(Color.GREEN)
         );
 
         Polyline mCalgaryWinnipeg = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(51.0486,-114.0708), new LatLng(49.8951, -97.1384))
                 .width(10)
+                .color(Color.WHITE)
         );
 
         Polyline mHelenaWinnipeg = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(46.5891,-112.0391), new LatLng(49.8951, -97.1384))
                 .width(10)
+                .color(Color.CYAN)
         );
 
         //TODO: KEEPS BREAKING WHEN TRYING TO ADD THIS ROUTE
@@ -257,200 +287,240 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         Polyline mHelenaDuluth = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(46.5891,-112.0391), new LatLng(46.7867, -92.1005))
                 .width(10)
+                .color(Color.RED)
         );
 
         Polyline mWinnipegDuluth = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(49.8951, -97.1384), new LatLng(46.7867, -92.1005))
                 .width(10)
+                .color(Color.BLACK)
         );
 
         Polyline mHelenaOmaha = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(46.5891,-112.0391), new LatLng(41.2565, -95.9345))
                 .width(10)
+                .color(Color.RED)
         );
 
         Polyline mDenverOmaha = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(39.7392, -104.9903), new LatLng(41.2565, -95.9345))
                 .width(10)
+                .color(Color.RED)
         );
 
         Polyline mDuluthOmaha = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(46.7867, -92.1005), new LatLng(41.2565, -95.9345))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mDuluthOmaha2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(46.7867, -92.1005), new LatLng(41.2565, -95.9345))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mDenverKansasCity = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(39.7392, -104.9903), new LatLng(39.0997, -94.5786))
                 .width(10)
+                .color(Color.BLACK)
         );
 
         Polyline mDenverKansasCity2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(39.7392, -104.9903), new LatLng(39.0997, -94.5786))
                 .width(10)
+                .color(Color.RED)
         );
 
         Polyline mOmahaKansasCity = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(41.2565, -95.9345), new LatLng(39.0997, -94.5786))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mOmahaKansasCity2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(41.2565, -95.9345), new LatLng(39.0997, -94.5786))
                 .width(10)
+                .color(Color.LTGRAY)
         );
         Polyline mDenverOklahomaCity = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(39.7392, -104.9903), new LatLng(35.4676, -97.5164))
                 .width(10)
+                .color(Color.RED)
         );
 
         Polyline mSantaFeOklahomaCity = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(35.6870, -105.9378), new LatLng(35.4676, -97.5164))
                 .width(10)
+                .color(Color.CYAN)
         );
 
         Polyline mElPasoOklahomaCity = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(31.7619, -106.4850), new LatLng(35.4676, -97.5164))
                 .width(10)
+                .color(Color.YELLOW)
         );
 
         Polyline mKansasCityOklahomaCity = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(39.0997, -94.5786), new LatLng(35.4676, -97.5164))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mKansasCityOklahomaCity2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(39.0997, -94.5786), new LatLng(35.4676, -97.5164))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mOklahomaCityDallas = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(35.4676, -97.5164), new LatLng(32.7767, -96.7970))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mOklahomaCityDallas2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(35.4676, -97.5164), new LatLng(32.7767, -96.7970))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mElPasoDallas = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(31.7619, -106.4850), new LatLng(32.7767, -96.7970))
                 .width(10)
+                .color(Color.RED)
         );
 
         Polyline mDallasHouston = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(32.7767, -96.7970), new LatLng(29.7604, -95.3698))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mDallasHouston2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(32.7767, -96.7970), new LatLng(29.7604, -95.3698))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mElPasoHouston = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(31.7619, -106.4850), new LatLng(29.7604, -95.3698))
                 .width(10)
+                .color(Color.GREEN)
         );
 
         Polyline mHoustonNewOrleans = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(29.7604, -95.3698), new LatLng(29.9511, -90.0715))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mLittleRockNewOrleans = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(34.7465, -92.2896), new LatLng(29.9511, -90.0715))
                 .width(10)
+                .color(Color.GREEN)
         );
 
         Polyline mDallasLittleRock = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(32.7767, -96.7970), new LatLng(34.7465, -92.2896))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mOklahomaCityLittleRock = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(35.4676, -97.5164), new LatLng(34.7465, -92.2896))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mSaintLouislittleRock = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(38.6270, -90.1994), new LatLng(34.7465, -92.2896))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mKansasCitySaintLouis = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(39.0997, -94.5786), new LatLng(38.6270, -90.1994))
                 .width(10)
+                .color(Color.CYAN)
         );
 
         Polyline mKansasCitySaintLouis2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(39.0997, -94.5786), new LatLng(38.6270, -90.1994))
                 .width(10)
+                .color(Color.RED)
         );
 
         Polyline mSaintLouisChicago = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(38.6270, -90.1994), new LatLng(41.8781, -87.6298))
                 .width(10)
+                .color(Color.GREEN)
         );
 
         Polyline mSaintLouisChicago2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(38.6270, -90.1994), new LatLng(41.8781, -87.6298))
                 .width(10)
+                .color(Color.WHITE)
         );
 
         Polyline mOmahaChicago = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(41.2565, -95.9345), new LatLng(41.8781, -87.6298))
                 .width(10)
+                .color(Color.CYAN)
         );
 
         Polyline mDuluthChicago = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(46.7867, -92.1005), new LatLng(41.8781, -87.6298))
                 .width(10)
+                .color(Color.RED)
         );
 
         Polyline mChicagoToronto = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(41.8781, -87.6298), new LatLng(43.6532, -79.3832))
                 .width(10)
+                .color(Color.WHITE)
         );
 
         Polyline mDuluthToronto = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(46.7867, -92.1005), new LatLng(43.6532, -79.3832))
                 .width(10)
+                .color(Color.RED)
         );
 
         Polyline mDuluthStMarie = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(46.7867, -92.1005), new LatLng(46.5136, -84.3358))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mWinnipegStMarie = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(49.8951, -97.1384), new LatLng(46.5136, -84.3358))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mStMarieToronto = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(46.5136, -84.3358), new LatLng(43.6532, -79.3832))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mStMarieMontreal = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(46.5136, -84.3358), new LatLng(45.5017, -73.5673))
                 .width(10)
+                .color(Color.BLACK)
         );
 
         Polyline mMontrealBoston = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(45.5017, -73.5673), new LatLng(42.3601, -71.0589))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mMontrealBoston2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(45.5017, -73.5673), new LatLng(42.3601, -71.0589))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mMontrealNewYork = googleMap.addPolyline(new PolylineOptions()
@@ -461,146 +531,175 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         Polyline mTorontoMontreal = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(43.6532, -79.3832), new LatLng(45.5017, -73.5673))
                 .width(10)
+                .color(Color.CYAN)
         );
 
         Polyline mTorontoPittsburg = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(43.6532, -79.3832), new LatLng(40.4406, -79.9959))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mChicagoPittsburg = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(41.8781, -87.6298), new LatLng(40.4406, -79.9959))
                 .width(10)
+                .color(Color.BLACK)
         );
 
         Polyline mChicagoPittsburg2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(41.8781, -87.6298), new LatLng(40.4406, -79.9959))
                 .width(10)
+                .color(Color.RED)
         );
 
         Polyline mSaintLouisPittsburg = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(38.6270, -90.1994), new LatLng(40.4406, -79.9959))
                 .width(10)
+                .color(Color.GREEN)
         );
 
         Polyline mBostonNewYork = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(42.3601, -71.0589), new LatLng(40.7128, -74.0060))
                 .width(10)
+                .color(Color.RED)
         );
 
         Polyline mBostonNewYork2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(42.3601, -71.0589), new LatLng(40.7128, -74.0060))
                 .width(10)
+                .color(Color.YELLOW)
         );
 
         Polyline mNewYorkPittsburg = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(40.7128, -74.0060), new LatLng(40.4406, -79.9959))
                 .width(10)
+                .color(Color.WHITE)
         );
 
         Polyline mNewYorkPittsburg2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(40.7128, -74.0060), new LatLng(40.4406, -79.9959))
                 .width(10)
+                .color(Color.GREEN)
         );
 
         Polyline mPittsburgWashington = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(40.4406, -79.9959), new LatLng(38.9072, -77.0369))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mNewYorkWashington = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(40.7128, -74.0060), new LatLng(38.9072, -77.0369))
                 .width(10)
+                .color(Color.BLACK)
         );
 
         Polyline mNewYorkWashington2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(40.7128, -74.0060), new LatLng(38.9072, -77.0369))
                 .width(10)
+                .color(Color.RED)
         );
 
         Polyline mWashingtonRaleigh = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(38.9072, -77.0369), new LatLng(35.7796, -78.6382))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mWashingtonRaleigh2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(38.9072, -77.0369), new LatLng(35.7796, -78.6382))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mPittsburgRaleigh = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(40.4406, -79.9959), new LatLng(35.7796, -78.6382))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mNashvilleRaleigh = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(36.1627, -86.7816), new LatLng(35.7796, -78.6382))
                 .width(10)
+                .color(Color.BLACK)
         );
 
         Polyline mSaintLouisNashville = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(38.6270, -90.1994), new LatLng(36.1627, -86.7816))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mPittsburgNashville = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(40.4406, -79.9959), new LatLng(36.1627, -86.7816))
                 .width(10)
+                .color(Color.YELLOW)
         );
 
         Polyline mLittleRockNashville = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(34.7465, -92.2896), new LatLng(36.1627, -86.7816))
                 .width(10)
+                .color(Color.WHITE)
         );
 
         Polyline mNashvilleAtlanta = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(36.1627, -86.7816), new LatLng(33.7490, -84.3880))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mRaleighAtlanta = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(35.7796, -78.6382), new LatLng(33.7490, -84.3880))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mRaleighAtlanta2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(35.7796, -78.6382), new LatLng(33.7490, -84.3880))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mNewOrleansAtlanta = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(29.9511, -90.0715), new LatLng(33.7490, -84.3880))
                 .width(10)
+                .color(Color.YELLOW)
         );
 
         Polyline mNewOrleansAtlanta2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(29.9511, -90.0715), new LatLng(33.7490, -84.3880))
                 .width(10)
+                .color(Color.RED)
         );
 
         Polyline mRaleighCharleston = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(35.7796, -78.6382), new LatLng(32.7765, -79.9311))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mAtlantaCharleston = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(33.7490, -84.3880), new LatLng(32.7765, -79.9311))
                 .width(10)
+                .color(Color.LTGRAY)
         );
 
         Polyline mCharlestonMiami = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(32.7765, -79.9311), new LatLng(25.7617, -80.1918))
                 .width(10)
+                .color(Color.RED)
         );
 
         Polyline mAtlantaMiami = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(33.7490, -84.3880), new LatLng(25.7617, -80.1918))
                 .width(10)
+                .color(Color.CYAN)
         );
 
         Polyline mNewOrleansMiami = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(29.9511, -90.0715), new LatLng(25.7617, -80.1918))
                 .width(10)
+                .color(Color.RED)
         );
 
     }
