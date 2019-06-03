@@ -105,7 +105,6 @@ public class GameActivity extends AppCompatActivity implements
 
         ServerProxy.SINGLETON.deleteGame(ModelFacade.SINGLETON.getGameID());
 
-        //TODO: Make this activity start on the correct fragent.
         if (findViewById(R.id.main_game_fragment_container) != null) {
             if (savedInstanceState != null) {
                 return;

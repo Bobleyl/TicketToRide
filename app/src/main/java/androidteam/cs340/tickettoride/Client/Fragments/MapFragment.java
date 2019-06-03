@@ -12,6 +12,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Button;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import java.util.ArrayList;
 import java.util.UUID;
 import java.util.List;
@@ -29,19 +38,98 @@ import androidteam.cs340.tickettoride.Shared.Route;
  * Use the {@link MapFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MapFragment extends Fragment implements IPresenter {
+public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallback {
     private List<Route> lastList = new ArrayList<>();
     private OnFragmentInteractionListener mListener;
     private Button mClaimRoute;
     private String ID;
     private Spinner mRouteSpinner;
     private String mRouteString;
+    private GoogleMap mMap;
+    private MapView mMapView;
+    private View mView;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        mView = inflater.inflate(R.layout.fragment_map, container,false);
+
+        mRouteSpinner = (Spinner) mView.findViewById(R.id.claimRouteSpinner);
+        mClaimRoute = (Button) mView.findViewById(R.id.claimRoute);
+
+        String[] items = new String[]{"Values"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
+        mRouteSpinner.setAdapter(adapter);
+
+        mRouteSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                mRouteString = (String) parent.getSelectedItem();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        return mView;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        mMapView = (MapView) mView.findViewById(R.id.mapView);
+        if (mMapView != null) {
+            mMapView.onCreate(null);
+            mMapView.onResume();
+            mMapView.getMapAsync(this);
+        }
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        MapsInitializer.initialize(getContext());
+        mMap = googleMap;
+    }
+
+    public void updateSpinner(){
+        int size = Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes().size();
+        String[] items = new String[size];
+        boolean update = true;
+
+        if(lastList.size() == Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes().size()){
+            update = false;
+        }else{
+            lastList = Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes();
+        }
+
+        if(update == true){
+            int i = 0;
+            for(Route route : Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes()){
+                items[i] = ("" + route);
+                i++;
+            }
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
+            mRouteSpinner.setAdapter(adapter);
+
+            mRouteSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    mRouteString = (String) parent.getSelectedItem();
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+        }
+    }
 
     public MapFragment() {
-        // Required empty public constructor
-
-        //Give the newly generated presenter an ID.
-        // Should this constructor be empty?
         this.ID = UUID.randomUUID().toString();
     }
 
@@ -82,68 +170,6 @@ public class MapFragment extends Fragment implements IPresenter {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_map, container,false);
-
-        mRouteSpinner = (Spinner) view.findViewById(R.id.claimRouteSpinner);
-        mClaimRoute = (Button) view.findViewById(R.id.claimRoute);
-
-        String[] items = new String[]{"Values"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
-        mRouteSpinner.setAdapter(adapter);
-
-        mRouteSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                mRouteString = (String) parent.getSelectedItem();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        return view;
-    }
-
-    public void updateSpinner(){
-        int size = Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes().size();
-        String[] items = new String[size];
-        boolean update = true;
-
-        if(lastList.size() == Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes().size()){
-            update = false;
-        }else{
-            lastList = Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes();
-        }
-
-        if(update == true){
-            int i = 0;
-            for(Route route : Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes()){
-                items[i] = ("" + route);
-                i++;
-            }
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
-            mRouteSpinner.setAdapter(adapter);
-
-            mRouteSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    mRouteString = (String) parent.getSelectedItem();
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-
-                }
-            });
-        }
     }
 
 
