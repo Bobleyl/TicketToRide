@@ -37,6 +37,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
     private ImageButton mUpDeck4;
     private ImageButton mUpDeck5;
     private ImageButton mDestinationCards;
+    private TextView mWhoseTurn;
     private TextView mOrangeCount;
     private TextView mWhiteCount;
     private TextView mRedCount;
@@ -82,6 +83,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         mTrainCount.setText(String.valueOf(Phase2Facade.SINGLETON.getTrainCars())); // UPDATES THE COUNT OF TRAIN CARS IN PLAYERS POSSESSION.
         updateUpDeck(Phase2Facade.SINGLETON.getUpdeck()); // UPDATES THE FACE UP CARDS
         updateSpinner();
+        mWhoseTurn.setText("Turn: " + "Player " + Phase2Facade.SINGLETON.getCurrentGame().getPlayerTurn().substring(0,4));
     }
 
     public String getID(){
@@ -97,6 +99,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
 
         mDestinationDeck = view.findViewById(R.id.destinationDeck);
         //mDestinationCards = view.findViewById(R.id.destinationCards);
+        mWhoseTurn = view.findViewById(R.id.whoseTurn);
         mDownDeck = view.findViewById(R.id.downDeck);
         mUpDeck1 = view.findViewById(R.id.upDeck1);
         mUpDeck2 = view.findViewById(R.id.upDeck2);
@@ -141,6 +144,8 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                 chooseDownCard();
             }
         });
+
+        mWhoseTurn.setText("Turn: " + "Player " + Phase2Facade.SINGLETON.getCurrentGame().getPlayerTurn().substring(0,4));
 
         mDestinationDeck.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -221,7 +226,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
     private void updateUpDeck(TrainCard[] cards){
         int count = 0;
         for(TrainCard card : cards){
-            if(card.equals("black")){
+            if(card.color.equals("black")){
                 if(count == 0){
                     mUpDeck1.setImageResource(R.drawable.black_train_card);
                 }
@@ -428,7 +433,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                 green = green + 1;
                 mGreenCount.setText(""  + green);
             }
-            if(card.color == "purple"){
+            if(card.color == "pink"){
                 purple = purple + 1;
                 mPinkCount.setText("" + purple);
             }

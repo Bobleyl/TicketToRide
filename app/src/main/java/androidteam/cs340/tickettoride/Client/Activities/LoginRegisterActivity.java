@@ -14,7 +14,6 @@ import android.widget.Toast;
 import java.net.HttpURLConnection;
 
 import androidteam.cs340.tickettoride.Client.ModelFacade;
-import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.Client.Presenters.LoginRegisterPresenter;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.Result;
