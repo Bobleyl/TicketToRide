@@ -277,10 +277,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         );
 
         //TODO: KEEPS BREAKING WHEN TRYING TO ADD THIS ROUTE
-//        Polyline mCalgaryHelena = googleMap.addPolyline(new PolylineOptions()
-//                .add(new LatLng(51.0486, -114.0708), new LatLng(46.5891, -112.0391))
-//                .width(10)
-//        );
+        Polyline mCalgaryHelena = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(51.0486, -114.0708), new LatLng(46.5891, -112.0391))
+                .width(10)
+                .color(Color.parseColor("gray"))
+        );
 
         Polyline mHelenaDuluth = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(46.5891,-112.0391), new LatLng(46.7867, -92.1005))

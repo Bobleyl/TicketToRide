@@ -91,6 +91,7 @@ public class GameActivity extends AppCompatActivity implements
                     currentPlayer.getTrainCardsHand().size() + "/" + currentPlayer.getDestinationHand().size());
             mPlayer5TextView.setText(playerText.toString());
         }
+
     }
 
 
