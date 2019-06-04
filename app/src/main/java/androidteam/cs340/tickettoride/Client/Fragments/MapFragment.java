@@ -66,6 +66,8 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         mRouteSpinner.setAdapter(adapter);
         mRouteSpinner.setOnItemSelectedListener(new spinnerOnClickListener());
 
+
+
         return mView;
     }
 
@@ -92,6 +94,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 items[i] = ("" + route);
                 i++;
             }
+
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
             mRouteSpinner.setAdapter(adapter);
             mRouteSpinner.setOnItemSelectedListener(new spinnerOnClickListener());
@@ -135,12 +138,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 MapStyleOptions.loadRawResourceStyle(getContext(),R.raw.map_styles));
 
         //Centers map on united states
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(41.8780, -93.0977), 3));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(35.8780, -93.0977), 3));
 
         drawPolyLines(googleMap);
 
     }
-
 
     private void updateRoutes(){
         //TODO: Make this method update the routes shown on the map to show who owns them.
