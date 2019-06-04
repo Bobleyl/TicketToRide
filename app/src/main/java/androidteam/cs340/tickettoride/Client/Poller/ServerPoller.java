@@ -25,8 +25,10 @@ public abstract class ServerPoller {
     }
 
     public synchronized void stop() {
-        timer.cancel();
-        timer = null;
+        if(timer != null) {
+            timer.cancel();
+            timer = null;
+        }
     }
 
     public synchronized void start() {

@@ -91,9 +91,6 @@ public class ModelFacade {
         List<Game> gamesList = new ArrayList<Game>();
         gamesList = ParseResults.SINGLETON.parseLobbyResult(result);
         currentLobby.updateCurrentGames(gamesList);
-        for(Game game : gamesList){
-            //System.out.println(game.getPlayersList().size());
-        }
 
         // Update currentGame if it exists
         if(currentGame != null){
@@ -106,18 +103,6 @@ public class ModelFacade {
 
         updatePresenter();
     }
-
-    public void updateCurrentGame(Result result) {
-
-        // Under construction
-
-
-        GameModel game = ParseResults.SINGLETON.parseGameResult(result);
-        /*currentGame = game;
-
-        updatePresenter();*/
-    }
-
 
     public Result joinGame(){
         String playerID = currentPlayer.getUID();
