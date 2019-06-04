@@ -73,6 +73,8 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
      SPINNER LOGIC
      --------*/
     public void updateSpinner(){
+        // Should logic for showing them which routes with witch cards to choose from be in .getAvailableRoutes()
+        // in the Phase2Facade?
         int size = Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes().size();
         String[] items = new String[size];
         boolean update = true;
