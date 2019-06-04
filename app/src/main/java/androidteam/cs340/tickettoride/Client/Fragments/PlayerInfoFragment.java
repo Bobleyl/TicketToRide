@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.net.HttpURLConnection;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -225,6 +226,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
 
     private void updateUpDeck(TrainCard[] cards){
         int count = 0;
+
         for(TrainCard card : cards){
             if(card.color.equals("black")){
                 if(count == 0){
