@@ -46,8 +46,43 @@ public class TrainCardDeck {
         return null;
     }
 
+    public static TrainCard[] removeTheElement(TrainCard[] arr, int index) {
+
+        // If the array is empty
+        // or the index is not in array range
+        // return the original array
+        if (arr == null
+                || index < 0
+                || index >= arr.length) {
+
+            return arr;
+        }
+
+        // Create another array of size one less
+        TrainCard[] anotherArray = new TrainCard[arr.length - 1];
+
+        // Copy the elements except the index
+        // from original array to the other array
+        for (int i = 0, k = 0; i < arr.length; i++) {
+
+            // if the index is
+            // the removal element index
+            if (i == index) {
+                continue;
+            }
+
+            // if the index is not
+            // the removal element index
+            anotherArray[k++] = arr[i];
+        }
+
+        // return the resultant array
+        return anotherArray;
+    }
+
     //Removes card from position in upDeck and replaces the card in the upDeck
-    public TrainCard drawFromUp(int position){
+    //If three face up cards are locomotives.. place 5 cards into discard and redraw 5 new cards
+    public TrainCard drawFromUp(int position) {
         assert position >= 0 && position < upDeck.length;
         assert upDeck[position] != null;
 
@@ -61,7 +96,12 @@ public class TrainCardDeck {
             nextCard = downDeck.get(0);
             downDeck.remove(0);
         }
-        upDeck[position] = nextCard;
+
+        if (nextCard == null) {
+            upDeck = removeTheElement(upDeck, position);
+        } else {
+            upDeck[position] = nextCard;
+        }
 
         return card;
     }
@@ -83,5 +123,3 @@ public class TrainCardDeck {
     public List<TrainCard> getDiscard() { return discard;}
 
 }
-
-
