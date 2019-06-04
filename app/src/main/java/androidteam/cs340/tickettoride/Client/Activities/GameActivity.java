@@ -106,19 +106,6 @@ public class GameActivity extends AppCompatActivity implements
 
         ServerProxy.SINGLETON.deleteGame(ModelFacade.SINGLETON.getGameID());
 
-        if (findViewById(R.id.main_game_fragment_container) != null) {
-            if (savedInstanceState != null) {
-                return;
-            }
-
-            DestinationCardFragment firstFragment = new DestinationCardFragment();
-            Bundle bundle = new Bundle();
-            bundle.putBoolean("isStart", true);
-            firstFragment.setArguments(bundle);
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.main_game_fragment_container, firstFragment).commit();
-        }
-
         mMapButton = (Button) findViewById(R.id.map_button);
         mGameInfoButton = (Button) findViewById(R.id.game_info_button);
         mChatButton = (Button) findViewById(R.id.chat_button);
@@ -127,6 +114,19 @@ public class GameActivity extends AppCompatActivity implements
         mPlayer3TextView = (TextView) findViewById(R.id.player3_text_view);
         mPlayer4TextView = (TextView) findViewById(R.id.player4_text_view);
         mPlayer5TextView = (TextView) findViewById(R.id.player5_text_view);
+
+        if (findViewById(R.id.main_game_fragment_container) != null) {
+            if (savedInstanceState != null) {
+                return;
+            }
+            //logic here to freeze buttons
+            DestinationCardFragment firstFragment = new DestinationCardFragment();
+            Bundle bundle = new Bundle();
+            bundle.putBoolean("isStart", true);
+            firstFragment.setArguments(bundle);
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.main_game_fragment_container, firstFragment).commit();
+        }
 
         mMapButton.setOnClickListener(new View.OnClickListener() {
             @Override
