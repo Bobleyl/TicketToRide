@@ -64,22 +64,54 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         String[] items = new String[]{"Values"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
         mRouteSpinner.setAdapter(adapter);
-
-        mRouteSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                mRouteString = (String) parent.getSelectedItem();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+        mRouteSpinner.setOnItemSelectedListener(new spinnerOnClickListener());
 
         return mView;
     }
 
+    /*--------
+     SPINNER LOGIC
+     --------*/
+    public void updateSpinner(){
+        int size = Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes().size();
+        String[] items = new String[size];
+        boolean update = true;
+
+        if(lastList.size() == Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes().size()){
+            update = false;
+        }else{
+            lastList = Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes();
+        }
+
+        if(update == true){
+            int i = 0;
+            for(Route route : Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes()){
+                items[i] = ("" + route);
+                i++;
+            }
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
+            mRouteSpinner.setAdapter(adapter);
+            mRouteSpinner.setOnItemSelectedListener(new spinnerOnClickListener());
+        }
+    }
+
+    private class spinnerOnClickListener implements AdapterView.OnItemSelectedListener {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            //TODO: Implement claiming a route here.
+            mRouteString = (String) parent.getSelectedItem();
+            // How do we turn this string into a route enum?
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    }
+
+    /*--------
+     MAP LOGIC
+     --------*/
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -101,6 +133,84 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
 
         //Centers map on united states
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(41.8780, -93.0977), 3));
+
+        drawPolyLines(googleMap);
+
+    }
+
+
+    private void updateRoutes(){
+        //TODO: Make this method update the routes shown on the map to show who owns them.
+    }
+
+    /*--------
+    FRAGMENT OVERRIDES AND DEFAULTS
+    --------*/
+    public MapFragment() {
+        this.ID = UUID.randomUUID().toString();
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        this.ID = UUID.randomUUID().toString();
+        Phase2Facade.SINGLETON.addPresenter(this);
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        Phase2Facade.SINGLETON.removePresenter(this);
+    }
+
+    @Override
+    public void Update() {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                updateSpinner();
+                updateRoutes();
+            }
+        });
+    }
+
+    @Override
+    public String getID() {
+        return ID;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void onFragmentInteraction(Uri uri);
+    }
+
+    /*--------
+    UTILITY
+    --------*/
+    private void drawPolyLines(GoogleMap googleMap) {
 
         Polyline mSeattlePortland = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(47.6062, -122.3321), new LatLng(45.5155, -122.6793))
@@ -701,6 +811,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .width(10)
                 .color(Color.parseColor("red"))
         );
+<<<<<<< HEAD
 
     }
 
@@ -807,5 +918,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+=======
+>>>>>>> c9c4a988c33f24b5ebd0cfdb3323bd78c26de47c
     }
 }
