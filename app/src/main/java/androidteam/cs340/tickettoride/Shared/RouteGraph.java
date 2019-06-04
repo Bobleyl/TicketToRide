@@ -1,4 +1,4 @@
-package Shared;
+package androidteam.cs340.tickettoride.Shared;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,10 +34,10 @@ public class RouteGraph {
         Edge edge = new Edge(city1, city2, route.length);
 
         if (!nodes.containsKey(city1)) {
-            nodes.put(city1, new ArrayList<>());
+            nodes.put(city1, new ArrayList<Edge>());
         }
         if (!nodes.containsKey(city2)) {
-            nodes.put(city2, new ArrayList<>());
+            nodes.put(city2, new ArrayList<Edge>());
         }
 
         nodes.get(city1).add(edge);
