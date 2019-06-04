@@ -170,7 +170,7 @@ public class ServerProxy implements IServer {
         return ClientCommunicator.SINGLETON.send(root.toString());
     }
 
-    public Result claimRoute(String gameID, String playerID, Route route) {
+    public Result claimRoute(String gameID, String playerID, Route route, List<TrainCard> trainCards) {
         JsonObject root = new JsonObject();
         root.addProperty("command", "claimRoute");
 
@@ -181,6 +181,7 @@ public class ServerProxy implements IServer {
         values.addProperty("game_id", gameID);
         values.addProperty("player_id", playerID);
         values.addProperty("route", gson.toJson(route));
+        values.addProperty("train_cards", gson.toJson(trainCards));
         root.add("values", values);
 
         return ClientCommunicator.SINGLETON.send(root.toString());
