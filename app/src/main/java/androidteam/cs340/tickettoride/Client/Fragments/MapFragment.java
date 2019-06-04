@@ -73,8 +73,6 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
      SPINNER LOGIC
      --------*/
     public void updateSpinner(){
-        // Should logic for showing them which routes with witch cards to choose from be in .getAvailableRoutes()
-        // in the Phase2Facade?
         int size = Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes().size();
         String[] items = new String[size];
         boolean update = true;
@@ -86,8 +84,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         }
 
         if(update == true){
+            // Watch for where this loop gets called if no one claims a route and the spinner doesn't change.
+            // N0 matter what, always pass what cards they are using to claim the route to the server.
             int i = 0;
             for(Route route : Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes()){
+                // Logic for making strings for routes they can pick + color to use.
                 items[i] = ("" + route);
                 i++;
             }
@@ -102,7 +103,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             //TODO: Implement claiming a route here.
             mRouteString = (String) parent.getSelectedItem();
-            // How do we turn this string into a route enum?
+            // Get the button to know which route they are selecting.
         }
 
         @Override
