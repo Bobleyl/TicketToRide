@@ -162,7 +162,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
 
         mRouteSpinner = (Spinner) mView.findViewById(R.id.claimRouteSpinner);
         mClaimRoute = (Button) mView.findViewById(R.id.claimRoute);
-        //mClaimRoute.setEnabled(isMyTurn());
+        mClaimRoute.setEnabled(isMyTurn());
 
         String[] items = new String[]{"Values"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
@@ -253,7 +253,6 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
     }
 
     private void updateRoutes(){
-        //USE A MAP OF <NAME, POLYLINE>
         //TODO: Make this method update the routes shown on the map to show who owns them.
     }
 
