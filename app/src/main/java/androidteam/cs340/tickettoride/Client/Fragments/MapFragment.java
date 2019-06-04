@@ -162,6 +162,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
 
         mRouteSpinner = (Spinner) mView.findViewById(R.id.claimRouteSpinner);
         mClaimRoute = (Button) mView.findViewById(R.id.claimRoute);
+        mClaimRoute.setEnabled(isMyTurn());
 
         String[] items = new String[]{"Values"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
@@ -228,6 +229,15 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
             mMapView.getMapAsync(this);
         }
     }
+
+    public boolean isMyTurn(){
+        if(Phase2Facade.SINGLETON.getCurrentPlayer().getUID() == Phase2Facade.SINGLETON.getCurrentGame().getPlayerTurn()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
