@@ -813,5 +813,12 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .width(10)
                 .color(Color.parseColor("red"))
         );
+
+    }
+
+    public static MapFragment newInstance(String param1, String param2) {
+        MapFragment fragment = new MapFragment();
+
+        return fragment;
     }
 }
