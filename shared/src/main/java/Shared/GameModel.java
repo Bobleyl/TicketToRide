@@ -64,4 +64,38 @@ public class GameModel {
 
     public TrainCardDeck getTrainCardDeck() { return trainCardDeck;}
 
+    public List<Player> findLongestRoute() {
+
+        List<Player> longestRoutePlayers = new ArrayList<>();
+        int longest = 0;
+
+        for (Player player : playersList) {
+
+            RouteGraph rg = new RouteGraph();
+
+            for (Route route : player.getClaimedRoutes()) {
+
+                rg.addRoute(route);
+            }
+
+            int temp = rg.findLongestRoute();
+
+            if (temp > longest) {
+
+                longest = temp;
+                longestRoutePlayers = new ArrayList<>();
+                longestRoutePlayers.add(player);
+            } else if (temp == longest) {
+
+                longestRoutePlayers.add(player);
+            }
+        }
+
+        for (Player player: longestRoutePlayers) {
+
+            player.setScore(player.getScore() + 10);
+        }
+
+        return longestRoutePlayers;
+    }
 }
