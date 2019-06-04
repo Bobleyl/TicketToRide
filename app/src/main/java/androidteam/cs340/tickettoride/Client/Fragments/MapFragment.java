@@ -276,11 +276,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("blue"))
         );
 
-        //TODO: KEEPS BREAKING WHEN TRYING TO ADD THIS ROUTE
+        //this was the one that was breaking
         Polyline mCalgaryHelena = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(51.0486, -114.0708), new LatLng(46.5891, -112.0391))
                 .width(10)
-                .color(Color.parseColor("gray"))
+                .color(Color.parseColor("black"))
         );
 
         Polyline mHelenaDuluth = googleMap.addPolyline(new PolylineOptions()
@@ -590,25 +590,25 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
 
         Polyline mNewYorkWashington = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(40.7128, -74.0060), new LatLng(38.9072, -77.0369))
-                .width(10)
+                .width(8)
                 .color(Color.parseColor("black"))
         );
 
         Polyline mNewYorkWashington2 = googleMap.addPolyline(new PolylineOptions()
-                .add(new LatLng(40.7128, -74.0060), new LatLng(38.9072, -77.0369))
-                .width(10)
+                .add(new LatLng(40.597531, -73.744582), new LatLng(38.720073, -76.775483))
+                .width(8)
                 .color(Color.rgb(255,165,0))//orange
         );
 
         Polyline mWashingtonRaleigh = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(38.9072, -77.0369), new LatLng(35.7796, -78.6382))
-                .width(10)
+                .width(8)
                 .color(Color.parseColor("gray"))
         );
 
         Polyline mWashingtonRaleigh2 = googleMap.addPolyline(new PolylineOptions()
-                .add(new LatLng(38.9072, -77.0369), new LatLng(35.7796, -78.6382))
-                .width(10)
+                .add(new LatLng(38.720073, -76.775483), new LatLng(35.677448, -78.409070))
+                .width(8)
                 .color(Color.parseColor("gray"))
         );
 
@@ -650,25 +650,25 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
 
         Polyline mRaleighAtlanta = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(35.7796, -78.6382), new LatLng(33.7490, -84.3880))
-                .width(10)
+                .width(8)
                 .color(Color.parseColor("gray"))
         );
 
         Polyline mRaleighAtlanta2 = googleMap.addPolyline(new PolylineOptions()
-                .add(new LatLng(35.7796, -78.6382), new LatLng(33.7490, -84.3880))
-                .width(10)
+                .add(new LatLng(35.677448, -78.409070), new LatLng(33.577872, -84.164505))
+                .width(8)
                 .color(Color.parseColor("gray"))
         );
 
         Polyline mNewOrleansAtlanta = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(29.9511, -90.0715), new LatLng(33.7490, -84.3880))
-                .width(10)
+                .width(8)
                 .color(Color.rgb(234, 222, 45))
         );
 
         Polyline mNewOrleansAtlanta2 = googleMap.addPolyline(new PolylineOptions()
-                .add(new LatLng(29.9511, -90.0715), new LatLng(33.7490, -84.3880))
-                .width(10)
+                .add(new LatLng(29.792165, -89.925687), new LatLng(33.577872, -84.164505))
+                .width(8)
                 .color(Color.rgb(255,165,0))//orange
         );
 
