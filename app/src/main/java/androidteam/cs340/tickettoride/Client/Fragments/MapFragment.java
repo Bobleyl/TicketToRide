@@ -188,6 +188,10 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         return mView;
     }
 
+    private void claimRouteSelected() {
+
+    }
+
     /*--------
      SPINNER LOGIC
      --------*/
