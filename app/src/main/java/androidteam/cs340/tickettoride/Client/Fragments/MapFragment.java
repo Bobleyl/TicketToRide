@@ -171,7 +171,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
 
         mRouteSpinner = (Spinner) mView.findViewById(R.id.claimRouteSpinner);
         mClaimRoute = (Button) mView.findViewById(R.id.claimRoute);
-        mClaimRoute.setEnabled(isMyTurn());
+        //mClaimRoute.setEnabled(isMyTurn());
 
         String[] items = new String[]{"Values"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
