@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -35,6 +36,7 @@ import java.util.List;
 
 import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
+import androidteam.cs340.tickettoride.Client.State.TurnState;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.Route;
 import androidteam.cs340.tickettoride.Shared.Player;
@@ -173,7 +175,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
 
         mRouteSpinner = (Spinner) mView.findViewById(R.id.claimRouteSpinner);
         mClaimRoute = (Button) mView.findViewById(R.id.claimRoute);
-        //mClaimRoute.setEnabled(isMyTurn());
+        mClaimRoute.setEnabled(isMyTurn());
 
         String[] items = new String[]{"Values"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
@@ -183,6 +185,8 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         mClaimRoute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getActivity(), "Claimed Route" , Toast.LENGTH_SHORT).show();
+
                 Phase2Facade.SINGLETON.claimRoute(routeToClaim, cardsUsedToClaim);
             }
         });
@@ -450,7 +454,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
     }
 
     public boolean isMyTurn(){
-        if(Phase2Facade.SINGLETON.getCurrentPlayer().getUID() == Phase2Facade.SINGLETON.getCurrentGame().getPlayerTurn()){
+        if(Phase2Facade.SINGLETON.getCurrentPlayer().getUID().equals(Phase2Facade.SINGLETON.getCurrentGame().getPlayerTurn())){
             return true;
         }else{
             return false;
@@ -1187,6 +1191,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.NewOrleans_Houston,mHoustonNewOrleans);
+        LatLng HoustonNew = new LatLng(29.476367, -92.322545);
+        GroundOverlayOptions NewHous = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(HoustonNew, 135000f, 135000f);
+        googleMap.addGroundOverlay(NewHous);
 
         mLittleRockNewOrleans = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(34.7465, -92.2896), new LatLng(29.9511, -90.0715))

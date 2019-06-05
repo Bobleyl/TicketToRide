@@ -22,6 +22,7 @@ import java.util.UUID;
 import androidteam.cs340.tickettoride.Client.Activities.GameActivity;
 import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
+import androidteam.cs340.tickettoride.Client.State.State;
 import androidteam.cs340.tickettoride.Client.State.TurnState;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.DestinationCard;
@@ -104,17 +105,17 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         //mDestinationCards = view.findViewById(R.id.destinationCards);
         mWhoseTurn = view.findViewById(R.id.whoseTurn);
         mDownDeck = view.findViewById(R.id.downDeck);
-        //mDownDeck.setEnabled(isMyTurn());
+        mDownDeck.setEnabled(isMyTurn());
         mUpDeck1 = view.findViewById(R.id.upDeck1);
-        //mUpDeck1.setEnabled(isMyTurn());
+        mUpDeck1.setEnabled(isMyTurn());
         mUpDeck2 = view.findViewById(R.id.upDeck2);
-        //mUpDeck2.setEnabled(isMyTurn());
+        mUpDeck2.setEnabled(isMyTurn());
         mUpDeck3 = view.findViewById(R.id.upDeck3);
-        //mUpDeck3.setEnabled(isMyTurn());
+        mUpDeck3.setEnabled(isMyTurn());
         mUpDeck4 = view.findViewById(R.id.upDeck4);
-        //mUpDeck4.setEnabled(isMyTurn());
+        mUpDeck4.setEnabled(isMyTurn());
         mUpDeck5 = view.findViewById(R.id.upDeck5);
-        //mUpDeck5.setEnabled(isMyTurn());
+        mUpDeck5.setEnabled(isMyTurn());
         mOrangeCount = view.findViewById(R.id.orangeCount);
         mRedCount = view.findViewById(R.id.redCount);
         mWildCount = view.findViewById(R.id.wildCount);
@@ -164,6 +165,12 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         mDestinationDeck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(TurnState.SINGLETON.isAnythingState()){
+                    chooseDestinationCard();
+                    TurnState.SINGLETON.drawDestinationCard();
+                }else{
+                    Toast.makeText(getActivity(), "Not Allowed..." , Toast.LENGTH_SHORT).show();
+                }
                 chooseDestinationCard();
             }
         });
@@ -171,35 +178,85 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         mUpDeck1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chooseUpCard(0);
+                if(!TurnState.SINGLETON.isEndState()) {
+                    if(Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck()[0].equals(TrainCard.Locomotive)){
+                        chooseUpCard(0);
+                        TurnState.SINGLETON.drawFaceUpWild();
+                    }else{
+                        chooseUpCard(0);
+                        TurnState.SINGLETON.drawFaceUpNonWild();
+                    }
+                }else{
+                    Toast.makeText(getActivity(), "Not Allowed..." , Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         mUpDeck2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chooseUpCard(1);
+                if(!TurnState.SINGLETON.isEndState()) {
+                    if(Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck()[1].equals(TrainCard.Locomotive)){
+                        chooseUpCard(1);
+                        TurnState.SINGLETON.drawFaceUpWild();
+                    }else{
+                        chooseUpCard(1);
+                        TurnState.SINGLETON.drawFaceUpNonWild();
+                    }
+                }else{
+                    Toast.makeText(getActivity(), "Not Allowed..." , Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         mUpDeck3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chooseUpCard(2);
+                if(!TurnState.SINGLETON.isEndState()) {
+                    if(Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck()[2].equals(TrainCard.Locomotive)){
+                        chooseUpCard(2);
+                        TurnState.SINGLETON.drawFaceUpWild();
+                    }else{
+                        chooseUpCard(2);
+                        TurnState.SINGLETON.drawFaceUpNonWild();
+                    }
+                }else{
+                    Toast.makeText(getActivity(), "Not Allowed..." , Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         mUpDeck4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chooseUpCard(3);
+                if(!TurnState.SINGLETON.isEndState()) {
+                    if(Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck()[3].equals(TrainCard.Locomotive)){
+                        chooseUpCard(3);
+                        TurnState.SINGLETON.drawFaceUpWild();
+                    }else{
+                        chooseUpCard(3);
+                        TurnState.SINGLETON.drawFaceUpNonWild();
+                    }
+                }else{
+                    Toast.makeText(getActivity(), "Not Allowed..." , Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         mUpDeck5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chooseUpCard(4);
+                if(!TurnState.SINGLETON.isEndState()) {
+                    if(Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck()[4].equals(TrainCard.Locomotive)){
+                        chooseUpCard(4);
+                        TurnState.SINGLETON.drawFaceUpWild();
+                    }else{
+                        chooseUpCard(4);
+                        TurnState.SINGLETON.drawFaceUpNonWild();
+                    }
+                }else{
+                    Toast.makeText(getActivity(), "Not Allowed..." , Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
