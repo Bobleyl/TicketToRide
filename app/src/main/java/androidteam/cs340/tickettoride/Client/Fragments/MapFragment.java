@@ -951,6 +951,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("black"))
         );
         mRouteMap.put(Route.KansasCity_Denver,mDenverKansasCity);
+        LatLng KansasDenver = new LatLng(39.945674, -99.763766);
+        GroundOverlayOptions KanDen = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.fourwhite))
+                .position(KansasDenver, 135000f, 135000f);
+        googleMap.addGroundOverlay(KanDen);
 
         mDenverKansasCity2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(39.925305, -104.944488), new LatLng(39.220950, -94.558615))
@@ -958,6 +963,12 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.rgb(255,165,0))//orange
         );
         mRouteMap.put(Route.KansasCity_Denver_2,mDenverKansasCity2);
+        LatLng KansasDenver2 = new LatLng(38.841981, -99.895544);
+        GroundOverlayOptions KanDen2 = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.fourwhite))
+                .position(KansasDenver2, 135000f, 135000f);
+        googleMap.addGroundOverlay(KanDen2);
+
 
         mOmahaKansasCity = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(41.2565, -95.9345), new LatLng(39.0997, -94.5786))
@@ -965,6 +976,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.KansasCity_Omaha,mOmahaKansasCity);
+        LatLng KansasOmaha = new LatLng(40.120944, -96.357091);
+        GroundOverlayOptions KanOma = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.onewhite))
+                .position(KansasOmaha, 135000f, 135000f);
+        googleMap.addGroundOverlay(KanOma);
 
         mOmahaKansasCity2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(41.267743, -95.714889), new LatLng(39.145305, -94.372355))
@@ -972,6 +988,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.KansasCity_Omaha_2,mOmahaKansasCity2);
+        LatLng KansasOmaha2 = new LatLng(39.973437, -94.079343);
+        GroundOverlayOptions KanOma2 = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.onewhite))
+                .position(KansasOmaha2, 135000f, 135000f);
+        googleMap.addGroundOverlay(KanOma2);
 
         mDenverOklahomaCity = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(39.7392, -104.9903), new LatLng(35.4676, -97.5164))
@@ -979,6 +1000,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("red"))
         );
         mRouteMap.put(Route.Denver_OklahomaCity,mDenverOklahomaCity);
+        LatLng DenverOKC = new LatLng(37.025854, -101.397414);
+        GroundOverlayOptions DenOKC = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.fourwhite))
+                .position(DenverOKC, 135000f, 135000f);
+        googleMap.addGroundOverlay(DenOKC);
 
         mSantaFeOklahomaCity = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(35.6870, -105.9378), new LatLng(35.4676, -97.5164))
@@ -986,6 +1012,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("blue"))
         );
         mRouteMap.put(Route.SantaFe_OklahomaCity,mSantaFeOklahomaCity);
+        LatLng SantaOKC = new LatLng(36.149173, -103.017789);
+        GroundOverlayOptions SanOKC = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.threewhite))
+                .position(SantaOKC, 135000f, 135000f);
+        googleMap.addGroundOverlay(SanOKC);
 
         mElPasoOklahomaCity = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(31.7619, -106.4850), new LatLng(35.4676, -97.5164))
@@ -993,6 +1024,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.rgb(234, 222, 45))
         );
         mRouteMap.put(Route.ElPaso_OklahomaCity,mElPasoOklahomaCity);
+        LatLng PasoOKC = new LatLng(34.144771, -101.844350);
+        GroundOverlayOptions PasOKC = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.fivewhite))
+                .position(PasoOKC, 135000f, 135000f);
+        googleMap.addGroundOverlay(PasOKC);
 
         mKansasCityOklahomaCity = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(39.0997, -94.5786), new LatLng(35.4676, -97.5164))
@@ -1000,6 +1036,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.KansasCity_OklahomaCity,mKansasCityOklahomaCity);
+        LatLng KansasOKC = new LatLng(37.559684, -96.771143);
+        GroundOverlayOptions KanOKC = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(KansasOKC, 135000f, 135000f);
+        googleMap.addGroundOverlay(KanOKC);
 
         mKansasCityOklahomaCity2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(39.145305, -94.372355), new LatLng(35.404845, -97.286023))
@@ -1007,6 +1048,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.KansasCity_OklahomaCity_2,mKansasCityOklahomaCity2);
+        LatLng KansasOKC2 = new LatLng(37.157991, -95.277655);
+        GroundOverlayOptions KanOKC2 = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(KansasOKC2, 135000f, 135000f);
+        googleMap.addGroundOverlay(KanOKC2);
 
         mOklahomaCityDallas = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(35.4676, -97.5164), new LatLng(32.7767, -96.7970))
@@ -1014,6 +1060,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.Dallas_OklahomaCity,mOklahomaCityDallas);
+        LatLng DallasOKC = new LatLng(34.255869, -96.281435);
+        GroundOverlayOptions DakOKC = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(DallasOKC, 135000f, 135000f);
+        googleMap.addGroundOverlay(DakOKC);
 
         mOklahomaCityDallas2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(35.404845, -97.286023), new LatLng(32.679479, -96.472422))
@@ -1021,6 +1072,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.Dallas_OklahomaCity_2,mOklahomaCityDallas2);
+        LatLng DallasOKC2 = new LatLng(33.964790, -97.994553);
+        GroundOverlayOptions DakOKC2 = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(DallasOKC2, 135000f, 135000f);
+        googleMap.addGroundOverlay(DakOKC2);
 
         mElPasoDallas = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(31.7619, -106.4850), new LatLng(32.7767, -96.7970))
@@ -1028,6 +1084,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("red"))
         );
         mRouteMap.put(Route.ElPaso_Dallas,mElPasoDallas);
+        LatLng PasoDallas = new LatLng(32.714511, -101.748605);
+        GroundOverlayOptions PalDal = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.fourwhite))
+                .position(PasoDallas, 135000f, 135000f);
+        googleMap.addGroundOverlay(PalDal);
 
         mDallasHouston = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(32.7767, -96.7970), new LatLng(29.7604, -95.3698))
@@ -1035,6 +1096,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.Houston_Dallas,mDallasHouston);
+        LatLng DallasHouston = new LatLng(31.178074, -97.044137);
+        GroundOverlayOptions DalHous = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.onewhite))
+                .position(DallasHouston, 135000f, 135000f);
+        googleMap.addGroundOverlay(DalHous);
 
         mDallasHouston2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(32.679479, -96.472422), new LatLng(29.782332, -95.034271))
@@ -1042,6 +1108,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.Houston_Dallas_2,mDallasHouston2);
+        LatLng DallasHouston2 = new LatLng(31.609461, -95.484760);
+        GroundOverlayOptions DalHous2 = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.onewhite))
+                .position(DallasHouston2, 135000f, 135000f);
+        googleMap.addGroundOverlay(DalHous2);
 
         mElPasoHouston = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(31.7619, -106.4850), new LatLng(29.7604, -95.3698))
@@ -1049,6 +1120,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("green"))
         );
         mRouteMap.put(Route.Houston_ElPaso,mElPasoHouston);
+        LatLng PasoHouston = new LatLng(29.904502, -100.758637);
+        GroundOverlayOptions PasHous = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.sixwhite))
+                .position(PasoHouston, 135000f, 135000f);
+        googleMap.addGroundOverlay(PasHous);
 
         mHoustonNewOrleans = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(29.7604, -95.3698), new LatLng(29.9511, -90.0715))
