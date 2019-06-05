@@ -119,7 +119,10 @@ public class GameActivity extends AppCompatActivity implements
             if (savedInstanceState != null) {
                 return;
             }
-            //logic here to freeze buttons
+            //TODO:LOGIC TO FREEZE BUTTONS WHEN CHOOSING DESTINATIONCARDS
+            mMapButton.setEnabled(false);
+            mGameInfoButton.setEnabled(false);
+            mChatButton.setEnabled(false);
             DestinationCardFragment firstFragment = new DestinationCardFragment();
             Bundle bundle = new Bundle();
             bundle.putBoolean("isStart", true);
@@ -174,11 +177,17 @@ public class GameActivity extends AppCompatActivity implements
         Toast.makeText(this, "Submitting Cards", Toast.LENGTH_SHORT).show();
         Phase2Facade.SINGLETON.returnDestination((ArrayList<DestinationCard>)destCards);
         startNewFragment(new PlayerInfoFragment());
+        mMapButton.setEnabled(true);
+        mGameInfoButton.setEnabled(true);
+        mChatButton.setEnabled(true);
     }
 
     public void drawDestinationCards(){
         Bundle args = new Bundle();
         args.putBoolean("isStart",false);
+        mMapButton.setEnabled(false);
+        mGameInfoButton.setEnabled(false);
+        mChatButton.setEnabled(false);
         DestinationCardFragment fragment = new DestinationCardFragment();
         fragment.setArguments(args);
         startNewFragment(fragment);
