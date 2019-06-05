@@ -371,7 +371,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
             return "black";
         }
         if (numYellowCards + numWildCards >= routeLength) {
-            return "yello";
+            return "yellow";
         }
         if (numWildCards >= routeLength) {
             return "wild";
@@ -469,7 +469,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
             @Override
             public void run() {
                 updateSpinner();
-                //updateRoutes();
+                updateRoutes();
             }
         });
     }

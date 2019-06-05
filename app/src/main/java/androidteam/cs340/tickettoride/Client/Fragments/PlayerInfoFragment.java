@@ -22,6 +22,7 @@ import java.util.UUID;
 import androidteam.cs340.tickettoride.Client.Activities.GameActivity;
 import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
+import androidteam.cs340.tickettoride.Client.State.TurnState;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.DestinationCard;
 import androidteam.cs340.tickettoride.Shared.Result;
@@ -149,7 +150,12 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         mDownDeck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chooseDownCard();
+                if(!TurnState.SINGLETON.isEndState()) {
+                    chooseDownCard();
+                    TurnState.SINGLETON.drawFaceDown();
+                }else{
+                    Toast.makeText(getActivity(), "Not Allowed..." , Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
