@@ -104,8 +104,8 @@ public class Phase2Facade {
         return ServerProxy.SINGLETON.returnDestinationCard(currentGame.getGameID(), currentPlayer.getUID(),cards);
     }
 
-    public Result claimRoute(Route route){
-        return ServerProxy.SINGLETON.claimRoute(currentGame.getGameID(),currentPlayer.getUID(), route);
+    public Result claimRoute(Route route, ArrayList<TrainCard> cards){
+        return ServerProxy.SINGLETON.claimRoute(currentGame.getGameID(), currentPlayer.getUID(), route, cards);
     }
 
     public Result drawUp(int position){

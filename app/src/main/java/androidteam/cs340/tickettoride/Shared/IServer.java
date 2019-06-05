@@ -1,6 +1,7 @@
 package androidteam.cs340.tickettoride.Shared;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface IServer {
 
@@ -15,7 +16,7 @@ public interface IServer {
     Result drawTrainCardFaceUp(String gameID, String playerID, Integer position);
     Result drawDestinationCard(String gameID, String playerID);
     Result sendMessage(String gameID, String playerID, Message message);
-    Result claimRoute(String gameID, String playerID, Route route);
+    Result claimRoute(String gameID, String playerID, Route route, List<TrainCard> trainCards);
     Result endTurn(String gameID, String playerID);
     Result deleteGame(String gameID);
 
