@@ -16,6 +16,7 @@ public class Player {
     private int destinationsNotFoundPoints;
     private int score;
     private int trainCars;
+    private boolean finalTurn;
 
     private ArrayList<TrainCard> orangeCards = new ArrayList<>();
     private ArrayList<TrainCard> whiteCards = new ArrayList<>();
@@ -78,6 +79,7 @@ public class Player {
         this.trainCars = 45;
         this.destinationsFoundPoints = 0;
         this.destinationsNotFoundPoints = 0;
+        this.finalTurn = false;
         computeNumberOfCardColors();
     }
 
@@ -213,5 +215,9 @@ public class Player {
     public void setDestinationsNotFoundPoints(int destinationsNotFoundPoints_) { destinationsNotFoundPoints = destinationsNotFoundPoints_; }
 
     public int getDestinationsNotFoundPoints() { return destinationsNotFoundPoints; }
+
+    public void setFinalTurnTrue() { finalTurn = true; }
+
+    public boolean getFinalTurn() { return finalTurn; }
 
 }

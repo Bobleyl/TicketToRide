@@ -16,6 +16,56 @@ public class Player {
     private int destinationsNotFoundPoints;
     private int score;
     private int trainCars;
+    private boolean finalTurn;
+
+    private ArrayList<TrainCard> orangeCards = new ArrayList<>();
+    private ArrayList<TrainCard> whiteCards = new ArrayList<>();
+    private ArrayList<TrainCard> redCards = new ArrayList<>();
+    private ArrayList<TrainCard> wildCards = new ArrayList<>();
+    private ArrayList<TrainCard> blueCards = new ArrayList<>();
+    private ArrayList<TrainCard> greenCards = new ArrayList<>();
+    private ArrayList<TrainCard> pinkCards = new ArrayList<>();
+    private ArrayList<TrainCard> blackCards = new ArrayList<>();
+    private ArrayList<TrainCard> yellowCards = new ArrayList<>();
+
+    private void computeNumberOfCardColors () {
+
+        orangeCards = new ArrayList<>();
+        whiteCards = new ArrayList<>();
+        redCards = new ArrayList<>();
+        wildCards = new ArrayList<>();
+        blueCards = new ArrayList<>();
+        greenCards = new ArrayList<>();
+        pinkCards = new ArrayList<>();
+        blackCards = new ArrayList<>();
+        yellowCards = new ArrayList<>();
+
+        for (TrainCard card : trainCardsHand) {
+            switch (card.color) {
+                case "orange":
+                    orangeCards.add(card);
+                case "white":
+                    whiteCards.add(card);
+                case "red":
+                    redCards.add(card);
+                case "wild":
+                    wildCards.add(card);
+                case "blue":
+                    blueCards.add(card);
+                case "green":
+                    greenCards.add(card);
+                case "pink":
+                    pinkCards.add(card);
+                case "black":
+                    blackCards.add(card);
+                case "yellow":
+                    yellowCards.add(card);
+                default:
+                    System.out.println("ERROR! Card color does not exist.");
+
+            }
+        }
+    }
 
 
     public Player(String uid){
@@ -29,6 +79,8 @@ public class Player {
         this.trainCars = 45;
         this.destinationsFoundPoints = 0;
         this.destinationsNotFoundPoints = 0;
+        this.finalTurn = false;
+        computeNumberOfCardColors();
     }
 
     public String getName(){ return name; }
@@ -107,6 +159,55 @@ public class Player {
         claimedRoutes.add(route);
     }
 
+    public String getUid() {
+        return uid;
+    }
+
+    public ArrayList<TrainCard> getOrangeCards() {
+        computeNumberOfCardColors();
+        return orangeCards;
+    }
+
+    public ArrayList<TrainCard> getWhiteCards() {
+
+        computeNumberOfCardColors();
+        return whiteCards;
+    }
+
+    public ArrayList<TrainCard> getRedCards() {
+        computeNumberOfCardColors();
+        return redCards;
+    }
+
+    public ArrayList<TrainCard> getWildCards() {
+        computeNumberOfCardColors();
+        return wildCards;
+    }
+
+    public ArrayList<TrainCard> getBlueCards() {
+        computeNumberOfCardColors();
+        return blueCards;
+    }
+
+    public ArrayList<TrainCard> getGreenCards() {
+        computeNumberOfCardColors();
+        return greenCards;
+    }
+
+    public ArrayList<TrainCard> getPinkCards() {
+        computeNumberOfCardColors();
+        return pinkCards;
+    }
+
+    public ArrayList<TrainCard> getBlackCards() {
+        computeNumberOfCardColors();
+        return blackCards;
+    }
+
+    public ArrayList<TrainCard> getYellowCards() {
+        computeNumberOfCardColors();
+        return yellowCards;
+    }
     public void setDestinationsFoundPoints(int destinationsFoundPoints_) { destinationsFoundPoints = destinationsFoundPoints_; }
 
     public int getDestinationsFoundPoints() { return destinationsFoundPoints; }
@@ -114,5 +215,9 @@ public class Player {
     public void setDestinationsNotFoundPoints(int destinationsNotFoundPoints_) { destinationsNotFoundPoints = destinationsNotFoundPoints_; }
 
     public int getDestinationsNotFoundPoints() { return destinationsNotFoundPoints; }
+
+    public void setFinalTurnTrue() { finalTurn = true; }
+
+    public boolean getFinalTurn() { return finalTurn; }
 
 }

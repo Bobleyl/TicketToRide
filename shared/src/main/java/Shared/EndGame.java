@@ -5,7 +5,6 @@ import java.util.List;
 public class EndGame {
 
     private String firstPlace;
-    private String gameID;
     private List<Player> players;
     private List<String> longestRoadPlayers;
 
