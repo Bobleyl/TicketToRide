@@ -62,6 +62,8 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
     private View mView;
     List<Route> lastAvailableRoutes = new ArrayList<>(Arrays.asList(Route.values()));
     private Map< Route,Polyline> mRouteMap = new HashMap< Route,Polyline>();
+    private ArrayList<TrainCard> cardsUsedToClaim = new ArrayList<>();
+    private Route routeToClaim;
     Polyline mSeattlePortland;
     Polyline mSeattlePortland2;
     Polyline mSeattleVancouver;
@@ -181,16 +183,18 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         mClaimRoute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Claim the route here.
+                Phase2Facade.SINGLETON.claimRoute(routeToClaim, cardsUsedToClaim);
             }
         });
 
         return mView;
     }
 
+
     /*--------
      SPINNER LOGIC
      --------*/
+    Map<String,Route> routeSelections = new TreeMap<>();
     public void updateSpinner(){
         int size = Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes().size();
         ArrayList<String> items = new ArrayList<>();
@@ -205,8 +209,8 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         if(update == true){
             // Watch for where this loop gets called if no one claims a route and the spinner doesn't change.
             // No matter what, always pass what cards they are using to claim the route to the server.
-            int i = 0;
-            for(Map.Entry<String,Route> entry : createRouteSelections().entrySet()){
+            routeSelections = createRouteSelections();
+            for(Map.Entry<String,Route> entry : routeSelections.entrySet()){
                 items.add(entry.getValue().name() + " using " + entry.getKey());
             }
 
@@ -217,12 +221,63 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         }
     }
 
+    private void addCards(Route routeToClaim, int numCardColor, TrainCard toAdd) {
+        if (numCardColor >= routeToClaim.length) {
+            for (int j = 0; j < routeToClaim.length; j++) {
+                cardsUsedToClaim.add(toAdd);
+            }
+        } else {
+            for (int j = 0; j < numCardColor; j++) {
+                cardsUsedToClaim.add(toAdd);
+            }
+        }
+    }
+
     private class spinnerOnClickListener implements AdapterView.OnItemSelectedListener {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            //TODO: Implement claiming a route here.
             mRouteString = (String) parent.getSelectedItem();
-            // Get the button to know which route they are selecting with which cards.
+            int i = 0;
+            for (Map.Entry<String,Route> entry : routeSelections.entrySet()) {
+                if (i == position) {
+                    routeToClaim = entry.getValue();
+                    if (entry.getKey().equals("white")) {
+                        addCards(routeToClaim, numWhiteCards, TrainCard.Passenger);
+                    }
+                    if (entry.getKey().equals("orange")) {
+                        addCards(routeToClaim, numOrangeCards, TrainCard.Freight);
+                    }
+                    if (entry.getKey().equals("red")) {
+                        addCards(routeToClaim, numRedCards, TrainCard.Coal);
+                    }
+                    if (entry.getKey().equals("blue")) {
+                        addCards(routeToClaim, numBlueCards, TrainCard.Tanker);
+                    }
+                    if (entry.getKey().equals("green")) {
+                        addCards(routeToClaim, numGreenCards, TrainCard.Caboose);
+                    }
+                    if (entry.getKey().equals("pink")) {
+                        addCards(routeToClaim, numPinkCards, TrainCard.Box);
+                    }
+                    if (entry.getKey().equals("black")) {
+                        addCards(routeToClaim, numBlackCards, TrainCard.Hopper);
+                    }
+                    if (entry.getKey().equals("yellow")) {
+                        addCards(routeToClaim, numYellowCards, TrainCard.Reefer);
+                    }
+                    if (entry.getKey().equals("wild")) {
+                        addCards(routeToClaim, numWildCards, TrainCard.Locomotive);
+                    }
+
+                    int remainingSpaces = routeToClaim.length - cardsUsedToClaim.size();
+                    if (cardsUsedToClaim.size() < routeToClaim.length) {
+                        for (int j = 0; j < remainingSpaces; j++) {
+                            cardsUsedToClaim.add(TrainCard.Locomotive);
+                        }
+                    }
+                }
+                i++;
+            }
         }
 
         @Override
