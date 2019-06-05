@@ -842,6 +842,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("white"))
         );
         mRouteMap.put(Route.Calgary_Winnipeg,mCalgaryWinnipeg);
+        LatLng CalgaryWinnipeg = new LatLng(51.096300, -104.400824);
+        GroundOverlayOptions CalWin = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.sixwhite))
+                .position(CalgaryWinnipeg, 135000f, 135000f);
+        googleMap.addGroundOverlay(CalWin);
 
         mHelenaWinnipeg = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(46.5891,-112.0391), new LatLng(49.8951, -97.1384))
@@ -849,14 +854,24 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("blue"))
         );
         mRouteMap.put(Route.Winnipeg_Hellena,mHelenaWinnipeg);
+        LatLng HelenaWinnipeg = new LatLng(48.855680, -105.544547);
+        GroundOverlayOptions HelWin = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.fourwhite))
+                .position(HelenaWinnipeg, 135000f, 135000f);
+        googleMap.addGroundOverlay(HelWin);
 
         //this was the one that was breaking
         mCalgaryHelena = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(51.0486, -114.0708), new LatLng(46.5891, -112.0391))
                 .width(10)
-                .color(Color.parseColor("black"))
+                .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.Calgary_Hellena,mCalgaryHelena);
+        LatLng CalgaryHelena = new LatLng(49.186809, -111.890500);
+        GroundOverlayOptions Calhel = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.fourwhite))
+                .position(CalgaryHelena, 135000f, 135000f);
+        googleMap.addGroundOverlay(Calhel);
 
         mHelenaDuluth = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(46.5891,-112.0391), new LatLng(46.7867, -92.1005))
@@ -864,6 +879,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.rgb(255,165,0))//orange
         );
         mRouteMap.put(Route.Hellena_Duluth,mHelenaDuluth);
+        LatLng HelenaDuluth = new LatLng(48.070239, -100.766039);
+        GroundOverlayOptions heldul = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.sixwhite))
+                .position(HelenaDuluth, 135000f, 135000f);
+        googleMap.addGroundOverlay(heldul);
 
         mWinnipegDuluth = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(49.8951, -97.1384), new LatLng(46.7867, -92.1005))
@@ -871,6 +891,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("black"))
         );
         mRouteMap.put(Route.Winnipeg_Duluth,mWinnipegDuluth);
+        LatLng WinniDuluth = new LatLng(47.724083, -95.700811);
+        GroundOverlayOptions WinDul = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.fourwhite))
+                .position(WinniDuluth, 135000f, 135000f);
+        googleMap.addGroundOverlay(WinDul);
 
         mHelenaOmaha = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(46.5891,-112.0391), new LatLng(41.2565, -95.9345))
@@ -878,6 +903,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("red"))
         );
         mRouteMap.put(Route.Hellena_Omaha,mHelenaOmaha);
+        LatLng HelenaOmaha = new LatLng(44.494056, -102.971695);
+        GroundOverlayOptions Helo = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.fivewhite))
+                .position(HelenaOmaha, 135000f, 135000f);
+        googleMap.addGroundOverlay(Helo);
 
         mDenverOmaha = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(39.7392, -104.9903), new LatLng(41.2565, -95.9345))
@@ -885,6 +915,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.rgb(255,0,255))//pink
         );
         mRouteMap.put(Route.Denver_Omaha,mDenverOmaha);
+        LatLng DenvOmaha = new LatLng(41.242965, -101.220313);
+        GroundOverlayOptions Denvo = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.fourwhite))
+                .position(DenvOmaha, 135000f, 135000f);
+        googleMap.addGroundOverlay(Denvo);
 
         mDuluthOmaha = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(46.7867, -92.1005), new LatLng(41.2565, -95.9345))
@@ -892,6 +927,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.Duluth_Omaha,mDuluthOmaha);
+        LatLng DuluthOmaha = new LatLng(44.508381, -95.304838);
+        GroundOverlayOptions Dulo = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(DuluthOmaha, 135000f, 135000f);
+        googleMap.addGroundOverlay(Dulo);
 
         mDuluthOmaha2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(46.753932, -92.484388), new LatLng(41.267743, -96.132537))
@@ -899,6 +939,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.Duluth_Omaha_2,mDuluthOmaha2);
+        LatLng DuluthOmaha2 = new LatLng(44.036393, -92.471604);
+        GroundOverlayOptions Dulo2 = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(DuluthOmaha2, 135000f, 135000f);
+        googleMap.addGroundOverlay(Dulo2);
 
         mDenverKansasCity = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(39.7392, -104.9903), new LatLng(39.0997, -94.5786))
