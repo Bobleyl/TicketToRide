@@ -203,7 +203,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
     public boolean isMyTurn(){
         System.out.println("PLAYER UID: " + Phase2Facade.SINGLETON.getCurrentPlayer().getUID());
         System.out.println("TURN UID: " + Phase2Facade.SINGLETON.getCurrentGame().getPlayerTurn());
-        if(Phase2Facade.SINGLETON.getCurrentPlayer().getUID() == Phase2Facade.SINGLETON.getCurrentGame().getPlayerTurn()){
+        if(Phase2Facade.SINGLETON.getCurrentPlayer().getUID().equals(Phase2Facade.SINGLETON.getCurrentGame().getPlayerTurn())){
             return true;
         }else{
             return false;
