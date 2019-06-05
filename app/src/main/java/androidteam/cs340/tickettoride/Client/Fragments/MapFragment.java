@@ -178,7 +178,12 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         mRouteSpinner.setAdapter(adapter);
         mRouteSpinner.setOnItemSelectedListener(new spinnerOnClickListener());
 
-
+        mClaimRoute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Claim the route here.
+            }
+        });
 
         return mView;
     }
@@ -231,9 +236,9 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
      --------*/
     Map<String,Route> routesToSelectFrom = new TreeMap<>();
     List<Route> availableRoutes = Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes();
-    List<TrainCard> availableTrainCards = Phase2Facade.SINGLETON.getCurrentPlayer().getTrainCardsHand();
 
     private Map<String,Route> createRouteSelections() {
+        updateCount(Phase2Facade.SINGLETON.getMyDeck());
         for (Route route : availableRoutes) {
             // If canClaimRoute returns null, it means the route can't be claimed.
             if (canClaimRoute(route) != null) {
@@ -243,15 +248,56 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         return routesToSelectFrom;
     }
 
-    int numOrangeCards = Phase2Facade.SINGLETON.getCurrentPlayer().getOrangeCards().size();
-    int numWhiteCards = Phase2Facade.SINGLETON.getCurrentPlayer().getWhiteCards().size();
-    int numRedCards = Phase2Facade.SINGLETON.getCurrentPlayer().getRedCards().size();
-    int numWildCards = Phase2Facade.SINGLETON.getCurrentPlayer().getWildCards().size();
-    int numBlueCards = Phase2Facade.SINGLETON.getCurrentPlayer().getBlueCards().size();
-    int numGreenCards = Phase2Facade.SINGLETON.getCurrentPlayer().getGreenCards().size();
-    int numPinkCards = Phase2Facade.SINGLETON.getCurrentPlayer().getPinkCards().size();
-    int numBlackCards = Phase2Facade.SINGLETON.getCurrentPlayer().getBlackCards().size();
-    int numYellowCards = Phase2Facade.SINGLETON.getCurrentPlayer().getYellowCards().size();
+    int numOrangeCards;
+    int numWhiteCards;
+    int numRedCards;
+    int numWildCards;
+    int numBlueCards;
+    int numGreenCards;
+    int numPinkCards;
+    int numBlackCards;
+    int numYellowCards;
+
+    private void updateCount(List<TrainCard> cards){
+        numOrangeCards = 0;
+        numWhiteCards = 0;
+        numRedCards = 0;
+        numWildCards = 0;
+        numBlueCards = 0;
+        numGreenCards = 0;
+        numPinkCards = 0;
+        numBlackCards = 0;
+        numYellowCards = 0;
+        for(TrainCard card : cards){
+            if(card.color.equals("black")){
+                numBlackCards = numBlackCards + 1;
+            }
+            if(card.color.equals("white")){
+                numWhiteCards = numWhiteCards + 1;
+            }
+            if(card.color.equals("blue")){
+                numBlueCards = numBlueCards + 1;
+            }
+            if(card.color.equals("orange")){
+                numOrangeCards = numOrangeCards + 1;
+            }
+            if(card.color.equals("red")){
+                numRedCards = numRedCards + 1;
+            }
+            if(card.color.equals("wild")){
+                numWildCards = numWildCards + 1;
+            }
+            if(card.color.equals("yellow")){
+                numYellowCards = numYellowCards + 1;
+            }
+            if(card.color.equals("green")){
+                numGreenCards = numGreenCards + 1;
+            }
+            if(card.color == "pink"){
+                numPinkCards = numPinkCards + 1;
+            }
+        }
+    }
 
     private String canClaimRoute(Route routeToCheck) {
         int routeLength = routeToCheck.length;
@@ -261,35 +307,35 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
             case "white":
                 if (numWhiteCards + numWildCards >= routeLength) {
                     return "white";
-                }
+                } else { break; }
             case "orange":
                 if (numOrangeCards + numWildCards >= routeLength) {
                     return "orange";
-                }
+                } else { break; }
             case "red":
                 if (numRedCards + numWildCards >= routeLength) {
                     return "red";
-                }
+                } else {break;}
             case "blue":
                 if (numBlueCards + numWildCards >= routeLength) {
                     return "blue";
-                }
+                } else {break;}
             case "green":
                 if (numGreenCards + numWildCards >= routeLength) {
                     return "green";
-                }
+                } else {break;}
             case "pink":
                 if (numPinkCards + numWildCards >= routeLength) {
                     return "pink";
-                }
+                } else {break;}
             case "black":
                 if (numBlackCards + numWildCards >= routeLength) {
                     return "black";
-                }
+                } else {break;}
             case "yellow":
                 if (numYellowCards + numWildCards >= routeLength) {
                     return "yellow";
-                }
+                } else {break;}
             case "grey":
                 return canClaimGreyRoute(routeLength);
         }
