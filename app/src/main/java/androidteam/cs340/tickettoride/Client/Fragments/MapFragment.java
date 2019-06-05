@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -26,6 +27,7 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.TreeMap;
 import java.util.UUID;
 import java.util.List;
 
@@ -34,6 +36,8 @@ import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.Route;
 import androidteam.cs340.tickettoride.Shared.Player;
+import androidteam.cs340.tickettoride.Shared.TrainCard;
+
 import java.util.Map;
 import java.util.HashMap;
 /**
@@ -182,7 +186,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
      --------*/
     public void updateSpinner(){
         int size = Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes().size();
-        String[] items = new String[size];
+        ArrayList<String> items = new ArrayList<>();
         boolean update = true;
 
         if(lastList.size() == Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes().size()){
@@ -193,13 +197,12 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
 
         if(update == true){
             // Watch for where this loop gets called if no one claims a route and the spinner doesn't change.
-            // N0 matter what, always pass what cards they are using to claim the route to the server.
+            // No matter what, always pass what cards they are using to claim the route to the server.
             int i = 0;
-            for(Route route : Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes()){
-                // Logic for making strings for routes they can pick + color to use.
-                items[i] = ("" + route);
-                i++;
+            for(Map.Entry<String,Route> entry : createRouteSelections().entrySet()){
+                items.add(entry.getValue().name() + " using " + entry.getKey());
             }
+
 
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
             mRouteSpinner.setAdapter(adapter);
@@ -212,13 +215,120 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             //TODO: Implement claiming a route here.
             mRouteString = (String) parent.getSelectedItem();
-            // Get the button to know which route they are selecting.
+            // Get the button to know which route they are selecting with which cards.
         }
 
         @Override
         public void onNothingSelected(AdapterView<?> parent) {
 
         }
+    }
+
+    /*--------
+     ROUTE CLAIMING LOGIC
+     --------*/
+    Map<String,Route> routesToSelectFrom = new TreeMap<>();
+    List<Route> availableRoutes = Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes();
+    List<TrainCard> availableTrainCards = Phase2Facade.SINGLETON.getCurrentPlayer().getTrainCardsHand();
+
+    private Map<String,Route> createRouteSelections() {
+        for (Route route : availableRoutes) {
+            // If canClaimRoute returns null, it means the route can't be claimed.
+            if (canClaimRoute(route) != null) {
+                routesToSelectFrom.put(canClaimRoute(route),route);
+            }
+        }
+        return routesToSelectFrom;
+    }
+
+    int numOrangeCards = Phase2Facade.SINGLETON.getCurrentPlayer().getOrangeCards().size();
+    int numWhiteCards = Phase2Facade.SINGLETON.getCurrentPlayer().getWhiteCards().size();
+    int numRedCards = Phase2Facade.SINGLETON.getCurrentPlayer().getRedCards().size();
+    int numWildCards = Phase2Facade.SINGLETON.getCurrentPlayer().getWildCards().size();
+    int numBlueCards = Phase2Facade.SINGLETON.getCurrentPlayer().getBlueCards().size();
+    int numGreenCards = Phase2Facade.SINGLETON.getCurrentPlayer().getGreenCards().size();
+    int numPinkCards = Phase2Facade.SINGLETON.getCurrentPlayer().getPinkCards().size();
+    int numBlackCards = Phase2Facade.SINGLETON.getCurrentPlayer().getBlackCards().size();
+    int numYellowCards = Phase2Facade.SINGLETON.getCurrentPlayer().getYellowCards().size();
+
+    private String canClaimRoute(Route routeToCheck) {
+        int routeLength = routeToCheck.length;
+        String color = routeToCheck.color;
+
+        switch(color) {
+            case "white":
+                if (numWhiteCards + numWildCards >= routeLength) {
+                    return "white";
+                }
+            case "orange":
+                if (numOrangeCards + numWildCards >= routeLength) {
+                    return "orange";
+                }
+            case "red":
+                if (numRedCards + numWildCards >= routeLength) {
+                    return "red";
+                }
+            case "blue":
+                if (numBlueCards + numWildCards >= routeLength) {
+                    return "blue";
+                }
+            case "green":
+                if (numGreenCards + numWildCards >= routeLength) {
+                    return "green";
+                }
+            case "pink":
+                if (numPinkCards + numWildCards >= routeLength) {
+                    return "pink";
+                }
+            case "black":
+                if (numBlackCards + numWildCards >= routeLength) {
+                    return "black";
+                }
+            case "yellow":
+                if (numYellowCards + numWildCards >= routeLength) {
+                    return "yellow";
+                }
+            case "grey":
+                return canClaimGreyRoute(routeLength);
+        }
+
+        if (numWildCards >= routeLength) {
+            return "wild";
+        }
+
+        return null;
+
+    }
+
+    private String canClaimGreyRoute(int routeLength) {
+        if (numWhiteCards + numWildCards >= routeLength) {
+            return "white";
+        }
+        if (numOrangeCards + numWildCards >= routeLength) {
+            return "orange";
+        }
+        if (numRedCards + numWildCards >= routeLength) {
+            return "red";
+        }
+        if (numBlueCards + numWildCards >= routeLength) {
+            return "blue";
+        }
+        if (numGreenCards + numWildCards >= routeLength) {
+            return "green";
+        }
+        if (numPinkCards + numWildCards >= routeLength) {
+            return "pink";
+        }
+        if (numBlackCards + numWildCards >= routeLength) {
+            return "black";
+        }
+        if (numYellowCards + numWildCards >= routeLength) {
+            return "yello";
+        }
+        if (numWildCards >= routeLength) {
+            return "wild";
+        }
+        return null;
     }
 
     /*--------
