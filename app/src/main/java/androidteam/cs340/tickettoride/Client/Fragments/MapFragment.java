@@ -25,6 +25,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.UUID;
 import java.util.List;
 
@@ -53,6 +54,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
     private GoogleMap mMap;
     private MapView mMapView;
     private View mView;
+    List<Route> lastAvailableRoutes = new ArrayList<>(Arrays.asList(Route.values()));
     private Map< Route,Polyline> mRouteMap = new HashMap< Route,Polyline>();
     Polyline mSeattlePortland;
     Polyline mSeattlePortland2;
@@ -254,24 +256,29 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
     }
 
     private void updateRoutes(){
-        for(Player player : Phase2Facade.SINGLETON.getCurrentGame().getPlayersList()){
-            for(Route route : player.getClaimedRoutes()){
-                if(player.getColor() == "red"){
-                    mRouteMap.get(route).setColor(Color.rgb(255,0,0));
-                }
-                if(player.getColor() == "blue"){
-                    mRouteMap.get(route).setColor(Color.rgb(0,255,255));
-                }
-                if(player.getColor() == "green"){
-                    mRouteMap.get(route).setColor(Color.rgb(0,255,0));
-                }
-                if(player.getColor() == "yellow"){
-                    mRouteMap.get(route).setColor(Color.rgb(255,255,0));
-                }
-                if(player.getColor() == "black"){
-                    mRouteMap.get(route).setColor(Color.rgb(0,0,0));
+        if (lastAvailableRoutes == Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes()){
+            return;
+        }else{
+            for(Player player : Phase2Facade.SINGLETON.getCurrentGame().getPlayersList()){
+                for(Route route : player.getClaimedRoutes()){
+                    if(player.getColor() == "red"){
+                        mRouteMap.get(route).setColor(Color.rgb(255,0,0));
+                    }
+                    if(player.getColor() == "blue"){
+                        mRouteMap.get(route).setColor(Color.rgb(0,255,255));
+                    }
+                    if(player.getColor() == "green"){
+                        mRouteMap.get(route).setColor(Color.rgb(0,255,0));
+                    }
+                    if(player.getColor() == "yellow"){
+                        mRouteMap.get(route).setColor(Color.rgb(255,255,0));
+                    }
+                    if(player.getColor() == "black"){
+                        mRouteMap.get(route).setColor(Color.rgb(0,0,0));
+                    }
                 }
             }
+            lastAvailableRoutes = Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes();
         }
     }
 
