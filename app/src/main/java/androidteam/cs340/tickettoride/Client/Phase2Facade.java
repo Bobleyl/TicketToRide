@@ -194,4 +194,8 @@ public class Phase2Facade {
         return currentPlayer.getTempDestinationCard();
     }
 
+    public String getPlayerTurn(){
+        return currentGame.getPlayerTurn();
+    }
+
 }

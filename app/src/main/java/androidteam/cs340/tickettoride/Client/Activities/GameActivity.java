@@ -1,5 +1,6 @@
 package androidteam.cs340.tickettoride.Client.Activities;
 
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Message;
 import android.support.v4.app.Fragment;
@@ -46,24 +47,30 @@ public class GameActivity extends AppCompatActivity implements
 
     GameActivityPresenter mGameActivityPresenter;
 
-    public void upDatePlayerTextViews(final List<Player> players) {
+    public void upDatePlayerTextViews(final List<Player> players, final String turnPlayer) {
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                updateUI(players);
+                updateUI(players, turnPlayer);
             }
         });
     }
 
     //TODO: ADD TRAIN CAR COUNT FOR EACH PLAYER TO LIST
     //TODO: ADD HEADER THAT SAYS WHAT EACH NUMBER MEANS
-    private void updateUI(List<Player> players) {
+    private void updateUI(List<Player> players, String turnPlayer) {
         StringBuilder playerText = new StringBuilder();
         if(players.size() >= 1 && players.get(0) != null) {
             Player currentPlayer = players.get(0);
             playerText.append(currentPlayer.getName() + "\n" + currentPlayer.getScore() + "/" +
                     currentPlayer.getTrainCardsHand().size() + "/" + currentPlayer.getDestinationHand().size());
             mPlayer1TextView.setText(playerText.toString());
+            if(currentPlayer.getUID().equals(turnPlayer)) {
+                mPlayer1TextView.setBackgroundColor(Color.parseColor("#d3d3d3"));
+            }
+            else{
+                mPlayer1TextView.setBackgroundColor(Color.parseColor("#ffffff"));
+            }
         }
         if(players.size() >= 2 && players.get(1) != null) {
             playerText = new StringBuilder();
@@ -71,6 +78,12 @@ public class GameActivity extends AppCompatActivity implements
             playerText.append(currentPlayer.getName() + "\n" + currentPlayer.getScore() + "/" +
                     currentPlayer.getTrainCardsHand().size() + "/" + currentPlayer.getDestinationHand().size());
             mPlayer2TextView.setText(playerText.toString());
+            if(currentPlayer.getUID().equals(turnPlayer)) {
+                mPlayer2TextView.setBackgroundColor(Color.parseColor("#d3d3d3"));
+            }
+            else{
+                mPlayer2TextView.setBackgroundColor(Color.parseColor("#ffffff"));
+            }
         }
         if(players.size() >= 3 && players.get(2) != null) {
             playerText = new StringBuilder();
@@ -78,6 +91,15 @@ public class GameActivity extends AppCompatActivity implements
             playerText.append(currentPlayer.getName() + "\n" + currentPlayer.getScore() + "/" +
                     currentPlayer.getTrainCardsHand().size() + "/" + currentPlayer.getDestinationHand().size());
             mPlayer3TextView.setText(playerText.toString());
+            if(currentPlayer.getUID().equals(turnPlayer)) {
+                mPlayer3TextView.setBackgroundColor(Color.parseColor("#d3d3d3"));
+            }
+            else{
+                mPlayer3TextView.setBackgroundColor(Color.parseColor("#ffffff"));
+            }
+        }
+        else{
+            mPlayer3TextView.setText("");
         }
         if(players.size() >= 4 && players.get(3) != null) {
             playerText = new StringBuilder();
@@ -85,6 +107,15 @@ public class GameActivity extends AppCompatActivity implements
             playerText.append(currentPlayer.getName() + "\n" + currentPlayer.getScore() + "/" +
                     currentPlayer.getTrainCardsHand().size() + "/" + currentPlayer.getDestinationHand().size());
             mPlayer4TextView.setText(playerText.toString());
+            if(currentPlayer.getUID().equals(turnPlayer)) {
+                mPlayer4TextView.setBackgroundColor(Color.parseColor("#d3d3d3"));
+            }
+            else{
+                mPlayer4TextView.setBackgroundColor(Color.parseColor("#ffffff"));
+            }
+        }
+        else{
+            mPlayer4TextView.setText("");
         }
         if(players.size() >= 5 && players.get(4) != null) {
             playerText = new StringBuilder();
@@ -92,6 +123,15 @@ public class GameActivity extends AppCompatActivity implements
             playerText.append(currentPlayer.getName() + "\n" + currentPlayer.getScore() + "/" +
                     currentPlayer.getTrainCardsHand().size() + "/" + currentPlayer.getDestinationHand().size());
             mPlayer5TextView.setText(playerText.toString());
+            if(currentPlayer.getUID().equals(turnPlayer)) {
+                mPlayer5TextView.setBackgroundColor(Color.parseColor("#d3d3d3"));
+            }
+            else{
+                mPlayer5TextView.setBackgroundColor(Color.parseColor("#ffffff"));
+            }
+        }
+        else{
+            mPlayer5TextView.setText("");
         }
 
     }
