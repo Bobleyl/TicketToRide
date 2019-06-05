@@ -2,6 +2,7 @@ package server;
 
 import Shared.*;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.HashMap;
 import java.util.List;

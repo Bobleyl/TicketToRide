@@ -27,10 +27,10 @@ public class EndTurnCommand implements CommandInterface {
 
                     Player player = players.get(i);
 
-                    if (player.getUID() == game.getPlayerTurn() && i < (players.size() - 1)) {
+                    if (player.getUID().equals(game.getPlayerTurn()) && i < (players.size() - 1)) {
 
                         game.setPlayerTurn(players.get(i + 1).getUID());
-                    } else if (player.getUID() == game.getPlayerTurn() && i == players.size()) {
+                    } else if (player.getUID().equals(game.getPlayerTurn()) && i == players.size()) {
 
                         game.setPlayerTurn(players.get(0).getUID());
                     }
