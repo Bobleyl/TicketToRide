@@ -103,6 +103,43 @@ public class TrainCardDeck {
             upDeck[position] = nextCard;
         }
 
+        //Check to see if there are 3 locomotives
+        //If there are.. add the face up cards to the discard
+        //Take the top 5 cards from the deck and replace the faceup cards
+        if (downDeck.size() > 0 || discard.size() > 0) {
+
+            boolean foundThreeLoco = false;
+
+            while (!foundThreeLoco) {
+
+                int locomotiveCount = 0;
+
+                for (TrainCard trainCard : upDeck) {
+                    if (trainCard.color.equals("locomotive")) {
+                        locomotiveCount++;
+                    }
+                }
+
+                if (locomotiveCount >= 3) {
+
+                    discard.addAll(Arrays.asList(upDeck));
+                    upDeck = new TrainCard[5];
+
+                    for (int i = 0; i < 5; i++) {
+                        if (downDeck.size() > 0) {
+                            upDeck[i] = downDeck.get(0);
+                            downDeck.remove(0);
+                        } else {
+                            refreshDownDeck();
+                        }
+                    }
+
+                } else {
+                    foundThreeLoco = true;
+                }
+            }
+        }
+
         return card;
     }
 
