@@ -11,6 +11,8 @@ import androidteam.cs340.tickettoride.Client.Poller.ParseResults;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.Client.Poller.Game.GamePoller;
 import androidteam.cs340.tickettoride.Client.Poller.Game.GamePollerCommand;
+import androidteam.cs340.tickettoride.Client.State.DoAnything;
+import androidteam.cs340.tickettoride.Client.State.TurnState;
 import androidteam.cs340.tickettoride.Shared.Game;
 import androidteam.cs340.tickettoride.Shared.GameModel;
 import androidteam.cs340.tickettoride.Shared.Player;
@@ -34,6 +36,7 @@ public class Phase2Facade {
     public static Phase2Facade SINGLETON = new Phase2Facade();
 
     // TODO: GET RID OF DECKS, CALL ON GAMEMODEL TO GET INFORMATION.
+    private String lastPlayerPolled = "";
     private Player currentPlayer;
     private GameModel currentGame = new GameModel();
     private List<Player> turnOrder;
@@ -61,8 +64,14 @@ public class Phase2Facade {
     public void updateCurrentGame(Result result) {
         GameModel gamesModel = new GameModel();
         gamesModel = ParseResults.SINGLETON.parseGameResult(result);
+
         if (gamesModel != null) {
             currentGame = gamesModel;
+
+            if (!currentGame.getPlayerTurn().equals(lastPlayerPolled)) {
+                lastPlayerPolled = currentGame.getPlayerTurn();
+                TurnState.SINGLETON.setState(DoAnything.SINGLETON);
+            }
 
             System.out.println("DATA::: ");
             System.out.println(currentGame);
@@ -192,6 +201,10 @@ public class Phase2Facade {
 
     public List<DestinationCard> getTempDestinationCards(){
         return currentPlayer.getTempDestinationCard();
+    }
+
+    public String getPlayerTurn(){
+        return currentGame.getPlayerTurn();
     }
 
 }

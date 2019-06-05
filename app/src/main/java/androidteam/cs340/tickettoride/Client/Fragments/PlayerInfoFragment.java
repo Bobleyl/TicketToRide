@@ -103,17 +103,17 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         //mDestinationCards = view.findViewById(R.id.destinationCards);
         mWhoseTurn = view.findViewById(R.id.whoseTurn);
         mDownDeck = view.findViewById(R.id.downDeck);
-        mDownDeck.setEnabled(isMyTurn());
+        //mDownDeck.setEnabled(isMyTurn());
         mUpDeck1 = view.findViewById(R.id.upDeck1);
-        mUpDeck1.setEnabled(isMyTurn());
+        //mUpDeck1.setEnabled(isMyTurn());
         mUpDeck2 = view.findViewById(R.id.upDeck2);
-        mUpDeck2.setEnabled(isMyTurn());
+        //mUpDeck2.setEnabled(isMyTurn());
         mUpDeck3 = view.findViewById(R.id.upDeck3);
-        mUpDeck3.setEnabled(isMyTurn());
+        //mUpDeck3.setEnabled(isMyTurn());
         mUpDeck4 = view.findViewById(R.id.upDeck4);
-        mUpDeck4.setEnabled(isMyTurn());
+        //mUpDeck4.setEnabled(isMyTurn());
         mUpDeck5 = view.findViewById(R.id.upDeck5);
-        mUpDeck5.setEnabled(isMyTurn());
+        //mUpDeck5.setEnabled(isMyTurn());
         mOrangeCount = view.findViewById(R.id.orangeCount);
         mRedCount = view.findViewById(R.id.redCount);
         mWildCount = view.findViewById(R.id.wildCount);
@@ -203,7 +203,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
     public boolean isMyTurn(){
         System.out.println("PLAYER UID: " + Phase2Facade.SINGLETON.getCurrentPlayer().getUID());
         System.out.println("TURN UID: " + Phase2Facade.SINGLETON.getCurrentGame().getPlayerTurn());
-        if(Phase2Facade.SINGLETON.getCurrentPlayer().getUID() == Phase2Facade.SINGLETON.getCurrentGame().getPlayerTurn()){
+        if(Phase2Facade.SINGLETON.getCurrentPlayer().getUID().equals(Phase2Facade.SINGLETON.getCurrentGame().getPlayerTurn())){
             return true;
         }else{
             return false;
