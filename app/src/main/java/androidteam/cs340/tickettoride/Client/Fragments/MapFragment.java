@@ -32,6 +32,7 @@ import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.Route;
+import androidteam.cs340.tickettoride.Shared.Player;
 import java.util.Map;
 import java.util.HashMap;
 /**
@@ -253,7 +254,25 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
     }
 
     private void updateRoutes(){
-        //TODO: Make this method update the routes shown on the map to show who owns them.
+        for(Player player : Phase2Facade.SINGLETON.getCurrentGame().getPlayersList()){
+            for(Route route : player.getClaimedRoutes()){
+                if(player.getColor() == "red"){
+                    mRouteMap.get(route).setColor(Color.rgb(255,0,0));
+                }
+                if(player.getColor() == "blue"){
+                    mRouteMap.get(route).setColor(Color.rgb(0,255,255));
+                }
+                if(player.getColor() == "green"){
+                    mRouteMap.get(route).setColor(Color.rgb(0,255,0));
+                }
+                if(player.getColor() == "yellow"){
+                    mRouteMap.get(route).setColor(Color.rgb(255,255,0));
+                }
+                if(player.getColor() == "black"){
+                    mRouteMap.get(route).setColor(Color.rgb(0,0,0));
+                }
+            }
+        }
     }
 
     /*--------
@@ -282,7 +301,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
             @Override
             public void run() {
                 updateSpinner();
-                updateRoutes();
+                //updateRoutes();
             }
         });
     }
