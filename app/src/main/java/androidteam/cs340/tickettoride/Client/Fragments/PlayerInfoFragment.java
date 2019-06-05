@@ -171,7 +171,6 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                 }else{
                     Toast.makeText(getActivity(), "Not Allowed..." , Toast.LENGTH_SHORT).show();
                 }
-                chooseDestinationCard();
             }
         });
 

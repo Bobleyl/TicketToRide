@@ -1203,6 +1203,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("green"))
         );
         mRouteMap.put(Route.NewOrleans_LittleRock,mLittleRockNewOrleans);
+        LatLng LittleOrleans = new LatLng(32.176339, -92.144558);
+        GroundOverlayOptions Newlittle = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.threewhite))
+                .position(LittleOrleans, 135000f, 135000f);
+        googleMap.addGroundOverlay(Newlittle);
 
         mDallasLittleRock = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(32.7767, -96.7970), new LatLng(34.7465, -92.2896))
@@ -1210,6 +1215,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.LittleRock_Dallas,mDallasLittleRock);
+        LatLng DallasLittle = new LatLng(33.181023, -94.027375);
+        GroundOverlayOptions DalLit = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(DallasLittle, 135000f, 135000f);
+        googleMap.addGroundOverlay(DalLit);
 
         mOklahomaCityLittleRock = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(35.4676, -97.5164), new LatLng(34.7465, -92.2896))
@@ -1217,6 +1227,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.LittleRock_OklahomaCity,mOklahomaCityLittleRock);
+        LatLng LittleOKC = new LatLng(35.506658, -94.468180);
+        GroundOverlayOptions LitOKC = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(LittleOKC, 135000f, 135000f);
+        googleMap.addGroundOverlay(LitOKC);
 
         mSaintLouislittleRock = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(38.6270, -90.1994), new LatLng(34.7465, -92.2896))
@@ -1224,6 +1239,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.SaintLouis_LittleRock,mSaintLouislittleRock);
+        LatLng SaintLittle = new LatLng(36.978352, -92.023332);
+        GroundOverlayOptions SaLit = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(SaintLittle, 135000f, 135000f);
+        googleMap.addGroundOverlay(SaLit);
 
         mKansasCitySaintLouis = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(39.0997, -94.5786), new LatLng(38.6270, -90.1994))
@@ -1231,6 +1251,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("blue"))
         );
         mRouteMap.put(Route.SaintLouis_KansasCity,mKansasCitySaintLouis);
+        LatLng KCStLouis = new LatLng(38.383449, -92.396790);
+        GroundOverlayOptions KCSTL = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(KCStLouis, 135000f, 135000f);
+        googleMap.addGroundOverlay(KCSTL);
 
         mKansasCitySaintLouis2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(39.287678, -94.561266), new LatLng(38.827004, -90.190619))
@@ -1238,6 +1263,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.rgb(255,0,255))//pink
         );
         mRouteMap.put(Route.SaintLouis_KansasCity_2,mKansasCitySaintLouis2);
+        LatLng KCStLouis2 = new LatLng(39.881549, -92.288711);
+        GroundOverlayOptions KCSTL2 = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(KCStLouis2, 135000f, 135000f);
+        googleMap.addGroundOverlay(KCSTL2);
 
         mSaintLouisChicago = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(38.6270, -90.1994), new LatLng(41.8781, -87.6298))
@@ -1245,6 +1275,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("green"))
         );
         mRouteMap.put(Route.Chicago_SaintLouis,mSaintLouisChicago);
+        LatLng STLChicago = new LatLng(40.512755, -89.463971);
+        GroundOverlayOptions STLchic = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(STLChicago, 135000f, 135000f);
+        googleMap.addGroundOverlay(STLchic);
 
         mSaintLouisChicago2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(38.827004, -90.190619), new LatLng(41.900680, -87.984877))
@@ -1252,6 +1287,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("white"))
         );
         mRouteMap.put(Route.Chicago_SaintLouis_2,mSaintLouisChicago2);
+        LatLng STLChicago2 = new LatLng(40.177824, -88.365818);
+        GroundOverlayOptions STLchic2 = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(STLChicago2, 135000f, 135000f);
+        googleMap.addGroundOverlay(STLchic2);
 
         mOmahaChicago = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(41.2565, -95.9345), new LatLng(41.8781, -87.6298))
@@ -1259,6 +1299,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("blue"))
         );
         mRouteMap.put(Route.Chicago_Omaha,mOmahaChicago);
+        LatLng OmahaChicago = new LatLng(42.196923, -91.736908);
+        GroundOverlayOptions OmaChic = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.fourwhite))
+                .position(OmahaChicago, 135000f, 135000f);
+        googleMap.addGroundOverlay(OmaChic);
 
         mDuluthChicago = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(46.7867, -92.1005), new LatLng(41.8781, -87.6298))
@@ -1266,6 +1311,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("red"))
         );
         mRouteMap.put(Route.Duluth_Chicago,mDuluthChicago);
+        LatLng DuluthChicago = new LatLng(44.467172, -88.713042);
+        GroundOverlayOptions Dulchic = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.threewhite))
+                .position(DuluthChicago, 135000f, 135000f);
+        googleMap.addGroundOverlay(Dulchic);
 
         mChicagoToronto = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(41.8781, -87.6298), new LatLng(43.6532, -79.3832))
@@ -1273,6 +1323,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("white"))
         );
         mRouteMap.put(Route.Chicago_Toronto,mChicagoToronto);
+        LatLng ChicagoToronto = new LatLng(43.147090, -84.387007);
+        GroundOverlayOptions ChicTor = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.fourwhite))
+                .position(ChicagoToronto, 135000f, 135000f);
+        googleMap.addGroundOverlay(ChicTor);
 
         mDuluthToronto = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(46.7867, -92.1005), new LatLng(43.6532, -79.3832))
@@ -1280,6 +1335,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.rgb(255,0,255))//pink
         );
         mRouteMap.put(Route.Duluth_Toronto,mDuluthToronto);
+        LatLng DuluthToronto = new LatLng(44.795175, -86.674253);
+        GroundOverlayOptions DulTor = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.sixwhite))
+                .position(DuluthToronto, 135000f, 135000f);
+        googleMap.addGroundOverlay(DulTor);
 
         mDuluthStMarie = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(46.7867, -92.1005), new LatLng(46.5136, -84.3358))
@@ -1287,6 +1347,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.SaultSteMarie_Duluth,mDuluthStMarie);
+        LatLng SaultDuluth = new LatLng(47.053107, -90.303475);
+        GroundOverlayOptions DulSal = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.threewhite))
+                .position(SaultDuluth, 135000f, 135000f);
+        googleMap.addGroundOverlay(DulSal);
 
         mWinnipegStMarie = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(49.8951, -97.1384), new LatLng(46.5136, -84.3358))
@@ -1294,6 +1359,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.Winnipeg_SaultSteMarie,mWinnipegStMarie);
+        LatLng WinnipegSault = new LatLng(48.686654, -89.581183);
+        GroundOverlayOptions WinniSal = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.sixwhite))
+                .position(WinnipegSault, 135000f, 135000f);
+        googleMap.addGroundOverlay(WinniSal);
 
         mStMarieToronto = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(46.5136, -84.3358), new LatLng(43.6532, -79.3832))
@@ -1301,6 +1371,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.SaultSteMarie_Toronto,mStMarieToronto);
+        LatLng SaultToronto = new LatLng(45.019731, -80.431024);
+        GroundOverlayOptions SalTor = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(SaultToronto, 135000f, 135000f);
+        googleMap.addGroundOverlay(SalTor);
 
         mStMarieMontreal = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(46.5136, -84.3358), new LatLng(45.5017, -73.5673))
@@ -1308,6 +1383,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("black"))
         );
         mRouteMap.put(Route.SaultSteMarie_Montreal,mStMarieMontreal);
+        LatLng SaultMontreal = new LatLng(46.458733, -78.230000);
+        GroundOverlayOptions Salmon = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.fivewhite))
+                .position(SaultMontreal, 135000f, 135000f);
+        googleMap.addGroundOverlay(Salmon);
 
         mMontrealBoston = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(45.5017, -73.5673), new LatLng(42.3601, -71.0589))
@@ -1315,6 +1395,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.Montreal_Boston,mMontrealBoston);
+        LatLng MontrealBoston = new LatLng(44.065633, -71.751433);
+        GroundOverlayOptions BosMon = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(MontrealBoston, 135000f, 135000f);
+        googleMap.addGroundOverlay(BosMon);
 
         mMontrealBoston2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(45.568120, -73.520557), new LatLng(42.439247, -70.906324))
@@ -1322,6 +1407,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.Montreal_Boston_2,mMontrealBoston2);
+        LatLng MontrealBoston2 = new LatLng(43.828335, -72.783697);
+        GroundOverlayOptions BosMon2 = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(MontrealBoston2, 135000f, 135000f);
+        googleMap.addGroundOverlay(BosMon2);
 
         mMontrealNewYork = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(45.5017, -73.5673), new LatLng(40.7128, -74.0060))
@@ -1329,6 +1419,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("blue"))
         );
         mRouteMap.put(Route.Montreal_NewYork,mMontrealNewYork);
+        LatLng MontrealNew = new LatLng(43.173386, -74.409649);
+        GroundOverlayOptions Newmon = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.threewhite))
+                .position(MontrealNew, 135000f, 135000f);
+        googleMap.addGroundOverlay(Newmon);
 
         mTorontoMontreal = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(43.6532, -79.3832), new LatLng(45.5017, -73.5673))
@@ -1336,6 +1431,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.Montreal_Toronto,mTorontoMontreal);
+        LatLng TorontoMontreal = new LatLng(44.005163, -76.029810);
+        GroundOverlayOptions Tormon = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.threewhite))
+                .position(TorontoMontreal, 135000f, 135000f);
+        googleMap.addGroundOverlay(Tormon);
 
         mTorontoPittsburg = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(43.6532, -79.3832), new LatLng(40.4406, -79.9959))
@@ -1343,6 +1443,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.Pittsburgh_Toronto,mTorontoPittsburg);
+        LatLng TorontoPitt = new LatLng(41.779761, -78.868191);
+        GroundOverlayOptions pittor = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(TorontoPitt, 135000f, 135000f);
+        googleMap.addGroundOverlay(pittor);
 
         mChicagoPittsburg = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(41.8781, -87.6298), new LatLng(40.4406, -79.9959))
@@ -1350,6 +1455,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("black"))
         );
         mRouteMap.put(Route.Pittsburgh_Chicago,mChicagoPittsburg);
+        LatLng ChicagoPitt = new LatLng(41.800495, -83.529934);
+        GroundOverlayOptions ChicPitt = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.threewhite))
+                .position(ChicagoPitt, 135000f, 135000f);
+        googleMap.addGroundOverlay(ChicPitt);
 
         mChicagoPittsburg2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(42.014866, -87.551682), new LatLng(40.519704, -79.981175))
@@ -1357,6 +1467,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.rgb(255,165,0))//orange
         );
         mRouteMap.put(Route.Pittsburgh_Chicago_2,mChicagoPittsburg2);
+        LatLng ChicagoPitt2 = new LatLng(40.599095, -83.771527);
+        GroundOverlayOptions ChicPitt2 = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.threewhite))
+                .position(ChicagoPitt2, 135000f, 135000f);
+        googleMap.addGroundOverlay(ChicPitt2);
 
         mSaintLouisPittsburg = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(38.6270, -90.1994), new LatLng(40.4406, -79.9959))
@@ -1364,6 +1479,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("green"))
         );
         mRouteMap.put(Route.Pittsburgh_SaintLouis,mSaintLouisPittsburg);
+        LatLng SaintPittsburg = new LatLng(39.955083, -84.584687);
+        GroundOverlayOptions StlPitts = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.fivewhite))
+                .position(SaintPittsburg, 135000f, 135000f);
+        googleMap.addGroundOverlay(StlPitts);
 
         mBostonNewYork = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(42.3601, -71.0589), new LatLng(40.7128, -74.0060))
