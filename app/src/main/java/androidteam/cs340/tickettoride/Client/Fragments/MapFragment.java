@@ -1491,6 +1491,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("red"))
         );
         mRouteMap.put(Route.Boston_NewYork,mBostonNewYork);
+        LatLng BostonNew = new LatLng(41.712392, -73.092864);
+        GroundOverlayOptions BosNew = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(BostonNew, 135000f, 135000f);
+        googleMap.addGroundOverlay(BosNew);
 
         mBostonNewYork2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(42.439247, -70.906324), new LatLng(40.525022, -73.717557))
@@ -1498,6 +1503,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.rgb(234, 222, 45))
         );
         mRouteMap.put(Route.Boston_NewYork_2,mBostonNewYork2);
+        LatLng BostonNew2 = new LatLng(41.102639, -72.060601);
+        GroundOverlayOptions BosNew2 = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(BostonNew2, 135000f, 135000f);
+        googleMap.addGroundOverlay(BosNew2);
 
         mNewYorkPittsburg = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(40.7128, -74.0060), new LatLng(40.4406, -79.9959))
@@ -1505,6 +1515,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("white"))
         );
         mRouteMap.put(Route.NewYork_Pittsburgh,mNewYorkPittsburg);
+        LatLng NewPittsburg = new LatLng(40.853942, -77.144875);
+        GroundOverlayOptions NewPitt = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(NewPittsburg, 135000f, 135000f);
+        googleMap.addGroundOverlay(NewPitt);
 
         mNewYorkPittsburg2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(40.493568, -73.993039), new LatLng(40.259224, -79.923062))
@@ -1512,6 +1527,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("green"))
         );
         mRouteMap.put(Route.NewYork_Pittsburgh_2,mNewYorkPittsburg2);
+        LatLng NewPittsburg2 = new LatLng(39.883001, -77.035060);
+        GroundOverlayOptions NewPitt2 = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(NewPittsburg2, 135000f, 135000f);
+        googleMap.addGroundOverlay(NewPitt2);
 
         mPittsburgWashington = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(40.4406, -79.9959), new LatLng(38.9072, -77.0369))
@@ -1519,6 +1539,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.Washington_Pittsburgh,mPittsburgWashington);
+        LatLng WashingtonPitt = new LatLng(39.299967, -78.835344);
+        GroundOverlayOptions pittWash = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(WashingtonPitt, 135000f, 135000f);
+        googleMap.addGroundOverlay(pittWash);
 
         mNewYorkWashington = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(40.7128, -74.0060), new LatLng(38.9072, -77.0369))
@@ -1526,6 +1551,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("black"))
         );
         mRouteMap.put(Route.NewYork_Washington,mNewYorkWashington);
+        LatLng NewWashington = new LatLng(39.353414, -75.048005);
+        GroundOverlayOptions newwash = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(NewWashington, 135000f, 135000f);
+        googleMap.addGroundOverlay(newwash);
 
         mNewYorkWashington2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(40.597531, -73.744582), new LatLng(38.720073, -76.775483))
@@ -1540,6 +1570,12 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.Washington_Raleigh,mWashingtonRaleigh);
+        LatLng WashingtonRaleigh = new LatLng(37.298295, -76.935712);
+        GroundOverlayOptions WashRal = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(WashingtonRaleigh, 135000f, 135000f);
+        googleMap.addGroundOverlay(WashRal);
+
 
         mWashingtonRaleigh2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(38.720073, -76.775483), new LatLng(35.677448, -78.409070))
@@ -1547,6 +1583,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.Washington_Raleigh_2,mWashingtonRaleigh2);
+        LatLng WashingtonRaleigh2 = new LatLng(37.612260, -78.121716);
+        GroundOverlayOptions WashRal2 = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(WashingtonRaleigh2, 135000f, 135000f);
+        googleMap.addGroundOverlay(WashRal2);
 
         mPittsburgRaleigh = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(40.4406, -79.9959), new LatLng(35.7796, -78.6382))
@@ -1554,6 +1595,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.Pittsburgh_Raleigh,mPittsburgRaleigh);
+        LatLng PittRaleigh = new LatLng(37.967681, -80.357915);
+        GroundOverlayOptions PittRal = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(PittRaleigh, 135000f, 135000f);
+        googleMap.addGroundOverlay(PittRal);
 
         mNashvilleRaleigh = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(36.1627, -86.7816), new LatLng(35.7796, -78.6382))
@@ -1561,6 +1607,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("black"))
         );
         mRouteMap.put(Route.Raleigh_Nashville,mNashvilleRaleigh);
+        LatLng NashRaleigh = new LatLng(36.406087, -82.729925);
+        GroundOverlayOptions Nral = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.threewhite))
+                .position(NashRaleigh, 135000f, 135000f);
+        googleMap.addGroundOverlay(Nral);
 
         mSaintLouisNashville = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(38.6270, -90.1994), new LatLng(36.1627, -86.7816))
@@ -1568,6 +1619,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.SaintLouis_Nashville,mSaintLouisNashville);
+        LatLng STLNash = new LatLng(37.815751, -87.790777);
+        GroundOverlayOptions Snash = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(STLNash, 135000f, 135000f);
+        googleMap.addGroundOverlay(Snash);
 
         mPittsburgNashville = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(40.4406, -79.9959), new LatLng(36.1627, -86.7816))
@@ -1575,6 +1631,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.rgb(234, 222, 45))
         );
         mRouteMap.put(Route.Pittsburgh_Nashville,mPittsburgNashville);
+        LatLng PittNash = new LatLng(38.131789, -82.288690);
+        GroundOverlayOptions Pnash = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.fourwhite))
+                .position(PittNash, 135000f, 135000f);
+        googleMap.addGroundOverlay(Pnash);
 
         mLittleRockNashville = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(34.7465, -92.2896), new LatLng(36.1627, -86.7816))
@@ -1582,6 +1643,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("white"))
         );
         mRouteMap.put(Route.Nashville_LittleRock,mLittleRockNashville);
+        LatLng LittleNashville = new LatLng(34.952649, -89.102898);
+        GroundOverlayOptions LilNash = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.threewhite))
+                .position(LittleNashville, 135000f, 135000f);
+        googleMap.addGroundOverlay(LilNash);
 
         mNashvilleAtlanta = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(36.1627, -86.7816), new LatLng(33.7490, -84.3880))
@@ -1589,6 +1655,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.Nashville_Atlanta,mNashvilleAtlanta);
+        LatLng NashAtlanta = new LatLng(34.789629, -86.242297);
+        GroundOverlayOptions NashAtl = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.onewhite))
+                .position(NashAtlanta, 135000f, 135000f);
+        googleMap.addGroundOverlay(NashAtl);
 
         mRaleighAtlanta = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(35.7796, -78.6382), new LatLng(33.7490, -84.3880))
@@ -1596,6 +1667,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.Raleigh_Atlanta,mRaleighAtlanta);
+        LatLng RaleighAtl = new LatLng(34.775389, -83.131351);
+        GroundOverlayOptions RalAtl = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(RaleighAtl, 135000f, 135000f);
+        googleMap.addGroundOverlay(RalAtl);
 
         mRaleighAtlanta2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(35.677448, -78.409070), new LatLng(33.577872, -84.164505))
@@ -1603,6 +1679,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.Raleigh_Atlanta_2,mRaleighAtlanta2);
+        LatLng RaleighAtl2 = new LatLng(34.304804, -81.176639);
+        GroundOverlayOptions RalAtl2 = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(RaleighAtl2, 135000f, 135000f);
+        googleMap.addGroundOverlay(RalAtl2);
 
         mNewOrleansAtlanta = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(29.9511, -90.0715), new LatLng(33.7490, -84.3880))
@@ -1610,6 +1691,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.rgb(234, 222, 45))
         );
         mRouteMap.put(Route.NewOrleans_Atlanta,mNewOrleansAtlanta);
+        LatLng NewAtlanta = new LatLng(32.318908, -87.585217);
+        GroundOverlayOptions NewAtl = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.fourwhite))
+                .position(NewAtlanta, 135000f, 135000f);
+        googleMap.addGroundOverlay(NewAtl);
 
         mNewOrleansAtlanta2 = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(29.792165, -89.925687), new LatLng(33.577872, -84.164505))
@@ -1617,6 +1703,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.rgb(255,165,0))//orange
         );
         mRouteMap.put(Route.NewOrleans_Atlanta_2,mNewOrleansAtlanta2);
+        LatLng NewAtlanta2 = new LatLng(31.591843, -86.443138);
+        GroundOverlayOptions NewAtl2 = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.fourwhite))
+                .position(NewAtlanta2, 135000f, 135000f);
+        googleMap.addGroundOverlay(NewAtl2);
 
         mRaleighCharleston = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(35.7796, -78.6382), new LatLng(32.7765, -79.9311))
@@ -1624,6 +1715,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.Raleigh_Charleston,mRaleighCharleston);
+        LatLng RaleighCharles = new LatLng(33.990982, -78.189407);
+        GroundOverlayOptions RalChar = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(RaleighCharles, 135000f, 135000f);
+        googleMap.addGroundOverlay(RalChar);
 
         mAtlantaCharleston = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(33.7490, -84.3880), new LatLng(32.7765, -79.9311))
@@ -1631,6 +1727,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("gray"))
         );
         mRouteMap.put(Route.Charleston_Atlanta,mAtlantaCharleston);
+        LatLng AtlantaCharleston = new LatLng(32.811516, -82.367019);
+        GroundOverlayOptions AtlChar = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.twowhite))
+                .position(AtlantaCharleston, 135000f, 135000f);
+        googleMap.addGroundOverlay(AtlChar);
 
         mCharlestonMiami = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(32.7765, -79.9311), new LatLng(25.7617, -80.1918))
@@ -1638,6 +1739,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.rgb(255,0,255))//pink
         );
         mRouteMap.put(Route.Charleston_Miami,mCharlestonMiami);
+        LatLng CharlestonMiami = new LatLng(29.942589, -79.637424);
+        GroundOverlayOptions MiamiChar = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.fourwhite))
+                .position(CharlestonMiami, 135000f, 135000f);
+        googleMap.addGroundOverlay(MiamiChar);
 
         mAtlantaMiami = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(33.7490, -84.3880), new LatLng(25.7617, -80.1918))
@@ -1645,6 +1751,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("blue"))
         );
         mRouteMap.put(Route.Miami_Atlanta,mAtlantaMiami);
+        LatLng AtlantaMiami = new LatLng(30.018571, -83.770804);
+        GroundOverlayOptions AtlMiami = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.fivewhite))
+                .position(AtlantaMiami, 135000f, 135000f);
+        googleMap.addGroundOverlay(AtlMiami);
 
         mNewOrleansMiami = googleMap.addPolyline(new PolylineOptions()
                 .add(new LatLng(29.9511, -90.0715), new LatLng(25.7617, -80.1918))
@@ -1652,8 +1763,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .color(Color.parseColor("red"))
         );
         mRouteMap.put(Route.Miami_NewOrleans,mNewOrleansMiami);
-//        System.out.println("MAP OF VALUES: ");
-//        System.out.println(mRouteMap);
+        LatLng NewMiami = new LatLng(28.458580, -85.204071);
+        GroundOverlayOptions NewMi = new GroundOverlayOptions()
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.sixwhite))
+                .position(NewMiami, 135000f, 135000f);
+        googleMap.addGroundOverlay(NewMi);
     }
 
     public static MapFragment newInstance(String param1, String param2) {
