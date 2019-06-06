@@ -38,6 +38,10 @@ public class TurnState {
         return state instanceof DoAnything;
     }
 
+    public boolean isDownNotWildState() {
+        return state instanceof DownNotWild;
+    }
+
     public boolean isEndState() {
         return state instanceof EndTurn;
     }
