@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.VideoView;
+import android.graphics.Color;
 
 import java.util.ArrayList;
 import java.util.Collections;
