@@ -63,7 +63,7 @@ public class GameActivity extends AppCompatActivity implements
         if(players.size() >= 1 && players.get(0) != null) {
             Player currentPlayer = players.get(0);
             playerText.append(currentPlayer.getName() + "\n" + currentPlayer.getScore() + "/" +
-                    currentPlayer.getTrainCardsHand().size() + "/" + currentPlayer.getDestinationHand().size());
+                    currentPlayer.getTrainCardsHand().size() + "/" + currentPlayer.getDestinationHand().size() + "/" + currentPlayer.getTrainCars());
             mPlayer1TextView.setText(playerText.toString());
             if(currentPlayer.getUID().equals(turnPlayer)) {
                 mPlayer1TextView.setBackgroundColor(Color.parseColor("#d3d3d3"));
@@ -76,7 +76,7 @@ public class GameActivity extends AppCompatActivity implements
             playerText = new StringBuilder();
             Player currentPlayer = players.get(1);
             playerText.append(currentPlayer.getName() + "\n" + currentPlayer.getScore() + "/" +
-                    currentPlayer.getTrainCardsHand().size() + "/" + currentPlayer.getDestinationHand().size());
+                    currentPlayer.getTrainCardsHand().size() + "/" + currentPlayer.getDestinationHand().size() + "/" + currentPlayer.getTrainCars());
             mPlayer2TextView.setText(playerText.toString());
             if(currentPlayer.getUID().equals(turnPlayer)) {
                 mPlayer2TextView.setBackgroundColor(Color.parseColor("#d3d3d3"));
@@ -89,7 +89,7 @@ public class GameActivity extends AppCompatActivity implements
             playerText = new StringBuilder();
             Player currentPlayer = players.get(2);
             playerText.append(currentPlayer.getName() + "\n" + currentPlayer.getScore() + "/" +
-                    currentPlayer.getTrainCardsHand().size() + "/" + currentPlayer.getDestinationHand().size());
+                    currentPlayer.getTrainCardsHand().size() + "/" + currentPlayer.getDestinationHand().size() + "/" + currentPlayer.getTrainCars());
             mPlayer3TextView.setText(playerText.toString());
             if(currentPlayer.getUID().equals(turnPlayer)) {
                 mPlayer3TextView.setBackgroundColor(Color.parseColor("#d3d3d3"));
@@ -105,7 +105,7 @@ public class GameActivity extends AppCompatActivity implements
             playerText = new StringBuilder();
             Player currentPlayer = players.get(3);
             playerText.append(currentPlayer.getName() + "\n" + currentPlayer.getScore() + "/" +
-                    currentPlayer.getTrainCardsHand().size() + "/" + currentPlayer.getDestinationHand().size());
+                    currentPlayer.getTrainCardsHand().size() + "/" + currentPlayer.getDestinationHand().size() + "/" + currentPlayer.getTrainCars());
             mPlayer4TextView.setText(playerText.toString());
             if(currentPlayer.getUID().equals(turnPlayer)) {
                 mPlayer4TextView.setBackgroundColor(Color.parseColor("#d3d3d3"));
@@ -121,7 +121,7 @@ public class GameActivity extends AppCompatActivity implements
             playerText = new StringBuilder();
             Player currentPlayer = players.get(4);
             playerText.append(currentPlayer.getName() + "\n" + currentPlayer.getScore() + "/" +
-                    currentPlayer.getTrainCardsHand().size() + "/" + currentPlayer.getDestinationHand().size());
+                    currentPlayer.getTrainCardsHand().size() + "/" + currentPlayer.getDestinationHand().size() + "/" + currentPlayer.getTrainCars());
             mPlayer5TextView.setText(playerText.toString());
             if(currentPlayer.getUID().equals(turnPlayer)) {
                 mPlayer5TextView.setBackgroundColor(Color.parseColor("#d3d3d3"));

@@ -27,6 +27,7 @@ import androidteam.cs340.tickettoride.Client.State.TurnState;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.DestinationCard;
 import androidteam.cs340.tickettoride.Shared.Result;
+import androidteam.cs340.tickettoride.Shared.Player;
 import androidteam.cs340.tickettoride.Shared.TrainCard;
 
 
@@ -93,7 +94,6 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         mUpDeck3.setEnabled(isMyTurn());
         mUpDeck4.setEnabled(isMyTurn());
         mUpDeck5.setEnabled(isMyTurn());
-        mWhoseTurn.setText("Turn: " + "Player " + Phase2Facade.SINGLETON.getCurrentGame().getPlayerTurn().substring(0,4));
     }
 
     public String getID(){
@@ -169,7 +169,13 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
             }
         });
 
-        mWhoseTurn.setText("Turn: " + "Player " + Phase2Facade.SINGLETON.getCurrentGame().getPlayerTurn().substring(0,4));
+        int i = 1;
+        for (Player player : Phase2Facade.SINGLETON.getCurrentGame().getPlayersList()){
+            if(Phase2Facade.SINGLETON.getCurrentPlayer().getUID().equals(player.getUID())){
+                mWhoseTurn.setText("You are Player " + i);
+            }
+            i++;
+        }
 
         mDestinationDeck.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -331,6 +337,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
 
         return view;
     }
+
 
     public boolean isMyTurn(){
         System.out.println("PLAYER UID: " + Phase2Facade.SINGLETON.getCurrentPlayer().getUID());

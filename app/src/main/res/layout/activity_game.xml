@@ -9,16 +9,17 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/player_summary_layout"
-        android:layout_width="115dp"
-        android:layout_height="269dp"
+        android:layout_width="113dp"
+        android:layout_height="247dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="600dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/button_layout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/main_game_fragment_container"
-        app:layout_constraintVertical_bias="0.657">
+        app:layout_constraintVertical_bias="1.0">
 
         <TextView
             android:id="@+id/player1_text_view"
@@ -95,6 +96,24 @@
             android:layout_weight="1"
             android:text="Chat" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="117dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Score/TrainCard/DestCard/Cars"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/player_summary_layout"
+        app:layout_constraintEnd_toStartOf="@+id/main_game_fragment_container"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </android.support.constraint.ConstraintLayout>
