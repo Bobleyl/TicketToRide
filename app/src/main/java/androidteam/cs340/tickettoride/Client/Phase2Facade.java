@@ -130,6 +130,11 @@ public class Phase2Facade {
     }
 
     public Result endTurn(){
+
+        if (currentPlayer.getTrainCars() <= 2) {
+            ServerProxy.SINGLETON.lastTurn(currentGame.getGameID(),currentPlayer.getUID());
+        }
+
         return ServerProxy.SINGLETON.endTurn(currentGame.getGameID(), currentPlayer.getUID());
     }
 

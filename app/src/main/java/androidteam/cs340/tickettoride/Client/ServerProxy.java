@@ -212,4 +212,17 @@ public class ServerProxy implements IServer {
         return ClientCommunicator.SINGLETON.send(root.toString());
     }
 
+    public Result lastTurn(String gameID, String playerID) {
+        JsonObject root = new JsonObject();
+        root.addProperty("command", "lastTurn");
+
+        // Create Inner JSON Object
+        JsonObject values = new JsonObject();
+        values.addProperty("game_id", gameID);
+        values.addProperty("player_id", playerID);
+        root.add("values", values);
+
+        return ClientCommunicator.SINGLETON.send(root.toString());
+    }
+
 }

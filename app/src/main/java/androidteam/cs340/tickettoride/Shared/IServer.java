@@ -19,6 +19,7 @@ public interface IServer {
     Result claimRoute(String gameID, String playerID, Route route, List<TrainCard> trainCards);
     Result endTurn(String gameID, String playerID);
     Result endGame(String gameID);
+    Result lastTurn(String gameID, String playerID);
     Result deleteGame(String gameID);
 
 }
