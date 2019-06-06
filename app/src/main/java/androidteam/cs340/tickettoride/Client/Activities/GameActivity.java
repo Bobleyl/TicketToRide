@@ -55,10 +55,10 @@ public class GameActivity extends AppCompatActivity implements
             @Override
             public void run() {
                 updateUI(players, turnPlayer);
-//                if(!Phase2Facade.SINGLETON.getFirstPlace().equals(null)){
-//                    Intent intent = new Intent(GameActivity.this, EndGameActivity.class);
-//                    startActivity(intent);
-//                }
+                if(!Phase2Facade.SINGLETON.getFirstPlace().equals("")){
+                    Intent intent = new Intent(GameActivity.this, EndGameActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }
@@ -149,8 +149,8 @@ public class GameActivity extends AppCompatActivity implements
 
         mGameActivityPresenter = new GameActivityPresenter(this);
 
-        MediaPlayer ring= MediaPlayer.create(GameActivity.this,R.raw.victory_music);
-        ring.start();
+        //MediaPlayer ring= MediaPlayer.create(GameActivity.this,R.raw.victory_music);
+        //ring.start();
 
         ModelFacade.SINGLETON.stopPoller();
 

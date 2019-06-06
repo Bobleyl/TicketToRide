@@ -1,12 +1,13 @@
 package androidteam.cs340.tickettoride.Shared;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EndGame {
 
-    private String firstPlace;
-    private List<Player> players;
-    private List<String> longestRoadPlayers;
+    private String firstPlace = "";
+    private List<Player> players = new ArrayList<>();
+    private List<String> longestRoadPlayers = new ArrayList<>();
 
     public EndGame() {}
 
