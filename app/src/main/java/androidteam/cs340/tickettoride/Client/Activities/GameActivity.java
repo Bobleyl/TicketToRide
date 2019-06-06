@@ -56,8 +56,6 @@ public class GameActivity extends AppCompatActivity implements
         });
     }
 
-    //TODO: ADD TRAIN CAR COUNT FOR EACH PLAYER TO LIST
-    //TODO: ADD HEADER THAT SAYS WHAT EACH NUMBER MEANS
     private void updateUI(List<Player> players, String turnPlayer) {
         StringBuilder playerText = new StringBuilder();
         if(players.size() >= 1 && players.get(0) != null) {
