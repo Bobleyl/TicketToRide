@@ -54,7 +54,7 @@ public class ClaimRouteCommand implements CommandInterface {
                             }
 
                             player.setTrainCardsHand(playersHand);
-
+                            player.claimRoute(route);
                             player.setTrainCars(player.getTrainCars()-route.length);
 
                         }
