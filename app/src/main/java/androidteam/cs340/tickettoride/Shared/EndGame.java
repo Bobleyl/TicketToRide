@@ -8,9 +8,7 @@ public class EndGame {
     private List<Player> players;
     private List<String> longestRoadPlayers;
 
-    public static final EndGame SINGLETON = new EndGame();
-
-    private EndGame() {}
+    public EndGame() {}
 
     public void setFirstPlace(String firstPlace_) { firstPlace = firstPlace_; }
 

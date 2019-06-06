@@ -31,7 +31,7 @@ public class Phase2Facade {
 
     private Phase2Facade(){
         //turnOrder = new ArrayList<>();
-        currentPlayer = ModelFacade.SINGLETON.getPlayer();
+        currentPlayer = ModelFacade.SINGLETON.getPlayer();;
         //currentGame = new GameModel();
         //gamePoller = new GamePoller(command, 1000, getGameID());
     }
@@ -44,6 +44,7 @@ public class Phase2Facade {
     private GameModel currentGame = new GameModel();
     private List<Player> turnOrder;
     private List<IPresenter> presenters = new ArrayList<>();
+    private EndGame endGame = new EndGame();
 
     public void setGameID(String id){
         currentGame.setGameID(id);
@@ -141,7 +142,7 @@ public class Phase2Facade {
             Gson gson = new Gson();
 
             //This endGame should have all the info needed for you Bo
-            EndGame endGame =  gson.fromJson(endGameCommand.getData(), EndGame.class);
+            endGame =  gson.fromJson(endGameCommand.getData(), EndGame.class);
             //go to end game screen..
         }
 
