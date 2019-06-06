@@ -3,6 +3,8 @@ package androidteam.cs340.tickettoride.Client;
 import android.graphics.ColorSpace;
 import android.util.Log;
 
+import com.google.gson.Gson;
+
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +15,7 @@ import androidteam.cs340.tickettoride.Client.Poller.Game.GamePoller;
 import androidteam.cs340.tickettoride.Client.Poller.Game.GamePollerCommand;
 import androidteam.cs340.tickettoride.Client.State.DoAnything;
 import androidteam.cs340.tickettoride.Client.State.TurnState;
+import androidteam.cs340.tickettoride.Shared.EndGame;
 import androidteam.cs340.tickettoride.Shared.Game;
 import androidteam.cs340.tickettoride.Shared.GameModel;
 import androidteam.cs340.tickettoride.Shared.Player;
@@ -129,16 +132,28 @@ public class Phase2Facade {
         return ServerProxy.SINGLETON.sendMessage(currentGame.getGameID(),currentPlayer.getUID(),message);
     }
 
-    public Result endTurn() {
+    public void endTurn() {
 
         //Here we will check if the currentPlayer lastTurn is true..
         //If it is that means the GAME IS OVER! and go to the end game screen
+        if (currentPlayer.getFinalTurn()) {
+            Result endGameCommand = ServerProxy.SINGLETON.endGame(currentGame.getGameID());
+            Gson gson = new Gson();
 
-        if (currentPlayer.getTrainCars() <= 2) {
-            ServerProxy.SINGLETON.lastTurn(currentGame.getGameID(),currentPlayer.getUID());
+            //This endGame should have all the info needed for you Bo
+            EndGame endGame =  gson.fromJson(endGameCommand.getData(), EndGame.class);
+            //go to end game screen..
         }
 
-        return ServerProxy.SINGLETON.endTurn(currentGame.getGameID(), currentPlayer.getUID());
+        else {
+
+            if (currentPlayer.getTrainCars() <= 2) {
+                ServerProxy.SINGLETON.lastTurn(currentGame.getGameID(), currentPlayer.getUID());
+            }
+
+            ServerProxy.SINGLETON.endTurn(currentGame.getGameID(), currentPlayer.getUID());
+        }
+
     }
 
     // END OF COMMANDS --------------- // ------------------
