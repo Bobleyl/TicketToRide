@@ -159,10 +159,6 @@ public class Player {
         claimedRoutes.add(route);
     }
 
-    public String getUid() {
-        return uid;
-    }
-
     public ArrayList<TrainCard> getOrangeCards() {
         computeNumberOfCardColors();
         return orangeCards;

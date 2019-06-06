@@ -2,7 +2,10 @@ package server;
 
 import Shared.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.TreeSet;
 
 public class EndGameCommand implements CommandInterface {
 
