@@ -1,5 +1,6 @@
 package androidteam.cs340.tickettoride.Client.Activities;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Message;
@@ -28,6 +29,7 @@ import androidteam.cs340.tickettoride.Client.Presenters.GameActivityPresenter;
 import androidteam.cs340.tickettoride.Client.ServerProxy;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.DestinationCard;
+import androidteam.cs340.tickettoride.Shared.EndGame;
 import androidteam.cs340.tickettoride.Shared.Player;
 
 
@@ -52,6 +54,10 @@ public class GameActivity extends AppCompatActivity implements
             @Override
             public void run() {
                 updateUI(players, turnPlayer);
+                if(!EndGame.SINGLETON.getFirstPlace().equals(null)){
+                    Intent intent = new Intent(GameActivity.this, EndGameActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }
