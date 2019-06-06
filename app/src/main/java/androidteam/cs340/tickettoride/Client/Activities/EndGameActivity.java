@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.EndGame;
 import androidteam.cs340.tickettoride.Shared.Player;
@@ -51,7 +52,7 @@ public class EndGameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_end_game);
 
         mWinner = findViewById(R.id.winnerBar);
-        mWinner.setText("Player " + EndGame.SINGLETON.getFirstPlace().substring(0,4));
+        mWinner.setText("Player " + Phase2Facade.SINGLETON.getFirstPlace().substring(0,4));
         mplayer1 = findViewById(R.id.player1);
         mplayer2 = findViewById(R.id.player2);
         mplayer3 = findViewById(R.id.player3);
@@ -107,7 +108,7 @@ public class EndGameActivity extends AppCompatActivity {
 
     public void updateFields(){
         int i = 0;
-        for(Player player : EndGame.SINGLETON.getPlayers()){
+        for(Player player : Phase2Facade.SINGLETON.getPlayers()){
             TextView score = PlayersTotals.get(i);
             TextView destinationPoints = DestinationViews.get(i);
             TextView failedPoints = FailedDestinationViews.get(i);
@@ -116,7 +117,7 @@ public class EndGameActivity extends AppCompatActivity {
             destinationPoints.setText(player.getDestinationsFoundPoints());
             failedPoints.setText("-" + player.getDestinationsNotFoundPoints());
             score.setText(player.getScore());
-            for(String longestPlayer : EndGame.SINGLETON.getLongestRoadPlayers()){
+            for(String longestPlayer : Phase2Facade.SINGLETON.getLongestRoadPlayers()){
                 if(longestPlayer.equals(player.getUID())){ //then current player position won it
                     ImageView temp4 = playerLongestView.get(i);
                     temp4.setImageResource(R.drawable.check);

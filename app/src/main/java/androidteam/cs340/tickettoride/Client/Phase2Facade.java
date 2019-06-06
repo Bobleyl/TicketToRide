@@ -159,6 +159,18 @@ public class Phase2Facade {
 
     // END OF COMMANDS --------------- // ------------------
 
+    public List<Player> getPlayers(){
+        return endGame.getPlayers();
+    }
+
+    public List<String> getLongestRoadPlayers(){
+        return endGame.getLongestRoadPlayers();
+    }
+
+    public String getFirstPlace(){
+        return endGame.getFirstPlace();
+    }
+
     public List<Message> getMessages() { return currentGame.getMessages(); }
 
     public TrainCard[] getUpdeck(){
