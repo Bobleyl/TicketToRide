@@ -37,6 +37,7 @@ import java.util.List;
 
 import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
+import androidteam.cs340.tickettoride.Client.State.EndTurn;
 import androidteam.cs340.tickettoride.Client.State.TurnState;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.Result;
@@ -193,6 +194,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                     Result result = Phase2Facade.SINGLETON.claimRoute(routeToClaim, cardsUsedToClaim);
                     if(result.getStatusCode() == HttpURLConnection.HTTP_OK){
                         Toast.makeText(getActivity(), "Route Claimed", Toast.LENGTH_SHORT).show();
+                        TurnState.SINGLETON.setState(EndTurn.SINGLETON);
+                        Phase2Facade.SINGLETON.endTurn();
+                    }
+                    else{
+                        Toast.makeText(getActivity(), result.getErrorInfo(), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
