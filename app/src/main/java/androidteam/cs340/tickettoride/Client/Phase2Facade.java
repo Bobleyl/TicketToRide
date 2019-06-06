@@ -129,7 +129,10 @@ public class Phase2Facade {
         return ServerProxy.SINGLETON.sendMessage(currentGame.getGameID(),currentPlayer.getUID(),message);
     }
 
-    public Result endTurn(){
+    public Result endTurn() {
+
+        //Here we will check if the currentPlayer lastTurn is true..
+        //If it is that means the GAME IS OVER! and go to the end game screen
 
         if (currentPlayer.getTrainCars() <= 2) {
             ServerProxy.SINGLETON.lastTurn(currentGame.getGameID(),currentPlayer.getUID());
