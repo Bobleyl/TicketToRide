@@ -48,7 +48,7 @@ public class GameActivity extends AppCompatActivity implements
     TextView mPlayer3TextView;
     TextView mPlayer4TextView;
     TextView mPlayer5TextView;
-    MediaPlayer ring= MediaPlayer.create(GameActivity.this,R.raw.victory_music);
+    //MediaPlayer ring= MediaPlayer.create(GameActivity.this,R.raw.victory_music);
 
     GameActivityPresenter mGameActivityPresenter;
 
@@ -151,12 +151,6 @@ public class GameActivity extends AppCompatActivity implements
 
         mGameActivityPresenter = new GameActivityPresenter(this);
 
-<<<<<<< HEAD
-=======
-        //MediaPlayer ring= MediaPlayer.create(GameActivity.this,R.raw.victory_music);
-        //ring.start();
-
->>>>>>> 5f1b33670a5156254a2c7bd473159d06c295ade3
         ModelFacade.SINGLETON.stopPoller();
 
         ServerProxy.SINGLETON.deleteGame(ModelFacade.SINGLETON.getGameID());
@@ -188,7 +182,7 @@ public class GameActivity extends AppCompatActivity implements
 
         mMusic = findViewById(R.id.musicBtn);
 
-        mMusic.setOnClickListener(new View.OnClickListener() {
+        /*mMusic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -198,7 +192,7 @@ public class GameActivity extends AppCompatActivity implements
                     ring.start();
                 }
             }
-        });
+        });*/
 
         mMapButton.setOnClickListener(new View.OnClickListener() {
             @Override
