@@ -261,8 +261,9 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                         System.out.println("VALUE OF CARD CLICKED: " + Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck()[0]);
                         Toast.makeText(getActivity(), "Not Allowed..." , Toast.LENGTH_SHORT).show();
                     }else{
-                        chooseUpCard(2);
-                        TurnState.SINGLETON.drawFaceUpNonWild();
+                        if (chooseUpCard(2)) {
+                            TurnState.SINGLETON.drawFaceUpNonWild();
+                        }
                     }
                 }else{
                     Toast.makeText(getActivity(), "Not Allowed..." , Toast.LENGTH_SHORT).show();
