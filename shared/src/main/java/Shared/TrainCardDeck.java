@@ -115,7 +115,7 @@ public class TrainCardDeck {
                 int locomotiveCount = 0;
 
                 for (TrainCard trainCard : upDeck) {
-                    if (trainCard.color.equals("locomotive")) {
+                    if (trainCard.color.equals("wild")) {
                         locomotiveCount++;
                     }
                 }
