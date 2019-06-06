@@ -515,6 +515,29 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
             }
             count++;
         }
+        if(count < 0){ // zero cards
+            mUpDeck1.setImageResource(R.drawable.blank_card);
+            mUpDeck2.setImageResource(R.drawable.blank_card);
+            mUpDeck3.setImageResource(R.drawable.blank_card);
+            mUpDeck4.setImageResource(R.drawable.blank_card);
+            mUpDeck5.setImageResource(R.drawable.blank_card);
+        }else if(count < 1){
+            mUpDeck2.setImageResource(R.drawable.blank_card);
+            mUpDeck3.setImageResource(R.drawable.blank_card);
+            mUpDeck4.setImageResource(R.drawable.blank_card);
+            mUpDeck5.setImageResource(R.drawable.blank_card);
+        }else if(count < 2){
+            mUpDeck3.setImageResource(R.drawable.blank_card);
+            mUpDeck4.setImageResource(R.drawable.blank_card);
+            mUpDeck5.setImageResource(R.drawable.blank_card);
+        }else if(count < 3){
+            mUpDeck4.setImageResource(R.drawable.blank_card);
+            mUpDeck5.setImageResource(R.drawable.blank_card);
+        }else if(count < 4){
+            mUpDeck5.setImageResource(R.drawable.blank_card);
+        }else{
+            return;
+        }
     }
 
     //count through personal card deck and update counts for each color
