@@ -153,7 +153,7 @@ public class GameActivity extends AppCompatActivity implements
 
         ServerProxy.SINGLETON.deleteGame(ModelFacade.SINGLETON.getGameID());
 
-        MediaPlayer ring= MediaPlayer.create(GameActivity.this,R.raw.buckle_your_pants);
+        MediaPlayer ring= MediaPlayer.create(GameActivity.this,R.raw.rick_roll);
         ring.start();
 
         mMapButton = (Button) findViewById(R.id.map_button);
