@@ -202,7 +202,7 @@ public class ServerProxy implements IServer {
 
     public Result endGame(String gameID) {
         JsonObject root = new JsonObject();
-        root.addProperty("command", "EndGameActivity");
+        root.addProperty("command", "endGame");
 
         // Create Inner JSON Object
         JsonObject values = new JsonObject();
