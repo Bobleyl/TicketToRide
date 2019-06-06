@@ -158,6 +158,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         mDownDeck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mDownDeck.setEnabled(false);
                 if(!TurnState.SINGLETON.isEndState()) {
                     chooseDownCard();
                     TurnState.SINGLETON.drawFaceDown();
@@ -184,6 +185,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         mUpDeck1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mUpDeck1.setEnabled(false);
                 if(TurnState.SINGLETON.isAnythingState()) {
                     if(Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck()[0].equals(TrainCard.Locomotive)){
                         chooseUpCard(0);
@@ -208,6 +210,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         mUpDeck2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mUpDeck2.setEnabled(false);
                 if(TurnState.SINGLETON.isAnythingState()) {
                     if(Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck()[1].equals(TrainCard.Locomotive)){
                         chooseUpCard(1);
@@ -232,6 +235,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         mUpDeck3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mUpDeck3.setEnabled(false);
                 if(TurnState.SINGLETON.isAnythingState()) {
                     if(Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck()[2].equals(TrainCard.Locomotive)){
                         chooseUpCard(2);
@@ -256,6 +260,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         mUpDeck4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mUpDeck4.setEnabled(false);
                 if(TurnState.SINGLETON.isAnythingState()) {
                     if(Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck()[3].equals(TrainCard.Locomotive)){
                         chooseUpCard(3);
@@ -280,6 +285,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         mUpDeck5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mUpDeck5.setEnabled(false);
                 if(TurnState.SINGLETON.isAnythingState()) {
                     if(Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck()[4].equals(TrainCard.Locomotive)){
                         chooseUpCard(4);
