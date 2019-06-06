@@ -118,7 +118,7 @@ public class EndGameActivity extends AppCompatActivity {
             TextView destinationPoints = DestinationViews.get(i);
             TextView failedPoints = FailedDestinationViews.get(i);
             TextView names = PlayersViews.get(i);
-            names.setText("Player " + player.getUID().substring(0,4));
+            names.setText("Player " + (i+1));
             destinationPoints.setText(player.getDestinationsFoundPoints());
             failedPoints.setText("-" + player.getDestinationsNotFoundPoints());
             score.setText(player.getScore());
