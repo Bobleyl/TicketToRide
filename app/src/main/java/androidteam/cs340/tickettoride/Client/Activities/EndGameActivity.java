@@ -1,5 +1,6 @@
 package androidteam.cs340.tickettoride.Client.Activities;
 
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.EndGame;
 import androidteam.cs340.tickettoride.Shared.Player;
+
 
 public class EndGameActivity extends AppCompatActivity {
     TextView mplayer1;
@@ -50,6 +52,9 @@ public class EndGameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end_game);
+
+        MediaPlayer ring= MediaPlayer.create(EndGameActivity.this,R.raw.final_music);
+        ring.start();
 
         mWinner = findViewById(R.id.winnerBar);
         mWinner.setText("Player " + Phase2Facade.SINGLETON.getFirstPlace().substring(0,4));

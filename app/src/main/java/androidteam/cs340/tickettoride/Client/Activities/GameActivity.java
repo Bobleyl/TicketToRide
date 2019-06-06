@@ -2,6 +2,7 @@ package androidteam.cs340.tickettoride.Client.Activities;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Message;
 import android.support.v4.app.Fragment;
@@ -54,10 +55,10 @@ public class GameActivity extends AppCompatActivity implements
             @Override
             public void run() {
                 updateUI(players, turnPlayer);
-                if(!Phase2Facade.SINGLETON.getFirstPlace().equals(null)){
-                    Intent intent = new Intent(GameActivity.this, EndGameActivity.class);
-                    startActivity(intent);
-                }
+//                if(!Phase2Facade.SINGLETON.getFirstPlace().equals(null)){
+//                    Intent intent = new Intent(GameActivity.this, EndGameActivity.class);
+//                    startActivity(intent);
+//                }
             }
         });
     }
@@ -147,6 +148,9 @@ public class GameActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_game);
 
         mGameActivityPresenter = new GameActivityPresenter(this);
+
+        MediaPlayer ring= MediaPlayer.create(GameActivity.this,R.raw.victory_music);
+        ring.start();
 
         ModelFacade.SINGLETON.stopPoller();
 
