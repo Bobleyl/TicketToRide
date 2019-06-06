@@ -523,7 +523,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
     }
 
     @Override
-    public void Update() {//TODO: UNCOMMENT UPDATEROUTES() WHEN CLAIMROUTES AND TURN FUNCTIONALITY IS DONE
+    public void Update() {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {

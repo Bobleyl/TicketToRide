@@ -202,6 +202,25 @@
         app:layout_constraintVertical_bias="0.543" />
 
     <TextView
+        android:id="@+id/winnerBar"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Player"
+        android:textColor="#000000"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.261"
+        app:layout_constraintStart_toEndOf="@+id/textView12"
+        app:layout_constraintTop_toBottomOf="@+id/p5DestinationPointsFail"
+        app:layout_constraintVertical_bias="0.574" />
+
+    <TextView
         android:id="@+id/p4DestinationPoints"
         android:layout_width="31dp"
         android:layout_height="wrap_content"
@@ -280,15 +299,14 @@
         android:layout_width="31dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.235"
         app:layout_constraintStart_toEndOf="@+id/p2DestinationPoints"
-        app:layout_constraintTop_toBottomOf="@+id/p1DestinationPointsFail"
-        app:layout_constraintVertical_bias="0.069" />
+        app:layout_constraintTop_toBottomOf="@+id/p1DestinationPointsFail2"
+        app:layout_constraintVertical_bias="0.096" />
 
     <TextView
         android:id="@+id/p4DestinationPointsFail"
@@ -336,7 +354,82 @@
         app:layout_constraintVertical_bias="0.101" />
 
     <TextView
-        android:id="@+id/p1DestinationPointsFail"
+        android:id="@+id/p2Total"
+        android:layout_width="31dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toEndOf="@+id/p1Longest"
+        app:layout_constraintTop_toBottomOf="@+id/p1Total"
+        app:layout_constraintVertical_bias="0.069" />
+
+    <TextView
+        android:id="@+id/p4Total"
+        android:layout_width="31dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toEndOf="@+id/p4Longest"
+        app:layout_constraintTop_toBottomOf="@+id/p3Total"
+        app:layout_constraintVertical_bias="0.113" />
+
+    <TextView
+        android:id="@+id/p5Total"
+        android:layout_width="31dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toEndOf="@+id/p5Longest"
+        app:layout_constraintTop_toBottomOf="@+id/p4Total"
+        app:layout_constraintVertical_bias="0.136" />
+
+    <TextView
+        android:id="@+id/p3Total"
+        android:layout_width="31dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toEndOf="@+id/p3Longest"
+        app:layout_constraintTop_toBottomOf="@+id/p2Total"
+        app:layout_constraintVertical_bias="0.101" />
+
+    <TextView
+        android:id="@+id/p1Total"
+        android:layout_width="31dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toEndOf="@+id/p1Longest"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:layout_constraintVertical_bias="0.074" />
+
+    <TextView
+        android:id="@+id/p1DestinationPointsFail2"
         android:layout_width="31dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -349,5 +442,84 @@
         app:layout_constraintStart_toEndOf="@+id/p1DestinationPoints"
         app:layout_constraintTop_toBottomOf="@+id/textView9"
         app:layout_constraintVertical_bias="0.074" />
+
+    <ImageView
+        android:id="@+id/p2Longest"
+        android:layout_width="36dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.313"
+        app:layout_constraintStart_toEndOf="@+id/p2DestinationPointsFail"
+        app:layout_constraintTop_toBottomOf="@+id/p1Longest"
+        app:layout_constraintVertical_bias="0.019"
+        app:srcCompat="@drawable/x" />
+
+    <ImageView
+        android:id="@+id/p5Longest"
+        android:layout_width="36dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.313"
+        app:layout_constraintStart_toEndOf="@+id/p5DestinationPointsFail"
+        app:layout_constraintTop_toBottomOf="@+id/p4Longest"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/x" />
+
+    <ImageView
+        android:id="@+id/p4Longest"
+        android:layout_width="36dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.313"
+        app:layout_constraintStart_toEndOf="@+id/p4DestinationPointsFail"
+        app:layout_constraintTop_toBottomOf="@+id/p3Longest"
+        app:layout_constraintVertical_bias="0.038"
+        app:srcCompat="@drawable/x" />
+
+    <ImageView
+        android:id="@+id/p3Longest"
+        android:layout_width="36dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.313"
+        app:layout_constraintStart_toEndOf="@+id/p3DestinationPointsFail"
+        app:layout_constraintTop_toBottomOf="@+id/p2Longest"
+        app:layout_constraintVertical_bias="0.043"
+        app:srcCompat="@drawable/x" />
+
+    <ImageView
+        android:id="@+id/p1Longest"
+        android:layout_width="36dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.313"
+        app:layout_constraintStart_toEndOf="@+id/p1DestinationPointsFail2"
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        app:layout_constraintVertical_bias="0.078"
+        app:srcCompat="@drawable/x" />
 
 </android.support.constraint.ConstraintLayout>

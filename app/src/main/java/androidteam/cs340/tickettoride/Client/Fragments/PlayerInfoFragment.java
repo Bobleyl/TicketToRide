@@ -616,7 +616,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                 green = green + 1;
                 mGreenCount.setText(""  + green);
             }
-            if(card.color == "pink"){
+            if(card.color.equals("pink")){
                 purple = purple + 1;
                 mPinkCount.setText("" + purple);
             }
