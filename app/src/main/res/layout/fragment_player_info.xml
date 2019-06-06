@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/musicBtn"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Client.Fragments.PlayerInfoFragment">
@@ -493,10 +494,10 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@null"
         android:contentDescription="@string/zero"
         android:scaleType="centerCrop"
         android:src="@drawable/up_deck"
-        android:background="@null"
         app:layout_constraintBottom_toTopOf="@+id/wildCount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.027"
@@ -564,5 +565,17 @@
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/destinationSpinner"
         app:layout_constraintVertical_bias="0.509" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="89dp"
+        android:layout_height="89dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Pause/Play Music"
+        app:layout_constraintBottom_toTopOf="@+id/whoseTurn"
+        app:layout_constraintStart_toEndOf="@+id/destinationSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/upDeck5"
+        app:layout_constraintVertical_bias="0.428" />
 
 </android.support.constraint.ConstraintLayout>

@@ -40,6 +40,7 @@ public class GameActivity extends AppCompatActivity implements
         PlayerInfoFragment.OnFragmentInteractionListener {
 
     Button mMapButton;
+    Button mMusic;
     Button mGameInfoButton;
     Button mChatButton;
     TextView mPlayer1TextView;
@@ -47,6 +48,7 @@ public class GameActivity extends AppCompatActivity implements
     TextView mPlayer3TextView;
     TextView mPlayer4TextView;
     TextView mPlayer5TextView;
+    MediaPlayer ring= MediaPlayer.create(GameActivity.this,R.raw.victory_music);
 
     GameActivityPresenter mGameActivityPresenter;
 
@@ -149,9 +151,6 @@ public class GameActivity extends AppCompatActivity implements
 
         mGameActivityPresenter = new GameActivityPresenter(this);
 
-        MediaPlayer ring= MediaPlayer.create(GameActivity.this,R.raw.victory_music);
-        ring.start();
-
         ModelFacade.SINGLETON.stopPoller();
 
         ServerProxy.SINGLETON.deleteGame(ModelFacade.SINGLETON.getGameID());
@@ -180,6 +179,20 @@ public class GameActivity extends AppCompatActivity implements
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.main_game_fragment_container, firstFragment).commit();
         }
+
+        mMusic = findViewById(R.id.musicBtn);
+
+        mMusic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(ring.isPlaying()){
+                    ring.pause();
+                } else {
+                    ring.start();
+                }
+            }
+        });
 
         mMapButton.setOnClickListener(new View.OnClickListener() {
             @Override
