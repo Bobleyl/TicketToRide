@@ -57,7 +57,6 @@ public class EndGameActivity extends AppCompatActivity {
         ring.start();
 
         mWinner = findViewById(R.id.winnerBar);
-        mWinner.setText("Player " + Phase2Facade.SINGLETON.getFirstPlace().substring(0,4));
         mplayer1 = findViewById(R.id.player1);
         mplayer2 = findViewById(R.id.player2);
         mplayer3 = findViewById(R.id.player3);
@@ -114,6 +113,9 @@ public class EndGameActivity extends AppCompatActivity {
     public void updateFields(){
         int i = 0;
         for(Player player : Phase2Facade.SINGLETON.getPlayers()){
+            if(player.getUID().equals(Phase2Facade.SINGLETON.getFirstPlace())){
+                mWinner.setText("Player " + (i+1) + " WINS!");
+            }
             TextView score = PlayersTotals.get(i);
             TextView destinationPoints = DestinationViews.get(i);
             TextView failedPoints = FailedDestinationViews.get(i);
