@@ -64,7 +64,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
     private View mView;
     List<Route> lastAvailableRoutes = new ArrayList<>(Arrays.asList(Route.values()));
     private Map< Route,Polyline> mRouteMap = new HashMap< Route,Polyline>();
-    private ArrayList<TrainCard> cardsUsedToClaim = new ArrayList<>();
+    private List<TrainCard> cardsUsedToClaim = new ArrayList<>();
     private Route routeToClaim;
     private ImageView mpointsLegend;
     Polyline mSeattlePortland;
@@ -212,7 +212,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
             lastList = Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes();
         }
 
-        if(update == true){
+        if(update){
             // Watch for where this loop gets called if no one claims a route and the spinner doesn't change.
             // No matter what, always pass what cards they are using to claim the route to the server.
             routeSelections = createRouteSelections();
@@ -478,24 +478,22 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
     }
 
     private void updateRoutes(){
-        if (lastAvailableRoutes == Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes()){
-            return;
-        }else{
+        if (lastAvailableRoutes != Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes()){
             for(Player player : Phase2Facade.SINGLETON.getCurrentGame().getPlayersList()){
                 for(Route route : player.getClaimedRoutes()){
-                    if(player.getColor() == "red"){
+                    if(player.getColor().equals("red")){
                         mRouteMap.get(route).setColor(Color.rgb(255,0,0));
                     }
-                    if(player.getColor() == "blue"){
+                    if(player.getColor().equals("blue")){
                         mRouteMap.get(route).setColor(Color.rgb(0,255,255));
                     }
-                    if(player.getColor() == "green"){
+                    if(player.getColor().equals("green")){
                         mRouteMap.get(route).setColor(Color.rgb(0,255,0));
                     }
-                    if(player.getColor() == "yellow"){
+                    if(player.getColor().equals("yellow")){
                         mRouteMap.get(route).setColor(Color.rgb(255,255,0));
                     }
-                    if(player.getColor() == "black"){
+                    if(player.getColor().equals("black")){
                         mRouteMap.get(route).setColor(Color.rgb(0,0,0));
                     }
                 }
