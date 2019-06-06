@@ -118,6 +118,10 @@ public class Phase2Facade {
     }
 
     public Result claimRoute(Route route, List<TrainCard> cards){
+        Log.d("GAME_ACTIVITY:CARDS", route.name());
+        for(TrainCard card : cards){
+            Log.d("GAME_ACTIVITY:CARDS", card.color);
+        }
         return ServerProxy.SINGLETON.claimRoute(currentGame.getGameID(), currentPlayer.getUID(), route, cards);
     }
 

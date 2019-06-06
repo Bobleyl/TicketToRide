@@ -28,6 +28,7 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 
+import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.TreeMap;
@@ -38,6 +39,7 @@ import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.Client.State.TurnState;
 import androidteam.cs340.tickettoride.R;
+import androidteam.cs340.tickettoride.Shared.Result;
 import androidteam.cs340.tickettoride.Shared.Route;
 import androidteam.cs340.tickettoride.Shared.Player;
 import androidteam.cs340.tickettoride.Shared.TrainCard;
@@ -187,9 +189,12 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         mClaimRoute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Claimed Route" , Toast.LENGTH_SHORT).show();
-
-                Phase2Facade.SINGLETON.claimRoute(routeToClaim, cardsUsedToClaim);
+                if(TurnState.SINGLETON.isAnythingState()){
+                    Result result = Phase2Facade.SINGLETON.claimRoute(routeToClaim, cardsUsedToClaim);
+                    if(result.getStatusCode() == HttpURLConnection.HTTP_OK){
+                        Toast.makeText(getActivity(), "Route Claimed", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
 
@@ -244,6 +249,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             mRouteString = (String) parent.getSelectedItem();
             int i = 0;
+            cardsUsedToClaim = new ArrayList<>();
             for (Map.Entry<String,Route> entry : routeSelections.entrySet()) {
                 if (i == position) {
                     routeToClaim = entry.getValue();
