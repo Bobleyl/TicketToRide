@@ -12,7 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.Polyline;
@@ -66,6 +66,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
     private Map< Route,Polyline> mRouteMap = new HashMap< Route,Polyline>();
     private ArrayList<TrainCard> cardsUsedToClaim = new ArrayList<>();
     private Route routeToClaim;
+    private ImageView mpointsLegend;
     Polyline mSeattlePortland;
     Polyline mSeattlePortland2;
     Polyline mSeattleVancouver;
@@ -176,7 +177,8 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         mRouteSpinner = (Spinner) mView.findViewById(R.id.claimRouteSpinner);
         mClaimRoute = (Button) mView.findViewById(R.id.claimRoute);
         mClaimRoute.setEnabled(isMyTurn());
-
+        mpointsLegend = mView.findViewById(R.id.points_legend);
+        mpointsLegend.bringToFront();
         String[] items = new String[]{"Values"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
         mRouteSpinner.setAdapter(adapter);
