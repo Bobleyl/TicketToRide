@@ -40,7 +40,6 @@ public class GameActivity extends AppCompatActivity implements
         PlayerInfoFragment.OnFragmentInteractionListener {
 
     Button mMapButton;
-    Button mMusic;
     Button mGameInfoButton;
     Button mChatButton;
     TextView mPlayer1TextView;
@@ -48,7 +47,6 @@ public class GameActivity extends AppCompatActivity implements
     TextView mPlayer3TextView;
     TextView mPlayer4TextView;
     TextView mPlayer5TextView;
-    //MediaPlayer ring= MediaPlayer.create(GameActivity.this,R.raw.victory_music);
 
     GameActivityPresenter mGameActivityPresenter;
 
@@ -57,10 +55,10 @@ public class GameActivity extends AppCompatActivity implements
             @Override
             public void run() {
                 updateUI(players, turnPlayer);
-                if(!Phase2Facade.SINGLETON.getFirstPlace().equals("")){
+                /*if(!Phase2Facade.SINGLETON.getFirstPlace().equals(null)){
                     Intent intent = new Intent(GameActivity.this, EndGameActivity.class);
                     startActivity(intent);
-                }
+                }*/
             }
         });
     }
@@ -155,6 +153,9 @@ public class GameActivity extends AppCompatActivity implements
 
         ServerProxy.SINGLETON.deleteGame(ModelFacade.SINGLETON.getGameID());
 
+        MediaPlayer ring= MediaPlayer.create(GameActivity.this,R.raw.victory_music);
+        ring.start();
+
         mMapButton = (Button) findViewById(R.id.map_button);
         mGameInfoButton = (Button) findViewById(R.id.game_info_button);
         mChatButton = (Button) findViewById(R.id.chat_button);
@@ -179,20 +180,6 @@ public class GameActivity extends AppCompatActivity implements
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.main_game_fragment_container, firstFragment).commit();
         }
-
-        mMusic = findViewById(R.id.musicBtn);
-
-        /*mMusic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if(ring.isPlaying()){
-                    ring.pause();
-                } else {
-                    ring.start();
-                }
-            }
-        });*/
 
         mMapButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -566,16 +566,4 @@
         app:layout_constraintTop_toBottomOf="@+id/destinationSpinner"
         app:layout_constraintVertical_bias="0.509" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="89dp"
-        android:layout_height="89dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
-        android:text="Pause/Play Music"
-        app:layout_constraintBottom_toTopOf="@+id/whoseTurn"
-        app:layout_constraintStart_toEndOf="@+id/destinationSpinner"
-        app:layout_constraintTop_toBottomOf="@+id/upDeck5"
-        app:layout_constraintVertical_bias="0.428" />
-
 </android.support.constraint.ConstraintLayout>
