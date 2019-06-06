@@ -166,6 +166,9 @@ public class MessageFragment extends Fragment implements IPresenter {
         Phase2Facade.SINGLETON.sendMessage(toSend);
         String search = "e";
         if(message.toLowerCase().indexOf(search.toLowerCase()) != -1){
+            if(Phase2Facade.SINGLETON.getMusic() == true){
+                Phase2Facade.SINGLETON.setMusic(false);
+            }
             System.out.println("Message is : " + message);
             mVideoView.bringToFront();
             mVideoView.setVisibility(View.VISIBLE);

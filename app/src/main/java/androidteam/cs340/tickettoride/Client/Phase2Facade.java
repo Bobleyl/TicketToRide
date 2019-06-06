@@ -45,6 +45,16 @@ public class Phase2Facade {
     private List<Player> turnOrder;
     private List<IPresenter> presenters = new ArrayList<>();
     private EndGame endGame = new EndGame();
+    private boolean music;
+
+    public void setMusic(boolean value){
+        music = value;
+    }
+
+    public boolean getMusic(){
+        return music;
+    }
+
 
     public void setGameID(String id){
         currentGame.setGameID(id);

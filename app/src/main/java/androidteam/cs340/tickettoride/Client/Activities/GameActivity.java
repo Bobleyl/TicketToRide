@@ -39,6 +39,7 @@ public class GameActivity extends AppCompatActivity implements
         MessageFragment.OnFragmentInteractionListener,
         PlayerInfoFragment.OnFragmentInteractionListener {
 
+    MediaPlayer ring;
     Button mMapButton;
     Button mGameInfoButton;
     Button mChatButton;
@@ -64,6 +65,11 @@ public class GameActivity extends AppCompatActivity implements
     }
 
     private void updateUI(List<Player> players, String turnPlayer) {
+        if(Phase2Facade.SINGLETON.getMusic() == false){
+            ring.pause();
+        }else{
+            ring.start();
+        }
         StringBuilder playerText = new StringBuilder();
         if(players.size() >= 1 && players.get(0) != null) {
             Player currentPlayer = players.get(0);
@@ -153,8 +159,9 @@ public class GameActivity extends AppCompatActivity implements
 
         ServerProxy.SINGLETON.deleteGame(ModelFacade.SINGLETON.getGameID());
 
-        MediaPlayer ring= MediaPlayer.create(GameActivity.this,R.raw.rick_roll);
+        ring = MediaPlayer.create(GameActivity.this,R.raw.buckle_your_pants);
         ring.start();
+        Phase2Facade.SINGLETON.setMusic(true);
 
         mMapButton = (Button) findViewById(R.id.map_button);
         mGameInfoButton = (Button) findViewById(R.id.game_info_button);
@@ -183,6 +190,7 @@ public class GameActivity extends AppCompatActivity implements
         mMapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Phase2Facade.SINGLETON.setMusic(true);
                 MapFragment mapFragment = new MapFragment();
                 startNewFragment(mapFragment);
             }
@@ -199,6 +207,7 @@ public class GameActivity extends AppCompatActivity implements
         mGameInfoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Phase2Facade.SINGLETON.setMusic(true);
                 PlayerInfoFragment playerInfoFragment = new PlayerInfoFragment();
                 startNewFragment(playerInfoFragment);
             }
