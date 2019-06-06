@@ -221,7 +221,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                         TurnState.SINGLETON.drawFaceUpNonWild();
                     }
                 }else if(TurnState.SINGLETON.isDownNotWildState()){
-                    if(Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck()[0].equals(TrainCard.Locomotive)){
+                    if(Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck()[1].equals(TrainCard.Locomotive)){
                         System.out.println("VALUE OF CARD CLICKED: " + Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck()[0]);
                         Toast.makeText(getActivity(), "Not Allowed..." , Toast.LENGTH_SHORT).show();
                     }else{
@@ -247,7 +247,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                         TurnState.SINGLETON.drawFaceUpNonWild();
                     }
                 }else if(TurnState.SINGLETON.isDownNotWildState()){
-                    if(Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck()[0].equals(TrainCard.Locomotive)){
+                    if(Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck()[2].equals(TrainCard.Locomotive)){
                         System.out.println("VALUE OF CARD CLICKED: " + Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck()[0]);
                         Toast.makeText(getActivity(), "Not Allowed..." , Toast.LENGTH_SHORT).show();
                     }else{
@@ -273,7 +273,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                         TurnState.SINGLETON.drawFaceUpNonWild();
                     }
                 }else if(TurnState.SINGLETON.isDownNotWildState()){
-                    if(Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck()[0].equals(TrainCard.Locomotive)){
+                    if(Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck()[3].equals(TrainCard.Locomotive)){
                         System.out.println("VALUE OF CARD CLICKED: " + Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck()[0]);
                         Toast.makeText(getActivity(), "Not Allowed..." , Toast.LENGTH_SHORT).show();
                     }else{
@@ -299,7 +299,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                         TurnState.SINGLETON.drawFaceUpNonWild();
                     }
                 }else if(TurnState.SINGLETON.isDownNotWildState()){
-                    if(Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck()[0].equals(TrainCard.Locomotive)){
+                    if(Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck()[4].equals(TrainCard.Locomotive)){
                         System.out.println("VALUE OF CARD CLICKED: " + Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck()[0]);
                         Toast.makeText(getActivity(), "Not Allowed..." , Toast.LENGTH_SHORT).show();
                     }else{
