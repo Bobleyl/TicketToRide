@@ -153,7 +153,7 @@ public class GameActivity extends AppCompatActivity implements
 
         ServerProxy.SINGLETON.deleteGame(ModelFacade.SINGLETON.getGameID());
 
-        MediaPlayer ring= MediaPlayer.create(GameActivity.this,R.raw.rick_roll);
+        MediaPlayer ring= MediaPlayer.create(GameActivity.this,R.raw.buckle_your_pants);
         ring.start();
 
         mMapButton = (Button) findViewById(R.id.map_button);
@@ -169,7 +169,6 @@ public class GameActivity extends AppCompatActivity implements
             if (savedInstanceState != null) {
                 return;
             }
-            //TODO:LOGIC TO FREEZE BUTTONS WHEN CHOOSING DESTINATIONCARDS
             mMapButton.setEnabled(false);
             mGameInfoButton.setEnabled(false);
             mChatButton.setEnabled(false);
