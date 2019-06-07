@@ -171,7 +171,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
 
         mDestinationDeck.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { //TODO: UPDATE STATE ONLY AFTER CARDS ARE SUBMITTED.
                 if(TurnState.SINGLETON.isAnythingState()){
                     if (chooseDestinationCard()) {
                         TurnState.SINGLETON.drawDestinationCard();
