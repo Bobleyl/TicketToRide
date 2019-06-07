@@ -156,7 +156,7 @@ public class Phase2Facade {
         //If it is that means the GAME IS OVER! and go to the end game screen
         //400 status code makes sure this only gets called once
         if (currentPlayer.getFinalTurn() &&
-                ServerProxy.SINGLETON.returnEndGame(currentGame.getGameID()).getStatusCode() == 400) {
+                ServerProxy.SINGLETON.returnEndGame(currentGame.getGameID()).getStatusCode() == 204) {
 
             Result endGameCommand = ServerProxy.SINGLETON.endGame(currentGame.getGameID());
             Gson gson = new Gson();
