@@ -67,16 +67,22 @@ public class ClaimRouteCommand implements CommandInterface {
                             switch (route.length) {
                                 case 1:
                                     player.setScore(player.getScore()+1);
+                                    break;
                                 case 2:
                                     player.setScore(player.getScore()+2);
+                                    break;
                                 case 3:
                                     player.setScore(player.getScore()+4);
+                                    break;
                                 case 4:
                                     player.setScore(player.getScore()+7);
+                                    break;
                                 case 5:
                                     player.setScore(player.getScore()+10);
+                                    break;
                                 case 6:
                                     player.setScore(player.getScore()+15);
+                                    break;
                             }
 
                         }
