@@ -180,7 +180,6 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
 
         mRouteSpinner = (Spinner) mView.findViewById(R.id.claimRouteSpinner);
         mClaimRoute = (Button) mView.findViewById(R.id.claimRoute);
-        mClaimRoute.setEnabled(isMyTurn());
         mpointsLegend = mView.findViewById(R.id.points_legend);
         mpointsLegend.bringToFront();
         String[] items = new String[]{"Values"};
@@ -558,6 +557,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                mClaimRoute.setEnabled(isMyTurn());
                 updateSpinner();
                 updateRoutes();
             }
