@@ -146,17 +146,22 @@ public class Phase2Facade {
         return ServerProxy.SINGLETON.sendMessage(currentGame.getGameID(),currentPlayer.getUID(),message);
     }
 
+    private void setEndGame(EndGame endGame_) { endGame = endGame_; }
+
+    public EndGame getEndGame() { return endGame; }
+
     public void endTurn() {
 
         //Here we will check if the currentPlayer lastTurn is true..
         //If it is that means the GAME IS OVER! and go to the end game screen
-        if (currentPlayer.getFinalTurn()) {
+        //400 status code makes sure this only gets called once
+        if (currentPlayer.getFinalTurn() &&
+                ServerProxy.SINGLETON.returnEndGame(currentGame.getGameID()).getStatusCode() == 400) {
+
             Result endGameCommand = ServerProxy.SINGLETON.endGame(currentGame.getGameID());
             Gson gson = new Gson();
 
-            //This endGame should have all the info needed for you Bo
-            endGame =  gson.fromJson(endGameCommand.getData(), EndGame.class);
-            //go to end game screen..
+            Phase2Facade.SINGLETON.setEndGame(gson.fromJson(endGameCommand.getData(), EndGame.class));
         }
 
         else {

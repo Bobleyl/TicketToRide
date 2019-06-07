@@ -21,5 +21,6 @@ public interface IServer {
     Result endGame(String gameID);
     Result lastTurn(String gameID, String playerID);
     Result deleteGame(String gameID);
+    Result returnEndGame(String gameID);
 
 }

@@ -7,6 +7,7 @@ public class EndGame {
     private String firstPlace;
     private List<Player> players;
     private List<String> longestRoadPlayers;
+    private String gameID;
 
     public EndGame() {}
 
@@ -21,5 +22,9 @@ public class EndGame {
     public void setLongestRoadPlayers(List<String> longestRoadPlayers_) { longestRoadPlayers = longestRoadPlayers_; }
 
     public List<String> getLongestRoadPlayers() { return longestRoadPlayers; }
+
+    public void setGameID(String gameID_) { gameID = gameID_; }
+
+    public String getGameID() { return gameID; }
 
 }
