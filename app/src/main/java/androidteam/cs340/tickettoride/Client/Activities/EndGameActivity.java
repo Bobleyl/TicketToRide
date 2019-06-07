@@ -121,9 +121,9 @@ public class EndGameActivity extends AppCompatActivity {
             TextView failedPoints = FailedDestinationViews.get(i);
             TextView names = PlayersViews.get(i);
             names.setText("Player " + (i+1));
-            destinationPoints.setText(player.getDestinationsFoundPoints());
+            destinationPoints.setText("" + player.getDestinationsFoundPoints());
             failedPoints.setText("-" + player.getDestinationsNotFoundPoints());
-            score.setText(player.getScore());
+            score.setText("" + player.getScore());
             for(String longestPlayer : Phase2Facade.SINGLETON.getLongestRoadPlayers()){
                 if(longestPlayer.equals(player.getUID())){ //then current player position won it
                     ImageView temp4 = playerLongestView.get(i);
