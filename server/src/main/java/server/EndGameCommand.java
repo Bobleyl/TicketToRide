@@ -36,7 +36,7 @@ public class EndGameCommand implements CommandInterface {
 
             ArrayList<String> currentRouteArray = new ArrayList<>();
             TreeSet<DestinationCard> completedCards = new TreeSet<>();
-            List<DestinationCard> nonCompletedCards = new ArrayList<>();
+            TreeSet<DestinationCard> nonCompletedCards = new TreeSet<>();
 
             for (Route route : player.getClaimedRoutes()) {
 
@@ -120,7 +120,7 @@ public class EndGameCommand implements CommandInterface {
         }
 
         String firstPlace = "";
-        int maxPoints = 0;
+        int maxPoints = -1000;
 
         List<Player> longestPath = gameModel.findLongestRoute();
         List<String> longestPathPlayerList = new ArrayList<>();

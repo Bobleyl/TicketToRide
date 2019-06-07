@@ -53,7 +53,31 @@ public class ClaimRouteCommand implements CommandInterface {
                                 trainCardDecks.returnCard(trainCard);
                             }
 
+                            List<Route> routes = game.getAvailableRoutes();
+                            routes.remove(route);
+                            game.setAvailableRoutes(routes);
                             player.setTrainCardsHand(playersHand);
+                            player.claimRoute(route);
+                            player.setTrainCars(player.getTrainCars()-route.length);
+
+                            if (player.getTrainCars() <= 2) {
+                                player.setFinalTurnTrue();
+                            }
+
+                            switch (route.length) {
+                                case 1:
+                                    player.setScore(player.getScore()+1);
+                                case 2:
+                                    player.setScore(player.getScore()+2);
+                                case 3:
+                                    player.setScore(player.getScore()+4);
+                                case 4:
+                                    player.setScore(player.getScore()+7);
+                                case 5:
+                                    player.setScore(player.getScore()+10);
+                                case 6:
+                                    player.setScore(player.getScore()+15);
+                            }
 
                         }
 
