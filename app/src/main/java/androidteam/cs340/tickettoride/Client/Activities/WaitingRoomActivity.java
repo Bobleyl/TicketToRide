@@ -27,6 +27,7 @@ public class WaitingRoomActivity extends AppCompatActivity {
     private WaitingRoomPresenter presenter;
 
     private TextView mPlayerCount;
+    private TextView mWaitingRoom;
     private TextView mPlayer1;
     private TextView mPlayer2;
     private TextView mPlayer3;
@@ -62,8 +63,11 @@ public class WaitingRoomActivity extends AppCompatActivity {
         mPlayer3 = (TextView) findViewById(R.id.player3);
         mPlayer4 = (TextView) findViewById(R.id.player4);
         mPlayer5 = (TextView) findViewById(R.id.player5);
+        mWaitingRoom = (TextView) findViewById(R.id.waitingRoom);
 
-        playerList = new ArrayList<>();
+        mWaitingRoom.setText("Waiting Room: " + ModelFacade.SINGLETON.getGame().getUID().substring(0,4));
+
+        playerList = new ArrayList<>();erm
         playerList.add(mPlayer1);
         playerList.add(mPlayer2);
         playerList.add(mPlayer3);

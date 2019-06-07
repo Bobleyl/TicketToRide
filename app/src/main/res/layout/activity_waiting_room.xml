@@ -6,6 +6,7 @@
     tools:context=".Client.Activities.WaitingRoomActivity"
     android:orientation="vertical">
     <TextView
+        android:id="@+id/waitingRoom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/waiting_room"
