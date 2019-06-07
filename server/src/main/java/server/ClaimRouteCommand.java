@@ -60,6 +60,10 @@ public class ClaimRouteCommand implements CommandInterface {
                             player.claimRoute(route);
                             player.setTrainCars(player.getTrainCars()-route.length);
 
+                            if (player.getTrainCars() <= 2) {
+                                player.setFinalTurnTrue();
+                            }
+
                         }
 
                     }

@@ -162,10 +162,6 @@ public class Phase2Facade {
 
         else {
 
-            if (currentPlayer.getTrainCars() <= 2) {
-                ServerProxy.SINGLETON.lastTurn(currentGame.getGameID(), currentPlayer.getUID());
-            }
-
             ServerProxy.SINGLETON.endTurn(currentGame.getGameID(), currentPlayer.getUID());
         }
 
