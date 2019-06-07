@@ -56,10 +56,10 @@ public class GameActivity extends AppCompatActivity implements
             @Override
             public void run() {
                 updateUI(players, turnPlayer);
-                if(ServerProxy.SINGLETON.returnEndGame(Phase2Facade.SINGLETON.getCurrentGame().getGameID()).getStatusCode() == 200){
-                    Intent intent = new Intent(GameActivity.this, EndGameActivity.class);
-                    startActivity(intent);
-                }
+//                if(ServerProxy.SINGLETON.returnEndGame(Phase2Facade.SINGLETON.getCurrentGame().getGameID()).getStatusCode() == 200){
+//                    Intent intent = new Intent(GameActivity.this, EndGameActivity.class);
+//                    startActivity(intent);
+//                }
             }
         });
     }
@@ -171,9 +171,9 @@ public class GameActivity extends AppCompatActivity implements
 
         ServerProxy.SINGLETON.deleteGame(ModelFacade.SINGLETON.getGameID());
 
-        ring = MediaPlayer.create(GameActivity.this,R.raw.victory_music);
-        ring.start();
-        Phase2Facade.SINGLETON.setMusic(true);
+//        ring = MediaPlayer.create(GameActivity.this,R.raw.victory_music);
+//        ring.start();
+//        Phase2Facade.SINGLETON.setMusic(true);
 
         mMapButton = (Button) findViewById(R.id.map_button);
         mGameInfoButton = (Button) findViewById(R.id.game_info_button);
