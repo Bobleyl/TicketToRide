@@ -56,7 +56,7 @@ public class GameActivity extends AppCompatActivity implements
             @Override
             public void run() {
                 updateUI(players, turnPlayer);
-                if(!(Phase2Facade.SINGLETON.getFirstPlace() == "")){
+                if(!(Phase2Facade.SINGLETON.getFirstPlace().equals(""))){
                     Intent intent = new Intent(GameActivity.this, EndGameActivity.class);
                     startActivity(intent);
                 }
