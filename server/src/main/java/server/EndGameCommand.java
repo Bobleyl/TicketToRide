@@ -120,7 +120,7 @@ public class EndGameCommand implements CommandInterface {
         }
 
         String firstPlace = "";
-        int maxPoints = 0;
+        int maxPoints = -10000;
 
         List<Player> longestPath = gameModel.findLongestRoute();
         List<String> longestPathPlayerList = new ArrayList<>();
