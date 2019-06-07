@@ -233,7 +233,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
             routeSelections = createRouteSelections();
             for(Map.Entry<Route,ArrayList<String>> entry : routeSelections.entrySet()){
                 for (String color : entry.getValue()) {
-                    items.add(entry.getKey().name() + " using " + color);
+                    items.add(entry.getKey().name() + "_" + color);
                 }
             }
 
@@ -259,6 +259,14 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             mRouteString = (String) parent.getSelectedItem();
+
+            String[] enumWithColor = mRouteString.split("_");
+
+            String enumRoute = enumWithColor[0] + "_" + enumWithColor[1];
+            String color = enumWithColor[2];
+
+            routeToClaim = Route.valueOf(enumRoute);
+
             int i = 0;
             cardsUsedToClaim = new ArrayList<>();
             for (Map.Entry<Route,ArrayList<String>> entry : routeSelections.entrySet()) {
