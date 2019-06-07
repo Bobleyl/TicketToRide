@@ -23,6 +23,7 @@ import java.util.UUID;
 import androidteam.cs340.tickettoride.Client.Activities.GameActivity;
 import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
+import androidteam.cs340.tickettoride.Client.State.EndTurn;
 import androidteam.cs340.tickettoride.Client.State.State;
 import androidteam.cs340.tickettoride.Client.State.TurnState;
 import androidteam.cs340.tickettoride.R;
@@ -95,6 +96,9 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         mUpDeck3.setEnabled(isMyTurn());
         mUpDeck4.setEnabled(isMyTurn());
         mUpDeck5.setEnabled(isMyTurn());
+        if (Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getDownDeck().isEmpty() && Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck().length == 0 && TurnState.SINGLETON.isDownNotWildState()) {
+            TurnState.SINGLETON.drawFaceDown();
+        }
     }
 
     public String getID(){
