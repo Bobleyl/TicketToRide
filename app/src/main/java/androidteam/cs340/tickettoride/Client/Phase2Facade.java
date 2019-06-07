@@ -38,7 +38,6 @@ public class Phase2Facade {
 
     public static Phase2Facade SINGLETON = new Phase2Facade();
 
-    // TODO: GET RID OF DECKS, CALL ON GAMEMODEL TO GET INFORMATION.
     private String lastPlayerPolled = "";
     private Player currentPlayer;
     private GameModel currentGame = new GameModel();
