@@ -56,20 +56,20 @@ public class GameActivity extends AppCompatActivity implements
             @Override
             public void run() {
                 updateUI(players, turnPlayer);
-//                if(ServerProxy.SINGLETON.returnEndGame(Phase2Facade.SINGLETON.getCurrentGame().getGameID()).getStatusCode() == 200){
-//                    Intent intent = new Intent(GameActivity.this, EndGameActivity.class);
-//                    startActivity(intent);
-//                }
+                if(ServerProxy.SINGLETON.returnEndGame(Phase2Facade.SINGLETON.getCurrentGame().getGameID()).getStatusCode() == 200){
+                    Intent intent = new Intent(GameActivity.this, EndGameActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }
 
     private void updateUI(List<Player> players, String turnPlayer) {
-        if(Phase2Facade.SINGLETON.getMusic() == false){
-            ring.pause();
-        }else{
-            ring.start();
-        }
+//        if(Phase2Facade.SINGLETON.getMusic() == false){
+//            ring.pause();
+//        }else{
+//            ring.start();
+//        }
         StringBuilder playerText = new StringBuilder();
         if(players.size() >= 1 && players.get(0) != null) {
             Player currentPlayer = players.get(0);
