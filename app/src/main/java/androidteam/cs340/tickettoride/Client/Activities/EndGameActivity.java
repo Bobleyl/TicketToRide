@@ -114,7 +114,7 @@ public class EndGameActivity extends AppCompatActivity {
         int i = 0;
         for(Player player : Phase2Facade.SINGLETON.getPlayers()){
             if(player.getUID().equals(Phase2Facade.SINGLETON.getFirstPlace())){
-                mWinner.setText("Player " + (i+1) + " WINS!");
+                mWinner.setText("Player " + (i+1));
             }
             TextView score = PlayersTotals.get(i);
             TextView destinationPoints = DestinationViews.get(i);
