@@ -257,4 +257,8 @@ public class Phase2Facade {
         return currentGame.getPlayerTurn();
     }
 
+    public boolean isMyTurn(){
+        return currentGame.getPlayerTurn().equals(currentPlayer.getUID());
+    }
+
 }

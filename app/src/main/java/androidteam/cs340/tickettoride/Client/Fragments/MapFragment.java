@@ -190,7 +190,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         mClaimRoute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(TurnState.SINGLETON.isAnythingState()){
+                if(TurnState.SINGLETON.isAnythingState() && Phase2Facade.SINGLETON.isMyTurn()){
                     Result result = Phase2Facade.SINGLETON.claimRoute(routeToClaim, cardsUsedToClaim);
                     if(result.getStatusCode() == HttpURLConnection.HTTP_OK){
                         Toast.makeText(getActivity(), "Route Claimed", Toast.LENGTH_SHORT).show();
@@ -200,6 +200,9 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                     else{
                         Toast.makeText(getActivity(), result.getErrorInfo(), Toast.LENGTH_SHORT).show();
                     }
+                }
+                else{
+                    Toast.makeText(getActivity(), "Sorry, can't do that", Toast.LENGTH_SHORT).show();
                 }
             }
         });
