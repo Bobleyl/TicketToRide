@@ -65,11 +65,11 @@ public class GameActivity extends AppCompatActivity implements
     }
 
     private void updateUI(List<Player> players, String turnPlayer) {
-        if(Phase2Facade.SINGLETON.getMusic() == false){
-            ring.pause();
-        }else{
-            ring.start();
-        }
+//        if(Phase2Facade.SINGLETON.getMusic() == false){
+//            ring.pause();
+//        }else{
+//            ring.start();
+//        }
         StringBuilder playerText = new StringBuilder();
         if(players.size() >= 1 && players.get(0) != null) {
             Player currentPlayer = players.get(0);
@@ -171,9 +171,9 @@ public class GameActivity extends AppCompatActivity implements
 
         ServerProxy.SINGLETON.deleteGame(ModelFacade.SINGLETON.getGameID());
 
-        ring = MediaPlayer.create(GameActivity.this,R.raw.victory_music);
-        ring.start();
-        Phase2Facade.SINGLETON.setMusic(true);
+//        ring = MediaPlayer.create(GameActivity.this,R.raw.victory_music);
+//        ring.start();
+//        Phase2Facade.SINGLETON.setMusic(true);
 
         mMapButton = (Button) findViewById(R.id.map_button);
         mGameInfoButton = (Button) findViewById(R.id.game_info_button);
