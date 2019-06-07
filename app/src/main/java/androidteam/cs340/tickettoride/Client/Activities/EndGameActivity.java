@@ -1,5 +1,6 @@
 package androidteam.cs340.tickettoride.Client.Activities;
 
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -8,9 +9,11 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.EndGame;
 import androidteam.cs340.tickettoride.Shared.Player;
+
 
 public class EndGameActivity extends AppCompatActivity {
     TextView mplayer1;
@@ -50,8 +53,10 @@ public class EndGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end_game);
 
+        MediaPlayer ring= MediaPlayer.create(EndGameActivity.this,R.raw.final_music);
+        ring.start();
+
         mWinner = findViewById(R.id.winnerBar);
-        mWinner.setText("Player " + EndGame.SINGLETON.getFirstPlace().substring(0,4));
         mplayer1 = findViewById(R.id.player1);
         mplayer2 = findViewById(R.id.player2);
         mplayer3 = findViewById(R.id.player3);
@@ -107,16 +112,19 @@ public class EndGameActivity extends AppCompatActivity {
 
     public void updateFields(){
         int i = 0;
-        for(Player player : EndGame.SINGLETON.getPlayers()){
+        for(Player player : Phase2Facade.SINGLETON.getPlayers()){
+            if(player.getUID().equals(Phase2Facade.SINGLETON.getFirstPlace())){
+                mWinner.setText("Player " + (i+1) + " WINS!");
+            }
             TextView score = PlayersTotals.get(i);
             TextView destinationPoints = DestinationViews.get(i);
             TextView failedPoints = FailedDestinationViews.get(i);
             TextView names = PlayersViews.get(i);
-            names.setText("Player " + player.getUID().substring(0,4));
+            names.setText("Player " + (i+1));
             destinationPoints.setText(player.getDestinationsFoundPoints());
             failedPoints.setText("-" + player.getDestinationsNotFoundPoints());
             score.setText(player.getScore());
-            for(String longestPlayer : EndGame.SINGLETON.getLongestRoadPlayers()){
+            for(String longestPlayer : Phase2Facade.SINGLETON.getLongestRoadPlayers()){
                 if(longestPlayer.equals(player.getUID())){ //then current player position won it
                     ImageView temp4 = playerLongestView.get(i);
                     temp4.setImageResource(R.drawable.check);

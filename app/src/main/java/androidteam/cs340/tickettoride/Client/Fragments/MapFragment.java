@@ -28,6 +28,8 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 
+import java.lang.reflect.Array;
+import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.TreeMap;
@@ -36,8 +38,10 @@ import java.util.List;
 
 import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
+import androidteam.cs340.tickettoride.Client.State.EndTurn;
 import androidteam.cs340.tickettoride.Client.State.TurnState;
 import androidteam.cs340.tickettoride.R;
+import androidteam.cs340.tickettoride.Shared.Result;
 import androidteam.cs340.tickettoride.Shared.Route;
 import androidteam.cs340.tickettoride.Shared.Player;
 import androidteam.cs340.tickettoride.Shared.TrainCard;
@@ -64,7 +68,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
     private View mView;
     List<Route> lastAvailableRoutes = new ArrayList<>(Arrays.asList(Route.values()));
     private Map< Route,Polyline> mRouteMap = new HashMap< Route,Polyline>();
-    private ArrayList<TrainCard> cardsUsedToClaim = new ArrayList<>();
+    private List<TrainCard> cardsUsedToClaim = new ArrayList<>();
     private Route routeToClaim;
     private ImageView mpointsLegend;
     Polyline mSeattlePortland;
@@ -187,8 +191,20 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         mClaimRoute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Claimed Route" , Toast.LENGTH_SHORT).show();
-                Phase2Facade.SINGLETON.claimRoute(routeToClaim, cardsUsedToClaim);
+                if(TurnState.SINGLETON.isAnythingState() && Phase2Facade.SINGLETON.isMyTurn()){
+                    Result result = Phase2Facade.SINGLETON.claimRoute(routeToClaim, cardsUsedToClaim);
+                    if(result.getStatusCode() == HttpURLConnection.HTTP_OK){
+                        Toast.makeText(getActivity(), "Route Claimed", Toast.LENGTH_SHORT).show();
+                        TurnState.SINGLETON.setState(EndTurn.SINGLETON);
+                        Phase2Facade.SINGLETON.endTurn();
+                    }
+                    else{
+                        Toast.makeText(getActivity(), result.getErrorInfo(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else{
+                    Toast.makeText(getActivity(), "Sorry, can't do that", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -199,7 +215,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
     /*--------
      SPINNER LOGIC
      --------*/
-    Map<String ,Route> routeSelections = new TreeMap<>();
+    Map<Route,ArrayList<String>> routeSelections = new TreeMap<>();
     public void updateSpinner(){
         int size = Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes().size();
         ArrayList<String> items = new ArrayList<>();
@@ -211,14 +227,15 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
             lastList = Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes();
         }
 
-        if(update == true){
+        if(update){
             // Watch for where this loop gets called if no one claims a route and the spinner doesn't change.
             // No matter what, always pass what cards they are using to claim the route to the server.
             routeSelections = createRouteSelections();
-            for(Map.Entry<String,Route> entry : routeSelections.entrySet()){
-                items.add(entry.getValue().name() + " using " + entry.getKey());
+            for(Map.Entry<Route,ArrayList<String>> entry : routeSelections.entrySet()){
+                for (String color : entry.getValue()) {
+                    items.add(entry.getKey().name() + " using " + color);
+                }
             }
-
 
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
             mRouteSpinner.setAdapter(adapter);
@@ -243,34 +260,35 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             mRouteString = (String) parent.getSelectedItem();
             int i = 0;
-            for (Map.Entry<String,Route> entry : routeSelections.entrySet()) {
+            cardsUsedToClaim = new ArrayList<>();
+            for (Map.Entry<Route,ArrayList<String>> entry : routeSelections.entrySet()) {
                 if (i == position) {
-                    routeToClaim = entry.getValue();
-                    if (entry.getKey().equals("white")) {
+                    routeToClaim = entry.getKey();
+                    if (entry.getValue().contains("white")) {
                         addCards(routeToClaim, numWhiteCards, TrainCard.Passenger);
                     }
-                    if (entry.getKey().equals("orange")) {
+                    if (entry.getValue().contains("orange")) {
                         addCards(routeToClaim, numOrangeCards, TrainCard.Freight);
                     }
-                    if (entry.getKey().equals("red")) {
+                    if (entry.getValue().contains("red")) {
                         addCards(routeToClaim, numRedCards, TrainCard.Coal);
                     }
-                    if (entry.getKey().equals("blue")) {
+                    if (entry.getValue().contains("blue")) {
                         addCards(routeToClaim, numBlueCards, TrainCard.Tanker);
                     }
-                    if (entry.getKey().equals("green")) {
+                    if (entry.getValue().contains("green")) {
                         addCards(routeToClaim, numGreenCards, TrainCard.Caboose);
                     }
-                    if (entry.getKey().equals("pink")) {
+                    if (entry.getValue().contains("pink")) {
                         addCards(routeToClaim, numPinkCards, TrainCard.Box);
                     }
-                    if (entry.getKey().equals("black")) {
+                    if (entry.getValue().contains("black")) {
                         addCards(routeToClaim, numBlackCards, TrainCard.Hopper);
                     }
-                    if (entry.getKey().equals("yellow")) {
+                    if (entry.getValue().contains("yellow")) {
                         addCards(routeToClaim, numYellowCards, TrainCard.Reefer);
                     }
-                    if (entry.getKey().equals("wild")) {
+                    if (entry.getValue().contains("wild")) {
                         addCards(routeToClaim, numWildCards, TrainCard.Locomotive);
                     }
 
@@ -294,8 +312,8 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
     /*--------
      ROUTE CLAIMING LOGIC
      --------*/
-    Map<String,Route> routesToSelectFrom = new HashMap<>();
-    private Map<String,Route> createRouteSelections() {
+    Map<Route,ArrayList<String>> routesToSelectFrom = new HashMap<>();
+    private Map<Route,ArrayList<String>> createRouteSelections() {
         List<Route> unclaimedRoutes = Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes();
         updateCurrentCardCount(Phase2Facade.SINGLETON.getMyDeck());
         for (Route route : unclaimedRoutes) {
@@ -303,11 +321,13 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
             // current cards.
             if (addClaimRouteOption(route) != null) {
                 if (route.color.equals("grey")) {
+                    routesToSelectFrom.put(route, new ArrayList<String>());
                     for (String option : addClaimGreyRouteOption(route.length)) {
-                        routesToSelectFrom.put(option, route);
+                        routesToSelectFrom.get(route).add(option);
                     }
                 } else {
-                    routesToSelectFrom.put(addClaimRouteOption(route),route);
+                    routesToSelectFrom.put(route, new ArrayList<String>());
+                    routesToSelectFrom.get(route).add(addClaimRouteOption(route));
                 }
             }
         }
@@ -323,7 +343,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
     int numPinkCards;
     int numBlackCards;
     int numYellowCards;
-    
+
     private String addClaimRouteOption(Route routeToCheck) {
         int routeLength = routeToCheck.length;
         String color = routeToCheck.color;
@@ -484,24 +504,22 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
     }
 
     private void updateRoutes(){
-        if (lastAvailableRoutes == Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes()){
-            return;
-        }else{
+        if (lastAvailableRoutes != Phase2Facade.SINGLETON.getCurrentGame().getAvailableRoutes()){
             for(Player player : Phase2Facade.SINGLETON.getCurrentGame().getPlayersList()){
                 for(Route route : player.getClaimedRoutes()){
-                    if(player.getColor() == "red"){
+                    if(player.getColor().equals("red")){
                         mRouteMap.get(route).setColor(Color.rgb(255,0,0));
                     }
-                    if(player.getColor() == "blue"){
+                    if(player.getColor().equals("blue")){
                         mRouteMap.get(route).setColor(Color.rgb(0,255,255));
                     }
-                    if(player.getColor() == "green"){
+                    if(player.getColor().equals("green")){
                         mRouteMap.get(route).setColor(Color.rgb(0,255,0));
                     }
-                    if(player.getColor() == "yellow"){
+                    if(player.getColor().equals("yellow")){
                         mRouteMap.get(route).setColor(Color.rgb(255,255,0));
                     }
-                    if(player.getColor() == "black"){
+                    if(player.getColor().equals("black")){
                         mRouteMap.get(route).setColor(Color.rgb(0,0,0));
                     }
                 }

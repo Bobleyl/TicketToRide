@@ -1,6 +1,8 @@
 package androidteam.cs340.tickettoride.Client.Activities;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Message;
 import android.support.v4.app.Fragment;
@@ -28,6 +30,7 @@ import androidteam.cs340.tickettoride.Client.Presenters.GameActivityPresenter;
 import androidteam.cs340.tickettoride.Client.ServerProxy;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.DestinationCard;
+import androidteam.cs340.tickettoride.Shared.EndGame;
 import androidteam.cs340.tickettoride.Shared.Player;
 
 
@@ -36,6 +39,7 @@ public class GameActivity extends AppCompatActivity implements
         MessageFragment.OnFragmentInteractionListener,
         PlayerInfoFragment.OnFragmentInteractionListener {
 
+    MediaPlayer ring;
     Button mMapButton;
     Button mGameInfoButton;
     Button mChatButton;
@@ -52,11 +56,20 @@ public class GameActivity extends AppCompatActivity implements
             @Override
             public void run() {
                 updateUI(players, turnPlayer);
+                if(!(Phase2Facade.SINGLETON.getFirstPlace() == "")){
+                    Intent intent = new Intent(GameActivity.this, EndGameActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }
 
     private void updateUI(List<Player> players, String turnPlayer) {
+        if(Phase2Facade.SINGLETON.getMusic() == false){
+            ring.pause();
+        }else{
+            ring.start();
+        }
         StringBuilder playerText = new StringBuilder();
         if(players.size() >= 1 && players.get(0) != null) {
             Player currentPlayer = players.get(0);
@@ -146,6 +159,10 @@ public class GameActivity extends AppCompatActivity implements
 
         ServerProxy.SINGLETON.deleteGame(ModelFacade.SINGLETON.getGameID());
 
+        ring = MediaPlayer.create(GameActivity.this,R.raw.victory_music);
+        ring.start();
+        Phase2Facade.SINGLETON.setMusic(true);
+
         mMapButton = (Button) findViewById(R.id.map_button);
         mGameInfoButton = (Button) findViewById(R.id.game_info_button);
         mChatButton = (Button) findViewById(R.id.chat_button);
@@ -159,7 +176,6 @@ public class GameActivity extends AppCompatActivity implements
             if (savedInstanceState != null) {
                 return;
             }
-            //TODO:LOGIC TO FREEZE BUTTONS WHEN CHOOSING DESTINATIONCARDS
             mMapButton.setEnabled(false);
             mGameInfoButton.setEnabled(false);
             mChatButton.setEnabled(false);
@@ -174,6 +190,7 @@ public class GameActivity extends AppCompatActivity implements
         mMapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Phase2Facade.SINGLETON.setMusic(true);
                 MapFragment mapFragment = new MapFragment();
                 startNewFragment(mapFragment);
             }
@@ -190,6 +207,7 @@ public class GameActivity extends AppCompatActivity implements
         mGameInfoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Phase2Facade.SINGLETON.setMusic(true);
                 PlayerInfoFragment playerInfoFragment = new PlayerInfoFragment();
                 startNewFragment(playerInfoFragment);
             }

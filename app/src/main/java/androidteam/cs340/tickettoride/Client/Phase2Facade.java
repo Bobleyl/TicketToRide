@@ -3,6 +3,8 @@ package androidteam.cs340.tickettoride.Client;
 import android.graphics.ColorSpace;
 import android.util.Log;
 
+import com.google.gson.Gson;
+
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +15,7 @@ import androidteam.cs340.tickettoride.Client.Poller.Game.GamePoller;
 import androidteam.cs340.tickettoride.Client.Poller.Game.GamePollerCommand;
 import androidteam.cs340.tickettoride.Client.State.DoAnything;
 import androidteam.cs340.tickettoride.Client.State.TurnState;
+import androidteam.cs340.tickettoride.Shared.EndGame;
 import androidteam.cs340.tickettoride.Shared.Game;
 import androidteam.cs340.tickettoride.Shared.GameModel;
 import androidteam.cs340.tickettoride.Shared.Player;
@@ -28,19 +31,29 @@ public class Phase2Facade {
 
     private Phase2Facade(){
         //turnOrder = new ArrayList<>();
-        currentPlayer = ModelFacade.SINGLETON.getPlayer();
+        currentPlayer = ModelFacade.SINGLETON.getPlayer();;
         //currentGame = new GameModel();
         //gamePoller = new GamePoller(command, 1000, getGameID());
     }
 
     public static Phase2Facade SINGLETON = new Phase2Facade();
 
-    // TODO: GET RID OF DECKS, CALL ON GAMEMODEL TO GET INFORMATION.
     private String lastPlayerPolled = "";
     private Player currentPlayer;
     private GameModel currentGame = new GameModel();
     private List<Player> turnOrder;
     private List<IPresenter> presenters = new ArrayList<>();
+    private EndGame endGame = new EndGame();
+    private boolean music;
+
+    public void setMusic(boolean value){
+        music = value;
+    }
+
+    public boolean getMusic(){
+        return music;
+    }
+
 
     public void setGameID(String id){
         currentGame.setGameID(id);
@@ -113,7 +126,11 @@ public class Phase2Facade {
         return ServerProxy.SINGLETON.returnDestinationCard(currentGame.getGameID(), currentPlayer.getUID(),cards);
     }
 
-    public Result claimRoute(Route route, ArrayList<TrainCard> cards){
+    public Result claimRoute(Route route, List<TrainCard> cards){
+        Log.d("GAME_ACTIVITY:CARDS", route.name());
+        for(TrainCard card : cards){
+            Log.d("GAME_ACTIVITY:CARDS", card.color);
+        }
         return ServerProxy.SINGLETON.claimRoute(currentGame.getGameID(), currentPlayer.getUID(), route, cards);
     }
 
@@ -129,19 +146,39 @@ public class Phase2Facade {
         return ServerProxy.SINGLETON.sendMessage(currentGame.getGameID(),currentPlayer.getUID(),message);
     }
 
-    public Result endTurn() {
+    public void endTurn() {
 
         //Here we will check if the currentPlayer lastTurn is true..
         //If it is that means the GAME IS OVER! and go to the end game screen
+        if (currentPlayer.getFinalTurn()) {
+            Result endGameCommand = ServerProxy.SINGLETON.endGame(currentGame.getGameID());
+            Gson gson = new Gson();
 
-        if (currentPlayer.getTrainCars() <= 2) {
-            ServerProxy.SINGLETON.lastTurn(currentGame.getGameID(),currentPlayer.getUID());
+            //This endGame should have all the info needed for you Bo
+            endGame =  gson.fromJson(endGameCommand.getData(), EndGame.class);
+            //go to end game screen..
         }
 
-        return ServerProxy.SINGLETON.endTurn(currentGame.getGameID(), currentPlayer.getUID());
+        else {
+
+            ServerProxy.SINGLETON.endTurn(currentGame.getGameID(), currentPlayer.getUID());
+        }
+
     }
 
     // END OF COMMANDS --------------- // ------------------
+
+    public List<Player> getPlayers(){
+        return endGame.getPlayers();
+    }
+
+    public List<String> getLongestRoadPlayers(){
+        return endGame.getLongestRoadPlayers();
+    }
+
+    public String getFirstPlace(){
+        return endGame.getFirstPlace();
+    }
 
     public List<Message> getMessages() { return currentGame.getMessages(); }
 
@@ -213,6 +250,10 @@ public class Phase2Facade {
 
     public String getPlayerTurn(){
         return currentGame.getPlayerTurn();
+    }
+
+    public boolean isMyTurn(){
+        return currentGame.getPlayerTurn().equals(currentPlayer.getUID());
     }
 
 }

@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ImageButton;
 import android.widget.Toast;
+import android.widget.Button;
 
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
@@ -108,21 +109,13 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         View view = inflater.inflate(R.layout.fragment_player_info, container, false);
 
         mDestinationDeck = view.findViewById(R.id.destinationDeck);
-        //mDestinationDeck.setEnabled(isMyTurn());
-        //mDestinationCards = view.findViewById(R.id.destinationCards);
         mWhoseTurn = view.findViewById(R.id.whoseTurn);
         mDownDeck = view.findViewById(R.id.downDeck);
-        //mDownDeck.setEnabled(isMyTurn());
         mUpDeck1 = view.findViewById(R.id.upDeck1);
-        //mUpDeck1.setEnabled(isMyTurn());
         mUpDeck2 = view.findViewById(R.id.upDeck2);
-        //mUpDeck2.setEnabled(isMyTurn());
         mUpDeck3 = view.findViewById(R.id.upDeck3);
-        //mUpDeck3.setEnabled(isMyTurn());
         mUpDeck4 = view.findViewById(R.id.upDeck4);
-        //mUpDeck4.setEnabled(isMyTurn());
         mUpDeck5 = view.findViewById(R.id.upDeck5);
-        //mUpDeck5.setEnabled(isMyTurn());
         mOrangeCount = view.findViewById(R.id.orangeCount);
         mRedCount = view.findViewById(R.id.redCount);
         mWildCount = view.findViewById(R.id.wildCount);
@@ -153,7 +146,6 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
 
             }
         });
-
 
         mDownDeck.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -2,6 +2,7 @@ package androidteam.cs340.tickettoride.Client.Fragments;
 
 import android.content.Context;
 import android.net.Uri;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.VideoView;
+import android.graphics.Color;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,23 +31,30 @@ import androidteam.cs340.tickettoride.Shared.Message;
 public class MessageFragment extends Fragment implements IPresenter {
     private OnFragmentInteractionListener mListener;
     private String ID;
-
+    private MediaPlayer mediaPlayer;
     private EditText mMessageEditText;
     private RecyclerView mMessageRecyclerView;
     private Button mSendMessageButton;
     private MessageAdapter mAdapter;
     private int messageListSize = 0;
+    private VideoView mVideoView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_message, container, false);
 
+
         mMessageRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_message);
         mMessageRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mMessageRecyclerView.bringToFront();
+
+        mVideoView = view.findViewById(R.id.videoView);
 
         mMessageEditText = (EditText) view.findViewById(R.id.messageField);
+        mMessageEditText.bringToFront();
         mSendMessageButton = (Button) view.findViewById(R.id.message_add_button);
+        mSendMessageButton.bringToFront();
 
         mSendMessageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,6 +165,20 @@ public class MessageFragment extends Fragment implements IPresenter {
     private void sendMessage(String message) {
         Message toSend = new Message(Phase2Facade.SINGLETON.getCurrentPlayer().getUID(), message);
         Phase2Facade.SINGLETON.sendMessage(toSend);
+        String search = "e";
+        if(message.toLowerCase().indexOf(search.toLowerCase()) != -1){
+            if(Phase2Facade.SINGLETON.getMusic() == true){
+                Phase2Facade.SINGLETON.setMusic(false);
+            }
+            System.out.println("Message is : " + message);
+            mVideoView.bringToFront();
+            mVideoView.setVisibility(View.VISIBLE);
+            String uriPath = "android.resource://androidteam.cs340.tickettoride/"+R.raw.rick_roll_vid;
+            Uri uri = Uri.parse(uriPath);
+            mVideoView.setVideoURI(uri);
+            mVideoView.requestFocus();
+            mVideoView.start();
+        }
     }
 
     @Override
