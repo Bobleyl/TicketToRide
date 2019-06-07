@@ -44,24 +44,34 @@ public class Player {
             switch (card.color) {
                 case "orange":
                     orangeCards.add(card);
+                    break;
                 case "white":
                     whiteCards.add(card);
+                    break;
                 case "red":
                     redCards.add(card);
+                    break;
                 case "wild":
                     wildCards.add(card);
+                    break;
                 case "blue":
                     blueCards.add(card);
+                    break;
                 case "green":
                     greenCards.add(card);
+                    break;
                 case "pink":
                     pinkCards.add(card);
+                    break;
                 case "black":
                     blackCards.add(card);
+                    break;
                 case "yellow":
                     yellowCards.add(card);
-                    default:
-                        System.out.println("ERROR! Card color does not exist.");
+                    break;
+                default:
+                    System.out.println("ERROR! Card color does not exist.");
+                    break;
 
             }
         }
