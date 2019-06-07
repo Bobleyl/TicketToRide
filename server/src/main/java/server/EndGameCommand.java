@@ -142,6 +142,7 @@ public class EndGameCommand implements CommandInterface {
 
         endGame.setFirstPlace(firstPlace);
         endGame.setPlayers(updatedPlayers);
+        endGame.setGameID(gameModel.getGameID());
 
         EndGameList.SINGLETON.addGame(endGame);
 
