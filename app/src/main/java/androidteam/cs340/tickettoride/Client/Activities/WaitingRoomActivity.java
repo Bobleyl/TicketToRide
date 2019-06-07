@@ -67,7 +67,7 @@ public class WaitingRoomActivity extends AppCompatActivity {
 
         mWaitingRoom.setText("Waiting Room: " + ModelFacade.SINGLETON.getGame().getUID().substring(0,4));
 
-        playerList = new ArrayList<>();erm
+        playerList = new ArrayList<>();
         playerList.add(mPlayer1);
         playerList.add(mPlayer2);
         playerList.add(mPlayer3);
