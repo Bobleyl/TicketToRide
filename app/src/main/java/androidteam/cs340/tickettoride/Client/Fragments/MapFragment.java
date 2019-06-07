@@ -233,7 +233,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
             routeSelections = createRouteSelections();
             for(Map.Entry<Route,ArrayList<String>> entry : routeSelections.entrySet()){
                 for (String color : entry.getValue()) {
-                    items.add(entry.getKey().name() + " using " + color);
+                    items.add(entry.getKey().name() + "_" + color);
                 }
             }
 
@@ -259,48 +259,53 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             mRouteString = (String) parent.getSelectedItem();
-            int i = 0;
-            cardsUsedToClaim = new ArrayList<>();
-            for (Map.Entry<Route,ArrayList<String>> entry : routeSelections.entrySet()) {
-                if (i == position) {
-                    routeToClaim = entry.getKey();
-                    if (entry.getValue().contains("white")) {
-                        addCards(routeToClaim, numWhiteCards, TrainCard.Passenger);
-                    }
-                    if (entry.getValue().contains("orange")) {
-                        addCards(routeToClaim, numOrangeCards, TrainCard.Freight);
-                    }
-                    if (entry.getValue().contains("red")) {
-                        addCards(routeToClaim, numRedCards, TrainCard.Coal);
-                    }
-                    if (entry.getValue().contains("blue")) {
-                        addCards(routeToClaim, numBlueCards, TrainCard.Tanker);
-                    }
-                    if (entry.getValue().contains("green")) {
-                        addCards(routeToClaim, numGreenCards, TrainCard.Caboose);
-                    }
-                    if (entry.getValue().contains("pink")) {
-                        addCards(routeToClaim, numPinkCards, TrainCard.Box);
-                    }
-                    if (entry.getValue().contains("black")) {
-                        addCards(routeToClaim, numBlackCards, TrainCard.Hopper);
-                    }
-                    if (entry.getValue().contains("yellow")) {
-                        addCards(routeToClaim, numYellowCards, TrainCard.Reefer);
-                    }
-                    if (entry.getValue().contains("wild")) {
-                        addCards(routeToClaim, numWildCards, TrainCard.Locomotive);
-                    }
 
-                    int remainingSpaces = routeToClaim.length - cardsUsedToClaim.size();
-                    if (cardsUsedToClaim.size() < routeToClaim.length) {
-                        for (int j = 0; j < remainingSpaces; j++) {
-                            cardsUsedToClaim.add(TrainCard.Locomotive);
-                        }
+            if (!mRouteString.equals("Values")) {
+
+                String[] enumWithColor = mRouteString.split("_");
+
+                String enumRoute = enumWithColor[0] + "_" + enumWithColor[1];
+                String color = enumWithColor[2];
+
+                routeToClaim = Route.valueOf(enumRoute);
+                cardsUsedToClaim = new ArrayList<>();
+
+                switch (color) {
+                    case "white":
+                        addCards(routeToClaim, numWhiteCards, TrainCard.Passenger);
+                        break;
+                    case "orange":
+                        addCards(routeToClaim, numOrangeCards, TrainCard.Freight);
+                        break;
+                    case "red":
+                        addCards(routeToClaim, numRedCards, TrainCard.Coal);
+                        break;
+                    case "blue":
+                        addCards(routeToClaim, numBlueCards, TrainCard.Tanker);
+                        break;
+                    case "green":
+                        addCards(routeToClaim, numGreenCards, TrainCard.Caboose);
+                        break;
+                    case "pink":
+                        addCards(routeToClaim, numPinkCards, TrainCard.Box);
+                        break;
+                    case "black":
+                        addCards(routeToClaim, numBlackCards, TrainCard.Hopper);
+                        break;
+                    case "yellow":
+                        addCards(routeToClaim, numYellowCards, TrainCard.Reefer);
+                        break;
+                }
+
+                int remainingSpaces = routeToClaim.length - cardsUsedToClaim.size();
+                if (cardsUsedToClaim.size() < routeToClaim.length) {
+                    for (int j = 0; j < remainingSpaces; j++) {
+                        cardsUsedToClaim.add(TrainCard.Locomotive);
                     }
                 }
-                i++;
+
             }
+
         }
 
         @Override
@@ -460,7 +465,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
             if(card.color.equals("green")){
                 numGreenCards = numGreenCards + 1;
             }
-            if(card.color == "pink"){
+            if(card.color.equals("pink")){
                 numPinkCards = numPinkCards + 1;
             }
         }
