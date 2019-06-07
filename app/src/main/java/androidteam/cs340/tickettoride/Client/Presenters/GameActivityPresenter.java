@@ -25,7 +25,7 @@ public class GameActivityPresenter implements IPresenter {
 
     public GameActivityPresenter(GameActivity currentActivity) {
         ID = UUID.randomUUID().toString();
-        Phase2Facade.SINGLETON.addPresenter(this);
+        //Phase2Facade.SINGLETON.addPresenter(this);
         this.currentActivity = currentActivity;
     }
 }

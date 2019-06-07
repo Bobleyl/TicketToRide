@@ -147,6 +147,18 @@ public class GameActivity extends AppCompatActivity implements
 
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Phase2Facade.SINGLETON.addPresenter(mGameActivityPresenter);
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        Phase2Facade.SINGLETON.removePresenter(mGameActivityPresenter);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
