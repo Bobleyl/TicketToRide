@@ -165,7 +165,7 @@ public class MessageFragment extends Fragment implements IPresenter {
     private void sendMessage(String message) {
         Message toSend = new Message(Phase2Facade.SINGLETON.getCurrentPlayer().getUID(), message);
         Phase2Facade.SINGLETON.sendMessage(toSend);
-        String search = "e";
+        String search = "hi";
         if(message.toLowerCase().indexOf(search.toLowerCase()) != -1){
             if(Phase2Facade.SINGLETON.getMusic() == true){
                 Phase2Facade.SINGLETON.setMusic(false);
