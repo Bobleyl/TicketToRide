@@ -159,7 +159,7 @@ public class GameActivity extends AppCompatActivity implements
 
         ServerProxy.SINGLETON.deleteGame(ModelFacade.SINGLETON.getGameID());
 
-        ring = MediaPlayer.create(GameActivity.this,R.raw.buckle_your_pants);
+        ring = MediaPlayer.create(GameActivity.this,R.raw.victory_music);
         ring.start();
         Phase2Facade.SINGLETON.setMusic(true);
 
