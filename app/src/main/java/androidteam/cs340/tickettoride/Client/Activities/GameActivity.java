@@ -56,7 +56,7 @@ public class GameActivity extends AppCompatActivity implements
             @Override
             public void run() {
                 updateUI(players, turnPlayer);
-                if(!(Phase2Facade.SINGLETON.getFirstPlace().equals(""))){
+                if(ServerProxy.SINGLETON.returnEndGame(Phase2Facade.SINGLETON.getCurrentGame().getGameID()).getStatusCode() == 200){
                     Intent intent = new Intent(GameActivity.this, EndGameActivity.class);
                     startActivity(intent);
                 }
@@ -65,11 +65,11 @@ public class GameActivity extends AppCompatActivity implements
     }
 
     private void updateUI(List<Player> players, String turnPlayer) {
-//        if(Phase2Facade.SINGLETON.getMusic() == false){
-//            ring.pause();
-//        }else{
-//            ring.start();
-//        }
+        if(Phase2Facade.SINGLETON.getMusic() == false){
+            ring.pause();
+        }else{
+            ring.start();
+        }
         StringBuilder playerText = new StringBuilder();
         if(players.size() >= 1 && players.get(0) != null) {
             Player currentPlayer = players.get(0);
@@ -147,6 +147,18 @@ public class GameActivity extends AppCompatActivity implements
 
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Phase2Facade.SINGLETON.addPresenter(mGameActivityPresenter);
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        Phase2Facade.SINGLETON.removePresenter(mGameActivityPresenter);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,8 +171,8 @@ public class GameActivity extends AppCompatActivity implements
 
         ServerProxy.SINGLETON.deleteGame(ModelFacade.SINGLETON.getGameID());
 
-        //ring = MediaPlayer.create(GameActivity.this,R.raw.victory_music);
-        //ring.start();
+        ring = MediaPlayer.create(GameActivity.this,R.raw.victory_music);
+        ring.start();
         Phase2Facade.SINGLETON.setMusic(true);
 
         mMapButton = (Button) findViewById(R.id.map_button);
