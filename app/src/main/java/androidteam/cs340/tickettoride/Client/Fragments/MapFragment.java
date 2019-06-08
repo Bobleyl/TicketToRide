@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +49,8 @@ import androidteam.cs340.tickettoride.Shared.TrainCard;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -190,12 +193,24 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         mClaimRoute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(TurnState.SINGLETON.isAnythingState() && Phase2Facade.SINGLETON.isMyTurn()){
+                if(TurnState.SINGLETON.isAnythingState() && Phase2Facade.SINGLETON.isMyTurn() &&
+                        (routeToClaim != null)){
                     Result result = Phase2Facade.SINGLETON.claimRoute(routeToClaim, cardsUsedToClaim);
                     if(result.getStatusCode() == HttpURLConnection.HTTP_OK){
+                        try {
+                            TimeUnit.SECONDS.sleep(2);
+                        } catch (Exception e) {
+                            System.out.println(e.toString());
+                        }
+
                         Toast.makeText(getActivity(), "Route Claimed", Toast.LENGTH_SHORT).show();
+
                         TurnState.SINGLETON.setState(EndTurn.SINGLETON);
                         Phase2Facade.SINGLETON.endTurn();
+
+                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        ft.detach(MapFragment.this).attach(MapFragment.this).commit();
+                        Update();
                     }
                     else{
                         Toast.makeText(getActivity(), result.getErrorInfo(), Toast.LENGTH_SHORT).show();
@@ -259,7 +274,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             mRouteString = (String) parent.getSelectedItem();
 
-            if (!mRouteString.equals("Values")) {
+            if (!mRouteString.equals("Values") && !mRouteString.equals("")) {
 
                 String[] enumWithColor = mRouteString.split("_");
 
