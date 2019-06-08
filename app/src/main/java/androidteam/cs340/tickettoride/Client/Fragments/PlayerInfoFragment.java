@@ -205,7 +205,12 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
             @Override
             public void onClick(View v) {
                 if(TurnState.SINGLETON.isAnythingState()){
-                    chooseDestinationCard();
+                    if(Phase2Facade.SINGLETON.getCurrentGame().getDestinationCardDeck().getDeck().size() == 0){
+                        Toast.makeText(getActivity(), "Deck is Empty...", Toast.LENGTH_SHORT).show();
+                    }else{
+                        chooseDestinationCard();
+                        TurnState.SINGLETON.drawDestinationCard();
+                    }
                 }else{
                     Toast.makeText(getActivity(), "Not Allowed..." , Toast.LENGTH_SHORT).show();
                 }
