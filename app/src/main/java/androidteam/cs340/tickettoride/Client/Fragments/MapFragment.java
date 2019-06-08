@@ -689,7 +689,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .width(10)
                 .color(Color.rgb(234, 222, 45))
         );
-        mRouteMap.put(Route.Seattle_Hellena,mSeattleHellena);
+        mRouteMap.put(Route.Seattle_Helena,mSeattleHellena);
 //        LatLng SeattleHellena = new LatLng(46.253710, -116.906759);
 //        GroundOverlayOptions seahel = new GroundOverlayOptions()
 //                .image(BitmapDescriptorFactory.fromResource(R.drawable.sixwhite))
@@ -713,7 +713,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .width(10)
                 .color(Color.rgb(255,0,255))//pink
         );
-        mRouteMap.put(Route.SaltLakeCity_Hellena,mSaltLakeHelena);
+        mRouteMap.put(Route.SaltLakeCity_Helena,mSaltLakeHelena);
 //        LatLng SaltLakeHelena = new LatLng(44.198513, -113.216691);
 //        GroundOverlayOptions salHel = new GroundOverlayOptions()
 //                .image(BitmapDescriptorFactory.fromResource(R.drawable.threewhite))
@@ -929,7 +929,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .width(10)
                 .color(Color.parseColor("green"))
         );
-        mRouteMap.put(Route.Hellena_Denver,mHelenaDenver);
+        mRouteMap.put(Route.Helena_Denver,mHelenaDenver);
 //        LatLng HelenaDenver = new LatLng(44.114951, -110.582058);
 //        GroundOverlayOptions HelDen = new GroundOverlayOptions()
 //                .image(BitmapDescriptorFactory.fromResource(R.drawable.fourwhite))
@@ -953,7 +953,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .width(10)
                 .color(Color.parseColor("blue"))
         );
-        mRouteMap.put(Route.Winnipeg_Hellena,mHelenaWinnipeg);
+        mRouteMap.put(Route.Winnipeg_Helena,mHelenaWinnipeg);
 //        LatLng HelenaWinnipeg = new LatLng(48.855680, -105.544547);
 //        GroundOverlayOptions HelWin = new GroundOverlayOptions()
 //                .image(BitmapDescriptorFactory.fromResource(R.drawable.fourwhite))
@@ -966,7 +966,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .width(10)
                 .color(Color.parseColor("gray"))
         );
-        mRouteMap.put(Route.Calgary_Hellena,mCalgaryHelena);
+        mRouteMap.put(Route.Calgary_Helena,mCalgaryHelena);
 //        LatLng CalgaryHelena = new LatLng(49.186809, -111.890500);
 //        GroundOverlayOptions Calhel = new GroundOverlayOptions()
 //                .image(BitmapDescriptorFactory.fromResource(R.drawable.fourwhite))
@@ -978,7 +978,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .width(10)
                 .color(Color.rgb(255,165,0))//orange
         );
-        mRouteMap.put(Route.Hellena_Duluth,mHelenaDuluth);
+        mRouteMap.put(Route.Helena_Duluth,mHelenaDuluth);
 //        LatLng HelenaDuluth = new LatLng(48.070239, -100.766039);
 //        GroundOverlayOptions heldul = new GroundOverlayOptions()
 //                .image(BitmapDescriptorFactory.fromResource(R.drawable.sixwhite))
@@ -1002,7 +1002,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .width(10)
                 .color(Color.parseColor("red"))
         );
-        mRouteMap.put(Route.Hellena_Omaha,mHelenaOmaha);
+        mRouteMap.put(Route.Helena_Omaha,mHelenaOmaha);
 //        LatLng HelenaOmaha = new LatLng(44.494056, -102.971695);
 //        GroundOverlayOptions Helo = new GroundOverlayOptions()
 //                .image(BitmapDescriptorFactory.fromResource(R.drawable.fivewhite))
