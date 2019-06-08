@@ -129,10 +129,18 @@ public class DestinationCardFragment extends Fragment implements IPresenter {
                 destCards.add(destCard1);
             }
             if(!isKeeping(mCard2Status)){
-                destCards.add(destCard2);
+                if(destCard2 == null){
+
+                }else{
+                    destCards.add(destCard2);
+                }
             }
             if(!isKeeping(mCard3Status)){
-                destCards.add(destCard3);
+                if(destCard3 == null){
+
+                }else{
+                    destCards.add(destCard3);
+                }
             }
             ((GameActivity)getActivity()).submitDestinationCards(destCards);
         }
