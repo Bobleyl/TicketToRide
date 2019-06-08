@@ -165,20 +165,21 @@ public class MessageFragment extends Fragment implements IPresenter {
     private void sendMessage(String message) {
         Message toSend = new Message(Phase2Facade.SINGLETON.getCurrentPlayer().getUID(), message);
         Phase2Facade.SINGLETON.sendMessage(toSend);
-        String search = "hi";
-        if(message.toLowerCase().indexOf(search.toLowerCase()) != -1){
-            if(Phase2Facade.SINGLETON.getMusic() == true){
-                Phase2Facade.SINGLETON.setMusic(false);
-            }
-            System.out.println("Message is : " + message);
-            mVideoView.bringToFront();
-            mVideoView.setVisibility(View.VISIBLE);
-            String uriPath = "android.resource://androidteam.cs340.tickettoride/"+R.raw.rick_roll_vid;
-            Uri uri = Uri.parse(uriPath);
-            mVideoView.setVideoURI(uri);
-            mVideoView.requestFocus();
-            mVideoView.start();
-        }
+        //Uncomment to rick roll users anytime the word hi is typed
+//        String search = "hi";
+//        if(message.toLowerCase().indexOf(search.toLowerCase()) != -1){
+//            if(Phase2Facade.SINGLETON.getMusic() == true){
+//                Phase2Facade.SINGLETON.setMusic(false);
+//            }
+//            System.out.println("Message is : " + message);
+//            mVideoView.bringToFront();
+//            mVideoView.setVisibility(View.VISIBLE);
+//            String uriPath = "android.resource://androidteam.cs340.tickettoride/"+R.raw.rick_roll_vid;
+//            Uri uri = Uri.parse(uriPath);
+//            mVideoView.setVideoURI(uri);
+//            mVideoView.requestFocus();
+//            mVideoView.start();
+//        }
     }
 
     @Override
