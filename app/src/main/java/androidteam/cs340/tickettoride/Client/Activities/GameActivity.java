@@ -160,6 +160,11 @@ public class GameActivity extends AppCompatActivity implements
         Phase2Facade.SINGLETON.removePresenter(mGameActivityPresenter);
     }
 
+    public void setmMapButton(Button mMapButton_) {
+        mMapButton = mMapButton_;
+    }
+
+    public Button getmMapButton() { return mMapButton; }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -177,6 +182,7 @@ public class GameActivity extends AppCompatActivity implements
 //        Phase2Facade.SINGLETON.setMusic(true);
 
         mMapButton = (Button) findViewById(R.id.map_button);
+
         mGameInfoButton = (Button) findViewById(R.id.game_info_button);
         mChatButton = (Button) findViewById(R.id.chat_button);
         mPlayer1TextView = (TextView) findViewById(R.id.player1_text_view);
@@ -208,6 +214,8 @@ public class GameActivity extends AppCompatActivity implements
                 startNewFragment(mapFragment);
             }
         });
+
+        setmMapButton(mMapButton);
 
         mChatButton.setOnClickListener(new View.OnClickListener() {
             @Override

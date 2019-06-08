@@ -37,6 +37,7 @@ import java.util.TreeMap;
 import java.util.UUID;
 import java.util.List;
 
+import androidteam.cs340.tickettoride.Client.Activities.GameActivity;
 import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.Client.State.EndTurn;
@@ -180,7 +181,6 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         mView = inflater.inflate(R.layout.fragment_map, container,false);
-
         mRouteSpinner = (Spinner) mView.findViewById(R.id.claimRouteSpinner);
         mClaimRoute = (Button) mView.findViewById(R.id.claimRoute);
         mpointsLegend = mView.findViewById(R.id.points_legend);
@@ -197,20 +197,13 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                         (routeToClaim != null)){
                     Result result = Phase2Facade.SINGLETON.claimRoute(routeToClaim, cardsUsedToClaim);
                     if(result.getStatusCode() == HttpURLConnection.HTTP_OK){
-                        try {
-                            TimeUnit.SECONDS.sleep(2);
-                        } catch (Exception e) {
-                            System.out.println(e.toString());
-                        }
 
                         Toast.makeText(getActivity(), "Route Claimed", Toast.LENGTH_SHORT).show();
-
                         TurnState.SINGLETON.setState(EndTurn.SINGLETON);
                         Phase2Facade.SINGLETON.endTurn();
 
-                        FragmentTransaction ft = getFragmentManager().beginTransaction();
-                        ft.detach(MapFragment.this).attach(MapFragment.this).commit();
-                        Update();
+                        ((GameActivity)getActivity()).getmMapButton().performClick();
+
                     }
                     else{
                         Toast.makeText(getActivity(), result.getErrorInfo(), Toast.LENGTH_SHORT).show();
