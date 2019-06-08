@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
@@ -33,6 +34,7 @@ import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.TreeMap;
 import java.util.UUID;
 import java.util.List;
@@ -177,7 +179,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
     Polyline mNewOrleansMiami;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         mView = inflater.inflate(R.layout.fragment_map, container,false);
@@ -186,7 +188,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         mpointsLegend = mView.findViewById(R.id.points_legend);
         mpointsLegend.bringToFront();
         String[] items = new String[]{"Values"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(Objects.requireNonNull(getActivity()),android.R.layout.simple_spinner_item, items);
         mRouteSpinner.setAdapter(adapter);
         mRouteSpinner.setOnItemSelectedListener(new spinnerOnClickListener());
 
@@ -202,7 +204,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                         TurnState.SINGLETON.setState(EndTurn.SINGLETON);
                         Phase2Facade.SINGLETON.endTurn();
 
-                        ((GameActivity)getActivity()).getmMapButton().performClick();
+                        ((GameActivity) Objects.requireNonNull(getActivity())).getmMapButton().performClick();
 
                     }
                     else{
@@ -244,7 +246,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 }
             }
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(Objects.requireNonNull(getActivity()),android.R.layout.simple_spinner_item, items);
             mRouteSpinner.setAdapter(adapter);
             mRouteSpinner.setOnItemSelectedListener(new spinnerOnClickListener());
         }
@@ -335,11 +337,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 if (route.color.equals("grey")) {
                     routesToSelectFrom.put(route, new ArrayList<String>());
                     for (String option : addClaimGreyRouteOption(route.length)) {
-                        routesToSelectFrom.get(route).add(option);
+                        Objects.requireNonNull(routesToSelectFrom.get(route)).add(option);
                     }
                 } else {
                     routesToSelectFrom.put(route, new ArrayList<String>());
-                    routesToSelectFrom.get(route).add(addClaimRouteOption(route));
+                    Objects.requireNonNull(routesToSelectFrom.get(route)).add(addClaimRouteOption(route));
                 }
             }
         }
@@ -482,7 +484,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
      MAP LOGIC
      --------*/
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         mMapView = (MapView) mView.findViewById(R.id.mapView);
@@ -504,7 +506,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        MapsInitializer.initialize(getContext());
+        MapsInitializer.initialize(Objects.requireNonNull(getContext()));
         mMap = googleMap;
         boolean success = googleMap.setMapStyle(
                 MapStyleOptions.loadRawResourceStyle(getContext(),R.raw.map_styles));
@@ -520,19 +522,19 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
             for(Player player : Phase2Facade.SINGLETON.getCurrentGame().getPlayersList()){
                 for(Route route : player.getClaimedRoutes()){
                     if(player.getColor().equals("red")){
-                        mRouteMap.get(route).setColor(Color.rgb(255,0,0));
+                        Objects.requireNonNull(mRouteMap.get(route)).setColor(Color.rgb(255,0,0));
                     }
                     if(player.getColor().equals("blue")){
-                        mRouteMap.get(route).setColor(Color.rgb(0,255,255));
+                        Objects.requireNonNull(mRouteMap.get(route)).setColor(Color.rgb(0,255,255));
                     }
                     if(player.getColor().equals("green")){
-                        mRouteMap.get(route).setColor(Color.rgb(0,255,0));
+                        Objects.requireNonNull(mRouteMap.get(route)).setColor(Color.rgb(0,255,0));
                     }
                     if(player.getColor().equals("yellow")){
-                        mRouteMap.get(route).setColor(Color.rgb(255,255,0));
+                        Objects.requireNonNull(mRouteMap.get(route)).setColor(Color.rgb(255,255,0));
                     }
                     if(player.getColor().equals("black")){
-                        mRouteMap.get(route).setColor(Color.rgb(0,0,0));
+                        Objects.requireNonNull(mRouteMap.get(route)).setColor(Color.rgb(0,0,0));
                     }
                 }
             }
@@ -562,7 +564,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
 
     @Override
     public void Update() {
-        getActivity().runOnUiThread(new Runnable() {
+        Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 mClaimRoute.setEnabled(isMyTurn());
