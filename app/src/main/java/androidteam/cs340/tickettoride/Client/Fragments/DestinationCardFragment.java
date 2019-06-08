@@ -19,8 +19,10 @@ import java.util.UUID;
 import androidteam.cs340.tickettoride.Client.Activities.GameActivity;
 import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
+import androidteam.cs340.tickettoride.Client.State.TurnState;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.DestinationCard;
+import androidteam.cs340.tickettoride.Shared.Player;
 
 import static androidteam.cs340.tickettoride.Client.Phase2Facade.SINGLETON;
 

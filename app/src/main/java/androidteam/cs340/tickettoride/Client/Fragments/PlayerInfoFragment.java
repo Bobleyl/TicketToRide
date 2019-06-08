@@ -64,6 +64,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
     private TextView mDownCount;
     private String mDestinationStringSelected;
     private Spinner mDestinationSpinner;
+    private int DestSize;
 
     private String ID;
     private OnFragmentInteractionListener mListener;
@@ -109,6 +110,19 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         mUpDeck3.setEnabled(up3);
         mUpDeck4.setEnabled(up4);
         mUpDeck5.setEnabled(up5);
+//        for(Player player : Phase2Facade.SINGLETON.getCurrentGame().getPlayersList()){
+//            if(player.getUID().equals(Phase2Facade.SINGLETON.getCurrentPlayer().getUID())){
+//                if(DestSize == player.getDestinationHand().size()){
+//                    break;
+//                }else if(DestSize == 0){
+//                    DestSize = player.getDestinationHand().size();
+//                    break;
+//                }else{
+//                    DestSize = player.getDestinationHand().size();
+//                    TurnState.SINGLETON.drawDestinationCard();
+//                }
+//            }
+//        }
 
         if (Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getDownDeck().isEmpty() && Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck().length == 0 && TurnState.SINGLETON.isDownNotWildState()) {
             TurnState.SINGLETON.drawFaceDown();
@@ -189,11 +203,9 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
 
         mDestinationDeck.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { //TODO: UPDATE STATE ONLY AFTER CARDS ARE SUBMITTED.
+            public void onClick(View v) {
                 if(TurnState.SINGLETON.isAnythingState()){
-                    if (chooseDestinationCard()) {
-                        TurnState.SINGLETON.drawDestinationCard();
-                    }
+                    chooseDestinationCard();
                 }else{
                     Toast.makeText(getActivity(), "Not Allowed..." , Toast.LENGTH_SHORT).show();
                 }
