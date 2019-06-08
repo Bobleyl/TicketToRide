@@ -66,7 +66,7 @@ public enum Route {
 
     Seattle_Calgary(Colors.grey.showColor(), 4) ,
 
-    Calgary_Hellena (Colors.grey.showColor(), 4),
+    Calgary_Helena (Colors.grey.showColor(), 4),
 
     Winnipeg_Duluth (Colors.black.showColor(), 4),
 
@@ -118,13 +118,13 @@ public enum Route {
 
     SaltLakeCity_Denver_2(Colors.yellow.showColor(), 3) ,
 
-    SaltLakeCity_Hellena(Colors.pink.showColor(), 3) ,
+    SaltLakeCity_Helena(Colors.pink.showColor(), 3) ,
 
-    Hellena_Duluth(Colors.orange.showColor(), 6) ,
+    Helena_Duluth(Colors.orange.showColor(), 6) ,
 
-    Hellena_Denver (Colors.green.showColor(), 4) ,
+    Helena_Denver (Colors.green.showColor(), 4) ,
 
-    Hellena_Omaha (Colors.red.showColor(), 5) ,
+    Helena_Omaha (Colors.red.showColor(), 5) ,
 
     Duluth_Toronto(Colors.pink.showColor(), 6) ,
 
@@ -178,9 +178,9 @@ public enum Route {
 
     Denver_OklahomaCity(Colors.red.showColor(), 4),
 
-    Seattle_Hellena(Colors.yellow.showColor(), 6),
+    Seattle_Helena(Colors.yellow.showColor(), 6),
 
-    Winnipeg_Hellena(Colors.blue.showColor(), 4),
+    Winnipeg_Helena(Colors.blue.showColor(), 4),
 
     Duluth_Omaha(Colors.grey.showColor(), 2),
 
