@@ -91,13 +91,11 @@ public class TrainCardDeck {
         }
 
         TrainCard card = upDeck[position];
-        TrainCard nextCard = null;
         if (downDeck.size() > 0) {
-            nextCard = downDeck.get(0);
+            TrainCard nextCard = downDeck.get(0);
             downDeck.remove(0);
-        }
-
-        if (nextCard == null) {
+            upDeck[position] = nextCard;
+        } else {
             upDeck = removeTheElement(upDeck, position);
         }
 
@@ -130,6 +128,8 @@ public class TrainCardDeck {
                             downDeck.remove(0);
                         } else {
                             refreshDownDeck();
+                            upDeck[i] = downDeck.get(0);
+                            downDeck.remove(0);
                         }
                     }
 
