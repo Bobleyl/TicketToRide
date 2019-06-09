@@ -38,8 +38,8 @@ public class ClientCommunicator {
 
     public Result send(String command) {
 
-        String url_ = "http://ec2-18-224-234-208.us-east-2.compute.amazonaws.com:7000/execute";
-        //String url_ = "http://192.168.1.198:7001/execute";
+        //String url_ = "http://ec2-18-224-234-208.us-east-2.compute.amazonaws.com:7000/execute";
+        String url_ = "http://192.168.1.198:7001/execute";
 
         Log.d("CLIENT_COMMUNICATOR", command);
         Log.d("CLIENT_COMMUNICATOR", url_);

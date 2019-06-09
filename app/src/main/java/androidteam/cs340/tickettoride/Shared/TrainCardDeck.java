@@ -99,10 +99,24 @@ public class TrainCardDeck {
             upDeck = removeTheElement(upDeck, position);
         }
 
+        //Edge case checker
+        boolean enterShuffle = false;
+        for (TrainCard trainCard : downDeck) {
+            if (!trainCard.color.equals("wild")) {
+                enterShuffle = true;
+            }
+        }
+
+        for (TrainCard trainCard : discard) {
+            if (!trainCard.color.equals("wild")) {
+                enterShuffle = true;
+            }
+        }
+
         //Check to see if there are 3 locomotives
         //If there are.. add the face up cards to the discard
         //Take the top 5 cards from the deck and replace the faceup cards
-        if ((downDeck.size() > 0 || discard.size() > 0) && upDeck.length == 5) {
+        if ((downDeck.size() > 0 || discard.size() > 0) && upDeck.length == 5 && enterShuffle) {
 
             boolean foundThreeLoco = false;
 
