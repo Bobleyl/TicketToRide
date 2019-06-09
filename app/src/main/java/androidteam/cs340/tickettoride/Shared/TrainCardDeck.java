@@ -99,9 +99,7 @@ public class TrainCardDeck {
 
         if (nextCard == null) {
             upDeck = removeTheElement(upDeck, position);
-        } else {
-            upDeck[position] = nextCard;
-        }
+        } 
 
         //Check to see if there are 3 locomotives
         //If there are.. add the face up cards to the discard
