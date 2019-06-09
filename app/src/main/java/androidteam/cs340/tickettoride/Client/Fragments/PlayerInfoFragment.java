@@ -411,212 +411,212 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         int count = 0;
 
         for(TrainCard card : cards){
-            if(card.color.equals("black")){
-                if(count == 0){
-                    mUpDeck1.setImageResource(R.drawable.black_train_card);
+            if (card != null) {
+                if (card.color.equals("black")) {
+                    if (count == 0) {
+                        mUpDeck1.setImageResource(R.drawable.black_train_card);
+                    }
+                    if (count == 1) {
+                        mUpDeck2.setImageResource(R.drawable.black_train_card);
+                    }
+                    if (count == 2) {
+                        mUpDeck3.setImageResource(R.drawable.black_train_card);
+                    }
+                    if (count == 3) {
+                        mUpDeck4.setImageResource(R.drawable.black_train_card);
+                    }
+                    if (count == 4) {
+                        mUpDeck5.setImageResource(R.drawable.black_train_card);
+                    }
                 }
-                if(count == 1){
-                    mUpDeck2.setImageResource(R.drawable.black_train_card);
+                if (card.color.equals("blue")) {
+                    if (count == 0) {
+                        mUpDeck1.setImageResource(R.drawable.blue_train_card);
+                    }
+                    if (count == 1) {
+                        mUpDeck2.setImageResource(R.drawable.blue_train_card);
+                    }
+                    if (count == 2) {
+                        mUpDeck3.setImageResource(R.drawable.blue_train_card);
+                    }
+                    if (count == 3) {
+                        mUpDeck4.setImageResource(R.drawable.blue_train_card);
+                    }
+                    if (count == 4) {
+                        mUpDeck5.setImageResource(R.drawable.blue_train_card);
+                    }
                 }
-                if(count == 2){
-                    mUpDeck3.setImageResource(R.drawable.black_train_card);
+                if (card.color.equals("white")) {
+                    if (count == 0) {
+                        mUpDeck1.setImageResource(R.drawable.white_train_card);
+                    }
+                    if (count == 1) {
+                        mUpDeck2.setImageResource(R.drawable.white_train_card);
+                    }
+                    if (count == 2) {
+                        mUpDeck3.setImageResource(R.drawable.white_train_card);
+                    }
+                    if (count == 3) {
+                        mUpDeck4.setImageResource(R.drawable.white_train_card);
+                    }
+                    if (count == 4) {
+                        mUpDeck5.setImageResource(R.drawable.white_train_card);
+                    }
                 }
-                if(count == 3){
-                    mUpDeck4.setImageResource(R.drawable.black_train_card);
+                if (card.color.equals("orange")) {
+                    if (count == 0) {
+                        mUpDeck1.setImageResource(R.drawable.orange_train_card);
+                    }
+                    if (count == 1) {
+                        mUpDeck2.setImageResource(R.drawable.orange_train_card);
+                    }
+                    if (count == 2) {
+                        mUpDeck3.setImageResource(R.drawable.orange_train_card);
+                    }
+                    if (count == 3) {
+                        mUpDeck4.setImageResource(R.drawable.orange_train_card);
+                    }
+                    if (count == 4) {
+                        mUpDeck5.setImageResource(R.drawable.orange_train_card);
+                    }
                 }
-                if(count == 4){
-                    mUpDeck5.setImageResource(R.drawable.black_train_card);
+                if (card.color.equals("yellow")) {
+                    if (count == 0) {
+                        mUpDeck1.setImageResource(R.drawable.yellow_train_card);
+                    }
+                    if (count == 1) {
+                        mUpDeck2.setImageResource(R.drawable.yellow_train_card);
+                    }
+                    if (count == 2) {
+                        mUpDeck3.setImageResource(R.drawable.yellow_train_card);
+                    }
+                    if (count == 3) {
+                        mUpDeck4.setImageResource(R.drawable.yellow_train_card);
+                    }
+                    if (count == 4) {
+                        mUpDeck5.setImageResource(R.drawable.yellow_train_card);
+                    }
                 }
-            }
-            if(card.color.equals("blue")){
-                if(count == 0){
-                    mUpDeck1.setImageResource(R.drawable.blue_train_card);
+                if (card.color.equals("green")) {
+                    if (count == 0) {
+                        mUpDeck1.setImageResource(R.drawable.green_train_card);
+                    }
+                    if (count == 1) {
+                        mUpDeck2.setImageResource(R.drawable.green_train_card);
+                    }
+                    if (count == 2) {
+                        mUpDeck3.setImageResource(R.drawable.green_train_card);
+                    }
+                    if (count == 3) {
+                        mUpDeck4.setImageResource(R.drawable.green_train_card);
+                    }
+                    if (count == 4) {
+                        mUpDeck5.setImageResource(R.drawable.green_train_card);
+                    }
                 }
-                if(count == 1){
-                    mUpDeck2.setImageResource(R.drawable.blue_train_card);
+                if (card.color.equals("wild")) {
+                    if (count == 0) {
+                        mUpDeck1.setImageResource(R.drawable.wild_train_car);
+                    }
+                    if (count == 1) {
+                        mUpDeck2.setImageResource(R.drawable.wild_train_car);
+                    }
+                    if (count == 2) {
+                        mUpDeck3.setImageResource(R.drawable.wild_train_car);
+                    }
+                    if (count == 3) {
+                        mUpDeck4.setImageResource(R.drawable.wild_train_car);
+                    }
+                    if (count == 4) {
+                        mUpDeck5.setImageResource(R.drawable.wild_train_car);
+                    }
                 }
-                if(count == 2){
-                    mUpDeck3.setImageResource(R.drawable.blue_train_card);
+                if (card.color.equals("red")) {
+                    if (count == 0) {
+                        mUpDeck1.setImageResource(R.drawable.red_train_card);
+                    }
+                    if (count == 1) {
+                        mUpDeck2.setImageResource(R.drawable.red_train_card);
+                    }
+                    if (count == 2) {
+                        mUpDeck3.setImageResource(R.drawable.red_train_card);
+                    }
+                    if (count == 3) {
+                        mUpDeck4.setImageResource(R.drawable.red_train_card);
+                    }
+                    if (count == 4) {
+                        mUpDeck5.setImageResource(R.drawable.red_train_card);
+                    }
                 }
-                if(count == 3){
-                    mUpDeck4.setImageResource(R.drawable.blue_train_card);
+                if (card.color.equals("pink")) {
+                    if (count == 0) {
+                        mUpDeck1.setImageResource(R.drawable.purple_train_card);
+                    }
+                    if (count == 1) {
+                        mUpDeck2.setImageResource(R.drawable.purple_train_card);
+                    }
+                    if (count == 2) {
+                        mUpDeck3.setImageResource(R.drawable.purple_train_card);
+                    }
+                    if (count == 3) {
+                        mUpDeck4.setImageResource(R.drawable.purple_train_card);
+                    }
+                    if (count == 4) {
+                        mUpDeck5.setImageResource(R.drawable.purple_train_card);
+                    }
                 }
-                if(count == 4){
-                    mUpDeck5.setImageResource(R.drawable.blue_train_card);
+            } else {
+                if (count == 0) { // zero cards
+                    mUpDeck1.setImageResource(R.drawable.blank_card);
+                    up1 = false;
+                    mUpDeck2.setImageResource(R.drawable.blank_card);
+                    mUpDeck3.setImageResource(R.drawable.blank_card);
+                    mUpDeck4.setImageResource(R.drawable.blank_card);
+                    mUpDeck5.setImageResource(R.drawable.blank_card);
+                    endDeck = true;
                 }
-            }
-            if(card.color.equals("white")){
-                if(count == 0){
-                    mUpDeck1.setImageResource(R.drawable.white_train_card);
+
+                if (count == 1) {
+                    mUpDeck2.setImageResource(R.drawable.blank_card);
+                    up1 = isMyTurn();
+                    up2 = false;
+                    mUpDeck3.setImageResource(R.drawable.blank_card);
+                    mUpDeck4.setImageResource(R.drawable.blank_card);
+                    mUpDeck5.setImageResource(R.drawable.blank_card);
+                    endDeck = true;
                 }
-                if(count == 1){
-                    mUpDeck2.setImageResource(R.drawable.white_train_card);
+
+                if (count == 2) {
+                    mUpDeck3.setImageResource(R.drawable.blank_card);
+                    up1 = isMyTurn();
+                    up2 = isMyTurn();
+                    up3 = false;
+                    mUpDeck4.setImageResource(R.drawable.blank_card);
+                    mUpDeck5.setImageResource(R.drawable.blank_card);
+                    endDeck = true;
                 }
-                if(count == 2){
-                    mUpDeck3.setImageResource(R.drawable.white_train_card);
+
+                if (count == 3) {
+                    mUpDeck4.setImageResource(R.drawable.blank_card);
+                    up1 = isMyTurn();
+                    up2 = isMyTurn();
+                    up3 = isMyTurn();
+                    up4 = false;
+                    mUpDeck5.setImageResource(R.drawable.blank_card);
+                    endDeck = true;
                 }
-                if(count == 3){
-                    mUpDeck4.setImageResource(R.drawable.white_train_card);
-                }
-                if(count == 4){
-                    mUpDeck5.setImageResource(R.drawable.white_train_card);
-                }
-            }
-            if(card.color.equals("orange")){
-                if(count == 0){
-                    mUpDeck1.setImageResource(R.drawable.orange_train_card);
-                }
-                if(count == 1){
-                    mUpDeck2.setImageResource(R.drawable.orange_train_card);
-                }
-                if(count == 2){
-                    mUpDeck3.setImageResource(R.drawable.orange_train_card);
-                }
-                if(count == 3){
-                    mUpDeck4.setImageResource(R.drawable.orange_train_card);
-                }
-                if(count == 4){
-                    mUpDeck5.setImageResource(R.drawable.orange_train_card);
-                }
-            }
-            if(card.color.equals("yellow")){
-                if(count == 0){
-                    mUpDeck1.setImageResource(R.drawable.yellow_train_card);
-                }
-                if(count == 1){
-                    mUpDeck2.setImageResource(R.drawable.yellow_train_card);
-                }
-                if(count == 2){
-                    mUpDeck3.setImageResource(R.drawable.yellow_train_card);
-                }
-                if(count == 3){
-                    mUpDeck4.setImageResource(R.drawable.yellow_train_card);
-                }
-                if(count == 4){
-                    mUpDeck5.setImageResource(R.drawable.yellow_train_card);
-                }
-            }
-            if(card.color.equals("green")){
-                if(count == 0){
-                    mUpDeck1.setImageResource(R.drawable.green_train_card);
-                }
-                if(count == 1){
-                    mUpDeck2.setImageResource(R.drawable.green_train_card);
-                }
-                if(count == 2){
-                    mUpDeck3.setImageResource(R.drawable.green_train_card);
-                }
-                if(count == 3){
-                    mUpDeck4.setImageResource(R.drawable.green_train_card);
-                }
-                if(count == 4){
-                    mUpDeck5.setImageResource(R.drawable.green_train_card);
-                }
-            }
-            if(card.color.equals("wild")){
-                if(count == 0){
-                    mUpDeck1.setImageResource(R.drawable.wild_train_car);
-                }
-                if(count == 1){
-                    mUpDeck2.setImageResource(R.drawable.wild_train_car);
-                }
-                if(count == 2){
-                    mUpDeck3.setImageResource(R.drawable.wild_train_car);
-                }
-                if(count == 3){
-                    mUpDeck4.setImageResource(R.drawable.wild_train_car);
-                }
-                if(count == 4){
-                    mUpDeck5.setImageResource(R.drawable.wild_train_car);
-                }
-            }
-            if(card.color.equals("red")){
-                if(count == 0){
-                    mUpDeck1.setImageResource(R.drawable.red_train_card);
-                }
-                if(count == 1){
-                    mUpDeck2.setImageResource(R.drawable.red_train_card);
-                }
-                if(count == 2){
-                    mUpDeck3.setImageResource(R.drawable.red_train_card);
-                }
-                if(count == 3){
-                    mUpDeck4.setImageResource(R.drawable.red_train_card);
-                }
-                if(count == 4){
-                    mUpDeck5.setImageResource(R.drawable.red_train_card);
-                }
-            }
-            if(card.color.equals("pink")){
-                if(count == 0){
-                    mUpDeck1.setImageResource(R.drawable.purple_train_card);
-                }
-                if(count == 1){
-                    mUpDeck2.setImageResource(R.drawable.purple_train_card);
-                }
-                if(count == 2){
-                    mUpDeck3.setImageResource(R.drawable.purple_train_card);
-                }
-                if(count == 3){
-                    mUpDeck4.setImageResource(R.drawable.purple_train_card);
-                }
-                if(count == 4){
-                    mUpDeck5.setImageResource(R.drawable.purple_train_card);
+
+                if (count == 4) {
+                    mUpDeck5.setImageResource(R.drawable.blank_card);
+                    up1 = isMyTurn();
+                    up2 = isMyTurn();
+                    up3 = isMyTurn();
+                    up4 = isMyTurn();
+                    up5 = false;
+                    endDeck = true;
                 }
             }
             count++;
-        }
-
-        if (count != 5) {
-            if (count == 0) { // zero cards
-                mUpDeck1.setImageResource(R.drawable.blank_card);
-                up1 = false;
-                mUpDeck2.setImageResource(R.drawable.blank_card);
-                mUpDeck3.setImageResource(R.drawable.blank_card);
-                mUpDeck4.setImageResource(R.drawable.blank_card);
-                mUpDeck5.setImageResource(R.drawable.blank_card);
-                endDeck = true;
-            }
-
-            if (count == 1) {
-                mUpDeck2.setImageResource(R.drawable.blank_card);
-                up1 = isMyTurn();
-                up2 = false;
-                mUpDeck3.setImageResource(R.drawable.blank_card);
-                mUpDeck4.setImageResource(R.drawable.blank_card);
-                mUpDeck5.setImageResource(R.drawable.blank_card);
-                endDeck = true;
-            }
-
-            if (count == 2) {
-                mUpDeck3.setImageResource(R.drawable.blank_card);
-                up1 = isMyTurn();
-                up2 = isMyTurn();
-                up3 = false;
-                mUpDeck4.setImageResource(R.drawable.blank_card);
-                mUpDeck5.setImageResource(R.drawable.blank_card);
-                endDeck = true;
-            }
-
-            if (count == 3) {
-                mUpDeck4.setImageResource(R.drawable.blank_card);
-                up1 = isMyTurn();
-                up2 = isMyTurn();
-                up3 = isMyTurn();
-                up4 = false;
-                mUpDeck5.setImageResource(R.drawable.blank_card);
-                endDeck = true;
-            }
-
-            if (count == 4) {
-                mUpDeck5.setImageResource(R.drawable.blank_card);
-                up1 = isMyTurn();
-                up2 = isMyTurn();
-                up3 = isMyTurn();
-                up4 = isMyTurn();
-                up5 = false;
-                endDeck = true;
-            }
         }
     }
 
