@@ -569,10 +569,10 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                 if (count == 0) { // zero cards
                     mUpDeck1.setImageResource(R.drawable.blank_card);
                     up1 = false;
-                    mUpDeck2.setImageResource(R.drawable.blank_card);
-                    mUpDeck3.setImageResource(R.drawable.blank_card);
-                    mUpDeck4.setImageResource(R.drawable.blank_card);
-                    mUpDeck5.setImageResource(R.drawable.blank_card);
+                    //mUpDeck2.setImageResource(R.drawable.blank_card);
+                    //mUpDeck3.setImageResource(R.drawable.blank_card);
+                    //mUpDeck4.setImageResource(R.drawable.blank_card);
+                    //mUpDeck5.setImageResource(R.drawable.blank_card);
                     endDeck = true;
                 }
 
@@ -580,9 +580,9 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                     mUpDeck2.setImageResource(R.drawable.blank_card);
                     up1 = isMyTurn();
                     up2 = false;
-                    mUpDeck3.setImageResource(R.drawable.blank_card);
-                    mUpDeck4.setImageResource(R.drawable.blank_card);
-                    mUpDeck5.setImageResource(R.drawable.blank_card);
+                    //mUpDeck3.setImageResource(R.drawable.blank_card);
+                    //mUpDeck4.setImageResource(R.drawable.blank_card);
+                    //mUpDeck5.setImageResource(R.drawable.blank_card);
                     endDeck = true;
                 }
 
@@ -591,8 +591,8 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                     up1 = isMyTurn();
                     up2 = isMyTurn();
                     up3 = false;
-                    mUpDeck4.setImageResource(R.drawable.blank_card);
-                    mUpDeck5.setImageResource(R.drawable.blank_card);
+                    //mUpDeck4.setImageResource(R.drawable.blank_card);
+                    //mUpDeck5.setImageResource(R.drawable.blank_card);
                     endDeck = true;
                 }
 
@@ -602,7 +602,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
                     up2 = isMyTurn();
                     up3 = isMyTurn();
                     up4 = false;
-                    mUpDeck5.setImageResource(R.drawable.blank_card);
+                    //mUpDeck5.setImageResource(R.drawable.blank_card);
                     endDeck = true;
                 }
 
