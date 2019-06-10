@@ -273,8 +273,16 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
 
                 String[] enumWithColor = mRouteString.split("_");
 
-                String enumRoute = enumWithColor[0] + "_" + enumWithColor[1];
-                String color = enumWithColor[2];
+                String enumRoute = "";
+                String color = "";
+
+                if (enumWithColor.length == 3) {
+                    enumRoute = enumWithColor[0] + "_" + enumWithColor[1];
+                    color = enumWithColor[2];
+                } else {
+                    enumRoute = enumWithColor[0] + "_" + enumWithColor[1]+ "_" + enumWithColor[2];
+                    color = enumWithColor[3];
+                }
 
                 routeToClaim = Route.valueOf(enumRoute);
                 cardsUsedToClaim = new ArrayList<>();
