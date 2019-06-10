@@ -4,7 +4,9 @@ import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,10 +34,12 @@ import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.TreeMap;
 import java.util.UUID;
 import java.util.List;
 
+import androidteam.cs340.tickettoride.Client.Activities.GameActivity;
 import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
 import androidteam.cs340.tickettoride.Client.State.EndTurn;
@@ -48,6 +52,8 @@ import androidteam.cs340.tickettoride.Shared.TrainCard;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -173,29 +179,33 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
     Polyline mNewOrleansMiami;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         mView = inflater.inflate(R.layout.fragment_map, container,false);
-
         mRouteSpinner = (Spinner) mView.findViewById(R.id.claimRouteSpinner);
         mClaimRoute = (Button) mView.findViewById(R.id.claimRoute);
         mpointsLegend = mView.findViewById(R.id.points_legend);
         mpointsLegend.bringToFront();
         String[] items = new String[]{"Values"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(Objects.requireNonNull(getActivity()),android.R.layout.simple_spinner_item, items);
         mRouteSpinner.setAdapter(adapter);
         mRouteSpinner.setOnItemSelectedListener(new spinnerOnClickListener());
 
         mClaimRoute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(TurnState.SINGLETON.isAnythingState() && Phase2Facade.SINGLETON.isMyTurn()){
+                if(TurnState.SINGLETON.isAnythingState() && Phase2Facade.SINGLETON.isMyTurn() &&
+                        (routeToClaim != null)){
                     Result result = Phase2Facade.SINGLETON.claimRoute(routeToClaim, cardsUsedToClaim);
                     if(result.getStatusCode() == HttpURLConnection.HTTP_OK){
+
                         Toast.makeText(getActivity(), "Route Claimed", Toast.LENGTH_SHORT).show();
                         TurnState.SINGLETON.setState(EndTurn.SINGLETON);
                         Phase2Facade.SINGLETON.endTurn();
+
+                        ((GameActivity) Objects.requireNonNull(getActivity())).getmMapButton().performClick();
+
                     }
                     else{
                         Toast.makeText(getActivity(), result.getErrorInfo(), Toast.LENGTH_SHORT).show();
@@ -236,7 +246,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 }
             }
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, items);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(Objects.requireNonNull(getActivity()),android.R.layout.simple_spinner_item, items);
             mRouteSpinner.setAdapter(adapter);
             mRouteSpinner.setOnItemSelectedListener(new spinnerOnClickListener());
         }
@@ -259,7 +269,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             mRouteString = (String) parent.getSelectedItem();
 
-            if (!mRouteString.equals("Values")) {
+            if (!mRouteString.equals("Values") && !mRouteString.equals("")) {
 
                 String[] enumWithColor = mRouteString.split("_");
 
@@ -327,11 +337,11 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 if (route.color.equals("grey")) {
                     routesToSelectFrom.put(route, new ArrayList<String>());
                     for (String option : addClaimGreyRouteOption(route.length)) {
-                        routesToSelectFrom.get(route).add(option);
+                        Objects.requireNonNull(routesToSelectFrom.get(route)).add(option);
                     }
                 } else {
                     routesToSelectFrom.put(route, new ArrayList<String>());
-                    routesToSelectFrom.get(route).add(addClaimRouteOption(route));
+                    Objects.requireNonNull(routesToSelectFrom.get(route)).add(addClaimRouteOption(route));
                 }
             }
         }
@@ -474,7 +484,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
      MAP LOGIC
      --------*/
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         mMapView = (MapView) mView.findViewById(R.id.mapView);
@@ -496,7 +506,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        MapsInitializer.initialize(getContext());
+        MapsInitializer.initialize(Objects.requireNonNull(getContext()));
         mMap = googleMap;
         boolean success = googleMap.setMapStyle(
                 MapStyleOptions.loadRawResourceStyle(getContext(),R.raw.map_styles));
@@ -512,19 +522,19 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
             for(Player player : Phase2Facade.SINGLETON.getCurrentGame().getPlayersList()){
                 for(Route route : player.getClaimedRoutes()){
                     if(player.getColor().equals("red")){
-                        mRouteMap.get(route).setColor(Color.rgb(255,0,0));
+                        Objects.requireNonNull(mRouteMap.get(route)).setColor(Color.rgb(255,0,0));
                     }
                     if(player.getColor().equals("blue")){
-                        mRouteMap.get(route).setColor(Color.rgb(0,255,255));
+                        Objects.requireNonNull(mRouteMap.get(route)).setColor(Color.rgb(0,255,255));
                     }
                     if(player.getColor().equals("green")){
-                        mRouteMap.get(route).setColor(Color.rgb(0,255,0));
+                        Objects.requireNonNull(mRouteMap.get(route)).setColor(Color.rgb(0,255,0));
                     }
                     if(player.getColor().equals("yellow")){
-                        mRouteMap.get(route).setColor(Color.rgb(255,255,0));
+                        Objects.requireNonNull(mRouteMap.get(route)).setColor(Color.rgb(255,255,0));
                     }
                     if(player.getColor().equals("black")){
-                        mRouteMap.get(route).setColor(Color.rgb(0,0,0));
+                        Objects.requireNonNull(mRouteMap.get(route)).setColor(Color.rgb(0,0,0));
                     }
                 }
             }
@@ -554,7 +564,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
 
     @Override
     public void Update() {
-        getActivity().runOnUiThread(new Runnable() {
+        Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 mClaimRoute.setEnabled(isMyTurn());
@@ -679,7 +689,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .width(10)
                 .color(Color.rgb(234, 222, 45))
         );
-        mRouteMap.put(Route.Seattle_Hellena,mSeattleHellena);
+        mRouteMap.put(Route.Seattle_Helena,mSeattleHellena);
 //        LatLng SeattleHellena = new LatLng(46.253710, -116.906759);
 //        GroundOverlayOptions seahel = new GroundOverlayOptions()
 //                .image(BitmapDescriptorFactory.fromResource(R.drawable.sixwhite))
@@ -703,7 +713,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .width(10)
                 .color(Color.rgb(255,0,255))//pink
         );
-        mRouteMap.put(Route.SaltLakeCity_Hellena,mSaltLakeHelena);
+        mRouteMap.put(Route.SaltLakeCity_Helena,mSaltLakeHelena);
 //        LatLng SaltLakeHelena = new LatLng(44.198513, -113.216691);
 //        GroundOverlayOptions salHel = new GroundOverlayOptions()
 //                .image(BitmapDescriptorFactory.fromResource(R.drawable.threewhite))
@@ -919,7 +929,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .width(10)
                 .color(Color.parseColor("green"))
         );
-        mRouteMap.put(Route.Hellena_Denver,mHelenaDenver);
+        mRouteMap.put(Route.Helena_Denver,mHelenaDenver);
 //        LatLng HelenaDenver = new LatLng(44.114951, -110.582058);
 //        GroundOverlayOptions HelDen = new GroundOverlayOptions()
 //                .image(BitmapDescriptorFactory.fromResource(R.drawable.fourwhite))
@@ -943,7 +953,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .width(10)
                 .color(Color.parseColor("blue"))
         );
-        mRouteMap.put(Route.Winnipeg_Hellena,mHelenaWinnipeg);
+        mRouteMap.put(Route.Winnipeg_Helena,mHelenaWinnipeg);
 //        LatLng HelenaWinnipeg = new LatLng(48.855680, -105.544547);
 //        GroundOverlayOptions HelWin = new GroundOverlayOptions()
 //                .image(BitmapDescriptorFactory.fromResource(R.drawable.fourwhite))
@@ -956,7 +966,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .width(10)
                 .color(Color.parseColor("gray"))
         );
-        mRouteMap.put(Route.Calgary_Hellena,mCalgaryHelena);
+        mRouteMap.put(Route.Calgary_Helena,mCalgaryHelena);
 //        LatLng CalgaryHelena = new LatLng(49.186809, -111.890500);
 //        GroundOverlayOptions Calhel = new GroundOverlayOptions()
 //                .image(BitmapDescriptorFactory.fromResource(R.drawable.fourwhite))
@@ -968,7 +978,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .width(10)
                 .color(Color.rgb(255,165,0))//orange
         );
-        mRouteMap.put(Route.Hellena_Duluth,mHelenaDuluth);
+        mRouteMap.put(Route.Helena_Duluth,mHelenaDuluth);
 //        LatLng HelenaDuluth = new LatLng(48.070239, -100.766039);
 //        GroundOverlayOptions heldul = new GroundOverlayOptions()
 //                .image(BitmapDescriptorFactory.fromResource(R.drawable.sixwhite))
@@ -992,7 +1002,7 @@ public class MapFragment extends Fragment implements IPresenter, OnMapReadyCallb
                 .width(10)
                 .color(Color.parseColor("red"))
         );
-        mRouteMap.put(Route.Hellena_Omaha,mHelenaOmaha);
+        mRouteMap.put(Route.Helena_Omaha,mHelenaOmaha);
 //        LatLng HelenaOmaha = new LatLng(44.494056, -102.971695);
 //        GroundOverlayOptions Helo = new GroundOverlayOptions()
 //                .image(BitmapDescriptorFactory.fromResource(R.drawable.fivewhite))

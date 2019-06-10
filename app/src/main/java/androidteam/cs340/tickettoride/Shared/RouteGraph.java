@@ -12,7 +12,7 @@ public class RouteGraph {
     public static void main(String[] args) {
         // add test code here
         RouteGraph rg = new RouteGraph();
-        rg.addRoute(Route.Calgary_Hellena);
+        rg.addRoute(Route.Calgary_Helena);
         rg.addRoute(Route.Vancouver_Calgary);
         rg.addRoute(Route.Seattle_Vancouver);
         rg.addRoute(Route.Boston_NewYork);

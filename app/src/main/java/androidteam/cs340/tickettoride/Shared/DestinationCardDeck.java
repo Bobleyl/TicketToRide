@@ -7,7 +7,6 @@ import java.util.List;
 
 public class DestinationCardDeck {
     List<DestinationCard> deck = new ArrayList<>(Arrays.asList(DestinationCard.values()));
-    List<DestinationCard> discard = new ArrayList<>();
 
     public DestinationCardDeck() {
         Collections.shuffle(deck);
@@ -15,13 +14,7 @@ public class DestinationCardDeck {
 
     public boolean getCard(Player player) {
 
-        Integer cardsDrawn = 0;
-
-        if (deck.size() == 0 && discard.size() > 0) {
-            deck = discard;
-            Collections.shuffle(deck);
-            discard = new ArrayList<>();
-        }
+        int cardsDrawn = 0;
 
         if (deck.size() > 0) {
             cardsDrawn++;
@@ -30,20 +23,14 @@ public class DestinationCardDeck {
             player.addToTempDestHand(card);
         }
 
-        if (cardsDrawn == 0) {
-            return false;
-        } else {
-            return true;
-        }
+        return cardsDrawn != 0;
 
     }
 
     public void returnCard(DestinationCard card) {
-        assert !deck.contains(card) && !discard.contains(card);
-
-        discard.add(card);
+        assert !deck.contains(card);
+        deck.add(card);
     }
 
     public List<DestinationCard> getDeck() { return deck;}
-    public List<DestinationCard> getDiscard() { return discard;}
 }

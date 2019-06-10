@@ -19,8 +19,10 @@ import java.util.UUID;
 import androidteam.cs340.tickettoride.Client.Activities.GameActivity;
 import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
+import androidteam.cs340.tickettoride.Client.State.TurnState;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.DestinationCard;
+import androidteam.cs340.tickettoride.Shared.Player;
 
 import static androidteam.cs340.tickettoride.Client.Phase2Facade.SINGLETON;
 
@@ -127,10 +129,18 @@ public class DestinationCardFragment extends Fragment implements IPresenter {
                 destCards.add(destCard1);
             }
             if(!isKeeping(mCard2Status)){
-                destCards.add(destCard2);
+                if(destCard2 == null){
+
+                }else{
+                    destCards.add(destCard2);
+                }
             }
             if(!isKeeping(mCard3Status)){
-                destCards.add(destCard3);
+                if(destCard3 == null){
+
+                }else{
+                    destCards.add(destCard3);
+                }
             }
             ((GameActivity)getActivity()).submitDestinationCards(destCards);
         }

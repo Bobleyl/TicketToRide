@@ -23,6 +23,7 @@ import java.util.UUID;
 import androidteam.cs340.tickettoride.Client.Activities.GameActivity;
 import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.IPresenter;
+import androidteam.cs340.tickettoride.Client.State.EndTurn;
 import androidteam.cs340.tickettoride.Client.State.State;
 import androidteam.cs340.tickettoride.Client.State.TurnState;
 import androidteam.cs340.tickettoride.R;
@@ -41,6 +42,12 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
     private ImageButton mUpDeck3;
     private ImageButton mUpDeck4;
     private ImageButton mUpDeck5;
+    private boolean up1;
+    private boolean up2;
+    private boolean up3;
+    private boolean up4;
+    private boolean up5;
+    private boolean endDeck = false;
     private ImageButton mDestinationCards;
     private TextView mWhoseTurn;
     private TextView mOrangeCount;
@@ -57,6 +64,7 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
     private TextView mDownCount;
     private String mDestinationStringSelected;
     private Spinner mDestinationSpinner;
+    private int DestSize;
 
     private String ID;
     private OnFragmentInteractionListener mListener;
@@ -90,11 +98,35 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         updateSpinner();
         mDestinationDeck.setEnabled(isMyTurn());
         mDownDeck.setEnabled(isMyTurn());
-        mUpDeck1.setEnabled(isMyTurn());
-        mUpDeck2.setEnabled(isMyTurn());
-        mUpDeck3.setEnabled(isMyTurn());
-        mUpDeck4.setEnabled(isMyTurn());
-        mUpDeck5.setEnabled(isMyTurn());
+        if(!endDeck){
+            up1 = isMyTurn();
+            up2 = isMyTurn();
+            up3 = isMyTurn();
+            up4 = isMyTurn();
+            up5 = isMyTurn();
+        }
+        mUpDeck1.setEnabled(up1);
+        mUpDeck2.setEnabled(up2);
+        mUpDeck3.setEnabled(up3);
+        mUpDeck4.setEnabled(up4);
+        mUpDeck5.setEnabled(up5);
+//        for(Player player : Phase2Facade.SINGLETON.getCurrentGame().getPlayersList()){
+//            if(player.getUID().equals(Phase2Facade.SINGLETON.getCurrentPlayer().getUID())){
+//                if(DestSize == player.getDestinationHand().size()){
+//                    break;
+//                }else if(DestSize == 0){
+//                    DestSize = player.getDestinationHand().size();
+//                    break;
+//                }else{
+//                    DestSize = player.getDestinationHand().size();
+//                    TurnState.SINGLETON.drawDestinationCard();
+//                }
+//            }
+//        }
+
+        if (Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getDownDeck().isEmpty() && Phase2Facade.SINGLETON.getCurrentGame().getTrainCardDeck().getUpDeck().length == 0 && TurnState.SINGLETON.isDownNotWildState()) {
+            TurnState.SINGLETON.drawFaceDown();
+        }
     }
 
     public String getID(){
@@ -171,9 +203,12 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
 
         mDestinationDeck.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { //TODO: UPDATE STATE ONLY AFTER CARDS ARE SUBMITTED.
+            public void onClick(View v) {
                 if(TurnState.SINGLETON.isAnythingState()){
-                    if (chooseDestinationCard()) {
+                    if(Phase2Facade.SINGLETON.getCurrentGame().getDestinationCardDeck().getDeck().size() == 0){
+                        Toast.makeText(getActivity(), "Deck is Empty...", Toast.LENGTH_SHORT).show();
+                    }else{
+                        chooseDestinationCard();
                         TurnState.SINGLETON.drawDestinationCard();
                     }
                 }else{
@@ -535,32 +570,52 @@ public class PlayerInfoFragment extends Fragment implements IPresenter {
         if (count != 5) {
             if (count == 0) { // zero cards
                 mUpDeck1.setImageResource(R.drawable.blank_card);
+                up1 = false;
                 mUpDeck2.setImageResource(R.drawable.blank_card);
                 mUpDeck3.setImageResource(R.drawable.blank_card);
                 mUpDeck4.setImageResource(R.drawable.blank_card);
                 mUpDeck5.setImageResource(R.drawable.blank_card);
+                endDeck = true;
             }
 
             if (count == 1) {
                 mUpDeck2.setImageResource(R.drawable.blank_card);
+                up1 = isMyTurn();
+                up2 = false;
                 mUpDeck3.setImageResource(R.drawable.blank_card);
                 mUpDeck4.setImageResource(R.drawable.blank_card);
                 mUpDeck5.setImageResource(R.drawable.blank_card);
+                endDeck = true;
             }
 
             if (count == 2) {
                 mUpDeck3.setImageResource(R.drawable.blank_card);
+                up1 = isMyTurn();
+                up2 = isMyTurn();
+                up3 = false;
                 mUpDeck4.setImageResource(R.drawable.blank_card);
                 mUpDeck5.setImageResource(R.drawable.blank_card);
+                endDeck = true;
             }
 
             if (count == 3) {
                 mUpDeck4.setImageResource(R.drawable.blank_card);
+                up1 = isMyTurn();
+                up2 = isMyTurn();
+                up3 = isMyTurn();
+                up4 = false;
                 mUpDeck5.setImageResource(R.drawable.blank_card);
+                endDeck = true;
             }
 
             if (count == 4) {
                 mUpDeck5.setImageResource(R.drawable.blank_card);
+                up1 = isMyTurn();
+                up2 = isMyTurn();
+                up3 = isMyTurn();
+                up4 = isMyTurn();
+                up5 = false;
+                endDeck = true;
             }
         }
     }

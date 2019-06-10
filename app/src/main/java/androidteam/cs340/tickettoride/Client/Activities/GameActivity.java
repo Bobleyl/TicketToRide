@@ -28,6 +28,7 @@ import androidteam.cs340.tickettoride.Client.ModelFacade;
 import androidteam.cs340.tickettoride.Client.Phase2Facade;
 import androidteam.cs340.tickettoride.Client.Presenters.GameActivityPresenter;
 import androidteam.cs340.tickettoride.Client.ServerProxy;
+import androidteam.cs340.tickettoride.Client.State.TurnState;
 import androidteam.cs340.tickettoride.R;
 import androidteam.cs340.tickettoride.Shared.DestinationCard;
 import androidteam.cs340.tickettoride.Shared.EndGame;
@@ -159,6 +160,11 @@ public class GameActivity extends AppCompatActivity implements
         Phase2Facade.SINGLETON.removePresenter(mGameActivityPresenter);
     }
 
+    public void setmMapButton(Button mMapButton_) {
+        mMapButton = mMapButton_;
+    }
+
+    public Button getmMapButton() { return mMapButton; }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -176,6 +182,7 @@ public class GameActivity extends AppCompatActivity implements
 //        Phase2Facade.SINGLETON.setMusic(true);
 
         mMapButton = (Button) findViewById(R.id.map_button);
+
         mGameInfoButton = (Button) findViewById(R.id.game_info_button);
         mChatButton = (Button) findViewById(R.id.chat_button);
         mPlayer1TextView = (TextView) findViewById(R.id.player1_text_view);
@@ -207,6 +214,8 @@ public class GameActivity extends AppCompatActivity implements
                 startNewFragment(mapFragment);
             }
         });
+
+        setmMapButton(mMapButton);
 
         mChatButton.setOnClickListener(new View.OnClickListener() {
             @Override
