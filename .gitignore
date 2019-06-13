@@ -10,3 +10,5 @@
 /out
 /target
 /shared/target
+/plugins/flatfile/target
+/plugins/relational/target
