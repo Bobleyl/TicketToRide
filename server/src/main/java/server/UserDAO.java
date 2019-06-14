@@ -2,36 +2,17 @@ package server;
 
 import java.sql.*;
 
-public class DataAccess {
+public class UserDAO {
 
-    private DataAccess(){}
+    private UserDAO(){}
 
-    public static DataAccess SINGLETON = new DataAccess();
+    //private static final String CREATE_TABLE_SQL = "CREATE TABLE IF NOT EXISTS GAME (GAMEID TEXT, DELTA TEXT, SNAPSHOT TEXT)";
 
-    public Connection connectJDBCToAWSEC2() {
-
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            System.out.println("Missing MySQL JDBC Driver");
-        }
-
-        Connection connection = null;
-
-        try {
-            connection = DriverManager.
-                    getConnection("jdbc:mysql://" + "ec2-18-188-40-6.us-east-2.compute.amazonaws.com" +
-                            ":3306/ticketToRide", "remoteu", "password");
-        } catch (SQLException e) {
-            System.out.println("Connection Failed!:\n" + e.getMessage());
-        }
-
-        return connection;
-    }
+    public static UserDAO SINGLETON = new UserDAO();
 
     public boolean delete() {
 
-        Connection connection = DataAccess.SINGLETON.connectJDBCToAWSEC2();
+        Connection connection = DataConnection.SINGLETON.connectJDBCToAWSEC2();
         Statement statement;
         boolean result = false;
         if (connection != null) {
@@ -53,7 +34,7 @@ public class DataAccess {
 
     public boolean registerUser(String username, String password) {
 
-        Connection connection = DataAccess.SINGLETON.connectJDBCToAWSEC2();
+        Connection connection = DataConnection.SINGLETON.connectJDBCToAWSEC2();
         Statement statement;
         Statement statementFindUser;
         boolean result = false;
@@ -113,7 +94,7 @@ public class DataAccess {
 
     public boolean checkUser(String username, String password) {
 
-        Connection connection = DataAccess.SINGLETON.connectJDBCToAWSEC2();
+        Connection connection = DataConnection.SINGLETON.connectJDBCToAWSEC2();
         boolean result = false;
 
         if (connection != null) {

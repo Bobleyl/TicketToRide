@@ -9,7 +9,7 @@ public class DeleteCommand implements CommandInterface {
     @Override
     public Object execute() throws Exception {
 
-        boolean success = DataAccess.SINGLETON.delete();
+        boolean success = UserDAO.SINGLETON.delete();
 
         if(success) {
             LobbyModel.SINGLETON.emptyGames();
