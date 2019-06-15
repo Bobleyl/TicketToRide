@@ -29,35 +29,11 @@ public class CommandHandler implements Handler {
 
             Object result = command.execute();
 
-            if (values.get("game_id") != null) {
-                Gson gson = new Gson();
-                String gameID = (String)values.get("game_id");
-
-                if (GameList.SINGLETON.deltas.containsKey(gameID)) {
-
-                    if ((GameList.SINGLETON.getDeltaCount()-1) == GameList.SINGLETON.deltas.get(gameID).size()) {
-                        GameDAO.SINGLETON.storeGame(gameID);
-                        GameList.SINGLETON.deltas.get(gameID).clear();
-                    } else {
-
-                        List<String> deltas = GameList.SINGLETON.deltas.get(gameID);
-                        deltas.add(gson.toJson(dto));
-                        GameList.SINGLETON.deltas.put(gameID, deltas);
-                        GameDAO.SINGLETON.storeDelta(gameID, GameList.SINGLETON.deltas.get(gameID));
-                    }
-                } else {
-                    List<String> deltas = new ArrayList<>();
-                    deltas.add(gson.toJson(dto));
-                    GameList.SINGLETON.deltas.put(gameID, deltas);
-                    GameDAO.SINGLETON.storeDelta(gameID, GameList.SINGLETON.deltas.get(gameID));
-                }
-
-            }
-
             if (result == null) {
+                storeGame(dto, values);
                 context.status(204);
             } else {
-
+                storeGame(dto, values);
                 context.status(200);
                 context.json(result);
             }
@@ -67,7 +43,37 @@ public class CommandHandler implements Handler {
         }
     }
 
+    public static void storeGame(HashMap<String, Object> dto, HashMap<String, Object> values) {
+
+        if (values.get("game_id") != null) {
+            Gson gson = new Gson();
+            String gameID = (String)values.get("game_id");
+
+            if (GameList.SINGLETON.deltas.containsKey(gameID)) {
+
+                if ((GameList.SINGLETON.getDeltaCount()-1) == GameList.SINGLETON.deltas.get(gameID).size()) {
+                    GameDAO.SINGLETON.storeGame(gameID);
+                    GameList.SINGLETON.deltas.get(gameID).clear();
+                } else {
+
+                    List<String> deltas = GameList.SINGLETON.deltas.get(gameID);
+                    deltas.add(gson.toJson(dto));
+                    GameList.SINGLETON.deltas.put(gameID, deltas);
+                    GameDAO.SINGLETON.storeDelta(gameID, GameList.SINGLETON.deltas.get(gameID));
+                }
+            } else {
+                List<String> deltas = new ArrayList<>();
+                deltas.add(gson.toJson(dto));
+                GameList.SINGLETON.deltas.put(gameID, deltas);
+                GameDAO.SINGLETON.storeDelta(gameID, GameList.SINGLETON.deltas.get(gameID));
+            }
+
+        }
+
+    }
+
 }
+
 
 
 

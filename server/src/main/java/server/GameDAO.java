@@ -122,8 +122,6 @@ public class GameDAO {
 
                     try {
 
-                        //If it exists create it, if not update it..
-
                         Gson gson = new Gson();
                         String deltas = gson.toJson(delta);
 
@@ -182,7 +180,7 @@ public class GameDAO {
                         gameExists = false;
                     }
 
-                    //If userExists = True then return false
+                    //If gameExists = True then return false
                     System.out.println(gameExists);
                     Statement statement;
                     if (gameExists) {
@@ -212,8 +210,6 @@ public class GameDAO {
                     } else {
 
                         try {
-
-                            //If it exists create it, if not update it..
 
                             Gson gson = new Gson();
                             String gameModelString = gson.toJson(gameModel);
