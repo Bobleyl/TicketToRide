@@ -9,7 +9,7 @@ public class Boot implements State {
         //Do logic you want for when in boot state and boot state is called.
     }
 
-    public void doneWithBoot()(ServerState state){
-        ServerState.SINGLETON.setState(Ok.SINGLETON);
+    public void doneWithBoot(ServerState state){
+        //ServerState.SINGLETON.setState(Ok.SINGLETON);
     }
 }

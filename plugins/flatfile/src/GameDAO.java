@@ -22,7 +22,9 @@ public class GameDAO implements IGameDAO {
 
     @Override
     public GameModel getModel() {
-        return null;
+        GameModel model = new GameModel();
+        model.setGameID("tyler1");
+        return model;
     }
 
     @Override

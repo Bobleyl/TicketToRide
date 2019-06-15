@@ -1,4 +1,4 @@
-package server.State
+package server.State;
 
 public interface State {
 
