@@ -1,10 +1,14 @@
 package server;
 
-import com.google.gson.Gson;
-
-import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import Shared.*;
+import com.google.gson.Gson;
+
+import java.lang.reflect.Constructor;
+import java.sql.*;
+import java.util.*;
 
 public class GameDAO {
 
@@ -13,9 +17,10 @@ public class GameDAO {
     public static GameDAO SINGLETON = new GameDAO();
 
     public static void main(String[] args) {
-        List<String> testRun = new ArrayList<>();
+        //List<String> testRun = new ArrayList<>();
         //testRun.add("ok1");
-        GameDAO.SINGLETON.storeDelta("test", testRun);
+        //testRun.add("ok2");
+        //GameDAO.SINGLETON.storeDelta("test", testRun);
         GameDAO.SINGLETON.retrieveGames();
         //GameDAO.SINGLETON.deleteGames();
     }
@@ -150,30 +155,94 @@ public class GameDAO {
 
     }
 
-    public void storeGame(String gameID, GameModel gameModel) {
+    public void storeGame(String gameID) {
 
-        try {
+        GameModel gameModel = null;
 
-            Gson gson = new Gson();
-            String games = gson.toJson(gameModel);
-
-            Connection connection = DataConnection.SINGLETON.connectJDBCToAWSEC2();
-            Statement statement;
-            statement = connection.createStatement();
-            String query = "UPDATE GAME SET SNAPSHOT = ? WHERE GAMEID = ?";
-
-            try (PreparedStatement stmt = connection.prepareStatement(query)) {
-                stmt.setString(1, games);
-                stmt.setString(2, gameID);
-                stmt.execute();
-            } catch (SQLException e) {
-                e.printStackTrace();
+        for(GameModel game : GameList.SINGLETON.getGames()) {
+            if (game.getGameID().equals(gameID)) {
+                gameModel = game;
             }
+        }
 
-            statement.close();
-            connection.close();
-        } catch (Exception e) {
-            System.out.println(e.toString());
+
+        if (gameModel != null) {
+
+            boolean gameExists = true;
+            Connection connection = DataConnection.SINGLETON.connectJDBCToAWSEC2();
+
+            if (connection != null) {
+                try {
+
+                    String querySearchGame = "SELECT * FROM GAME WHERE GAMEID = ?;";
+                    try (PreparedStatement stmt1 = connection.prepareStatement(querySearchGame)) {
+                        stmt1.setString(1, gameID);
+                        try (ResultSet resultSet = stmt1.executeQuery()) {
+                            gameExists = resultSet.next();
+                        }
+                    } catch (SQLException se) {
+                        se.printStackTrace();
+                        gameExists = false;
+                    }
+
+                    //If userExists = True then return false
+                    System.out.println(gameExists);
+                    Statement statement;
+                    if (gameExists) {
+
+                        try {
+
+                            Gson gson = new Gson();
+                            String games = gson.toJson(gameModel);
+
+
+                            statement = connection.createStatement();
+                            String query = "UPDATE GAME SET SNAPSHOT = ? WHERE GAMEID = ?";
+
+                            try (PreparedStatement stmt = connection.prepareStatement(query)) {
+                                stmt.setString(1, games);
+                                stmt.setString(2, gameID);
+                                stmt.execute();
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }
+
+                            statement.close();
+                            connection.close();
+                        } catch (Exception e) {
+                            System.out.println(e.toString());
+                        }
+                    } else {
+
+                        try {
+
+                            //If it exists create it, if not update it..
+
+                            Gson gson = new Gson();
+                            String gameModelString = gson.toJson(gameModel);
+
+                            statement = connection.createStatement();
+                            String query = "INSERT INTO GAME (GAMEID, SNAPSHOT) VALUES (?, ?);";
+
+                            try (PreparedStatement stmt = connection.prepareStatement(query)) {
+                                stmt.setString(1, gameID);
+                                stmt.setString(2, gameModelString);
+                                stmt.execute();
+                            } catch (SQLException e) {
+                                System.out.println(e.toString());
+                            }
+
+                            statement.close();
+                            connection.close();
+                        } catch (Exception e) {
+                            System.out.println(e.toString());
+                        }
+
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.toString());
+                }
+            }
         }
 
     }
@@ -189,10 +258,30 @@ public class GameDAO {
 
             ResultSet rs = statement.executeQuery(query);
 
+            Gson gson = new Gson();
+
             while (rs.next()) {
                 System.out.println(rs.getString(1));
-                System.out.println(rs.getString(2));
-                System.out.println(rs.getString(3));
+                List<String> deltas = gson.fromJson(rs.getString(2), List.class);
+                GameModel gameModel = gson.fromJson(rs.getString(3), GameModel.class);
+                GameList.SINGLETON.addGame(gameModel);
+
+                for (String s : deltas) {
+                    HashMap<String, Object> dto = gson.fromJson(s, HashMap.class);
+                    String commandType = (String)dto.get("command");
+                    commandType = commandType.substring(0, 1).toUpperCase() + commandType.substring(1);
+                    HashMap<String, Object> values = (HashMap)dto.get("values");
+
+                    Class<?> cl = Class.forName("server." + commandType + "Command");
+
+                    Constructor<?> constructor = cl.getConstructor(HashMap.class);
+
+                    CommandInterface command = (CommandInterface)constructor.newInstance(values);
+
+                    command.execute();
+                }
+
+                System.out.println();
             }
 
             statement.close();
@@ -204,3 +293,4 @@ public class GameDAO {
     }
 
 }
+
