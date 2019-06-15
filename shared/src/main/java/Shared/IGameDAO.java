@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface IGameDAO {
 
-    void setModel(GameModel model);
-    void addCommand(List<Command> comm);
-    void clearCommands();
-    GameModel getModel();
-    List<Command> getCommands();
+    public void deleteGame(String gameID);
+    public void deleteGames();
+    public void storeDelta(String gameID, List<String> delta);
+    public void storeGame(String gameID);
+    public void retrieveGames();
 }

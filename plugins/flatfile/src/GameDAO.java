@@ -1,34 +1,30 @@
-import Shared.Command;
-import Shared.GameModel;
 import Shared.IGameDAO;
 
 import java.util.List;
 
 public class GameDAO implements IGameDAO {
     @Override
-    public void setModel(GameModel model) {
+    public void deleteGame(String gameID) {
 
     }
 
     @Override
-    public void addCommand(List<Command> comm) {
+    public void deleteGames() {
 
     }
 
     @Override
-    public void clearCommands() {
+    public void storeDelta(String gameID, List<String> delta) {
 
     }
 
     @Override
-    public GameModel getModel() {
-        GameModel model = new GameModel();
-        model.setGameID("tyler1");
-        return model;
+    public void storeGame(String gameID) {
+
     }
 
     @Override
-    public List<Command> getCommands() {
-        return null;
+    public void retrieveGames() {
+
     }
 }

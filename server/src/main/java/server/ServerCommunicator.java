@@ -1,6 +1,7 @@
 package server;
 
 import Shared.IFactory;
+import Shared.IUserDAO;
 import io.javalin.Javalin;
 
 public class ServerCommunicator {
