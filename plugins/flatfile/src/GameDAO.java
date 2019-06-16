@@ -1,7 +1,6 @@
 import Shared.GameModel;
 import Shared.IGameDAO;
 import com.google.gson.Gson;
-import com.google.gson.internal.LinkedTreeMap;
 import server.CommandInterface;
 import server.GameList;
 
@@ -54,13 +53,16 @@ public class GameDAO implements IGameDAO {
         Gson gson = new Gson();
         String deltas = gson.toJson(delta);
 
+        PrintWriter pw = null;
+
         try {
-            PrintWriter pw = new PrintWriter(MessageFormat.format(DELTAS_FILENAME, gameID));
+            pw = new PrintWriter(MessageFormat.format(DELTAS_FILENAME, gameID));
             pw.print(deltas);
-            pw.close();
         } catch (IOException e) {
             e.printStackTrace();
-        };
+        } finally {
+            pw.close();
+        }
     }
 
     @Override
