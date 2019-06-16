@@ -1,10 +1,10 @@
 package server;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class DeleteCommand implements CommandInterface {
 
-    public DeleteCommand(HashMap<String, Object> values) {}
+    public DeleteCommand(Map<String, Object> values) {}
 
     @Override
     public Object execute() throws Exception {

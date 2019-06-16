@@ -2,13 +2,13 @@ package server;
 
 import Shared.*;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class ReturnEndGameCommand implements CommandInterface {
 
     String gameID;
 
-    public ReturnEndGameCommand(HashMap<String, Object> values) {
+    public ReturnEndGameCommand(Map<String, Object> values) {
         this.gameID = (String)values.get("game_id");
     }
 

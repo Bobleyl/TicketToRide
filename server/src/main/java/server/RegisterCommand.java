@@ -1,12 +1,12 @@
 package server;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterCommand implements CommandInterface {
     private String username;
     private String password;
 
-    public RegisterCommand(HashMap<String, Object> values) {
+    public RegisterCommand(Map<String, Object> values) {
         this.username = (String)values.get("username");
         this.password = (String)values.get("password");
     }

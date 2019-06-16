@@ -4,7 +4,7 @@ import Shared.*;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 
 public class ClaimRouteCommand implements CommandInterface {
@@ -14,7 +14,7 @@ public class ClaimRouteCommand implements CommandInterface {
     Route route;
     List<TrainCard> trainCards;
 
-    public ClaimRouteCommand(HashMap<String, Object> values) {
+    public ClaimRouteCommand(Map<String, Object> values) {
 
         Gson gson = new Gson();
 

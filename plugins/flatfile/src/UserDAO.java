@@ -3,7 +3,7 @@ import Shared.IUserDAO;
 import java.io.*;
 
 public class UserDAO implements IUserDAO {
-    public static final String USER_FILENAME = "userfile.txt";
+    private static final String USER_FILENAME = FlatFileFactory.FLATFILE_DIR + "/userfile.txt";
 
     @Override
     public boolean checkUser(String username, String password) {

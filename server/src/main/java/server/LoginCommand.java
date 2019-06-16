@@ -1,13 +1,14 @@
 package server;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class LoginCommand implements CommandInterface {
     private String username;
     private String password;
 
-    public LoginCommand(HashMap<String, Object> values) {
+    public LoginCommand(Map<String, Object> values) {
         this.username = (String)values.get("username");
         this.password = (String)values.get("password");
     }

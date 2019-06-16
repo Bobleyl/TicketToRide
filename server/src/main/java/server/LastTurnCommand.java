@@ -2,15 +2,14 @@ package server;
 
 import Shared.*;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.Map;
 
 public class LastTurnCommand implements CommandInterface {
 
     String gameID;
     String playerID;
 
-    public LastTurnCommand(HashMap<String, Object> values) {
+    public LastTurnCommand(Map<String, Object> values) {
 
         this.gameID = (String)values.get("game_id");
         this.playerID = (String)values.get("player_id");

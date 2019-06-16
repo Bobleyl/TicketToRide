@@ -112,5 +112,6 @@ public class LobbyGameModel {
         System.out.println(gameID);
         GameList.SINGLETON.addGame(game);
 
+        ServerCommunicator.factory.getGameDAO().storeGame(gameID);
     }
 }

@@ -1,14 +1,13 @@
 package server;
 
-import java.util.HashMap;
-import java.util.UUID;
+import java.util.Map;
 
 public class JoinGameCommand implements CommandInterface {
 
     private String gameID;
     private String playerID;
 
-    public JoinGameCommand(HashMap<String, Object> values) {
+    public JoinGameCommand(Map<String, Object> values) {
         this.playerID = (String)values.get("player_id");
         this.gameID = (String)values.get("game_id");
     }

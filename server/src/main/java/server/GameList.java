@@ -11,7 +11,7 @@ public class GameList {
 
     Map<String, List<String>> deltas = new HashMap<>();
 
-    private Integer deltaCount;
+    private Integer deltaCount = 10;
 
     private List<GameModel> games = new ArrayList<>();
 
