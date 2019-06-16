@@ -169,6 +169,16 @@ public class GameDAO {
             if (connection != null) {
                 try {
 
+                    List<String> emptyList = new ArrayList<>();
+                    String updateDeltas = "UPDATE GAME SET DELTA = ? WHERE GAMEID = ?";
+                    try (PreparedStatement stmt2 = connection.prepareStatement(querySearchGame)) {
+                        stmt2.setString(1, emptyList);
+                        stmt2.setString(2, gameID);
+                        stmt2.executeQuery();
+                    } catch (SQLException se) {
+                        se.printStackTrace();
+                    }
+
                     String querySearchGame = "SELECT * FROM GAME WHERE GAMEID = ?;";
                     try (PreparedStatement stmt1 = connection.prepareStatement(querySearchGame)) {
                         stmt1.setString(1, gameID);
