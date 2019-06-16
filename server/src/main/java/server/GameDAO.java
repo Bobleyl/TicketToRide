@@ -17,9 +17,9 @@ public class GameDAO {
         //List<String> testRun = new ArrayList<>();
         //testRun.add("ok1");
         //testRun.add("ok2");
-        //GameDAO.SINGLETON.storeDelta("test", testRun);
+        //main.java.GameDAO.SINGLETON.storeDelta("test", testRun);
         GameDAO.SINGLETON.retrieveGames();
-        //GameDAO.SINGLETON.deleteGames();
+        //main.java.GameDAO.SINGLETON.deleteGames();
     }
 
     public void deleteGame(String gameID) {
@@ -171,8 +171,8 @@ public class GameDAO {
 
                     List<String> emptyList = new ArrayList<>();
                     String updateDeltas = "UPDATE GAME SET DELTA = ? WHERE GAMEID = ?";
-                    try (PreparedStatement stmt2 = connection.prepareStatement(querySearchGame)) {
-                        stmt2.setString(1, emptyList);
+                    try (PreparedStatement stmt2 = connection.prepareStatement(updateDeltas)) {
+                        stmt2.setString(1, "");
                         stmt2.setString(2, gameID);
                         stmt2.executeQuery();
                     } catch (SQLException se) {

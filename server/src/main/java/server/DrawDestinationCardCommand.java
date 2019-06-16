@@ -1,9 +1,6 @@
 package server;
 
-import Shared.DestinationCard;
-import Shared.DestinationCardDeck;
-import Shared.GameModel;
-import Shared.Player;
+import Shared.*;
 
 import java.util.ArrayList;
 import java.util.Map;

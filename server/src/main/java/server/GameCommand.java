@@ -1,6 +1,8 @@
 package server;
 
 
+import Shared.CommandInterface;
+import Shared.GameList;
 import Shared.GameModel;
 
 import java.util.Map;

@@ -1,5 +1,7 @@
 package server;
 
+import Shared.CommandInterface;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;

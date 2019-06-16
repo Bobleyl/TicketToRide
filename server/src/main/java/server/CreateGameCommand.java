@@ -1,5 +1,7 @@
 package server;
 
+import Shared.CommandInterface;
+
 import java.util.Map;
 
 public class CreateGameCommand implements CommandInterface {

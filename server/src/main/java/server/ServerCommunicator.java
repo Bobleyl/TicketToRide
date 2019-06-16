@@ -1,5 +1,6 @@
 package server;
 
+import Shared.GameList;
 import Shared.IFactory;
 import io.javalin.Javalin;
 

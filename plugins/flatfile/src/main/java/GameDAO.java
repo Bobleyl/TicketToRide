@@ -1,8 +1,8 @@
 import Shared.GameModel;
 import Shared.IGameDAO;
 import com.google.gson.Gson;
-import server.CommandInterface;
-import server.GameList;
+import Shared.CommandInterface;
+import Shared.GameList;
 
 import java.io.File;
 import java.io.IOException;

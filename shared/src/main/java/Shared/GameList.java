@@ -1,6 +1,4 @@
-package server;
-
-import Shared.GameModel;
+package Shared;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,7 +7,7 @@ import java.util.Map;
 
 public class GameList {
 
-    Map<String, List<String>> deltas = new HashMap<>();
+    public Map<String, List<String>> deltas = new HashMap<>();
 
     private Integer deltaCount = 10;
 

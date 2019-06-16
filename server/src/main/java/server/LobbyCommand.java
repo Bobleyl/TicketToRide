@@ -1,5 +1,7 @@
 package server;
 
+import Shared.CommandInterface;
+
 import java.util.Map;
 
 public class LobbyCommand implements CommandInterface {

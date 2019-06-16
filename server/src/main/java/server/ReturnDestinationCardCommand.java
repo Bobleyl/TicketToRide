@@ -1,10 +1,7 @@
 package server;
 
 
-import Shared.DestinationCard;
-import Shared.DestinationCardDeck;
-import Shared.GameModel;
-import Shared.Player;
+import Shared.*;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

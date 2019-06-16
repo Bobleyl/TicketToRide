@@ -1,5 +1,7 @@
 package server;
 
+import Shared.CommandInterface;
+import Shared.GameList;
 import com.google.gson.Gson;
 import io.javalin.Context;
 import io.javalin.Handler;
@@ -7,7 +9,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
