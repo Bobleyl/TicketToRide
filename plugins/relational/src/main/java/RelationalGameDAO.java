@@ -171,9 +171,9 @@ public class RelationalGameDAO implements IGameDAO {
                     List<String> emptyList = new ArrayList<>();
                     String updateDeltas = "UPDATE GAME SET DELTA = ? WHERE GAMEID = ?";
                     try (PreparedStatement stmt2 = connection.prepareStatement(updateDeltas)) {
-                        stmt2.setString(1, "");
+                        stmt2.setString(1, null);
                         stmt2.setString(2, gameID);
-                        stmt2.executeQuery();
+                        stmt2.execute();
                     } catch (SQLException se) {
                         se.printStackTrace();
                     }
