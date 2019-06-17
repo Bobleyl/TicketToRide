@@ -5,11 +5,11 @@ import Shared.IUserDAO;
 public class RelationalFactory implements IFactory {
     @Override
     public IUserDAO getUserDAO() {
-        return new UserDAO();
+        return RelationalUserDAO.SINGLETON;
     }
 
     @Override
     public IGameDAO getGameDAO() {
-        return new GameDAO();
+        return RelationalGameDAO.SINGLETON;
     }
 }

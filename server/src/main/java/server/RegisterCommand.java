@@ -15,7 +15,7 @@ public class RegisterCommand implements CommandInterface {
 
     @Override
     public Object execute() throws Exception {
-        boolean success = UserDAO.SINGLETON.registerUser(username, password);
+        boolean success = ServerCommunicator.factory.getUserDAO().registerUser(username, password);
 
         if(success) {
             System.out.println("User was created");

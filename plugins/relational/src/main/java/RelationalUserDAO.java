@@ -1,18 +1,19 @@
-package server;
+import Shared.Colors;
+import Shared.IUserDAO;
 
 import java.sql.*;
 
-public class UserDAO {
+public class RelationalUserDAO implements IUserDAO {
 
-    private UserDAO(){}
+    private RelationalUserDAO(){}
 
     //private static final String CREATE_TABLE_SQL = "CREATE TABLE IF NOT EXISTS GAME (GAMEID TEXT, DELTA TEXT, SNAPSHOT TEXT)";
 
-    public static UserDAO SINGLETON = new UserDAO();
+    public static RelationalUserDAO SINGLETON = new RelationalUserDAO();
 
     public boolean delete() {
 
-        Connection connection = DataConnection.SINGLETON.connectJDBCToAWSEC2();
+        Connection connection = Colors.DataConnection.SINGLETON.connectJDBCToAWSEC2();
         Statement statement;
         boolean result = false;
         if (connection != null) {
@@ -34,7 +35,7 @@ public class UserDAO {
 
     public boolean registerUser(String username, String password) {
 
-        Connection connection = DataConnection.SINGLETON.connectJDBCToAWSEC2();
+        Connection connection = Colors.DataConnection.SINGLETON.connectJDBCToAWSEC2();
         Statement statement;
         Statement statementFindUser;
         boolean result = false;
@@ -94,7 +95,7 @@ public class UserDAO {
 
     public boolean checkUser(String username, String password) {
 
-        Connection connection = DataConnection.SINGLETON.connectJDBCToAWSEC2();
+        Connection connection = Colors.DataConnection.SINGLETON.connectJDBCToAWSEC2();
         boolean result = false;
 
         if (connection != null) {

@@ -17,7 +17,7 @@ public class LoginCommand implements CommandInterface {
 
     @Override
     public Object execute() throws Exception {
-        boolean success = UserDAO.SINGLETON.checkUser(username, password);
+        boolean success = ServerCommunicator.factory.getUserDAO().checkUser(username, password);
         HashMap<String, String> result= new HashMap<>();
 
         result.put("PlayerID", UUID.randomUUID().toString());

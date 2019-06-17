@@ -1,30 +1,29 @@
-package server;
-
 import Shared.*;
+import Shared.Colors;
 import com.google.gson.Gson;
 
 import java.lang.reflect.Constructor;
 import java.sql.*;
 import java.util.*;
 
-public class GameDAO {
+public class RelationalGameDAO implements IGameDAO {
 
-    private GameDAO(){}
+    private RelationalGameDAO(){}
 
-    public static GameDAO SINGLETON = new GameDAO();
+    public static RelationalGameDAO SINGLETON = new RelationalGameDAO();
 
     public static void main(String[] args) {
         //List<String> testRun = new ArrayList<>();
         //testRun.add("ok1");
         //testRun.add("ok2");
-        //main.java.GameDAO.SINGLETON.storeDelta("test", testRun);
-        GameDAO.SINGLETON.retrieveGames();
-        //main.java.GameDAO.SINGLETON.deleteGames();
+        //main.java.FlatFileGameDAO.SINGLETON.storeDelta("test", testRun);
+        RelationalGameDAO.SINGLETON.retrieveGames();
+        //main.java.FlatFileGameDAO.SINGLETON.deleteGames();
     }
 
     public void deleteGame(String gameID) {
 
-        Connection connection = DataConnection.SINGLETON.connectJDBCToAWSEC2();
+        Connection connection = Colors.DataConnection.SINGLETON.connectJDBCToAWSEC2();
         Statement statement;
 
         try {
@@ -49,7 +48,7 @@ public class GameDAO {
 
     public void deleteGames() {
 
-        Connection connection = DataConnection.SINGLETON.connectJDBCToAWSEC2();
+        Connection connection = Colors.DataConnection.SINGLETON.connectJDBCToAWSEC2();
         Statement statement;
 
         try {
@@ -73,7 +72,7 @@ public class GameDAO {
 
     public void storeDelta(String gameID, List<String> delta) {
 
-        Connection connection = DataConnection.SINGLETON.connectJDBCToAWSEC2();
+        Connection connection = Colors.DataConnection.SINGLETON.connectJDBCToAWSEC2();
         Statement statement;
 
         boolean gameExists = true;
@@ -164,7 +163,7 @@ public class GameDAO {
         if (gameModel != null) {
 
             boolean gameExists = true;
-            Connection connection = DataConnection.SINGLETON.connectJDBCToAWSEC2();
+            Connection connection = Colors.DataConnection.SINGLETON.connectJDBCToAWSEC2();
 
             if (connection != null) {
                 try {
@@ -252,7 +251,7 @@ public class GameDAO {
 
     public void retrieveGames() {
 
-        Connection connection = DataConnection.SINGLETON.connectJDBCToAWSEC2();
+        Connection connection = Colors.DataConnection.SINGLETON.connectJDBCToAWSEC2();
 
         String query = "SELECT * FROM GAME";
 

@@ -11,7 +11,7 @@ public class DeleteCommand implements CommandInterface {
     @Override
     public Object execute() throws Exception {
 
-        boolean success = UserDAO.SINGLETON.delete();
+        boolean success = ServerCommunicator.factory.getUserDAO().delete();
 
         if(success) {
             LobbyModel.SINGLETON.emptyGames();

@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GameDAO implements IGameDAO {
+public class FlatFileGameDAO implements IGameDAO {
     private static final String FLATFILE_DIR = FlatFileFactory.FLATFILE_DIR;
     private static final String GAME_FILENAME = FLATFILE_DIR + "/game-{0}.txt";
     private static final String DELTAS_FILENAME = FLATFILE_DIR + "/deltas-{0}.txt";

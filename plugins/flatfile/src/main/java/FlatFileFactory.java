@@ -17,11 +17,11 @@ public class FlatFileFactory implements IFactory {
 
     @Override
     public IUserDAO getUserDAO() {
-        return new UserDAO();
+        return new FlatFileUserDAO();
     }
 
     @Override
     public IGameDAO getGameDAO() {
-        return new GameDAO();
+        return new FlatFileGameDAO();
     }
 }
