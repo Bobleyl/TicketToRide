@@ -57,9 +57,13 @@ public class GameActivity extends AppCompatActivity implements
             @Override
             public void run() {
                 updateUI(players, turnPlayer);
-                if(ServerProxy.SINGLETON.returnEndGame(Phase2Facade.SINGLETON.getCurrentGame().getGameID()).getStatusCode() == 200){
-                    Intent intent = new Intent(GameActivity.this, EndGameActivity.class);
-                    startActivity(intent);
+                try{
+                    if(ServerProxy.SINGLETON.returnEndGame(Phase2Facade.SINGLETON.getCurrentGame().getGameID()).getStatusCode() == 200){
+                        Intent intent = new Intent(GameActivity.this, EndGameActivity.class);
+                        startActivity(intent);
+                    }
+                } catch(Exception e){
+                    System.out.println("EXCEPTION CAUGHT: " + e);
                 }
             }
         });
