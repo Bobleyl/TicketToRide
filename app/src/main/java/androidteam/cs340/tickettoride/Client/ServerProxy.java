@@ -83,6 +83,11 @@ public class ServerProxy implements IServer {
     public Result lobby() {
         JsonObject root = new JsonObject();
         root.addProperty("command", "lobby");
+
+        // Create Inner JSON Object
+        JsonObject values = new JsonObject();
+        root.add("values", values);
+
         return ClientCommunicator.SINGLETON.send(root.toString());
     }
 
