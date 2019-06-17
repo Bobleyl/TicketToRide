@@ -79,6 +79,9 @@ public class ParseResults {
     }
 
     public GameModel parseGameResult(Result result) {
+        if (result.getData() == null){
+            return null;
+        }
 
         Gson gson = new Gson();
 

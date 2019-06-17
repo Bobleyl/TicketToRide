@@ -90,7 +90,7 @@ public class ClientCommunicator {
         catch (Exception e) {
             Log.d("CLIENT_COMMUNICATOR", e.toString());
             e.printStackTrace();
-            return new Result(400, "error", "Error in ClientCommunicator");
+            return new Result(400, null, "Error in ClientCommunicator");
         }
     }
 
