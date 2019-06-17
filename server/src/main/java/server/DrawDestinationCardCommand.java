@@ -1,12 +1,9 @@
 package server;
 
-import Shared.DestinationCard;
-import Shared.DestinationCardDeck;
-import Shared.GameModel;
-import Shared.Player;
+import Shared.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 
 public class DrawDestinationCardCommand implements CommandInterface {
@@ -14,7 +11,7 @@ public class DrawDestinationCardCommand implements CommandInterface {
     String gameID;
     String playerID;
 
-    public DrawDestinationCardCommand(HashMap<String, Object> values) {
+    public DrawDestinationCardCommand(Map<String, Object> values) {
 
         this.gameID = (String)values.get("game_id");
         this.playerID = (String)values.get("player_id");

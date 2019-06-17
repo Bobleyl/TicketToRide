@@ -1,15 +1,17 @@
 package server;
 
 
+import Shared.CommandInterface;
+import Shared.GameList;
 import Shared.GameModel;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class GameCommand implements CommandInterface {
 
     String gameID;
 
-    public GameCommand(HashMap<String, Object> values) {
+    public GameCommand(Map<String, Object> values) {
         this.gameID = (String)values.get("game_id");
     }
 

@@ -1,15 +1,12 @@
 package server;
 
 
-import Shared.DestinationCard;
-import Shared.DestinationCardDeck;
-import Shared.GameModel;
-import Shared.Player;
+import Shared.*;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 
 public class ReturnDestinationCardCommand implements CommandInterface {
@@ -18,7 +15,7 @@ public class ReturnDestinationCardCommand implements CommandInterface {
     String playerID;
     ArrayList<DestinationCard> destinationCards;
 
-    public ReturnDestinationCardCommand(HashMap<String, Object> values) {
+    public ReturnDestinationCardCommand(Map<String, Object> values) {
 
         Gson gson = new Gson();
 

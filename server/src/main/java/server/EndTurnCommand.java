@@ -1,16 +1,18 @@
 package server;
 
+import Shared.CommandInterface;
+import Shared.GameList;
 import Shared.GameModel;
 import Shared.Player;
 
-import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 
 public class EndTurnCommand implements CommandInterface {
 
     String gameID;
 
-    public EndTurnCommand(HashMap<String, Object> values) {
+    public EndTurnCommand(Map<String, Object> values) {
         this.gameID = (String)values.get("game_id");
     }
 

@@ -1,13 +1,10 @@
 package server;
 
 
-import Shared.GameModel;
-import Shared.Player;
-import Shared.TrainCard;
-import Shared.TrainCardDeck;
+import Shared.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 
 public class DrawFaceUpCommand implements CommandInterface {
@@ -16,7 +13,7 @@ public class DrawFaceUpCommand implements CommandInterface {
     String playerID;
     Integer position;
 
-    public DrawFaceUpCommand(HashMap<String, Object> values) {
+    public DrawFaceUpCommand(Map<String, Object> values) {
 
         this.gameID = (String)values.get("game_id");
         this.playerID = (String)values.get("player_id");

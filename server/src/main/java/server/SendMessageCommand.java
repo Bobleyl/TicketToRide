@@ -1,14 +1,14 @@
 package server;
 
 
+import Shared.CommandInterface;
+import Shared.GameList;
 import Shared.GameModel;
 import Shared.Message;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SendMessageCommand implements CommandInterface {
 
@@ -16,7 +16,7 @@ public class SendMessageCommand implements CommandInterface {
     String playerID;
     Message message;
 
-    public SendMessageCommand(HashMap<String, Object> values) {
+    public SendMessageCommand(Map<String, Object> values) {
 
         Gson gson = new Gson();
 

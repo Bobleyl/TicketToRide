@@ -1,19 +1,21 @@
 package server;
 
-import java.util.HashMap;
+import Shared.CommandInterface;
+
+import java.util.Map;
 
 public class RegisterCommand implements CommandInterface {
     private String username;
     private String password;
 
-    public RegisterCommand(HashMap<String, Object> values) {
+    public RegisterCommand(Map<String, Object> values) {
         this.username = (String)values.get("username");
         this.password = (String)values.get("password");
     }
 
     @Override
     public Object execute() throws Exception {
-        boolean success = DataAccess.SINGLETON.registerUser(username, password);
+        boolean success = ServerCommunicator.factory.getUserDAO().registerUser(username, password);
 
         if(success) {
             System.out.println("User was created");

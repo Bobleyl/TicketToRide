@@ -1,12 +1,14 @@
 package server;
 
-import java.util.HashMap;
+import Shared.CommandInterface;
+
+import java.util.Map;
 
 public class DeleteGameCommand implements CommandInterface {
 
     String gameID;
 
-    public DeleteGameCommand(HashMap<String, Object> values) {
+    public DeleteGameCommand(Map<String, Object> values) {
 
         this.gameID = (String) values.get("game_id");
 

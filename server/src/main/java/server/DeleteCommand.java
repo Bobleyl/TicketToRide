@@ -1,15 +1,17 @@
 package server;
 
-import java.util.HashMap;
+import Shared.CommandInterface;
+
+import java.util.Map;
 
 public class DeleteCommand implements CommandInterface {
 
-    public DeleteCommand(HashMap<String, Object> values) {}
+    public DeleteCommand(Map<String, Object> values) {}
 
     @Override
     public Object execute() throws Exception {
 
-        boolean success = DataAccess.SINGLETON.delete();
+        boolean success = ServerCommunicator.factory.getUserDAO().delete();
 
         if(success) {
             LobbyModel.SINGLETON.emptyGames();

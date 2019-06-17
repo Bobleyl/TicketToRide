@@ -3,7 +3,7 @@ package server;
 import Shared.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 import java.util.TreeSet;
 
@@ -11,7 +11,7 @@ public class EndGameCommand implements CommandInterface {
 
     String gameID;
 
-    public EndGameCommand(HashMap<String, Object> values) {
+    public EndGameCommand(Map<String, Object> values) {
         this.gameID = (String)values.get("game_id");
     }
 

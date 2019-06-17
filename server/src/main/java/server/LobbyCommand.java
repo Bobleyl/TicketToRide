@@ -1,10 +1,12 @@
 package server;
 
-import java.util.HashMap;
+import Shared.CommandInterface;
+
+import java.util.Map;
 
 public class LobbyCommand implements CommandInterface {
 
-    public LobbyCommand(HashMap<String, Object> values) {
+    public LobbyCommand(Map<String, Object> values) {
 
     }
 
