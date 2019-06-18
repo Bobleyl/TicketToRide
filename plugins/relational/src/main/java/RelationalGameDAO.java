@@ -266,21 +266,26 @@ public class RelationalGameDAO implements IGameDAO {
                 System.out.println(rs.getString(1));
                 List<String> deltas = gson.fromJson(rs.getString(2), List.class);
                 GameModel gameModel = gson.fromJson(rs.getString(3), GameModel.class);
-                GameList.SINGLETON.addGame(gameModel);
+                if (gameModel != null) {
+                    GameList.SINGLETON.addGame(gameModel);
+                }
 
-                for (String s : deltas) {
-                    HashMap<String, Object> dto = gson.fromJson(s, HashMap.class);
-                    String commandType = (String)dto.get("command");
-                    commandType = commandType.substring(0, 1).toUpperCase() + commandType.substring(1);
-                    HashMap<String, Object> values = (HashMap)dto.get("values");
+                if (deltas != null && gameModel != null) {
+                    for (String s : deltas) {
+                        Map<String, Object> dto = gson.fromJson(s, HashMap.class);
+                        String commandType = (String) dto.get("command");
+                        commandType = commandType.substring(0, 1).toUpperCase() + commandType.substring(1);
+                        Map<String, Object> values = (Map) dto.get("values");
 
-                    Class<?> cl = Class.forName("server." + commandType + "Command");
+                        Class<?> cl = Class.forName("server." + commandType + "Command");
 
-                    Constructor<?> constructor = cl.getConstructor(HashMap.class);
+                        Constructor<?> constructor = cl.getConstructor(Map.class);
 
-                    CommandInterface command = (CommandInterface)constructor.newInstance(values);
+                        CommandInterface command = (CommandInterface) constructor.newInstance(values);
 
-                    command.execute();
+                        command.execute();
+
+                    }
                 }
 
                 System.out.println();
