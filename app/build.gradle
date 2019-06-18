@@ -34,4 +34,5 @@ dependencies {
     implementation files('libs/jackson-databind-2.9.9.jar')
     implementation files('libs/jackson-annotations-2.9.9.jar')
     implementation 'com.google.android.gms:play-services-maps:16.1.0'
+    implementation files('libs/Relational.jar')
 }
